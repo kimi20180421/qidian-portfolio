@@ -430,9 +430,9 @@
     .timeline-wrap {
       position: relative;
       display: grid;
-      width: min(100%, 1217px);
+      width: 100%;
       max-width: 100%;
-      grid-template-columns: 345px 269px 264px 339px;
+      grid-template-columns: 345px 269px 264px minmax(0, 1fr);
       grid-template-rows: auto 96px auto;
       column-gap: 0;
       row-gap: 0;
