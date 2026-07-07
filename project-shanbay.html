@@ -261,6 +261,59 @@
       margin-top: 8px;
     }
 
+    .role-focus {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .role-focus-title {
+      font-size: 16px;
+      line-height: 26px;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .role-focus-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .role-focus-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(186, 238, 234, 0.38);
+    }
+
+    .role-focus-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      min-width: 72px;
+      height: 28px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: #BAEEEA;
+      color: #055B4F;
+      font-size: 14px;
+      line-height: 28px;
+      font-weight: 500;
+    }
+
+    .role-focus-text {
+      flex: 1;
+      min-width: 0;
+      font-size: 16px;
+      line-height: 26px;
+      color: var(--ink);
+    }
+
     .goal-module {
       width: 800px;
       max-width: 100%;
@@ -331,6 +384,8 @@
     .hero-block .shot,
     .background-section .section-title,
     .background-section .section-body .section-paragraph,
+    .background-section .role-focus-title,
+    .background-section .role-focus-item,
     .goal-module .goal-intro,
     .goal-module .goal-item {
       opacity: 0;
@@ -345,6 +400,8 @@
     .hero-block.is-visible .shot,
     .background-section.is-visible .section-title,
     .background-section.is-visible .section-body .section-paragraph,
+    .background-section.is-visible .role-focus-title,
+    .background-section.is-visible .role-focus-item,
     .goal-module.is-visible .goal-intro,
     .goal-module.is-visible .goal-item {
       opacity: 1;
@@ -373,6 +430,18 @@
 
     .background-section.is-visible .section-paragraph:nth-child(2) {
       transition-delay: .24s;
+    }
+
+    #roleSection.is-visible .role-focus-title {
+      transition-delay: .34s;
+    }
+
+    #roleSection.is-visible .role-focus-item:nth-child(1) {
+      transition-delay: .44s;
+    }
+
+    #roleSection.is-visible .role-focus-item:nth-child(2) {
+      transition-delay: .54s;
     }
 
     .goal-module.is-visible .goal-intro {
@@ -477,7 +546,19 @@
         <div class="section-title">我的角色</div>
         <div class="section-body">
           <div class="section-paragraph">在项目中，我主要负责积分签到机制的体验改版。通过分析现有签到流程、用户反馈与行为数据，识别用户签到动力不足、积分价值感知较弱、签到与学习行为联系不清晰等问题，并围绕激励规则、任务反馈、积分权益和信息表达进行优化。</div>
-          <div class="section-paragraph">我的核心工作是建立“签到激励—持续学习—积分回报”的体验闭环，让签到不再只是一次简单打卡，而是帮助用户养成学习习惯、持续获得正向反馈的产品机制。同时，我也参与了相关组件与设计规范的沉淀，保障方案落地的一致性和协作效率。</div>
+          <div class="role-focus">
+            <div class="role-focus-title">我的核心工作是：</div>
+            <div class="role-focus-list">
+              <div class="role-focus-item">
+                <span class="role-focus-label">体验闭环</span>
+                <div class="role-focus-text">建立“签到激励—持续学习—积分回报”的体验闭环，让签到不再只是一次简单打卡，而是帮助用户养成学习习惯、持续获得正向反馈的产品机制。</div>
+              </div>
+              <div class="role-focus-item">
+                <span class="role-focus-label">规范沉淀</span>
+                <div class="role-focus-text">制定相关组件与设计规范的沉淀，保障方案落地的一致性和协作效率。</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="background-section reveal-section" id="designStepSection">
