@@ -352,6 +352,7 @@
 
     .review-tab-shell {
       margin-top: 20px;
+      display: flex;
       overflow: hidden;
       border: 1px solid rgba(52, 200, 178, 0.16);
       border-radius: 26px;
@@ -359,23 +360,25 @@
     }
 
     .review-tab-bar {
+      width: 180px;
+      flex-shrink: 0;
       display: flex;
-      align-items: flex-end;
-      gap: 6px;
-      padding: 6px 6px 0;
-      border-bottom: 1px solid rgba(5, 91, 79, 0.08);
-      background: rgba(255, 255, 255, 0.9);
+      flex-direction: column;
+      gap: 8px;
+      padding: 20px 0 20px 20px;
+      border-right: 1px solid rgba(5, 91, 79, 0.08);
+      background: rgba(52, 200, 178, 0.04);
     }
 
     .review-tab {
       position: relative;
       display: flex;
       align-items: center;
-      justify-content: center;
-      flex: 1;
-      min-width: 0;
-      height: 42px;
-      border-radius: 16px 16px 0 0;
+      justify-content: flex-start;
+      width: 100%;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 16px 0 0 16px;
       font-size: 16px;
       line-height: 24px;
       color: var(--ink);
@@ -393,14 +396,15 @@
     .review-tab.is-active::after {
       content: "";
       position: absolute;
+      top: 10px;
+      bottom: 10px;
       left: 0;
-      right: 0;
-      bottom: -1px;
-      height: 2px;
+      width: 3px;
       background: #34C8B2;
     }
 
     .review-tab-panels {
+      flex: 1;
       padding: 30px;
       background: rgba(52, 200, 178, 0.04);
     }
@@ -427,6 +431,10 @@
 
     .review-panel-frame {
       margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 340px;
       padding: 24px;
       border: 1px dashed rgba(5, 91, 79, 0.22);
       border-radius: 20px;
@@ -434,25 +442,17 @@
     }
 
     .review-placeholder {
-      height: 14px;
-      border-radius: 999px;
-      background: rgba(52, 200, 178, 0.16);
-    }
-
-    .review-placeholder + .review-placeholder {
-      margin-top: 12px;
-    }
-
-    .review-placeholder.wide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 100%;
-    }
-
-    .review-placeholder.medium {
-      width: 72%;
-    }
-
-    .review-placeholder.short {
-      width: 46%;
+      height: 100%;
+      min-height: 292px;
+      border-radius: 16px;
+      background: rgba(52, 200, 178, 0.08);
+      color: rgba(5, 91, 79, 0.62);
+      font-size: 16px;
+      line-height: 26px;
     }
 
     .goal-module {
@@ -754,33 +754,25 @@
               <div class="review-tab-panel is-active" data-review-panel="checkinEntry">
                 <div class="review-panel-title">签到入口</div>
                 <div class="review-panel-frame">
-                  <div class="review-placeholder wide"></div>
-                  <div class="review-placeholder medium"></div>
-                  <div class="review-placeholder short"></div>
+                  <div class="review-placeholder">签到入口问题图占位</div>
                 </div>
               </div>
               <div class="review-tab-panel" data-review-panel="pointsEarn">
                 <div class="review-panel-title">获取积分</div>
                 <div class="review-panel-frame">
-                  <div class="review-placeholder wide"></div>
-                  <div class="review-placeholder medium"></div>
-                  <div class="review-placeholder short"></div>
+                  <div class="review-placeholder">获取积分问题图占位</div>
                 </div>
               </div>
               <div class="review-tab-panel" data-review-panel="pointsLottery">
                 <div class="review-panel-title">积分抽奖</div>
                 <div class="review-panel-frame">
-                  <div class="review-placeholder wide"></div>
-                  <div class="review-placeholder medium"></div>
-                  <div class="review-placeholder short"></div>
+                  <div class="review-placeholder">积分抽奖问题图占位</div>
                 </div>
               </div>
               <div class="review-tab-panel" data-review-panel="pointsRedeem">
                 <div class="review-panel-title">积分兑换</div>
                 <div class="review-panel-frame">
-                  <div class="review-placeholder wide"></div>
-                  <div class="review-placeholder medium"></div>
-                  <div class="review-placeholder short"></div>
+                  <div class="review-placeholder">积分兑换问题图占位</div>
                 </div>
               </div>
             </div>
