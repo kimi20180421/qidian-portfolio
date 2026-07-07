@@ -440,6 +440,66 @@
       background: rgba(255, 255, 255, 0.72);
     }
 
+    .review-issue-stack {
+      position: relative;
+      width: 100%;
+      min-height: 560px;
+    }
+
+    .review-issue-layer {
+      position: absolute;
+      opacity: 0;
+      transform: translateY(26px) scale(0.98);
+      transition:
+        opacity .72s cubic-bezier(0.22, 1, 0.36, 1),
+        transform .72s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    .review-issue-layer img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .review-issue-layer.base {
+      left: 0;
+      top: 8px;
+      width: 58%;
+      z-index: 1;
+    }
+
+    .review-issue-layer.overlay-top {
+      right: 0;
+      top: 0;
+      width: 56%;
+      z-index: 2;
+    }
+
+    .review-issue-layer.overlay-bottom {
+      right: 0;
+      bottom: 0;
+      width: 58%;
+      z-index: 2;
+    }
+
+    .review-tab-panel.is-active .review-issue-layer {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .review-tab-panel.is-active .review-issue-layer.base {
+      transition-delay: .04s;
+    }
+
+    .review-tab-panel.is-active .review-issue-layer.overlay-top {
+      transition-delay: .16s;
+    }
+
+    .review-tab-panel.is-active .review-issue-layer.overlay-bottom {
+      transition-delay: .28s;
+    }
+
     .review-placeholder {
       display: flex;
       align-items: center;
@@ -753,7 +813,17 @@
               <div class="review-tab-panel is-active" data-review-panel="checkinEntry">
                 <div class="review-panel-title">签到入口</div>
                 <div class="review-panel-frame">
-                  <div class="review-placeholder">签到入口问题图占位</div>
+                  <div class="review-issue-stack">
+                    <div class="review-issue-layer base">
+                      <img src="assets/figma-portfolio/jifen1.png" alt="签到入口问题图 1" />
+                    </div>
+                    <div class="review-issue-layer overlay-top">
+                      <img src="assets/figma-portfolio/jifen2.png" alt="签到入口问题图 2" />
+                    </div>
+                    <div class="review-issue-layer overlay-bottom">
+                      <img src="assets/figma-portfolio/jifen3.png" alt="签到入口问题图 3" />
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="review-tab-panel" data-review-panel="pointsEarn">
