@@ -440,64 +440,227 @@
       background: rgba(255, 255, 255, 0.72);
     }
 
-    .review-issue-stack {
-      position: relative;
-      width: 100%;
-      min-height: 560px;
+    .review-panel-frame.checkin-frame {
+      display: block;
+      min-height: 620px;
+      padding: 0;
+      overflow: hidden;
+      background: #F5F7F5;
+      border-style: solid;
+      border-color: rgba(52, 200, 178, 0.16);
     }
 
-    .review-issue-layer {
-      position: absolute;
+    .review-checkin-scene {
+      position: relative;
+      min-height: 620px;
+      overflow: hidden;
+    }
+
+    .checkin-scene-item {
       opacity: 0;
-      transform: translateY(26px) scale(0.98);
+      transform: translateY(24px);
       transition:
         opacity .72s cubic-bezier(0.22, 1, 0.36, 1),
         transform .72s cubic-bezier(0.22, 1, 0.36, 1);
       will-change: opacity, transform;
     }
 
-    .review-issue-layer img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    .review-issue-layer.base {
-      left: 0;
-      top: 8px;
-      width: 58%;
-      z-index: 1;
-    }
-
-    .review-issue-layer.overlay-top {
-      right: 0;
-      top: 0;
-      width: 56%;
-      z-index: 2;
-    }
-
-    .review-issue-layer.overlay-bottom {
-      right: 0;
-      bottom: 0;
-      width: 58%;
-      z-index: 2;
-    }
-
-    .review-tab-panel.is-active .review-issue-layer {
+    .review-tab-panel.is-active .checkin-scene-item {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateY(0);
     }
 
-    .review-tab-panel.is-active .review-issue-layer.base {
-      transition-delay: .04s;
+    .review-tab-panel.is-active .scene-phone {
+      transition-delay: .06s;
     }
 
-    .review-tab-panel.is-active .review-issue-layer.overlay-top {
-      transition-delay: .16s;
+    .review-tab-panel.is-active .scene-card-top {
+      transition-delay: .18s;
     }
 
-    .review-tab-panel.is-active .review-issue-layer.overlay-bottom {
+    .review-tab-panel.is-active .scene-card-bottom {
       transition-delay: .28s;
+    }
+
+    .review-tab-panel.is-active .scene-note-left {
+      transition-delay: .34s;
+    }
+
+    .review-tab-panel.is-active .scene-note-right-top {
+      transition-delay: .42s;
+    }
+
+    .review-tab-panel.is-active .scene-note-right-mid {
+      transition-delay: .5s;
+    }
+
+    .review-tab-panel.is-active .scene-link-left {
+      transition-delay: .38s;
+    }
+
+    .review-tab-panel.is-active .scene-link-right-top {
+      transition-delay: .46s;
+    }
+
+    .review-tab-panel.is-active .scene-link-right-mid {
+      transition-delay: .54s;
+    }
+
+    .scene-phone,
+    .scene-card-top,
+    .scene-card-bottom {
+      position: absolute;
+      background-repeat: no-repeat;
+    }
+
+    .scene-phone {
+      left: 254px;
+      top: 18px;
+      width: 292px;
+      height: 530px;
+      border-radius: 30px;
+      background-image: url("assets/figma-portfolio/jifen1.png");
+      background-size: 605px auto;
+      background-position: left top;
+      box-shadow: 0 14px 32px rgba(31, 35, 41, 0.08);
+    }
+
+    .scene-card-top {
+      left: 404px;
+      top: 382px;
+      width: 284px;
+      height: 86px;
+      border-radius: 18px;
+      background-image: url("assets/figma-portfolio/jifen2.png");
+      background-size: 640px auto;
+      background-position: left bottom;
+      box-shadow: 0 12px 28px rgba(31, 35, 41, 0.08);
+    }
+
+    .scene-card-bottom {
+      left: 226px;
+      top: 458px;
+      width: 324px;
+      height: 96px;
+      border-radius: 18px;
+      background-image: url("assets/figma-portfolio/jifen3.png");
+      background-size: 648px auto;
+      background-position: right bottom;
+      box-shadow: 0 12px 28px rgba(31, 35, 41, 0.08);
+    }
+
+    .scene-note {
+      position: absolute;
+      width: 232px;
+      color: #5F6270;
+    }
+
+    .scene-note-title {
+      font-size: 18px;
+      line-height: 30px;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .scene-note-body {
+      margin-top: 14px;
+      font-size: 16px;
+      line-height: 26px;
+      color: #6A6D79;
+    }
+
+    .scene-note-highlight {
+      color: #34C8B2;
+      font-weight: 500;
+    }
+
+    .scene-note-left {
+      left: 30px;
+      top: 170px;
+    }
+
+    .scene-note-right-top {
+      right: 34px;
+      top: 52px;
+    }
+
+    .scene-note-right-mid {
+      right: 34px;
+      top: 266px;
+    }
+
+    .scene-link {
+      position: absolute;
+      border-style: dashed;
+      border-color: #34C8B2;
+      pointer-events: none;
+    }
+
+    .scene-link::before,
+    .scene-link::after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #34C8B2;
+    }
+
+    .scene-link-left {
+      left: 238px;
+      top: 214px;
+      width: 42px;
+      height: 220px;
+      border-width: 0 2px 2px 0;
+      border-radius: 0 0 14px 0;
+    }
+
+    .scene-link-left::before {
+      left: -10px;
+      top: -4px;
+    }
+
+    .scene-link-left::after {
+      right: -7px;
+      bottom: -7px;
+    }
+
+    .scene-link-right-top {
+      right: 266px;
+      top: 48px;
+      width: 52px;
+      height: 236px;
+      border-width: 2px 0 2px 2px;
+      border-radius: 14px 0 0 14px;
+    }
+
+    .scene-link-right-top::before {
+      left: -7px;
+      top: -7px;
+    }
+
+    .scene-link-right-top::after {
+      right: -10px;
+      bottom: -7px;
+    }
+
+    .scene-link-right-mid {
+      right: 260px;
+      top: 252px;
+      width: 66px;
+      height: 180px;
+      border-width: 2px 0 2px 2px;
+      border-radius: 14px 0 0 14px;
+    }
+
+    .scene-link-right-mid::before {
+      left: -7px;
+      top: -7px;
+    }
+
+    .scene-link-right-mid::after {
+      right: -10px;
+      bottom: -7px;
     }
 
     .review-placeholder {
@@ -812,16 +975,29 @@
             <div class="review-tab-panels">
               <div class="review-tab-panel is-active" data-review-panel="checkinEntry">
                 <div class="review-panel-title">签到入口</div>
-                <div class="review-panel-frame">
-                  <div class="review-issue-stack">
-                    <div class="review-issue-layer base">
-                      <img src="assets/figma-portfolio/jifen1.png" alt="签到入口问题图 1" />
+                <div class="review-panel-frame checkin-frame">
+                  <div class="review-checkin-scene">
+                    <div class="scene-phone checkin-scene-item"></div>
+                    <div class="scene-card-top checkin-scene-item"></div>
+                    <div class="scene-card-bottom checkin-scene-item"></div>
+
+                    <div class="scene-link scene-link-left checkin-scene-item"></div>
+                    <div class="scene-link scene-link-right-top checkin-scene-item"></div>
+                    <div class="scene-link scene-link-right-mid checkin-scene-item"></div>
+
+                    <div class="scene-note scene-note-left checkin-scene-item">
+                      <div class="scene-note-title">签到奖励价值感体现弱，用户获得感低</div>
+                      <div class="scene-note-body">签到奖励价值感弱，成长感和阶段性激励不足，<span class="scene-note-highlight">缺少连续签到激励或专属权益</span>，难以长期驱动用户坚持签到。</div>
                     </div>
-                    <div class="review-issue-layer overlay-top">
-                      <img src="assets/figma-portfolio/jifen2.png" alt="签到入口问题图 2" />
+
+                    <div class="scene-note scene-note-right-top checkin-scene-item">
+                      <div class="scene-note-title">签到图标面积小对比度低，识别困难</div>
+                      <div class="scene-note-body">签到入口图标对比度低，面积小，<span class="scene-note-highlight">在信息层级中不突出</span>，用户难以在首页快速识别并注意到签到入口。</div>
                     </div>
-                    <div class="review-issue-layer overlay-bottom">
-                      <img src="assets/figma-portfolio/jifen3.png" alt="签到入口问题图 3" />
+
+                    <div class="scene-note scene-note-right-mid checkin-scene-item">
+                      <div class="scene-note-title">签到后仅变红，触觉视觉互动少</div>
+                      <div class="scene-note-body">签到后仅通过图标变红作为反馈，<span class="scene-note-highlight">缺乏动效、音效或奖励弹窗等多感官反馈</span>，难以形成积极的互动体验。</div>
                     </div>
                   </div>
                 </div>
