@@ -421,6 +421,10 @@
       transform: translateY(0);
     }
 
+    .review-tab-panel .review-panel-frame {
+      margin-top: 0;
+    }
+
     .review-panel-title {
       font-size: 18px;
       line-height: 28px;
@@ -448,10 +452,6 @@
       overflow: hidden;
       background: transparent;
       border: none;
-    }
-
-    .review-tab-panel[data-review-panel="checkinEntry"] .review-panel-frame.checkin-frame {
-      margin-top: -20px;
     }
 
     .review-checkin-scene {
@@ -797,7 +797,6 @@
             </div>
             <div class="review-tab-panels">
               <div class="review-tab-panel is-active" data-review-panel="checkinEntry">
-                <div class="review-panel-title">签到入口</div>
                 <div class="review-panel-frame checkin-frame">
                   <div class="review-checkin-scene">
                     <img class="review-checkin-image checkin-scene-item" src="assets/figma-portfolio/jifen.png" alt="签到入口问题图" />
@@ -805,7 +804,6 @@
                 </div>
               </div>
               <div class="review-tab-panel" data-review-panel="pointsEarn">
-                <div class="review-panel-title">获取积分</div>
                 <div class="review-panel-frame checkin-frame">
                   <div class="review-checkin-scene">
                     <img class="review-checkin-image checkin-scene-item" src="assets/figma-portfolio/huoqujifen.png" alt="获取积分问题图" />
@@ -813,7 +811,6 @@
                 </div>
               </div>
               <div class="review-tab-panel" data-review-panel="pointsLottery">
-                <div class="review-panel-title">积分抽奖</div>
                 <div class="review-panel-frame checkin-frame">
                   <div class="review-checkin-scene">
                     <img class="review-checkin-image checkin-scene-item" src="assets/figma-portfolio/choujiang.png" alt="积分抽奖问题图" />
@@ -821,7 +818,6 @@
                 </div>
               </div>
               <div class="review-tab-panel" data-review-panel="pointsRedeem">
-                <div class="review-panel-title">积分兑换</div>
                 <div class="review-panel-frame">
                   <div class="review-placeholder">积分兑换问题图占位</div>
                 </div>
