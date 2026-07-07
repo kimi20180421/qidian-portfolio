@@ -314,6 +314,20 @@
       color: var(--ink);
     }
 
+    .design-step-card {
+      margin-top: 20px;
+      padding: 30px;
+      border: 1px solid #34C8B2;
+      border-radius: 26px;
+      background: rgba(52, 200, 178, 0.06);
+    }
+
+    .design-step-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
     .goal-module {
       width: 800px;
       max-width: 100%;
@@ -386,6 +400,7 @@
     .background-section .section-body .section-paragraph,
     .background-section .role-focus-title,
     .background-section .role-focus-item,
+    .background-section .design-step-card,
     .goal-module .goal-intro,
     .goal-module .goal-item {
       opacity: 0;
@@ -402,6 +417,7 @@
     .background-section.is-visible .section-body .section-paragraph,
     .background-section.is-visible .role-focus-title,
     .background-section.is-visible .role-focus-item,
+    .background-section.is-visible .design-step-card,
     .goal-module.is-visible .goal-intro,
     .goal-module.is-visible .goal-item {
       opacity: 1;
@@ -442,6 +458,14 @@
 
     #roleSection.is-visible .role-focus-item:nth-child(2) {
       transition-delay: .54s;
+    }
+
+    #designStepSection.is-visible .section-paragraph:nth-child(1) {
+      transition-delay: .14s;
+    }
+
+    #designStepSection.is-visible .design-step-card {
+      transition-delay: .24s;
     }
 
     .goal-module.is-visible .goal-intro {
@@ -563,6 +587,12 @@
       </div>
       <div class="background-section reveal-section" id="designStepSection">
         <div class="section-title">设计步骤</div>
+        <div class="section-body">
+          <div class="section-paragraph">我从市场与业务目标出发，明确项目问题边界；再结合现状梳理、竞品分析和用户研究，找到核心体验机会，并落到签到、积分和徽章体系的具体设计方案中。</div>
+          <div class="design-step-card">
+            <img src="assets/figma-portfolio/map.png" alt="设计步骤流程图" />
+          </div>
+        </div>
       </div>
     </main>
   </div>
