@@ -360,12 +360,12 @@
     }
 
     .review-tab-bar {
-      width: 180px;
+      width: 148px;
       flex-shrink: 0;
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      padding: 20px 0 20px 20px;
+      gap: 6px;
+      padding: 20px 0;
       border-right: 1px solid rgba(5, 91, 79, 0.08);
       background: rgba(52, 200, 178, 0.04);
     }
@@ -375,10 +375,10 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      width: 100%;
+      width: calc(100% - 10px);
       min-height: 48px;
-      padding: 0 18px;
-      border-radius: 16px 0 0 16px;
+      padding: 0 14px 0 18px;
+      border-radius: 0 16px 16px 0;
       font-size: 16px;
       line-height: 24px;
       color: var(--ink);
@@ -388,7 +388,7 @@
     }
 
     .review-tab.is-active {
-      background: rgba(52, 200, 178, 0.08);
+      background: rgba(52, 200, 178, 0.06);
       color: #055B4F;
       font-weight: 500;
     }
