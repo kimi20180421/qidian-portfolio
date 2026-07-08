@@ -389,7 +389,7 @@
       color: var(--ink);
       cursor: pointer;
       user-select: none;
-      transition: background .2s ease, color .2s ease;
+      transition: color .28s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .review-tab.is-active {
@@ -397,14 +397,23 @@
       font-weight: 500;
     }
 
-    .review-tab.is-active::after {
+    .review-tab-label {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .review-tab.is-active .review-tab-label::after {
       content: "";
       position: absolute;
-      left: 12px;
-      right: 12px;
-      bottom: 0;
+      left: 0;
+      right: 0;
+      bottom: -9px;
       height: 3px;
       background: #34C8B2;
+      border-radius: 999px;
     }
 
     .review-tab-panels {
@@ -416,7 +425,9 @@
       display: none;
       opacity: 0;
       transform: translateY(10px);
-      transition: opacity .2s ease, transform .2s ease;
+      transition:
+        opacity .32s cubic-bezier(0.22, 1, 0.36, 1),
+        transform .32s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .review-tab-panel.is-active {
@@ -454,6 +465,7 @@
       max-width: 100%;
       height: auto;
       margin-top: -20px;
+      transform-origin: top center;
     }
 
     .review-placeholder {
@@ -760,10 +772,10 @@
           <div class="section-paragraph">为了达到目标，我先进行对签到入口、获取积分、积分抽奖、积分兑换 等环节的产品自查，摸底查看当前产品存在的具体问题。</div>
           <div class="review-tab-shell" id="reviewTabShell">
             <div class="review-tab-bar">
-              <div class="review-tab is-active" data-review-tab="checkinEntry">签到入口</div>
-              <div class="review-tab" data-review-tab="pointsEarn">获取积分</div>
-              <div class="review-tab" data-review-tab="pointsLottery">积分抽奖</div>
-              <div class="review-tab" data-review-tab="pointsRedeem">积分兑换</div>
+              <div class="review-tab is-active" data-review-tab="checkinEntry"><span class="review-tab-label">签到入口</span></div>
+              <div class="review-tab" data-review-tab="pointsEarn"><span class="review-tab-label">获取积分</span></div>
+              <div class="review-tab" data-review-tab="pointsLottery"><span class="review-tab-label">积分抽奖</span></div>
+              <div class="review-tab" data-review-tab="pointsRedeem"><span class="review-tab-label">积分兑换</span></div>
             </div>
             <div class="review-tab-panels">
               <div class="review-tab-panel is-active" data-review-panel="checkinEntry">
@@ -841,6 +853,10 @@
 
       var tabs = shell.querySelectorAll('[data-review-tab]');
       var panels = shell.querySelectorAll('[data-review-panel]');
+      var activeIndex = 0;
+      var autoSwitchTimer = null;
+      var autoSwitchDelay = 2600;
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       function setActiveTab(name) {
         tabs.forEach(function(tab) {
@@ -850,13 +866,49 @@
         panels.forEach(function(panel) {
           panel.classList.toggle('is-active', panel.getAttribute('data-review-panel') === name);
         });
+
+        tabs.forEach(function(tab, index) {
+          if (tab.getAttribute('data-review-tab') === name) {
+            activeIndex = index;
+          }
+        });
+      }
+
+      function clearAutoSwitch() {
+        if (autoSwitchTimer) {
+          window.clearInterval(autoSwitchTimer);
+          autoSwitchTimer = null;
+        }
+      }
+
+      function startAutoSwitch() {
+        if (reduceMotion || tabs.length < 2) return;
+        clearAutoSwitch();
+        autoSwitchTimer = window.setInterval(function() {
+          activeIndex = (activeIndex + 1) % tabs.length;
+          setActiveTab(tabs[activeIndex].getAttribute('data-review-tab'));
+        }, autoSwitchDelay);
       }
 
       tabs.forEach(function(tab) {
         tab.addEventListener('click', function() {
           setActiveTab(tab.getAttribute('data-review-tab'));
+          startAutoSwitch();
         });
       });
+
+      shell.addEventListener('mouseenter', clearAutoSwitch);
+      shell.addEventListener('mouseleave', startAutoSwitch);
+      shell.addEventListener('focusin', clearAutoSwitch);
+      shell.addEventListener('focusout', function() {
+        window.setTimeout(function() {
+          if (!shell.contains(document.activeElement)) {
+            startAutoSwitch();
+          }
+        }, 0);
+      });
+
+      startAutoSwitch();
     })();
   </script>
 </body>
