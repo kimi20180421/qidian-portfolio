@@ -375,6 +375,26 @@
       padding-bottom: 0;
     }
 
+    #reviewTabShell > .review-tab-panels {
+      height: auto;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    #reviewTabShell > .review-tab-panels > .review-tab-panel[data-review-panel="checkinEntry"] {
+      height: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #reviewTabShell > .review-tab-panels > .review-tab-panel[data-review-panel="checkinEntry"] > .review-panel-frame {
+      flex-direction: column;
+    }
+
+    #reviewTabShell > .review-tab-panels > .review-tab-panel[data-review-panel="checkinEntry"] > .review-panel-frame > .review-checkin-scene {
+      height: auto;
+    }
+
     .review-tab {
       position: relative;
       flex: 1 1 0;
@@ -417,7 +437,7 @@
     }
 
     .review-tab-panels {
-      padding: 30px 10px 0;
+      padding: 0 10px 0;
       background: rgba(52, 200, 178, 0.04);
     }
 
@@ -431,7 +451,8 @@
     }
 
     .review-tab-panel.is-active {
-      display: block;
+      display: flex;
+      flex-direction: column;
       opacity: 1;
       transform: translateY(0);
     }
