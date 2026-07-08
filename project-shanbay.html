@@ -408,7 +408,6 @@
     }
 
     .review-tab-panels {
-      min-height: 640px;
       padding: 30px 10px 0;
       background: rgba(52, 200, 178, 0.04);
     }
@@ -424,49 +423,6 @@
       display: block;
       opacity: 1;
       transform: translateY(0);
-    }
-
-    .review-tab-panel .review-panel-frame {
-      margin-top: 0;
-    }
-
-    .review-panel-title {
-      font-size: 18px;
-      line-height: 28px;
-      color: #055B4F;
-      font-weight: 500;
-    }
-
-    .review-panel-frame {
-      margin-top: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 340px;
-      padding: 24px;
-      border: 1px dashed rgba(5, 91, 79, 0.22);
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.72);
-    }
-
-    .review-panel-frame.checkin-frame {
-      margin-top: 0;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      min-height: 610px;
-      padding: 0;
-      overflow: hidden;
-      background: transparent;
-      border: none;
-    }
-
-    .review-checkin-scene {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      width: 100%;
-      min-height: 610px;
     }
 
     .checkin-scene-item {
@@ -485,6 +441,11 @@
 
     .review-tab-panel.is-active .review-checkin-image {
       transition-delay: .06s;
+    }
+
+    .review-tab-panel > .review-checkin-image,
+    .review-tab-panel > .review-placeholder {
+      margin-top: 0;
     }
 
     .review-checkin-image {
@@ -507,12 +468,6 @@
       color: rgba(5, 91, 79, 0.62);
       font-size: 16px;
       line-height: 26px;
-    }
-
-    .review-panel-frame.checkin-frame .review-placeholder {
-      min-height: 610px;
-      background: transparent;
-      border-radius: 0;
     }
 
     .goal-module {
@@ -812,32 +767,16 @@
             </div>
             <div class="review-tab-panels">
               <div class="review-tab-panel is-active" data-review-panel="checkinEntry">
-                <div class="review-panel-frame checkin-frame">
-                  <div class="review-checkin-scene">
-                    <img class="review-checkin-image checkin-scene-item" src="assets/figma-portfolio/jifen.png" alt="签到入口问题图" />
-                  </div>
-                </div>
+                <img class="review-checkin-image checkin-scene-item" src="assets/figma-portfolio/jifen.png" alt="签到入口问题图" />
               </div>
               <div class="review-tab-panel" data-review-panel="pointsEarn">
-                <div class="review-panel-frame checkin-frame">
-                  <div class="review-checkin-scene">
-                    <img class="review-checkin-image checkin-scene-item" src="assets/figma-portfolio/huoqujifen.png" alt="获取积分问题图" />
-                  </div>
-                </div>
+                <img class="review-checkin-image checkin-scene-item" src="assets/figma-portfolio/huoqujifen.png" alt="获取积分问题图" />
               </div>
               <div class="review-tab-panel" data-review-panel="pointsLottery">
-                <div class="review-panel-frame checkin-frame">
-                  <div class="review-checkin-scene">
-                    <img class="review-checkin-image checkin-scene-item" src="assets/figma-portfolio/choujiang.png" alt="积分抽奖问题图" />
-                  </div>
-                </div>
+                <img class="review-checkin-image checkin-scene-item" src="assets/figma-portfolio/choujiang.png" alt="积分抽奖问题图" />
               </div>
               <div class="review-tab-panel" data-review-panel="pointsRedeem">
-                <div class="review-panel-frame checkin-frame">
-                  <div class="review-checkin-scene">
-                    <div class="review-placeholder">积分兑换问题图占位</div>
-                  </div>
-                </div>
+                <div class="review-placeholder">积分兑换问题图占位</div>
               </div>
             </div>
           </div>
