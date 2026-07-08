@@ -381,17 +381,7 @@
       padding-bottom: 0;
     }
 
-    #reviewTabShell > .review-tab-panels > .review-tab-panel[data-review-panel="checkinEntry"] {
-      height: auto;
-      display: flex;
-      flex-direction: column;
-    }
-
-    #reviewTabShell > .review-tab-panels > .review-tab-panel[data-review-panel="checkinEntry"] > .review-panel-frame {
-      flex-direction: column;
-    }
-
-    #reviewTabShell > .review-tab-panels > .review-tab-panel[data-review-panel="checkinEntry"] > .review-panel-frame > .review-checkin-scene {
+    #reviewTabShell > .review-tab-panels > .review-tab-panel {
       height: auto;
     }
 
@@ -443,6 +433,9 @@
 
     .review-tab-panel {
       display: none;
+      height: auto;
+      flex-direction: column;
+      align-items: center;
       opacity: 0;
       transform: translateY(10px);
       transition:
@@ -452,7 +445,6 @@
 
     .review-tab-panel.is-active {
       display: flex;
-      flex-direction: column;
       opacity: 1;
       transform: translateY(0);
     }
@@ -473,11 +465,6 @@
 
     .review-tab-panel.is-active .review-checkin-image {
       transition-delay: .06s;
-    }
-
-    .review-tab-panel > .review-checkin-image,
-    .review-tab-panel > .review-placeholder {
-      margin-top: 0;
     }
 
     .review-checkin-image {
