@@ -353,6 +353,7 @@
     .review-tab-shell {
       margin-top: 20px;
       display: flex;
+      flex-direction: column;
       overflow: hidden;
       border: 1px solid #34C8B2;
       border-radius: 26px;
@@ -360,13 +361,12 @@
     }
 
     .review-tab-bar {
-      width: 138px;
-      flex-shrink: 0;
       display: flex;
-      flex-direction: column;
+      flex-wrap: nowrap;
       gap: 6px;
-      padding: 20px 0;
-      border-right: 1px solid rgba(5, 91, 79, 0.08);
+      padding: 20px 20px 0;
+      border-right: none;
+      border-bottom: 1px solid rgba(5, 91, 79, 0.08);
       background: rgba(52, 200, 178, 0.04);
     }
 
@@ -374,10 +374,10 @@
       position: relative;
       display: flex;
       align-items: center;
-      justify-content: flex-start;
-      width: 100%;
-      min-height: 48px;
-      padding: 0 14px 0 18px;
+      justify-content: center;
+      min-width: 110px;
+      min-height: 42px;
+      padding: 0 18px;
       font-size: 16px;
       line-height: 24px;
       color: var(--ink);
@@ -395,15 +395,14 @@
     .review-tab.is-active::after {
       content: "";
       position: absolute;
-      top: 10px;
-      bottom: 10px;
-      left: 0;
-      width: 3px;
+      left: 12px;
+      right: 12px;
+      bottom: 0;
+      height: 3px;
       background: #34C8B2;
     }
 
     .review-tab-panels {
-      flex: 1;
       min-height: 640px;
       padding: 30px 10px 0;
       background: rgba(52, 200, 178, 0.04);
@@ -485,7 +484,7 @@
 
     .review-checkin-image {
       display: block;
-      width: 100%;
+      width: 760px;
       max-width: 100%;
       height: auto;
       margin-top: -20px;
