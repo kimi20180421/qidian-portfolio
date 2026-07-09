@@ -380,15 +380,6 @@
       pointer-events: none;
     }
 
-    .user-analysis-stack-card-4 {
-      --card-rotate: -3deg;
-      top: 244px;
-      left: 24px;
-      width: 70%;
-      z-index: 1;
-      pointer-events: none;
-    }
-
     .user-analysis-stack-card.is-dragging {
       cursor: grabbing;
       transition: none;
@@ -796,10 +787,6 @@
       transition-delay: .46s;
     }
 
-    #userAnalysisSection.is-visible .user-analysis-stack-card-4 {
-      transition-delay: .54s;
-    }
-
     .goal-module.is-visible .goal-intro {
       transition-delay: .04s;
     }
@@ -994,11 +981,6 @@
                             <span class="user-analysis-placeholder-label">图片占位 03</span>
                           </div>
                         </div>
-                        <div class="user-analysis-stack-card user-analysis-stack-card-4" data-stack-card>
-                          <div class="user-analysis-stack-card-inner">
-                            <span class="user-analysis-placeholder-label">图片占位 04</span>
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -1132,8 +1114,7 @@
         var slotClasses = [
           'user-analysis-stack-card-1',
           'user-analysis-stack-card-2',
-          'user-analysis-stack-card-3',
-          'user-analysis-stack-card-4'
+          'user-analysis-stack-card-3'
         ];
 
         function syncHeights() {
