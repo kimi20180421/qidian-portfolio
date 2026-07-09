@@ -274,6 +274,7 @@
     }
 
     .user-analysis-layout {
+      --user-analysis-height: 420px;
       margin-top: 20px;
       display: grid;
       grid-template-columns: minmax(0, 1.618fr) minmax(0, 1fr);
@@ -283,11 +284,12 @@
 
     .user-analysis-main {
       display: flex;
+      height: var(--user-analysis-height);
     }
 
     .user-analysis-main-frame {
       width: 100%;
-      min-height: 420px;
+      height: 100%;
       border: 1px solid #34C8B2;
       border-radius: 26px;
       background: rgba(52, 200, 178, 0.06);
@@ -308,16 +310,19 @@
 
     .user-analysis-side {
       display: flex;
+      height: var(--user-analysis-height);
     }
 
     .user-analysis-stack {
       position: relative;
       width: 100%;
-      min-height: 420px;
+      height: 100%;
     }
 
     .user-analysis-stack-card {
       --card-rotate: 0deg;
+      --card-translate-x: 0px;
+      --card-translate-y: 26px;
       position: absolute;
       width: 78%;
       border: 1px solid #34C8B2;
@@ -325,7 +330,7 @@
       background: rgba(255, 255, 255, 0.96);
       box-shadow: 0 14px 28px rgba(5, 91, 79, 0.08);
       overflow: hidden;
-      transform: translateY(26px) rotate(var(--card-rotate));
+      transform: translate3d(var(--card-translate-x), var(--card-translate-y), 0) rotate(var(--card-rotate));
       opacity: 0;
       transition:
         opacity .72s cubic-bezier(0.22, 1, 0.36, 1),
@@ -354,6 +359,8 @@
       top: 8px;
       right: 10px;
       z-index: 4;
+      cursor: grab;
+      pointer-events: auto;
     }
 
     .user-analysis-stack-card-2 {
@@ -361,6 +368,7 @@
       top: 78px;
       left: 0;
       z-index: 3;
+      pointer-events: none;
     }
 
     .user-analysis-stack-card-3 {
@@ -369,6 +377,7 @@
       right: 0;
       width: 74%;
       z-index: 2;
+      pointer-events: none;
     }
 
     .user-analysis-stack-card-4 {
@@ -377,6 +386,12 @@
       left: 24px;
       width: 70%;
       z-index: 1;
+      pointer-events: none;
+    }
+
+    .user-analysis-stack-card.is-dragging {
+      cursor: grabbing;
+      transition: none;
     }
 
     .user-analysis-placeholder-label {
@@ -766,7 +781,7 @@
 
     #userAnalysisSection.is-visible .user-analysis-stack-card {
       opacity: 1;
-      transform: translateY(0) rotate(var(--card-rotate));
+      --card-translate-y: 0px;
     }
 
     #userAnalysisSection.is-visible .user-analysis-stack-card-1 {
@@ -956,30 +971,30 @@
           <div class="section-title">用户分析</div>
             <div class="section-body">
                   <div class="section-paragraph">为了验证产品自查中发现的问题，我通过用户访谈与调研问卷收集了不同使用阶段用户的真实反馈，并将用户按使用时长与签到习惯分为新手用户、普通用户和忠实用户，进一步梳理他们在签到、积分和成长激励中的核心体验断点。</div>
-                  <div class="user-analysis-layout">
+                  <div class="user-analysis-layout" id="userAnalysisLayout">
                     <div class="user-analysis-main">
                       <div class="user-analysis-main-frame">
                         <span class="user-analysis-placeholder-label">左侧主图占位</span>
                       </div>
                     </div>
                     <div class="user-analysis-side">
-                      <div class="user-analysis-stack">
-                        <div class="user-analysis-stack-card user-analysis-stack-card-1">
+                      <div class="user-analysis-stack" id="userAnalysisStack">
+                        <div class="user-analysis-stack-card user-analysis-stack-card-1" data-stack-card>
                           <div class="user-analysis-stack-card-inner">
                             <span class="user-analysis-placeholder-label">图片占位 01</span>
                           </div>
                         </div>
-                        <div class="user-analysis-stack-card user-analysis-stack-card-2">
+                        <div class="user-analysis-stack-card user-analysis-stack-card-2" data-stack-card>
                           <div class="user-analysis-stack-card-inner">
                             <span class="user-analysis-placeholder-label">图片占位 02</span>
                           </div>
                         </div>
-                        <div class="user-analysis-stack-card user-analysis-stack-card-3">
+                        <div class="user-analysis-stack-card user-analysis-stack-card-3" data-stack-card>
                           <div class="user-analysis-stack-card-inner">
                             <span class="user-analysis-placeholder-label">图片占位 03</span>
                           </div>
                         </div>
-                        <div class="user-analysis-stack-card user-analysis-stack-card-4">
+                        <div class="user-analysis-stack-card user-analysis-stack-card-4" data-stack-card>
                           <div class="user-analysis-stack-card-inner">
                             <span class="user-analysis-placeholder-label">图片占位 04</span>
                           </div>
@@ -1105,6 +1120,108 @@
 
       startAutoSwitch();
     })();
+
+      (function() {
+        var layout = document.getElementById('userAnalysisLayout');
+        var stack = document.getElementById('userAnalysisStack');
+        if (!layout || !stack) return;
+
+        var cards = Array.prototype.slice.call(stack.querySelectorAll('[data-stack-card]'));
+        if (!cards.length) return;
+
+        var slotClasses = [
+          'user-analysis-stack-card-1',
+          'user-analysis-stack-card-2',
+          'user-analysis-stack-card-3',
+          'user-analysis-stack-card-4'
+        ];
+
+        function syncHeights() {
+          var main = layout.querySelector('.user-analysis-main');
+          var side = layout.querySelector('.user-analysis-side');
+          if (!main || !side) return;
+          var height = Math.max(main.offsetHeight, side.offsetHeight, 420);
+          layout.style.setProperty('--user-analysis-height', height + 'px');
+        }
+
+        function applyStackOrder() {
+          cards.forEach(function(card, index) {
+            slotClasses.forEach(function(className) {
+              card.classList.remove(className);
+            });
+            card.classList.add(slotClasses[index]);
+          });
+        }
+
+        function rotateStack() {
+          var first = cards.shift();
+          cards.push(first);
+          applyStackOrder();
+          bindTopCard();
+        }
+
+        var activeCard = null;
+        var startX = 0;
+        var deltaX = 0;
+        var threshold = 72;
+
+        function onPointerMove(event) {
+          if (!activeCard) return;
+          deltaX = event.clientX - startX;
+          activeCard.style.setProperty('--card-translate-x', deltaX + 'px');
+          activeCard.style.setProperty('--card-translate-y', '0px');
+        }
+
+        function resetDrag() {
+          if (!activeCard) return;
+          activeCard.classList.remove('is-dragging');
+          activeCard.style.removeProperty('--card-translate-x');
+          activeCard.style.removeProperty('--card-translate-y');
+          activeCard = null;
+          deltaX = 0;
+          window.removeEventListener('pointermove', onPointerMove);
+          window.removeEventListener('pointerup', onPointerUp);
+          window.removeEventListener('pointercancel', onPointerUp);
+        }
+
+        function onPointerUp() {
+          if (!activeCard) return;
+          var currentCard = activeCard;
+          var shouldRotate = Math.abs(deltaX) > threshold;
+          resetDrag();
+          if (shouldRotate) {
+            rotateStack();
+          } else {
+            currentCard.style.removeProperty('--card-translate-x');
+            currentCard.style.removeProperty('--card-translate-y');
+          }
+        }
+
+        function onPointerDown(event) {
+          if (event.button !== 0) return;
+          activeCard = event.currentTarget;
+          startX = event.clientX;
+          deltaX = 0;
+          activeCard.classList.add('is-dragging');
+          window.addEventListener('pointermove', onPointerMove);
+          window.addEventListener('pointerup', onPointerUp);
+          window.addEventListener('pointercancel', onPointerUp);
+        }
+
+        function bindTopCard() {
+          cards.forEach(function(card, index) {
+            card.onpointerdown = null;
+            if (index === 0) {
+              card.onpointerdown = onPointerDown;
+            }
+          });
+        }
+
+        applyStackOrder();
+        bindTopCard();
+        syncHeights();
+        window.addEventListener('resize', syncHeights, { passive: true });
+      })();
   </script>
 </body>
 </html>
