@@ -273,6 +273,120 @@
       font-weight: 500;
     }
 
+    .user-analysis-layout {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.618fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .user-analysis-main {
+      display: flex;
+    }
+
+    .user-analysis-main-frame {
+      width: 100%;
+      min-height: 420px;
+      border: 1px solid #34C8B2;
+      border-radius: 26px;
+      background: rgba(52, 200, 178, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .user-analysis-main-frame::before {
+      content: "";
+      position: absolute;
+      inset: 20px;
+      border: 1px dashed rgba(5, 91, 79, 0.24);
+      border-radius: 20px;
+    }
+
+    .user-analysis-side {
+      display: flex;
+    }
+
+    .user-analysis-stack {
+      position: relative;
+      width: 100%;
+      min-height: 420px;
+    }
+
+    .user-analysis-stack-card {
+      --card-rotate: 0deg;
+      position: absolute;
+      width: 78%;
+      border: 1px solid #34C8B2;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 14px 28px rgba(5, 91, 79, 0.08);
+      overflow: hidden;
+      transform: translateY(26px) rotate(var(--card-rotate));
+      opacity: 0;
+      transition:
+        opacity .72s cubic-bezier(0.22, 1, 0.36, 1),
+        transform .72s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    .user-analysis-stack-card::before {
+      content: "";
+      display: block;
+      padding-top: 133.3333%;
+    }
+
+    .user-analysis-stack-card-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        linear-gradient(180deg, rgba(52, 200, 178, 0.12) 0%, rgba(52, 200, 178, 0.04) 100%);
+    }
+
+    .user-analysis-stack-card-1 {
+      --card-rotate: 4deg;
+      top: 8px;
+      right: 10px;
+      z-index: 4;
+    }
+
+    .user-analysis-stack-card-2 {
+      --card-rotate: -5deg;
+      top: 78px;
+      left: 0;
+      z-index: 3;
+    }
+
+    .user-analysis-stack-card-3 {
+      --card-rotate: 3deg;
+      top: 162px;
+      right: 0;
+      width: 74%;
+      z-index: 2;
+    }
+
+    .user-analysis-stack-card-4 {
+      --card-rotate: -3deg;
+      top: 244px;
+      left: 24px;
+      width: 70%;
+      z-index: 1;
+    }
+
+    .user-analysis-placeholder-label {
+      position: relative;
+      z-index: 1;
+      font-size: 16px;
+      line-height: 26px;
+      color: rgba(5, 91, 79, 0.58);
+    }
+
     .role-focus {
       margin-top: 20px;
       display: flex;
@@ -570,6 +684,7 @@
     .background-section .section-body .section-paragraph,
     .background-section .role-focus-title,
     .background-section .role-focus-item,
+      .background-section .user-analysis-main,
     .background-section .review-tab-shell,
     .background-section .design-step-image,
     .goal-module .goal-intro,
@@ -588,6 +703,7 @@
     .background-section.is-visible .section-body .section-paragraph,
     .background-section.is-visible .role-focus-title,
     .background-section.is-visible .role-focus-item,
+      .background-section.is-visible .user-analysis-main,
     .background-section.is-visible .review-tab-shell,
     .background-section.is-visible .design-step-image,
     .goal-module.is-visible .goal-intro,
@@ -642,6 +758,31 @@
 
     #designReviewSection.is-visible .review-tab-shell {
       transition-delay: .24s;
+    }
+
+    #userAnalysisSection.is-visible .user-analysis-main {
+      transition-delay: .24s;
+    }
+
+    #userAnalysisSection.is-visible .user-analysis-stack-card {
+      opacity: 1;
+      transform: translateY(0) rotate(var(--card-rotate));
+    }
+
+    #userAnalysisSection.is-visible .user-analysis-stack-card-1 {
+      transition-delay: .30s;
+    }
+
+    #userAnalysisSection.is-visible .user-analysis-stack-card-2 {
+      transition-delay: .38s;
+    }
+
+    #userAnalysisSection.is-visible .user-analysis-stack-card-3 {
+      transition-delay: .46s;
+    }
+
+    #userAnalysisSection.is-visible .user-analysis-stack-card-4 {
+      transition-delay: .54s;
     }
 
     .goal-module.is-visible .goal-intro {
@@ -815,6 +956,37 @@
           <div class="section-title">用户分析</div>
             <div class="section-body">
                   <div class="section-paragraph">为了验证产品自查中发现的问题，我通过用户访谈与调研问卷收集了不同使用阶段用户的真实反馈，并将用户按使用时长与签到习惯分为新手用户、普通用户和忠实用户，进一步梳理他们在签到、积分和成长激励中的核心体验断点。</div>
+                  <div class="user-analysis-layout">
+                    <div class="user-analysis-main">
+                      <div class="user-analysis-main-frame">
+                        <span class="user-analysis-placeholder-label">左侧主图占位</span>
+                      </div>
+                    </div>
+                    <div class="user-analysis-side">
+                      <div class="user-analysis-stack">
+                        <div class="user-analysis-stack-card user-analysis-stack-card-1">
+                          <div class="user-analysis-stack-card-inner">
+                            <span class="user-analysis-placeholder-label">图片占位 01</span>
+                          </div>
+                        </div>
+                        <div class="user-analysis-stack-card user-analysis-stack-card-2">
+                          <div class="user-analysis-stack-card-inner">
+                            <span class="user-analysis-placeholder-label">图片占位 02</span>
+                          </div>
+                        </div>
+                        <div class="user-analysis-stack-card user-analysis-stack-card-3">
+                          <div class="user-analysis-stack-card-inner">
+                            <span class="user-analysis-placeholder-label">图片占位 03</span>
+                          </div>
+                        </div>
+                        <div class="user-analysis-stack-card user-analysis-stack-card-4">
+                          <div class="user-analysis-stack-card-inner">
+                            <span class="user-analysis-placeholder-label">图片占位 04</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             </div>
         </div>
     </main>
