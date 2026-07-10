@@ -839,29 +839,29 @@
       margin-top: 20px;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
-      border: 1px solid #34C8B2;
-      border-radius: 26px;
-      background: rgba(255, 255, 255, 0.92);
+      overflow: visible;
+      background: transparent;
     }
 
     .review-tab-bar {
       display: flex;
       flex-wrap: nowrap;
       gap: 6px;
-      padding: 20px 20px 0;
-      border-right: none;
-      border-bottom: 1px solid rgba(5, 91, 79, 0.08);
-      background: rgba(52, 200, 178, 0.04);
+      padding: 6px;
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04);
     }
 
     #reviewTabShell > .review-tab-bar {
-      padding-top: 8px;
-      padding-bottom: 8px;
+      padding-top: 6px;
+      padding-bottom: 6px;
     }
 
     #reviewTabShell > .review-tab-panels {
       height: auto;
+      margin-top: 16px;
       padding-top: 0;
       padding-bottom: 0;
     }
@@ -877,19 +877,23 @@
       align-items: center;
       justify-content: center;
       min-width: 0;
-      min-height: 42px;
+      min-height: 40px;
       padding: 0 18px;
+      border-radius: 999px;
       font-size: 16px;
       line-height: 24px;
-      color: var(--ink);
+      color: rgba(5, 91, 79, 0.82);
       cursor: pointer;
       user-select: none;
-      transition: color .28s cubic-bezier(0.22, 1, 0.36, 1);
+      transition:
+        color .28s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color .28s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .review-tab.is-active {
       color: var(--nav-active-fg);
       font-weight: 500;
+      background: rgba(5, 91, 79, 0.08);
     }
 
     .review-tab-label {
@@ -901,18 +905,12 @@
     }
 
     .review-tab.is-active .review-tab-label::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -8px;
-      height: 3px;
-      background: #34C8B2;
-      border-radius: 999px;
+      content: none;
     }
 
     .review-tab-panels {
-      padding: 0 10px 0;
+      padding: 0 10px;
+      border-radius: 26px;
       background: rgba(52, 200, 178, 0.04);
     }
 
