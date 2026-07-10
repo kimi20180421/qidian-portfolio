@@ -302,23 +302,13 @@
       overflow: hidden;
     }
 
-    .user-analysis-main-gallery {
+    .user-analysis-main-image {
       position: relative;
       z-index: 1;
-      width: 100%;
-      height: 100%;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      align-content: center;
-      align-items: center;
-    }
-
-    .user-analysis-main-image {
       display: block;
       width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
+      height: 100%;
+      object-fit: contain;
       border-radius: 18px;
     }
 
@@ -355,17 +345,20 @@
     .user-analysis-stack-card::before {
       content: "";
       display: block;
-      padding-top: 133.3333%;
+      padding-top: 100%;
     }
 
     .user-analysis-stack-card-inner {
       position: absolute;
       inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background:
-        linear-gradient(180deg, rgba(52, 200, 178, 0.12) 0%, rgba(52, 200, 178, 0.04) 100%);
+      background: rgba(255, 255, 255, 0.96);
+    }
+
+    .user-analysis-stack-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .user-analysis-stack-card-1 {
@@ -975,28 +968,24 @@
                   <div class="user-analysis-layout" id="userAnalysisLayout">
                     <div class="user-analysis-main">
                       <div class="user-analysis-main-frame">
-                        <div class="user-analysis-main-gallery">
-                          <img class="user-analysis-main-image" src="assets/figma-portfolio/r1.png" alt="用户访谈图 1" />
-                          <img class="user-analysis-main-image" src="assets/figma-portfolio/r1.png" alt="用户访谈图 2" />
-                          <img class="user-analysis-main-image" src="assets/figma-portfolio/r1.png" alt="用户访谈图 3" />
-                        </div>
+                        <img class="user-analysis-main-image" src="assets/figma-portfolio/用户访谈.png" alt="用户访谈分析图" />
                       </div>
                     </div>
                     <div class="user-analysis-side">
                       <div class="user-analysis-stack" id="userAnalysisStack">
                         <div class="user-analysis-stack-card user-analysis-stack-card-1" data-stack-card>
                           <div class="user-analysis-stack-card-inner">
-                            <span class="user-analysis-placeholder-label">图片占位 01</span>
+                            <img class="user-analysis-stack-image" src="assets/figma-portfolio/r1.png" alt="用户访谈现场照片" />
                           </div>
                         </div>
                         <div class="user-analysis-stack-card user-analysis-stack-card-2" data-stack-card>
                           <div class="user-analysis-stack-card-inner">
-                            <span class="user-analysis-placeholder-label">图片占位 02</span>
+                            <img class="user-analysis-stack-image" src="assets/figma-portfolio/r1.png" alt="用户访谈现场照片" />
                           </div>
                         </div>
                         <div class="user-analysis-stack-card user-analysis-stack-card-3" data-stack-card>
                           <div class="user-analysis-stack-card-inner">
-                            <span class="user-analysis-placeholder-label">图片占位 03</span>
+                            <img class="user-analysis-stack-image" src="assets/figma-portfolio/r1.png" alt="用户访谈现场照片" />
                           </div>
                         </div>
                       </div>
