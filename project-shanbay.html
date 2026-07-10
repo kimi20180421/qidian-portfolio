@@ -390,6 +390,43 @@
       color: #055B4F;
     }
 
+    .user-analysis-label-list {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .user-analysis-label-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 16px;
+      line-height: 26px;
+      color: var(--ink);
+    }
+
+    .user-analysis-label-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 76px;
+      min-height: 32px;
+      padding: 0 12px;
+      border-radius: 10px;
+      background: rgba(52, 200, 178, 0.08);
+      color: #055B4F;
+      font-size: 14px;
+      line-height: 22px;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .user-analysis-label-text {
+      flex: 1;
+      min-width: 0;
+    }
+
     .user-analysis-layout + .section-paragraph {
       margin-top: 20px;
     }
@@ -984,6 +1021,7 @@
     .hero-block .shot,
     .background-section .section-title,
     .background-section .section-body .section-paragraph,
+      .background-section .user-analysis-label-item,
       .background-section .competitor-label-item,
     .background-section .role-focus-title,
     .background-section .role-focus-item,
@@ -1005,6 +1043,7 @@
     .hero-block.is-visible .shot,
     .background-section.is-visible .section-title,
     .background-section.is-visible .section-body .section-paragraph,
+      .background-section.is-visible .user-analysis-label-item,
       .background-section.is-visible .competitor-label-item,
     .background-section.is-visible .role-focus-title,
     .background-section.is-visible .role-focus-item,
@@ -1329,7 +1368,21 @@
                       </div>
                     </div>
                   </div>
-                    <div class="section-paragraph">通过问卷调研与用户访谈可以发现，用户对签到、积分和成长激励的理解会随着使用时长发生变化。新手用户关注的是“能不能找到、知不知道有什么用”；普通用户开始在意“签到后有没有反馈、持续打卡有没有动力”；忠实用户则更关注“长期坚持是否有回报、积分和权益是否值得持续投入”。</div>
+                      <div class="section-paragraph">通过问卷调研与用户访谈可以发现，用户对签到、积分和成长激励的理解会随着使用时长发生变化。</div>
+                      <div class="user-analysis-label-list">
+                        <div class="user-analysis-label-item">
+                          <span class="user-analysis-label-tag">新手用户</span>
+                          <div class="user-analysis-label-text">关注的是“能不能找到、知不知道有什么用”。</div>
+                        </div>
+                        <div class="user-analysis-label-item">
+                          <span class="user-analysis-label-tag">普通用户</span>
+                          <div class="user-analysis-label-text">开始在意“签到后有没有反馈、持续打卡有没有动力”。</div>
+                        </div>
+                        <div class="user-analysis-label-item">
+                          <span class="user-analysis-label-tag">忠实用户</span>
+                          <div class="user-analysis-label-text">则更关注“长期坚持是否有回报、积分和权益是否值得持续投入”。</div>
+                        </div>
+                      </div>
                     <div class="section-paragraph">因此，本次优化不只是在签到页增加功能，而是需要围绕不同阶段用户的核心断点，建立一条更清晰的体验路径：</div>
                     <div class="user-analysis-placeholder">
                       <div class="user-analysis-summary-grid">
