@@ -355,6 +355,41 @@
       margin-top: 8px;
     }
 
+    .competitor-label-list {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .competitor-label-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 16px;
+      line-height: 26px;
+      color: var(--ink);
+    }
+
+    .competitor-label-dot {
+      width: 6px;
+      height: 6px;
+      margin-top: 10px;
+      border-radius: 999px;
+      background: #34C8B2;
+      flex-shrink: 0;
+    }
+
+    .competitor-label-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .competitor-label-title {
+      font-weight: 500;
+      color: #055B4F;
+    }
+
     .user-analysis-layout + .section-paragraph {
       margin-top: 20px;
     }
@@ -949,6 +984,7 @@
     .hero-block .shot,
     .background-section .section-title,
     .background-section .section-body .section-paragraph,
+      .background-section .competitor-label-item,
     .background-section .role-focus-title,
     .background-section .role-focus-item,
       .background-section .user-analysis-main,
@@ -969,6 +1005,7 @@
     .hero-block.is-visible .shot,
     .background-section.is-visible .section-title,
     .background-section.is-visible .section-body .section-paragraph,
+      .background-section.is-visible .competitor-label-item,
     .background-section.is-visible .role-focus-title,
     .background-section.is-visible .role-focus-item,
       .background-section.is-visible .user-analysis-main,
@@ -1342,7 +1379,17 @@
           <div class="background-section reveal-section" id="competitorAnalysisSection">
             <div class="section-title">竞品分析</div>
               <div class="section-body">
-                <div class="section-paragraph">为了明确签到积分机制的优化方向，我将竞品拆分为两类：一类是同类学习产品，用于观察“学习场景下签到如何与任务、积分和学习路径结合”；另一类是强签到产品，用于参考“高频打卡如何通过反馈、连续激励和权益回报提升留存”。</div>
+                <div class="section-paragraph">为了明确签到积分机制的优化方向，我将竞品拆分为 2 类：</div>
+                <div class="competitor-label-list">
+                  <div class="competitor-label-item">
+                    <span class="competitor-label-dot"></span>
+                    <div class="competitor-label-text"><span class="competitor-label-title">同类学习产品：</span>用于观察“学习场景下签到如何与任务、积分和学习路径结合”。</div>
+                  </div>
+                  <div class="competitor-label-item">
+                    <span class="competitor-label-dot"></span>
+                    <div class="competitor-label-text"><span class="competitor-label-title">强签到产品：</span>用于参考“高频打卡如何通过反馈、连续激励和权益回报提升留存”。</div>
+                  </div>
+                </div>
               </div>
           </div>
     </main>
