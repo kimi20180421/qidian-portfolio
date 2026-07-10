@@ -365,6 +365,14 @@
       margin-top: 8px;
     }
 
+    .design-solution-overview-title {
+      margin-top: 20px;
+      font-size: 20px;
+      line-height: 30px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
     .competitor-label-list {
       margin-top: 8px;
       margin-bottom: 20px;
@@ -1058,6 +1066,7 @@
     .hero-block .shot,
     .background-section .section-title,
     .background-section .section-body .section-paragraph,
+    .background-section .design-solution-overview-title,
       .background-section .user-analysis-label-item,
       .background-section .competitor-label-item,
     .background-section .role-focus-title,
@@ -1080,6 +1089,7 @@
     .hero-block.is-visible .shot,
     .background-section.is-visible .section-title,
     .background-section.is-visible .section-body .section-paragraph,
+    .background-section.is-visible .design-solution-overview-title,
       .background-section.is-visible .user-analysis-label-item,
       .background-section.is-visible .competitor-label-item,
     .background-section.is-visible .role-focus-title,
@@ -1135,6 +1145,10 @@
     }
 
     #designStepSection.is-visible .design-step-image {
+      transition-delay: .24s;
+    }
+
+    #designSolutionSection.is-visible .design-solution-overview-title {
       transition-delay: .24s;
     }
 
@@ -1532,6 +1546,7 @@
             <div class="section-title">设计方案</div>
             <div class="section-body">
               <div class="section-paragraph">接下来，我将围绕这三个策略，分别展开签到入口、签到完成反馈、积分任务与权益兑换等关键页面的设计方案。设计重点不只是让功能“能用”，而是让用户在每一次签到中都能感受到“我完成了学习行为，并获得了可持续积累的回报”。</div>
+              <div class="design-solution-overview-title">设计方案总览</div>
             </div>
           </div>
     </main>
