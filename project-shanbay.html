@@ -280,16 +280,111 @@
     .user-analysis-placeholder {
       margin-top: 20px;
       width: 100%;
-      min-height: 320px;
-      border: 1px solid #34C8B2;
-      border-radius: 26px;
-      background: rgba(52, 200, 178, 0.06);
+    }
+
+    .user-analysis-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+    }
+
+    .user-analysis-summary-card {
+      padding: 0 24px;
+    }
+
+    .user-analysis-summary-card + .user-analysis-summary-card {
+      border-left: 1px solid rgba(5, 91, 79, 0.12);
+    }
+
+    .user-analysis-summary-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .user-analysis-summary-avatar {
+      width: 92px;
+      height: 92px;
+      border-radius: 24px;
+      background: rgba(52, 200, 178, 0.08);
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(5, 91, 79, 0.58);
+      color: rgba(5, 91, 79, 0.4);
+      font-size: 14px;
+      line-height: 22px;
+    }
+
+    .user-analysis-summary-copy {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .user-analysis-summary-title {
+      font-size: 18px;
+      line-height: 28px;
+      color: #055B4F;
+      font-weight: 500;
+    }
+
+    .user-analysis-summary-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      min-height: 44px;
+      padding: 0 20px;
+      border: 1px solid rgba(52, 200, 178, 0.68);
+      border-radius: 999px;
       font-size: 16px;
-      line-height: 26px;
+      line-height: 24px;
+      color: #055B4F;
+      background: rgba(52, 200, 178, 0.06);
+      font-weight: 500;
+    }
+
+    .user-analysis-summary-desc {
+      margin-top: 20px;
+      font-size: 16px;
+      line-height: 30px;
+      color: var(--ink);
+    }
+
+    .user-analysis-summary-note {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 72px;
+      padding: 0 24px;
+      border: 1px solid rgba(52, 200, 178, 0.68);
+      border-radius: 999px;
+      color: #055B4F;
+      background: rgba(52, 200, 178, 0.04);
+    }
+
+    .user-analysis-summary-note-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      background: rgba(52, 200, 178, 0.16);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .user-analysis-summary-note-text {
+      font-size: 16px;
+      line-height: 24px;
+      color: #055B4F;
+      font-weight: 500;
     }
 
     .background-section .section-body .section-emphasis {
@@ -1034,7 +1129,7 @@
                           <div class="user-analysis-main-media">
                             <img class="user-analysis-main-image" src="assets/figma-portfolio/用户访谈.png" alt="用户访谈分析图" />
                           </div>
-                          <div class="user-analysis-main-note">用户随使用时长增长，对<span class="user-analysis-main-note-highlight">"签到-积分-成长"</span>的感知逐步增强</div>
+                          <div class="user-analysis-main-note">随使用时长增长，用户对<span class="user-analysis-main-note-highlight"> "签到-积分-成长" </span>感知逐步增强</div>
                         </div>
                       </div>
                     </div>
@@ -1060,7 +1155,52 @@
                   </div>
                     <div class="section-paragraph">通过问卷调研与用户访谈可以发现，用户对签到、积分和成长激励的理解会随着使用时长发生变化。新手用户关注的是“能不能找到、知不知道有什么用”；普通用户开始在意“签到后有没有反馈、持续打卡有没有动力”；忠实用户则更关注“长期坚持是否有回报、积分和权益是否值得持续投入”。</div>
                     <div class="section-paragraph">因此，本次优化不只是在签到页增加功能，而是需要围绕不同阶段用户的核心断点，建立一条更清晰的体验路径：</div>
-                    <div class="user-analysis-placeholder">用户分析占位图</div>
+                    <div class="user-analysis-placeholder">
+                      <div class="user-analysis-summary-grid">
+                        <div class="user-analysis-summary-card">
+                          <div class="user-analysis-summary-head">
+                            <div class="user-analysis-summary-avatar">图片占位</div>
+                            <div class="user-analysis-summary-copy">
+                              <div class="user-analysis-summary-title">普通用户</div>
+                              <div class="user-analysis-summary-tag">反馈感知弱</div>
+                            </div>
+                          </div>
+                          <div class="user-analysis-summary-desc">用户已知道签到功能，但完成后反馈较弱，连续签到与阶段奖励不足以形成持续动力。</div>
+                          <div class="user-analysis-summary-note">
+                            <div class="user-analysis-summary-note-icon">...</div>
+                            <div class="user-analysis-summary-note-text">反馈明确 + 连续激励</div>
+                          </div>
+                        </div>
+                        <div class="user-analysis-summary-card">
+                          <div class="user-analysis-summary-head">
+                            <div class="user-analysis-summary-avatar">图片占位</div>
+                            <div class="user-analysis-summary-copy">
+                              <div class="user-analysis-summary-title">普通用户</div>
+                              <div class="user-analysis-summary-tag">反馈感知弱</div>
+                            </div>
+                          </div>
+                          <div class="user-analysis-summary-desc">用户已知道签到功能，但完成后反馈较弱，连续签到与阶段奖励不足以形成持续动力。</div>
+                          <div class="user-analysis-summary-note">
+                            <div class="user-analysis-summary-note-icon">...</div>
+                            <div class="user-analysis-summary-note-text">反馈明确 + 连续激励</div>
+                          </div>
+                        </div>
+                        <div class="user-analysis-summary-card">
+                          <div class="user-analysis-summary-head">
+                            <div class="user-analysis-summary-avatar">图片占位</div>
+                            <div class="user-analysis-summary-copy">
+                              <div class="user-analysis-summary-title">普通用户</div>
+                              <div class="user-analysis-summary-tag">反馈感知弱</div>
+                            </div>
+                          </div>
+                          <div class="user-analysis-summary-desc">用户已知道签到功能，但完成后反馈较弱，连续签到与阶段奖励不足以形成持续动力。</div>
+                          <div class="user-analysis-summary-note">
+                            <div class="user-analysis-summary-note-icon">...</div>
+                            <div class="user-analysis-summary-note-text">反馈明确 + 连续激励</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
             </div>
         </div>
           <div class="background-section reveal-section" id="competitorAnalysisSection">
