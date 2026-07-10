@@ -1117,6 +1117,9 @@
 
         var cards = Array.prototype.slice.call(stack.querySelectorAll('[data-stack-card]'));
         if (!cards.length) return;
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var autoRotateTimer = null;
+        var autoRotateDelay = 2600;
 
         var slotClasses = [
           'user-analysis-stack-card-1',
@@ -1146,6 +1149,23 @@
           cards.push(first);
           applyStackOrder();
           bindTopCard();
+        }
+
+        function clearAutoRotate() {
+          if (autoRotateTimer) {
+            window.clearInterval(autoRotateTimer);
+            autoRotateTimer = null;
+          }
+        }
+
+        function startAutoRotate() {
+          if (reduceMotion || cards.length < 2) return;
+          clearAutoRotate();
+          autoRotateTimer = window.setInterval(function() {
+            if (!activeCard) {
+              rotateStack();
+            }
+          }, autoRotateDelay);
         }
 
         var activeCard = null;
@@ -1187,6 +1207,7 @@
 
         function onPointerDown(event) {
           if (event.button !== 0) return;
+          clearAutoRotate();
           activeCard = event.currentTarget;
           startX = event.clientX;
           deltaX = 0;
@@ -1208,7 +1229,18 @@
         applyStackOrder();
         bindTopCard();
         syncHeights();
+        stack.addEventListener('mouseenter', clearAutoRotate);
+        stack.addEventListener('mouseleave', startAutoRotate);
+        stack.addEventListener('focusin', clearAutoRotate);
+        stack.addEventListener('focusout', function() {
+          window.setTimeout(function() {
+            if (!stack.contains(document.activeElement)) {
+              startAutoRotate();
+            }
+          }, 0);
+        });
         window.addEventListener('resize', syncHeights, { passive: true });
+        startAutoRotate();
       })();
   </script>
 </body>
