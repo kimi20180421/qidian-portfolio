@@ -239,6 +239,10 @@
       margin: 60px auto 0;
     }
 
+    #competitorAnalysisSection {
+      margin: 60px auto 0;
+    }
+
     .background-section .section-title {
       display: flex;
       align-items: center;
@@ -271,6 +275,21 @@
 
     .user-analysis-layout + .section-paragraph {
       margin-top: 20px;
+    }
+
+    .user-analysis-placeholder {
+      margin-top: 20px;
+      width: 100%;
+      min-height: 320px;
+      border: 1px solid #34C8B2;
+      border-radius: 26px;
+      background: rgba(52, 200, 178, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(5, 91, 79, 0.58);
+      font-size: 16px;
+      line-height: 26px;
     }
 
     .background-section .section-body .section-emphasis {
@@ -735,6 +754,7 @@
     .background-section .role-focus-title,
     .background-section .role-focus-item,
       .background-section .user-analysis-main,
+      .background-section .user-analysis-placeholder,
     .background-section .review-tab-shell,
     .background-section .design-step-image,
     .goal-module .goal-intro,
@@ -754,6 +774,7 @@
     .background-section.is-visible .role-focus-title,
     .background-section.is-visible .role-focus-item,
       .background-section.is-visible .user-analysis-main,
+      .background-section.is-visible .user-analysis-placeholder,
     .background-section.is-visible .review-tab-shell,
     .background-section.is-visible .design-step-image,
     .goal-module.is-visible .goal-intro,
@@ -829,6 +850,10 @@
 
     #userAnalysisSection.is-visible .user-analysis-stack-card-3 {
       transition-delay: .46s;
+    }
+
+    #userAnalysisSection.is-visible .user-analysis-placeholder {
+      transition-delay: .54s;
     }
 
     .goal-module.is-visible .goal-intro {
@@ -1035,8 +1060,12 @@
                   </div>
                     <div class="section-paragraph">通过问卷调研与用户访谈可以发现，用户对签到、积分和成长激励的理解会随着使用时长发生变化。新手用户关注的是“能不能找到、知不知道有什么用”；普通用户开始在意“签到后有没有反馈、持续打卡有没有动力”；忠实用户则更关注“长期坚持是否有回报、积分和权益是否值得持续投入”。</div>
                     <div class="section-paragraph">因此，本次优化不只是在签到页增加功能，而是需要围绕不同阶段用户的核心断点，建立一条更清晰的体验路径：</div>
+                    <div class="user-analysis-placeholder">用户分析占位图</div>
             </div>
         </div>
+          <div class="background-section reveal-section" id="competitorAnalysisSection">
+            <div class="section-title">竞品分析</div>
+          </div>
     </main>
   </div>
   <script>
