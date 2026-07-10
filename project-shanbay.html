@@ -171,6 +171,78 @@
       padding-bottom: 80px;
     }
 
+      .section-anchor-nav {
+        position: fixed;
+        top: 132px;
+        left: max(16px, calc((100vw - 800px) / 2 - 136px));
+        z-index: 18;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 112px;
+        padding: 10px 8px;
+        border: 1px solid rgba(52, 200, 178, 0.22);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(12px) saturate(1.2);
+        -webkit-backdrop-filter: blur(12px) saturate(1.2);
+        box-shadow: 0 8px 24px rgba(5, 91, 79, 0.08);
+        opacity: 0;
+        transform: translateX(-12px);
+        pointer-events: none;
+        transition: opacity .25s ease, transform .25s ease;
+      }
+
+      .section-anchor-nav.is-visible {
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+
+      .section-anchor-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 34px;
+        padding: 0 10px;
+        border-radius: 12px;
+        color: rgba(31, 35, 41, 0.68);
+        cursor: pointer;
+        transition: background-color .22s ease, color .22s ease;
+        user-select: none;
+      }
+
+      .section-anchor-item:hover {
+        background: rgba(52, 200, 178, 0.08);
+        color: #055B4F;
+      }
+
+      .section-anchor-item.is-active {
+        background: rgba(186, 238, 234, 0.88);
+        color: #055B4F;
+      }
+
+      .section-anchor-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: rgba(5, 91, 79, 0.22);
+        flex-shrink: 0;
+        transition: background-color .22s ease, transform .22s ease;
+      }
+
+      .section-anchor-item.is-active .section-anchor-dot {
+        background: #34C8B2;
+        transform: scale(1.16);
+      }
+
+      .section-anchor-text {
+        font-size: 14px;
+        line-height: 22px;
+        color: inherit;
+        white-space: nowrap;
+      }
+
     .hero-block {
       width: 800px;
       max-width: 100%;
@@ -222,6 +294,16 @@
       max-width: 100%;
       margin: -50px auto 0;
     }
+
+      #backgroundSection,
+      #goalModule,
+      #roleSection,
+      #designStepSection,
+      #designReviewSection,
+      #userAnalysisSection,
+      #competitorAnalysisSection {
+        scroll-margin-top: 92px;
+      }
 
     #roleSection {
       margin: 60px auto 0;
@@ -987,6 +1069,12 @@
     .goal-module.is-visible .goal-item:nth-child(3) {
       transition-delay: .42s;
     }
+
+      @media (max-width: 1220px) {
+        .section-anchor-nav {
+          display: none;
+        }
+      }
   </style>
 </head>
 <body>
@@ -1005,6 +1093,36 @@
     <span class="download">下载 PDF 作品集</span>
   </header>
   <div class="page">
+      <div class="section-anchor-nav" id="sectionAnchorNav">
+        <div class="section-anchor-item is-active" data-anchor-target="backgroundSection">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">改版背景</span>
+        </div>
+        <div class="section-anchor-item" data-anchor-target="goalModule">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">目标模块</span>
+        </div>
+        <div class="section-anchor-item" data-anchor-target="roleSection">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">我的角色</span>
+        </div>
+        <div class="section-anchor-item" data-anchor-target="designStepSection">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">设计步骤</span>
+        </div>
+        <div class="section-anchor-item" data-anchor-target="designReviewSection">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">设计自查</span>
+        </div>
+        <div class="section-anchor-item" data-anchor-target="userAnalysisSection">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">用户分析</span>
+        </div>
+        <div class="section-anchor-item" data-anchor-target="competitorAnalysisSection">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">竞品分析</span>
+        </div>
+      </div>
     <header class="nav">
       <a class="brand" href="index.html">
         <span class="brand-mark"></span>
@@ -1241,6 +1359,65 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
     })();
+
+      (function() {
+        var anchorNav = document.getElementById('sectionAnchorNav');
+        if (!anchorNav) return;
+
+        var items = Array.prototype.slice.call(anchorNav.querySelectorAll('[data-anchor-target]'));
+        if (!items.length) return;
+
+        var targets = items.map(function(item) {
+          var section = document.getElementById(item.getAttribute('data-anchor-target'));
+          return {
+            item: item,
+            section: section
+          };
+        }).filter(function(entry) {
+          return !!entry.section;
+        });
+
+        if (!targets.length) return;
+
+        function setActive(targetId) {
+          targets.forEach(function(entry) {
+            entry.item.classList.toggle('is-active', entry.section.id === targetId);
+          });
+        }
+
+        function updateAnchorState() {
+          var probeY = window.scrollY + 136;
+          var currentId = targets[0].section.id;
+
+          targets.forEach(function(entry) {
+            if (entry.section.offsetTop <= probeY) {
+              currentId = entry.section.id;
+            }
+          });
+
+          setActive(currentId);
+
+          if (window.scrollY > 120) {
+            anchorNav.classList.add('is-visible');
+          } else {
+            anchorNav.classList.remove('is-visible');
+          }
+        }
+
+        targets.forEach(function(entry) {
+          entry.item.addEventListener('click', function() {
+            var top = entry.section.offsetTop - 84;
+            window.scrollTo({
+              top: top < 0 ? 0 : top,
+              behavior: 'smooth'
+            });
+          });
+        });
+
+        window.addEventListener('scroll', updateAnchorState, { passive: true });
+        window.addEventListener('resize', updateAnchorState);
+        updateAnchorState();
+      })();
 
     (function() {
       var sections = document.querySelectorAll('.reveal-section');
