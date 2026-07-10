@@ -358,6 +358,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      filter: grayscale(1);
     }
 
     .user-analysis-stack-card-1 {
@@ -383,6 +384,15 @@
       right: 0;
       width: 74%;
       z-index: 2;
+      pointer-events: none;
+    }
+
+    .user-analysis-stack-card-4 {
+      --card-rotate: -3deg;
+      top: 244px;
+      left: 24px;
+      width: 70%;
+      z-index: 1;
       pointer-events: none;
     }
 
@@ -793,6 +803,10 @@
       transition-delay: .46s;
     }
 
+    #userAnalysisSection.is-visible .user-analysis-stack-card-4 {
+      transition-delay: .54s;
+    }
+
     .goal-module.is-visible .goal-intro {
       transition-delay: .04s;
     }
@@ -987,6 +1001,11 @@
                             <img class="user-analysis-stack-image" src="assets/figma-portfolio/r1.png" alt="用户访谈现场照片" />
                           </div>
                         </div>
+                        <div class="user-analysis-stack-card user-analysis-stack-card-4" data-stack-card>
+                          <div class="user-analysis-stack-card-inner">
+                            <img class="user-analysis-stack-image" src="assets/figma-portfolio/r4.png" alt="用户访谈现场照片" />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1123,7 +1142,8 @@
         var slotClasses = [
           'user-analysis-stack-card-1',
           'user-analysis-stack-card-2',
-          'user-analysis-stack-card-3'
+          'user-analysis-stack-card-3',
+          'user-analysis-stack-card-4'
         ];
 
         function syncHeights() {
