@@ -302,13 +302,23 @@
       overflow: hidden;
     }
 
-    .user-analysis-main-image {
+    .user-analysis-main-gallery {
       position: relative;
       z-index: 1;
-      display: block;
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      align-content: center;
+      align-items: center;
+    }
+
+    .user-analysis-main-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
       border-radius: 18px;
     }
 
@@ -965,7 +975,11 @@
                   <div class="user-analysis-layout" id="userAnalysisLayout">
                     <div class="user-analysis-main">
                       <div class="user-analysis-main-frame">
-                        <img class="user-analysis-main-image" src="assets/figma-portfolio/用户访谈.png" alt="用户访谈分析图" />
+                        <div class="user-analysis-main-gallery">
+                          <img class="user-analysis-main-image" src="assets/figma-portfolio/r1.png" alt="用户访谈图 1" />
+                          <img class="user-analysis-main-image" src="assets/figma-portfolio/r1.png" alt="用户访谈图 2" />
+                          <img class="user-analysis-main-image" src="assets/figma-portfolio/r1.png" alt="用户访谈图 3" />
+                        </div>
                       </div>
                     </div>
                     <div class="user-analysis-side">
