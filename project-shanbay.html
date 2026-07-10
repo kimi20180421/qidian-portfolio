@@ -844,10 +844,11 @@
     }
 
     .review-tab-bar {
-      display: flex;
+      display: inline-flex;
       flex-wrap: nowrap;
       gap: 6px;
       padding: 6px;
+      align-self: center;
       border: 1px solid rgba(17, 24, 39, 0.12);
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.96);
@@ -872,13 +873,13 @@
 
     .review-tab {
       position: relative;
-      flex: 1 1 0;
+      flex: 0 0 auto;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-width: 0;
+      min-width: 112px;
       min-height: 40px;
-      padding: 0 18px;
+      padding: 0 16px;
       border-radius: 999px;
       font-size: 16px;
       line-height: 24px;
@@ -911,7 +912,7 @@
     .review-tab-panels {
       padding: 0 10px;
       border-radius: 26px;
-      background: rgba(52, 200, 178, 0.04);
+      background: rgba(52, 200, 178, 0.06);
     }
 
     .review-tab-panel {
