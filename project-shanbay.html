@@ -973,11 +973,7 @@
     .goal-module .goal-card {
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      padding: 30px;
-      border: 1px solid #34C8B2;
-      border-radius: 26px;
-      background: rgba(52, 200, 178, 0.06);
+      gap: 12px;
     }
 
     .goal-module .goal-intro {
@@ -987,20 +983,24 @@
     }
 
     .goal-module .goal-list {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
     }
 
     .goal-module .goal-item {
       display: flex;
+      min-height: 178px;
+      flex-direction: column;
       align-items: flex-start;
-      gap: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      background: rgba(52, 200, 178, 0.08);
     }
 
     .goal-module .goal-icon {
-      width: 50px;
-      height: 50px;
+      width: 28px;
+      height: 28px;
       flex-shrink: 0;
     }
 
@@ -1017,16 +1017,17 @@
     }
 
     .goal-module .goal-title {
-      font-size: 18px;
-      line-height: 28px;
+      margin-top: 14px;
+      font-size: 16px;
+      line-height: 24px;
       font-weight: 500;
       color: #055B4F;
     }
 
     .goal-module .goal-desc {
-      margin-top: 6px;
-      font-size: 16px;
-      line-height: 26px;
+      margin-top: 18px;
+      font-size: 13px;
+      line-height: 22px;
       color: var(--ink);
     }
 
@@ -1162,6 +1163,12 @@
       @media (max-width: 1220px) {
         .section-anchor-nav {
           display: none;
+        }
+      }
+
+      @media (max-width: 860px) {
+        .goal-module .goal-list {
+          grid-template-columns: 1fr;
         }
       }
   </style>
