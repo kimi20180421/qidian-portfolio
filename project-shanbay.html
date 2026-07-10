@@ -290,6 +290,8 @@
     .user-analysis-main-frame {
       width: 100%;
       height: 100%;
+      padding: 16px;
+      box-sizing: border-box;
       border: 1px solid #34C8B2;
       border-radius: 26px;
       background: rgba(52, 200, 178, 0.06);
@@ -303,9 +305,19 @@
     .user-analysis-main-frame::before {
       content: "";
       position: absolute;
-      inset: 20px;
+      inset: 16px;
       border: 1px dashed rgba(5, 91, 79, 0.24);
       border-radius: 20px;
+    }
+
+    .user-analysis-main-image {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 18px;
     }
 
     .user-analysis-side {
@@ -961,7 +973,7 @@
                   <div class="user-analysis-layout" id="userAnalysisLayout">
                     <div class="user-analysis-main">
                       <div class="user-analysis-main-frame">
-                        <span class="user-analysis-placeholder-label">左侧主图占位</span>
+                        <img class="user-analysis-main-image" src="assets/figma-portfolio/用户访谈.png" alt="用户访谈分析图" />
                       </div>
                     </div>
                     <div class="user-analysis-side">
