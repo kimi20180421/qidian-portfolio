@@ -302,14 +302,39 @@
       overflow: hidden;
     }
 
-    .user-analysis-main-image {
+    .user-analysis-main-content {
       position: relative;
       z-index: 1;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      gap: 12px;
+      min-height: 0;
+    }
+
+    .user-analysis-main-media {
+      flex: 1;
+      min-height: 0;
+    }
+
+    .user-analysis-main-image {
       display: block;
       width: 100%;
       height: 100%;
       object-fit: contain;
       border-radius: 18px;
+    }
+
+    .user-analysis-main-note {
+      font-size: 20px;
+      line-height: 30px;
+      color: var(--ink);
+    }
+
+    .user-analysis-main-note-highlight {
+      color: var(--nav-active-fg);
+      font-weight: 500;
     }
 
     .user-analysis-side {
@@ -983,7 +1008,12 @@
                   <div class="user-analysis-layout" id="userAnalysisLayout">
                     <div class="user-analysis-main">
                       <div class="user-analysis-main-frame">
-                        <img class="user-analysis-main-image" src="assets/figma-portfolio/用户访谈.png" alt="用户访谈分析图" />
+                        <div class="user-analysis-main-content">
+                          <div class="user-analysis-main-media">
+                            <img class="user-analysis-main-image" src="assets/figma-portfolio/用户访谈.png" alt="用户访谈分析图" />
+                          </div>
+                          <div class="user-analysis-main-note">用户随使用时长增长，对<span class="user-analysis-main-note-highlight">"签到-积分-成长"</span>的感知逐步增强</div>
+                        </div>
                       </div>
                     </div>
                     <div class="user-analysis-side">
