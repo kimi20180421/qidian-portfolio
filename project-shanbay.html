@@ -344,15 +344,15 @@
       align-items: center;
       justify-content: center;
       align-self: flex-start;
-      min-height: 40px;
-      padding: 0 18px;
+      min-height: 34px;
+      padding: 0 14px;
       border: 1px solid rgba(52, 200, 178, 0.68);
-      border-radius: 999px;
+      border-radius: 10px;
       font-size: 14px;
       line-height: 22px;
       color: #055B4F;
       background: rgba(52, 200, 178, 0.06);
-      font-weight: 500;
+      font-weight: 400;
     }
 
     .user-analysis-summary-desc {
@@ -393,6 +393,18 @@
       line-height: 22px;
       color: #055B4F;
       font-weight: 500;
+    }
+
+    .user-analysis-summary-note-accent {
+      gap: 0;
+      justify-content: center;
+      background: #6D8EFF;
+      border-color: #6D8EFF;
+      color: #FFFFFF;
+    }
+
+    .user-analysis-summary-note-accent .user-analysis-summary-note-text {
+      color: #FFFFFF;
     }
 
     .background-section .section-body .section-emphasis {
@@ -1174,9 +1186,8 @@
                             </div>
                           </div>
                             <div class="user-analysis-summary-desc">刚接触产品时，用户难以快速找到签到入口，也不清楚签到与积分、学习目标之间的关系。</div>
-                          <div class="user-analysis-summary-note">
-                            <div class="user-analysis-summary-note-icon">...</div>
-                              <div class="user-analysis-summary-note-text">入口可见 + 价值说明</div>
+                            <div class="user-analysis-summary-note user-analysis-summary-note-accent">
+                                <div class="user-analysis-summary-note-text">入口可见 + 价值说明</div>
                           </div>
                         </div>
                         <div class="user-analysis-summary-card">
