@@ -428,7 +428,8 @@
     .design-solution-compare-name {
       font-size: 16px;
       line-height: 24px;
-      font-weight: 500;
+      font-weight: 400;
+      text-align: center;
       color: rgba(255, 255, 255, 0.92);
     }
 
@@ -2008,9 +2009,24 @@
         function syncPosition(value) {
           var nextValue = Math.max(0, Math.min(100, Number(value)));
           board.style.setProperty('--compare-position', nextValue + '%');
+
+          var rangeRect = range.getBoundingClientRect();
+          var lineX = rangeRect.left + rangeRect.width * nextValue / 100;
+          var stages = board.querySelectorAll('.design-solution-compare-stage');
+
+          stages.forEach(function(stage) {
+            var stageRect = stage.getBoundingClientRect();
+            var localPosition = (lineX - stageRect.left) / stageRect.width * 100;
+            var nextLocalPosition = Math.max(0, Math.min(100, localPosition));
+            stage.style.setProperty('--compare-position', nextLocalPosition + '%');
+          });
         }
 
         range.addEventListener('input', function() {
+          syncPosition(range.value);
+        });
+
+        window.addEventListener('resize', function() {
           syncPosition(range.value);
         });
 
