@@ -461,8 +461,8 @@
     .design-solution-compare-after {
       position: absolute;
       inset: 0;
-      width: var(--compare-position);
-      overflow: hidden;
+      width: 100%;
+      clip-path: inset(0 calc(100% - var(--compare-position)) 0 0);
     }
 
     .design-solution-compare-guide {
