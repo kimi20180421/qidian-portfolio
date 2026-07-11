@@ -373,6 +373,138 @@
       color: var(--ink);
     }
 
+    .design-solution-compare-grid {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .design-solution-compare-card {
+      padding: 20px;
+      border-radius: 24px;
+      background: rgba(52, 200, 178, 0.06);
+    }
+
+    .design-solution-compare-name {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .design-solution-compare-stage {
+      --compare-position: 50%;
+      position: relative;
+      margin-top: 14px;
+      width: 100%;
+      aspect-ratio: 393 / 852;
+      border-radius: 24px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 10px 30px rgba(5, 91, 79, 0.08);
+      touch-action: none;
+    }
+
+    .design-solution-compare-image,
+    .design-solution-compare-after img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .design-solution-compare-image {
+      position: absolute;
+      inset: 0;
+    }
+
+    .design-solution-compare-after {
+      position: absolute;
+      inset: 0;
+      width: var(--compare-position);
+      overflow: hidden;
+    }
+
+    .design-solution-compare-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--compare-position);
+      width: 2px;
+      background: rgba(255, 255, 255, 0.92);
+      transform: translateX(-50%);
+      box-shadow: 0 0 0 1px rgba(5, 91, 79, 0.08);
+      pointer-events: none;
+    }
+
+    .design-solution-compare-handle {
+      position: absolute;
+      top: 50%;
+      left: var(--compare-position);
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(5, 91, 79, 0.12);
+      background: rgba(255, 255, 255, 0.96);
+      transform: translate(-50%, -50%);
+      box-shadow: 0 8px 20px rgba(5, 91, 79, 0.14);
+      pointer-events: none;
+    }
+
+    .design-solution-compare-handle::before,
+    .design-solution-compare-handle::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      border-top: 2px solid rgba(5, 91, 79, 0.62);
+      border-right: 2px solid rgba(5, 91, 79, 0.62);
+    }
+
+    .design-solution-compare-handle::before {
+      left: 11px;
+      transform: translateY(-50%) rotate(-135deg);
+    }
+
+    .design-solution-compare-handle::after {
+      right: 11px;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .design-solution-compare-label {
+      position: absolute;
+      top: 12px;
+      z-index: 2;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.88);
+      font-size: 12px;
+      line-height: 18px;
+      color: rgba(5, 91, 79, 0.72);
+      backdrop-filter: blur(8px);
+      pointer-events: none;
+    }
+
+    .design-solution-compare-label-before {
+      left: 12px;
+    }
+
+    .design-solution-compare-label-after {
+      right: 12px;
+    }
+
+    .design-solution-compare-range {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      opacity: 0;
+      cursor: ew-resize;
+    }
+
     .competitor-label-list {
       margin-top: 8px;
       margin-bottom: 20px;
@@ -1067,6 +1199,7 @@
     .background-section .section-title,
     .background-section .section-body .section-paragraph,
     .background-section .design-solution-overview-title,
+    .background-section .design-solution-compare-card,
       .background-section .user-analysis-label-item,
       .background-section .competitor-label-item,
     .background-section .role-focus-title,
@@ -1090,6 +1223,7 @@
     .background-section.is-visible .section-title,
     .background-section.is-visible .section-body .section-paragraph,
     .background-section.is-visible .design-solution-overview-title,
+    .background-section.is-visible .design-solution-compare-card,
       .background-section.is-visible .user-analysis-label-item,
       .background-section.is-visible .competitor-label-item,
     .background-section.is-visible .role-focus-title,
@@ -1152,6 +1286,30 @@
       transition-delay: .24s;
     }
 
+    #designSolutionSection.is-visible .design-solution-compare-card:nth-child(1) {
+      transition-delay: .32s;
+    }
+
+    #designSolutionSection.is-visible .design-solution-compare-card:nth-child(2) {
+      transition-delay: .40s;
+    }
+
+    #designSolutionSection.is-visible .design-solution-compare-card:nth-child(3) {
+      transition-delay: .48s;
+    }
+
+    #designSolutionSection.is-visible .design-solution-compare-card:nth-child(4) {
+      transition-delay: .56s;
+    }
+
+    #designSolutionSection.is-visible .design-solution-compare-card:nth-child(5) {
+      transition-delay: .64s;
+    }
+
+    #designSolutionSection.is-visible .design-solution-compare-card:nth-child(6) {
+      transition-delay: .72s;
+    }
+
     #designReviewSection.is-visible .review-tab-shell {
       transition-delay: .24s;
     }
@@ -1203,8 +1361,18 @@
         }
       }
 
+      @media (max-width: 1100px) {
+        .design-solution-compare-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
       @media (max-width: 860px) {
         .goal-module .goal-list {
+          grid-template-columns: 1fr;
+        }
+
+        .design-solution-compare-grid {
           grid-template-columns: 1fr;
         }
       }
@@ -1547,6 +1715,92 @@
             <div class="section-body">
               <div class="section-paragraph">接下来，我将围绕这三个策略，分别展开签到入口、签到完成反馈、积分任务与权益兑换等关键页面的设计方案。设计重点不只是让功能“能用”，而是让用户在每一次签到中都能感受到“我完成了学习行为，并获得了可持续积累的回报”。</div>
               <div class="design-solution-overview-title">设计方案总览</div>
+              <div class="design-solution-compare-grid">
+                <div class="design-solution-compare-card">
+                  <div class="design-solution-compare-name">开始签到</div>
+                  <div class="design-solution-compare-stage" data-compare-stage>
+                    <div class="design-solution-compare-label design-solution-compare-label-before">旧版</div>
+                    <div class="design-solution-compare-label design-solution-compare-label-after">新版</div>
+                    <img class="design-solution-compare-image" src="assets/figma-portfolio/Q1.png" alt="开始签到旧版效果图" />
+                    <div class="design-solution-compare-after">
+                      <img src="assets/figma-portfolio/H1.png" alt="开始签到新版效果图" />
+                    </div>
+                    <div class="design-solution-compare-divider"></div>
+                    <div class="design-solution-compare-handle"></div>
+                    <input class="design-solution-compare-range" type="range" min="0" max="100" value="50" aria-label="拖拽查看开始签到新旧效果" />
+                  </div>
+                </div>
+                <div class="design-solution-compare-card">
+                  <div class="design-solution-compare-name">签到成功，领取奖励</div>
+                  <div class="design-solution-compare-stage" data-compare-stage>
+                    <div class="design-solution-compare-label design-solution-compare-label-before">旧版</div>
+                    <div class="design-solution-compare-label design-solution-compare-label-after">新版</div>
+                    <img class="design-solution-compare-image" src="assets/figma-portfolio/Q2.png" alt="签到成功领取奖励旧版效果图" />
+                    <div class="design-solution-compare-after">
+                      <img src="assets/figma-portfolio/H2.png" alt="签到成功领取奖励新版效果图" />
+                    </div>
+                    <div class="design-solution-compare-divider"></div>
+                    <div class="design-solution-compare-handle"></div>
+                    <input class="design-solution-compare-range" type="range" min="0" max="100" value="50" aria-label="拖拽查看签到成功领取奖励新旧效果" />
+                  </div>
+                </div>
+                <div class="design-solution-compare-card">
+                  <div class="design-solution-compare-name">今日已签到</div>
+                  <div class="design-solution-compare-stage" data-compare-stage>
+                    <div class="design-solution-compare-label design-solution-compare-label-before">旧版</div>
+                    <div class="design-solution-compare-label design-solution-compare-label-after">新版</div>
+                    <img class="design-solution-compare-image" src="assets/figma-portfolio/Q3.png" alt="今日已签到旧版效果图" />
+                    <div class="design-solution-compare-after">
+                      <img src="assets/figma-portfolio/H3.png" alt="今日已签到新版效果图" />
+                    </div>
+                    <div class="design-solution-compare-divider"></div>
+                    <div class="design-solution-compare-handle"></div>
+                    <input class="design-solution-compare-range" type="range" min="0" max="100" value="50" aria-label="拖拽查看今日已签到新旧效果" />
+                  </div>
+                </div>
+                <div class="design-solution-compare-card">
+                  <div class="design-solution-compare-name">积分抽奖</div>
+                  <div class="design-solution-compare-stage" data-compare-stage>
+                    <div class="design-solution-compare-label design-solution-compare-label-before">旧版</div>
+                    <div class="design-solution-compare-label design-solution-compare-label-after">新版</div>
+                    <img class="design-solution-compare-image" src="assets/figma-portfolio/Q4.png" alt="积分抽奖旧版效果图" />
+                    <div class="design-solution-compare-after">
+                      <img src="assets/figma-portfolio/H4.png" alt="积分抽奖新版效果图" />
+                    </div>
+                    <div class="design-solution-compare-divider"></div>
+                    <div class="design-solution-compare-handle"></div>
+                    <input class="design-solution-compare-range" type="range" min="0" max="100" value="50" aria-label="拖拽查看积分抽奖新旧效果" />
+                  </div>
+                </div>
+                <div class="design-solution-compare-card">
+                  <div class="design-solution-compare-name">查看签到日历</div>
+                  <div class="design-solution-compare-stage" data-compare-stage>
+                    <div class="design-solution-compare-label design-solution-compare-label-before">旧版</div>
+                    <div class="design-solution-compare-label design-solution-compare-label-after">新版</div>
+                    <img class="design-solution-compare-image" src="assets/figma-portfolio/Q5.png" alt="查看签到日历旧版效果图" />
+                    <div class="design-solution-compare-after">
+                      <img src="assets/figma-portfolio/H5.png" alt="查看签到日历新版效果图" />
+                    </div>
+                    <div class="design-solution-compare-divider"></div>
+                    <div class="design-solution-compare-handle"></div>
+                    <input class="design-solution-compare-range" type="range" min="0" max="100" value="50" aria-label="拖拽查看签到日历新旧效果" />
+                  </div>
+                </div>
+                <div class="design-solution-compare-card">
+                  <div class="design-solution-compare-name">积分商城</div>
+                  <div class="design-solution-compare-stage" data-compare-stage>
+                    <div class="design-solution-compare-label design-solution-compare-label-before">旧版</div>
+                    <div class="design-solution-compare-label design-solution-compare-label-after">新版</div>
+                    <img class="design-solution-compare-image" src="assets/figma-portfolio/Q6.png" alt="积分商城旧版效果图" />
+                    <div class="design-solution-compare-after">
+                      <img src="assets/figma-portfolio/H6.png" alt="积分商城新版效果图" />
+                    </div>
+                    <div class="design-solution-compare-divider"></div>
+                    <div class="design-solution-compare-handle"></div>
+                    <input class="design-solution-compare-range" type="range" min="0" max="100" value="50" aria-label="拖拽查看积分商城新旧效果" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
     </main>
@@ -1723,6 +1977,27 @@
       });
 
       startAutoSwitch();
+    })();
+
+    (function() {
+      var stages = document.querySelectorAll('[data-compare-stage]');
+      if (!stages.length) return;
+
+      stages.forEach(function(stage) {
+        var range = stage.querySelector('.design-solution-compare-range');
+        if (!range) return;
+
+        function syncPosition(value) {
+          var nextValue = Math.max(0, Math.min(100, Number(value)));
+          stage.style.setProperty('--compare-position', nextValue + '%');
+        }
+
+        range.addEventListener('input', function() {
+          syncPosition(range.value);
+        });
+
+        syncPosition(range.value);
+      });
     })();
 
       (function() {
