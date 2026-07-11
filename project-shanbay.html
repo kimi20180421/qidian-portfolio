@@ -2013,9 +2013,14 @@
       boards.forEach(function(board) {
         var range = board.querySelector('.design-solution-compare-range');
         if (!range) return;
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var autoFrame = null;
+        var lastFrameTime = 0;
+        var autoSpeed = 5;
 
         function syncPosition(value) {
           var nextValue = Math.max(0, Math.min(100, Number(value)));
+          range.value = nextValue;
           board.style.setProperty('--compare-position', nextValue + '%');
 
           var rangeRect = range.getBoundingClientRect();
@@ -2030,8 +2035,50 @@
           });
         }
 
+        function clearAutoPlay() {
+          if (autoFrame) {
+            window.cancelAnimationFrame(autoFrame);
+            autoFrame = null;
+          }
+          lastFrameTime = 0;
+        }
+
+        function stepAutoPlay(timestamp) {
+          if (!lastFrameTime) {
+            lastFrameTime = timestamp;
+          }
+
+          var delta = timestamp - lastFrameTime;
+          lastFrameTime = timestamp;
+          var nextValue = Number(range.value) + delta / 1000 * autoSpeed;
+
+          if (nextValue > 100) {
+            nextValue = 0;
+          }
+
+          syncPosition(nextValue);
+          autoFrame = window.requestAnimationFrame(stepAutoPlay);
+        }
+
+        function startAutoPlay() {
+          if (reduceMotion || autoFrame) return;
+          autoFrame = window.requestAnimationFrame(stepAutoPlay);
+        }
+
         range.addEventListener('input', function() {
+          clearAutoPlay();
           syncPosition(range.value);
+        });
+
+        board.addEventListener('mouseenter', clearAutoPlay);
+        board.addEventListener('mouseleave', startAutoPlay);
+        board.addEventListener('focusin', clearAutoPlay);
+        board.addEventListener('focusout', function() {
+          window.setTimeout(function() {
+            if (!board.contains(document.activeElement)) {
+              startAutoPlay();
+            }
+          }, 0);
         });
 
         window.addEventListener('resize', function() {
@@ -2039,6 +2086,7 @@
         });
 
         syncPosition(range.value);
+        startAutoPlay();
       });
     })();
 
