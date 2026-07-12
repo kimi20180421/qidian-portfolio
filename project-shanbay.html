@@ -1896,6 +1896,13 @@
     </main>
   </div>
   <script>
+    var motionLogStart = window.performance && window.performance.now ? window.performance.now() : Date.now();
+    function logMotionEvent(name, detail) {
+      var now = window.performance && window.performance.now ? window.performance.now() : Date.now();
+      var elapsed = Math.round(now - motionLogStart);
+      console.info('[motion] ' + name, Object.assign({ pageElapsed: elapsed + 'ms' }, detail || {}));
+    }
+
     (function() {
       var navFixed = document.getElementById('navFixed');
       if (!navFixed) return;
@@ -1977,6 +1984,10 @@
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         sections.forEach(function(section) {
           section.classList.add('is-visible');
+          logMotionEvent('reveal skipped by reduced motion', {
+            sectionId: section.id || 'anonymous',
+            expectedEnter: '680ms'
+          });
         });
         return;
       }
@@ -1984,6 +1995,10 @@
       if (!('IntersectionObserver' in window)) {
         sections.forEach(function(section) {
           section.classList.add('is-visible');
+          logMotionEvent('reveal skipped by IntersectionObserver fallback', {
+            sectionId: section.id || 'anonymous',
+            expectedEnter: '680ms'
+          });
         });
         return;
       }
@@ -1992,6 +2007,11 @@
         entries.forEach(function(entry) {
           if (entry.isIntersecting && entry.intersectionRatio > 0.16) {
             entry.target.classList.add('is-visible');
+            logMotionEvent('reveal enter', {
+              sectionId: entry.target.id || 'anonymous',
+              ratio: entry.intersectionRatio.toFixed(2),
+              expectedEnter: '680ms'
+            });
             observer.unobserve(entry.target);
           }
         });
@@ -2014,6 +2034,7 @@
       var activeIndex = 0;
       var autoSwitchTimer = null;
       var autoSwitchDelay = 3200;
+      var lastAutoSwitchTime = 0;
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       function setActiveTab(name) {
@@ -2042,15 +2063,33 @@
       function startAutoSwitch() {
         if (reduceMotion || tabs.length < 2) return;
         clearAutoSwitch();
+        lastAutoSwitchTime = window.performance && window.performance.now ? window.performance.now() : Date.now();
+        logMotionEvent('review tab auto start', {
+          expectedInterval: autoSwitchDelay + 'ms'
+        });
         autoSwitchTimer = window.setInterval(function() {
+          var now = window.performance && window.performance.now ? window.performance.now() : Date.now();
+          var actualInterval = Math.round(now - lastAutoSwitchTime);
+          lastAutoSwitchTime = now;
           activeIndex = (activeIndex + 1) % tabs.length;
-          setActiveTab(tabs[activeIndex].getAttribute('data-review-tab'));
+          var nextTab = tabs[activeIndex].getAttribute('data-review-tab');
+          setActiveTab(nextTab);
+          logMotionEvent('review tab auto switch', {
+            activeTab: nextTab,
+            expectedInterval: autoSwitchDelay + 'ms',
+            actualInterval: actualInterval + 'ms'
+          });
         }, autoSwitchDelay);
       }
 
       tabs.forEach(function(tab) {
         tab.addEventListener('click', function() {
-          setActiveTab(tab.getAttribute('data-review-tab'));
+          var nextTab = tab.getAttribute('data-review-tab');
+          setActiveTab(nextTab);
+          logMotionEvent('review tab manual switch', {
+            activeTab: nextTab,
+            expectedPanelTransition: '360ms'
+          });
           startAutoSwitch();
         });
       });
@@ -2080,6 +2119,7 @@
         var autoFrame = null;
         var lastFrameTime = 0;
         var autoSpeed = 3.2;
+        var autoPlayStartTime = 0;
 
         function syncPosition(value) {
           var nextValue = Math.max(0, Math.min(100, Number(value)));
@@ -2102,6 +2142,9 @@
           if (autoFrame) {
             window.cancelAnimationFrame(autoFrame);
             autoFrame = null;
+            logMotionEvent('design compare auto pause', {
+              currentPosition: Number(range.value).toFixed(1) + '%'
+            });
           }
           lastFrameTime = 0;
         }
@@ -2117,6 +2160,12 @@
 
           if (nextValue > 100) {
             nextValue = 0;
+            var now = window.performance && window.performance.now ? window.performance.now() : Date.now();
+            logMotionEvent('design compare auto cycle reset', {
+              expectedSpeed: autoSpeed + '%/s',
+              actualCycle: Math.round(now - autoPlayStartTime) + 'ms'
+            });
+            autoPlayStartTime = now;
           }
 
           syncPosition(nextValue);
@@ -2125,12 +2174,20 @@
 
         function startAutoPlay() {
           if (reduceMotion || autoFrame) return;
+          autoPlayStartTime = window.performance && window.performance.now ? window.performance.now() : Date.now();
+          logMotionEvent('design compare auto start', {
+            startPosition: Number(range.value).toFixed(1) + '%',
+            expectedSpeed: autoSpeed + '%/s'
+          });
           autoFrame = window.requestAnimationFrame(stepAutoPlay);
         }
 
         range.addEventListener('input', function() {
           clearAutoPlay();
           syncPosition(range.value);
+          logMotionEvent('design compare manual drag', {
+            position: Number(range.value).toFixed(1) + '%'
+          });
         });
 
         board.addEventListener('mouseenter', clearAutoPlay);
@@ -2163,6 +2220,7 @@
         var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         var autoRotateTimer = null;
         var autoRotateDelay = 3200;
+        var lastAutoRotateTime = 0;
 
         var slotClasses = [
           'user-analysis-stack-card-1',
@@ -2204,9 +2262,20 @@
         function startAutoRotate() {
           if (reduceMotion || cards.length < 2) return;
           clearAutoRotate();
+          lastAutoRotateTime = window.performance && window.performance.now ? window.performance.now() : Date.now();
+          logMotionEvent('user stack auto start', {
+            expectedInterval: autoRotateDelay + 'ms'
+          });
           autoRotateTimer = window.setInterval(function() {
             if (!activeCard) {
+              var now = window.performance && window.performance.now ? window.performance.now() : Date.now();
+              var actualInterval = Math.round(now - lastAutoRotateTime);
+              lastAutoRotateTime = now;
               rotateStack();
+              logMotionEvent('user stack auto rotate', {
+                expectedInterval: autoRotateDelay + 'ms',
+                actualInterval: actualInterval + 'ms'
+              });
             }
           }, autoRotateDelay);
         }
@@ -2238,11 +2307,20 @@
         function onPointerUp() {
           if (!activeCard) return;
           var currentCard = activeCard;
-          var shouldRotate = Math.abs(deltaX) > threshold;
+          var draggedDeltaX = deltaX;
+          var shouldRotate = Math.abs(draggedDeltaX) > threshold;
           resetDrag();
           if (shouldRotate) {
             rotateStack();
+            logMotionEvent('user stack manual rotate', {
+              deltaX: Math.round(draggedDeltaX) + 'px',
+              threshold: threshold + 'px'
+            });
           } else {
+            logMotionEvent('user stack manual reset', {
+              deltaX: Math.round(draggedDeltaX) + 'px',
+              threshold: threshold + 'px'
+            });
             currentCard.style.removeProperty('--card-translate-x');
             currentCard.style.removeProperty('--card-translate-y');
           }
