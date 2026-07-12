@@ -179,12 +179,12 @@
       .section-anchor-nav {
         position: fixed;
         top: 132px;
-        left: max(16px, calc((100vw - 800px) / 2 - 136px));
+        left: max(16px, calc((100vw - 800px) / 2 - 220px));
         z-index: 18;
         display: flex;
         flex-direction: column;
         gap: 8px;
-        width: 112px;
+        width: 180px;
         max-height: calc(100vh - 160px);
         padding: 10px 8px;
         border: 1px solid rgba(52, 200, 178, 0.22);
@@ -247,12 +247,12 @@
         font-size: 14px;
         line-height: 22px;
         color: inherit;
-        white-space: nowrap;
+        white-space: normal;
       }
 
       .section-anchor-item-sub {
         min-height: 28px;
-        padding-left: 18px;
+        padding-left: 20px;
         color: rgba(31, 35, 41, 0.54);
       }
 
@@ -671,9 +671,6 @@
 
     .design-execution-strategy {
       scroll-margin-top: 92px;
-      display: grid;
-      grid-template-columns: 150px minmax(0, 1fr);
-      gap: 20px;
       padding: 20px;
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 20px;
@@ -682,18 +679,22 @@
     }
 
     .design-execution-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       min-width: 0;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .design-execution-index {
-      font-size: 34px;
-      line-height: 42px;
+      font-size: 28px;
+      line-height: 36px;
       font-weight: 500;
       color: rgba(84, 255, 219, 0.82);
     }
 
     .design-execution-strategy-title {
-      margin-top: 8px;
       font-size: 16px;
       line-height: 24px;
       font-weight: 500;
@@ -701,14 +702,15 @@
     }
 
     .design-execution-items {
+      margin-top: 16px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 18px;
     }
 
     .design-execution-item {
       scroll-margin-top: 92px;
-      padding: 14px 16px;
+      padding: 16px;
       border-radius: 14px;
       background: rgba(0, 0, 0, 0.16);
       border: 1px solid rgba(255, 255, 255, 0.06);
@@ -727,6 +729,21 @@
       line-height: 23px;
       font-weight: 400;
       color: rgba(255, 255, 255, 0.66);
+    }
+
+    .design-execution-placeholder {
+      margin-top: 14px;
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      border: 1px dashed rgba(84, 255, 219, 0.24);
+      background: rgba(255, 255, 255, 0.035);
+      color: rgba(255, 255, 255, 0.42);
+      font-size: 14px;
+      line-height: 22px;
+      font-weight: 400;
     }
 
     .competitor-label-list {
@@ -1654,7 +1671,7 @@
       transition-delay: .42s;
     }
 
-      @media (max-width: 1220px) {
+      @media (max-width: 1320px) {
         .section-anchor-nav {
           display: none;
         }
@@ -1675,9 +1692,6 @@
           grid-template-columns: 1fr;
         }
 
-        .design-execution-strategy {
-          grid-template-columns: 1fr;
-        }
       }
   </style>
 </head>
@@ -2146,14 +2160,17 @@
                       <div class="design-execution-item" id="executionHomeCheckin">
                         <div class="design-execution-item-title">重构首页签到模块</div>
                         <div class="design-execution-item-desc">提升签到入口的视觉优先级，将连续天数、当日积分和阶段奖励集中展示，降低用户发现与理解成本。</div>
+                        <div class="design-execution-placeholder">具体设计方案占位</div>
                       </div>
                       <div class="design-execution-item" id="executionSuccessFeedback">
                         <div class="design-execution-item-title">增加签到成功反馈</div>
                         <div class="design-execution-item-desc">完成签到后通过弹窗明确反馈积分到账、连续天数变化及下一阶段奖励，强化完成感与仪式感。</div>
+                        <div class="design-execution-placeholder">具体设计方案占位</div>
                       </div>
                       <div class="design-execution-item" id="executionCheckinProgress">
                         <div class="design-execution-item-title">可视化连续签到进度</div>
                         <div class="design-execution-item-desc">使用七日签到进度和签到日历呈现历史记录，让用户清楚当前进度与后续奖励。</div>
+                        <div class="design-execution-placeholder">具体设计方案占位</div>
                       </div>
                     </div>
                   </div>
@@ -2166,14 +2183,17 @@
                       <div class="design-execution-item" id="executionTaskSystem">
                         <div class="design-execution-item-title">建立分层任务体系</div>
                         <div class="design-execution-item-desc">将任务划分为基础任务、成长任务和会员专属任务，明确完成条件、积分奖励和任务状态。</div>
+                        <div class="design-execution-placeholder">具体设计方案占位</div>
                       </div>
                       <div class="design-execution-item" id="executionMallStructure">
                         <div class="design-execution-item-title">重构积分商城信息架构</div>
                         <div class="design-execution-item-desc">按照会员福利、限时兑换、学习权益和积分抽奖分类，帮助用户快速找到可兑换内容。</div>
+                        <div class="design-execution-placeholder">具体设计方案占位</div>
                       </div>
                       <div class="design-execution-item" id="executionBenefitCard">
                         <div class="design-execution-item-title">优化权益卡片表达</div>
                         <div class="design-execution-item-desc">突出所需积分、权益价值、有效期限和兑换状态，缩短从理解积分到完成兑换的路径。</div>
+                        <div class="design-execution-placeholder">具体设计方案占位</div>
                       </div>
                     </div>
                   </div>
@@ -2186,14 +2206,17 @@
                       <div class="design-execution-item" id="executionStageReward">
                         <div class="design-execution-item-title">增加连续签到阶段奖励</div>
                         <div class="design-execution-item-desc">在固定签到之外设置阶段目标和额外奖励，为用户提供持续签到的长期期待。</div>
+                        <div class="design-execution-placeholder">具体设计方案占位</div>
                       </div>
                       <div class="design-execution-item" id="executionLottery">
                         <div class="design-execution-item-title">引入积分抽奖机制</div>
                         <div class="design-execution-item-desc">通过限定徽章、学习道具等奖励增加积分消耗场景，为日常学习提供适度惊喜。</div>
+                        <div class="design-execution-placeholder">具体设计方案占位</div>
                       </div>
                       <div class="design-execution-item" id="executionVipTrial">
                         <div class="design-execution-item-title">加入限时兑换与会员体验</div>
                         <div class="design-execution-item-desc">提供限时优惠、补签卡和 VIP 体验权益，引导用户感知付费功能的实际价值。</div>
+                        <div class="design-execution-placeholder">具体设计方案占位</div>
                       </div>
                     </div>
                   </div>
