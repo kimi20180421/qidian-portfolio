@@ -185,6 +185,7 @@
         flex-direction: column;
         gap: 8px;
         width: 112px;
+        max-height: calc(100vh - 160px);
         padding: 10px 8px;
         border: 1px solid rgba(52, 200, 178, 0.22);
         border-radius: 20px;
@@ -194,6 +195,7 @@
         box-shadow: 0 8px 24px rgba(5, 91, 79, 0.08);
         opacity: 0;
         transform: translateX(-12px);
+        overflow-y: auto;
         pointer-events: none;
         transition: opacity var(--motion-fast) var(--motion-ease), transform var(--motion-fast) var(--motion-ease);
       }
@@ -246,6 +248,28 @@
         line-height: 22px;
         color: inherit;
         white-space: nowrap;
+      }
+
+      .section-anchor-item-sub {
+        min-height: 28px;
+        padding-left: 18px;
+        color: rgba(31, 35, 41, 0.54);
+      }
+
+      .section-anchor-item-sub .section-anchor-dot {
+        width: 4px;
+        height: 4px;
+        background: rgba(5, 91, 79, 0.18);
+      }
+
+      .section-anchor-item-sub .section-anchor-text {
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      .section-anchor-item-strategy {
+        margin-top: 2px;
+        color: rgba(5, 91, 79, 0.72);
       }
 
     .hero-block {
@@ -625,6 +649,84 @@
       margin: 0;
       opacity: 0;
       cursor: ew-resize;
+    }
+
+    .design-execution {
+      margin-top: 28px;
+    }
+
+    .design-execution-title {
+      font-size: 20px;
+      line-height: 30px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.96);
+    }
+
+    .design-execution-list {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .design-execution-strategy {
+      scroll-margin-top: 92px;
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 20px;
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.055);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .design-execution-meta {
+      min-width: 0;
+    }
+
+    .design-execution-index {
+      font-size: 34px;
+      line-height: 42px;
+      font-weight: 500;
+      color: rgba(84, 255, 219, 0.82);
+    }
+
+    .design-execution-strategy-title {
+      margin-top: 8px;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.94);
+    }
+
+    .design-execution-items {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .design-execution-item {
+      scroll-margin-top: 92px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(0, 0, 0, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .design-execution-item-title {
+      font-size: 15px;
+      line-height: 23px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .design-execution-item-desc {
+      margin-top: 6px;
+      font-size: 14px;
+      line-height: 23px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.66);
     }
 
     .competitor-label-list {
@@ -1377,6 +1479,8 @@
     .background-section .section-body .section-paragraph,
     .background-section .design-solution-overview-title,
     .background-section .design-solution-compare-card,
+    .background-section .design-execution-title,
+    .background-section .design-execution-strategy,
       .background-section .user-analysis-label-item,
       .background-section .competitor-label-item,
     .background-section .role-focus-title,
@@ -1401,6 +1505,8 @@
     .background-section.is-visible .section-body .section-paragraph,
     .background-section.is-visible .design-solution-overview-title,
     .background-section.is-visible .design-solution-compare-card,
+    .background-section.is-visible .design-execution-title,
+    .background-section.is-visible .design-execution-strategy,
       .background-section.is-visible .user-analysis-label-item,
       .background-section.is-visible .competitor-label-item,
     .background-section.is-visible .role-focus-title,
@@ -1487,6 +1593,22 @@
       transition-delay: .58s;
     }
 
+    #designSolutionSection.is-visible .design-execution-title {
+      transition-delay: .34s;
+    }
+
+    #designSolutionSection.is-visible .design-execution-strategy:nth-child(1) {
+      transition-delay: .42s;
+    }
+
+    #designSolutionSection.is-visible .design-execution-strategy:nth-child(2) {
+      transition-delay: .50s;
+    }
+
+    #designSolutionSection.is-visible .design-execution-strategy:nth-child(3) {
+      transition-delay: .58s;
+    }
+
     #designReviewSection.is-visible .review-tab-shell {
       transition-delay: .24s;
     }
@@ -1552,6 +1674,10 @@
         .design-solution-compare-grid {
           grid-template-columns: 1fr;
         }
+
+        .design-execution-strategy {
+          grid-template-columns: 1fr;
+        }
       }
   </style>
 </head>
@@ -1607,6 +1733,54 @@
         <div class="section-anchor-item" data-anchor-target="designSolutionSection">
           <span class="section-anchor-dot"></span>
           <span class="section-anchor-text">设计方案</span>
+        </div>
+        <div class="section-anchor-item section-anchor-item-sub section-anchor-item-strategy" data-anchor-target="executionStrategy01">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">01 签到反馈</span>
+        </div>
+        <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionHomeCheckin">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">首页签到模块</span>
+        </div>
+        <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionSuccessFeedback">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">签到成功反馈</span>
+        </div>
+        <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionCheckinProgress">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">连续签到进度</span>
+        </div>
+        <div class="section-anchor-item section-anchor-item-sub section-anchor-item-strategy" data-anchor-target="executionStrategy02">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">02 积分价值</span>
+        </div>
+        <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionTaskSystem">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">分层任务体系</span>
+        </div>
+        <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionMallStructure">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">积分商城架构</span>
+        </div>
+        <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionBenefitCard">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">权益卡片表达</span>
+        </div>
+        <div class="section-anchor-item section-anchor-item-sub section-anchor-item-strategy" data-anchor-target="executionStrategy03">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">03 权益闭环</span>
+        </div>
+        <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionStageReward">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">阶段奖励</span>
+        </div>
+        <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionLottery">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">积分抽奖</span>
+        </div>
+        <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionVipTrial">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">会员体验</span>
         </div>
       </div>
     <header class="nav">
@@ -1959,6 +2133,71 @@
                   <div class="design-solution-compare-handle"></div>
                 </div>
                 <input class="design-solution-compare-range" type="range" min="0" max="100" value="50" aria-label="拖拽查看设计方案新旧效果" />
+              </div>
+              <div class="design-execution">
+                <div class="design-execution-title">设计执行拆解</div>
+                <div class="design-execution-list">
+                  <div class="design-execution-strategy" id="executionStrategy01">
+                    <div class="design-execution-meta">
+                      <div class="design-execution-index">01</div>
+                      <div class="design-execution-strategy-title">强化签到触发与完成反馈</div>
+                    </div>
+                    <div class="design-execution-items">
+                      <div class="design-execution-item" id="executionHomeCheckin">
+                        <div class="design-execution-item-title">重构首页签到模块</div>
+                        <div class="design-execution-item-desc">提升签到入口的视觉优先级，将连续天数、当日积分和阶段奖励集中展示，降低用户发现与理解成本。</div>
+                      </div>
+                      <div class="design-execution-item" id="executionSuccessFeedback">
+                        <div class="design-execution-item-title">增加签到成功反馈</div>
+                        <div class="design-execution-item-desc">完成签到后通过弹窗明确反馈积分到账、连续天数变化及下一阶段奖励，强化完成感与仪式感。</div>
+                      </div>
+                      <div class="design-execution-item" id="executionCheckinProgress">
+                        <div class="design-execution-item-title">可视化连续签到进度</div>
+                        <div class="design-execution-item-desc">使用七日签到进度和签到日历呈现历史记录，让用户清楚当前进度与后续奖励。</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="design-execution-strategy" id="executionStrategy02">
+                    <div class="design-execution-meta">
+                      <div class="design-execution-index">02</div>
+                      <div class="design-execution-strategy-title">梳理任务路径与积分价值</div>
+                    </div>
+                    <div class="design-execution-items">
+                      <div class="design-execution-item" id="executionTaskSystem">
+                        <div class="design-execution-item-title">建立分层任务体系</div>
+                        <div class="design-execution-item-desc">将任务划分为基础任务、成长任务和会员专属任务，明确完成条件、积分奖励和任务状态。</div>
+                      </div>
+                      <div class="design-execution-item" id="executionMallStructure">
+                        <div class="design-execution-item-title">重构积分商城信息架构</div>
+                        <div class="design-execution-item-desc">按照会员福利、限时兑换、学习权益和积分抽奖分类，帮助用户快速找到可兑换内容。</div>
+                      </div>
+                      <div class="design-execution-item" id="executionBenefitCard">
+                        <div class="design-execution-item-title">优化权益卡片表达</div>
+                        <div class="design-execution-item-desc">突出所需积分、权益价值、有效期限和兑换状态，缩短从理解积分到完成兑换的路径。</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="design-execution-strategy" id="executionStrategy03">
+                    <div class="design-execution-meta">
+                      <div class="design-execution-index">03</div>
+                      <div class="design-execution-strategy-title">建立签到到权益的激励闭环</div>
+                    </div>
+                    <div class="design-execution-items">
+                      <div class="design-execution-item" id="executionStageReward">
+                        <div class="design-execution-item-title">增加连续签到阶段奖励</div>
+                        <div class="design-execution-item-desc">在固定签到之外设置阶段目标和额外奖励，为用户提供持续签到的长期期待。</div>
+                      </div>
+                      <div class="design-execution-item" id="executionLottery">
+                        <div class="design-execution-item-title">引入积分抽奖机制</div>
+                        <div class="design-execution-item-desc">通过限定徽章、学习道具等奖励增加积分消耗场景，为日常学习提供适度惊喜。</div>
+                      </div>
+                      <div class="design-execution-item" id="executionVipTrial">
+                        <div class="design-execution-item-title">加入限时兑换与会员体验</div>
+                        <div class="design-execution-item-desc">提供限时优惠、补签卡和 VIP 体验权益，引导用户感知付费功能的实际价值。</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
