@@ -11,6 +11,11 @@
       /* 当前页主题色（绿色系），选中态跟随此变量变化 */
       --nav-active-bg: #BAEEEA;
       --nav-active-fg: #055B4F;
+      --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --motion-fast: 240ms;
+      --motion-panel: 360ms;
+      --motion-enter: 680ms;
+      --motion-loop: 6400ms;
     }
 
     * {
@@ -76,7 +81,7 @@
       -webkit-backdrop-filter: blur(12px) saturate(1.2);
       opacity: 0;
       transform: translateY(-20px);
-      transition: opacity .25s ease, transform .25s ease;
+      transition: opacity var(--motion-fast) var(--motion-ease), transform var(--motion-fast) var(--motion-ease);
       pointer-events: none;
     }
 
@@ -190,7 +195,7 @@
         opacity: 0;
         transform: translateX(-12px);
         pointer-events: none;
-        transition: opacity .25s ease, transform .25s ease;
+        transition: opacity var(--motion-fast) var(--motion-ease), transform var(--motion-fast) var(--motion-ease);
       }
 
       .section-anchor-nav.is-visible {
@@ -208,7 +213,7 @@
         border-radius: 12px;
         color: rgba(31, 35, 41, 0.68);
         cursor: pointer;
-        transition: background-color .22s ease, color .22s ease;
+        transition: background-color var(--motion-fast) var(--motion-ease), color var(--motion-fast) var(--motion-ease);
         user-select: none;
       }
 
@@ -228,7 +233,7 @@
         border-radius: 999px;
         background: rgba(5, 91, 79, 0.22);
         flex-shrink: 0;
-        transition: background-color .22s ease, transform .22s ease;
+        transition: background-color var(--motion-fast) var(--motion-ease), transform var(--motion-fast) var(--motion-ease);
       }
 
       .section-anchor-item.is-active .section-anchor-dot {
@@ -512,7 +517,7 @@
       transform: translate(-50%, -50%);
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
       opacity: 0;
-      transition: opacity .24s ease, transform .24s ease;
+      transition: opacity var(--motion-fast) var(--motion-ease), transform var(--motion-fast) var(--motion-ease);
     }
 
     .design-solution-compare-board:hover .design-solution-compare-handle,
@@ -874,8 +879,8 @@
       transform: translate3d(var(--card-translate-x), var(--card-translate-y), 0) rotate(var(--card-rotate));
       opacity: 0;
       transition:
-        opacity .72s cubic-bezier(0.22, 1, 0.36, 1),
-        transform .72s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity var(--motion-enter) var(--motion-ease),
+        transform var(--motion-enter) var(--motion-ease);
       will-change: opacity, transform;
     }
 
@@ -1028,20 +1033,20 @@
       display: block;
       opacity: 0;
       transform: translateY(18px) scale(0.985);
-      transition: opacity 700ms ease, transform 700ms ease, filter 700ms ease;
+      transition: opacity var(--motion-enter) var(--motion-ease), transform var(--motion-enter) var(--motion-ease), filter var(--motion-enter) var(--motion-ease);
       will-change: opacity, transform;
     }
 
     .strategy-image img {
       width: 100%;
       display: block;
-      transition: transform 450ms ease, filter 450ms ease;
+      transition: transform var(--motion-panel) var(--motion-ease), filter var(--motion-panel) var(--motion-ease);
     }
 
     #strategySection.is-visible .strategy-image {
       opacity: 1;
       transform: translateY(0) scale(1);
-      animation: strategyImageFloat 5200ms ease-in-out 900ms infinite;
+      animation: strategyImageFloat var(--motion-loop) var(--motion-ease) 900ms infinite;
     }
 
     #strategySection.is-visible .strategy-image:hover {
@@ -1141,8 +1146,8 @@
       cursor: pointer;
       user-select: none;
       transition:
-        color .28s cubic-bezier(0.22, 1, 0.36, 1),
-        background-color .28s cubic-bezier(0.22, 1, 0.36, 1);
+        color var(--motion-fast) var(--motion-ease),
+        background-color var(--motion-fast) var(--motion-ease);
     }
 
     .review-tab.is-active {
@@ -1177,8 +1182,8 @@
       opacity: 0;
       transform: translateY(10px);
       transition:
-        opacity .32s cubic-bezier(0.22, 1, 0.36, 1),
-        transform .32s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity var(--motion-panel) var(--motion-ease),
+        transform var(--motion-panel) var(--motion-ease);
     }
 
     .review-tab-panel.is-active {
@@ -1191,8 +1196,8 @@
       opacity: 0;
       transform: translateY(24px);
       transition:
-        opacity .72s cubic-bezier(0.22, 1, 0.36, 1),
-        transform .72s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity var(--motion-enter) var(--motion-ease),
+        transform var(--motion-enter) var(--motion-ease);
       will-change: opacity, transform;
     }
 
@@ -1316,8 +1321,8 @@
       opacity: 0;
       transform: translateY(26px);
       transition:
-        opacity .72s cubic-bezier(0.22, 1, 0.36, 1),
-        transform .72s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity var(--motion-enter) var(--motion-ease),
+        transform var(--motion-enter) var(--motion-ease);
       will-change: opacity, transform;
     }
 
@@ -1390,27 +1395,27 @@
     }
 
     #designSolutionSection.is-visible .design-solution-compare-card:nth-child(1) {
-      transition-delay: .32s;
+      transition-delay: .28s;
     }
 
     #designSolutionSection.is-visible .design-solution-compare-card:nth-child(2) {
-      transition-delay: .40s;
+      transition-delay: .34s;
     }
 
     #designSolutionSection.is-visible .design-solution-compare-card:nth-child(3) {
-      transition-delay: .48s;
+      transition-delay: .40s;
     }
 
     #designSolutionSection.is-visible .design-solution-compare-card:nth-child(4) {
-      transition-delay: .56s;
+      transition-delay: .46s;
     }
 
     #designSolutionSection.is-visible .design-solution-compare-card:nth-child(5) {
-      transition-delay: .64s;
+      transition-delay: .52s;
     }
 
     #designSolutionSection.is-visible .design-solution-compare-card:nth-child(6) {
-      transition-delay: .72s;
+      transition-delay: .58s;
     }
 
     #designReviewSection.is-visible .review-tab-shell {
@@ -2008,7 +2013,7 @@
       var panels = shell.querySelectorAll('[data-review-panel]');
       var activeIndex = 0;
       var autoSwitchTimer = null;
-      var autoSwitchDelay = 2600;
+      var autoSwitchDelay = 3200;
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       function setActiveTab(name) {
@@ -2074,7 +2079,7 @@
         var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         var autoFrame = null;
         var lastFrameTime = 0;
-        var autoSpeed = 5;
+        var autoSpeed = 3.2;
 
         function syncPosition(value) {
           var nextValue = Math.max(0, Math.min(100, Number(value)));
@@ -2157,7 +2162,7 @@
         if (!cards.length) return;
         var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         var autoRotateTimer = null;
-        var autoRotateDelay = 2600;
+        var autoRotateDelay = 3200;
 
         var slotClasses = [
           'user-analysis-stack-card-1',
