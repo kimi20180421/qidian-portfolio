@@ -344,9 +344,11 @@
       padding: 30px max(24px, calc((100vw - 800px) / 2));
       border-radius: 0;
       background:
-        radial-gradient(circle at 12% 4%, rgba(52, 200, 178, 0.28), transparent 30%),
-        radial-gradient(circle at 88% 18%, rgba(186, 238, 234, 0.18), transparent 34%),
-        linear-gradient(145deg, #102823 0%, #183B35 48%, #0B1D19 100%);
+        radial-gradient(circle at 50% 0%, rgba(84, 255, 219, 0.24), transparent 28%),
+        radial-gradient(circle at 18% 34%, rgba(32, 193, 159, 0.18), transparent 34%),
+        radial-gradient(circle at 86% 18%, rgba(118, 244, 214, 0.13), transparent 30%),
+        radial-gradient(circle at 52% 78%, rgba(5, 91, 79, 0.28), transparent 36%),
+        linear-gradient(180deg, #06100E 0%, #0B201C 42%, #06100E 100%);
       overflow: hidden;
       box-shadow: 0 24px 60px rgba(5, 91, 79, 0.16);
     }
@@ -354,24 +356,26 @@
     #designSolutionSection::before {
       content: "";
       position: absolute;
-      left: 0;
-      right: 0;
-      top: 1px;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.08);
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.06)),
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.08), transparent 46%);
+      opacity: 0.68;
       pointer-events: none;
     }
 
     #designSolutionSection::after {
       content: "";
       position: absolute;
-      top: -120px;
-      right: -120px;
-      width: 300px;
-      height: 300px;
-      border-radius: 999px;
-      background: rgba(52, 200, 178, 0.16);
-      filter: blur(32px);
+      left: max(24px, calc((100vw - 800px) / 2));
+      right: max(24px, calc((100vw - 800px) / 2));
+      bottom: 18px;
+      height: 190px;
+      background-image: radial-gradient(rgba(84, 255, 219, 0.36) 1px, transparent 1px);
+      background-size: 10px 10px;
+      mask-image: linear-gradient(90deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
+      opacity: 0.16;
       pointer-events: none;
     }
 
