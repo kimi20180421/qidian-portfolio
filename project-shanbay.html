@@ -337,10 +337,12 @@
     }
 
     #designSolutionSection {
-      margin: 60px auto 0;
+      width: 100vw;
+      max-width: none;
+      margin: 60px 0 0 calc(50% - 50vw);
       position: relative;
-      padding: 30px;
-      border-radius: 28px;
+      padding: 30px max(24px, calc((100vw - 800px) / 2));
+      border-radius: 0;
       background:
         radial-gradient(circle at 12% 4%, rgba(52, 200, 178, 0.28), transparent 30%),
         radial-gradient(circle at 88% 18%, rgba(186, 238, 234, 0.18), transparent 34%),
@@ -352,9 +354,11 @@
     #designSolutionSection::before {
       content: "";
       position: absolute;
-      inset: 1px;
-      border-radius: 27px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      left: 0;
+      right: 0;
+      top: 1px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
       pointer-events: none;
     }
 
