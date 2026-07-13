@@ -756,6 +756,146 @@
       order: 2;
     }
 
+    .design-execution-detail {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 500px;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .design-execution-detail-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .design-execution-detail-title {
+      margin-top: 8px;
+      font-size: 28px;
+      line-height: 40px;
+      font-weight: 500;
+      color: #1F2329;
+      letter-spacing: -0.02em;
+    }
+
+    .design-execution-detail-desc {
+      margin-top: 12px;
+      max-width: 420px;
+      font-size: 15px;
+      line-height: 26px;
+      font-weight: 400;
+      color: rgba(31, 35, 41, 0.72);
+    }
+
+    .design-execution-detail-visual {
+      position: relative;
+      width: 500px;
+      min-height: 560px;
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.82), transparent 32%),
+        radial-gradient(circle at 80% 16%, rgba(255, 255, 255, 0.54), transparent 24%),
+        linear-gradient(140deg, rgba(245, 249, 248, 0.98) 0%, rgba(233, 246, 243, 0.95) 52%, rgba(224, 243, 239, 0.94) 100%);
+      box-sizing: border-box;
+      padding: 24px;
+      isolation: isolate;
+    }
+
+    .design-execution-detail-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 16% 72%, rgba(62, 198, 181, 0.12), transparent 28%),
+        radial-gradient(circle at 88% 26%, rgba(255, 204, 79, 0.12), transparent 22%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .design-execution-progress-composition {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 512px;
+      z-index: 1;
+    }
+
+    .design-execution-progress-status-list {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      z-index: 3;
+    }
+
+    .design-execution-progress-status {
+      width: 92px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .design-execution-progress-status img {
+      width: 56px;
+      height: auto;
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .design-execution-progress-status-title {
+      margin-top: 8px;
+      font-size: 15px;
+      line-height: 22px;
+      font-weight: 500;
+      color: #1F2329;
+    }
+
+    .design-execution-progress-status-desc {
+      margin-top: 2px;
+      font-size: 12px;
+      line-height: 18px;
+      font-weight: 400;
+      color: rgba(31, 35, 41, 0.58);
+    }
+
+    .design-execution-progress-bear {
+      position: absolute;
+      left: 2px;
+      bottom: 18px;
+      width: 192px;
+      z-index: 2;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .design-execution-progress-calendar {
+      position: absolute;
+      left: 138px;
+      bottom: 26px;
+      width: 274px;
+      z-index: 4;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .design-execution-progress-phone {
+      position: absolute;
+      right: 4px;
+      top: 6px;
+      width: 214px;
+      z-index: 1;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
     .design-execution-visual {
       position: relative;
       min-height: 460px;
@@ -2163,6 +2303,16 @@
           gap: 24px;
         }
 
+        .design-execution-detail {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        .design-execution-detail-visual {
+          width: 100%;
+          min-height: 520px;
+        }
+
         .design-execution-visual {
           min-height: 420px;
         }
@@ -2181,6 +2331,37 @@
           top: 172px;
           bottom: 20px;
           padding: 20px;
+        }
+
+        .design-execution-progress-status-list {
+          position: relative;
+          left: auto;
+          top: auto;
+          gap: 12px;
+        }
+
+        .design-execution-progress-status {
+          width: 84px;
+        }
+
+        .design-execution-progress-status img {
+          width: 48px;
+        }
+
+        .design-execution-progress-bear {
+          width: 170px;
+          left: 4px;
+          bottom: 18px;
+        }
+
+        .design-execution-progress-calendar {
+          left: 110px;
+          bottom: 28px;
+          width: 248px;
+        }
+
+        .design-execution-progress-phone {
+          width: 198px;
         }
 
       }
@@ -2759,6 +2940,37 @@
                               <div class="design-execution-item-desc">签到完成后，通过结果弹窗反馈积分到账、连续签到天数和阶段进度，同时提示下一次可获得的奖励，让用户感知本次行为产生的实际价值。</div>
                             </div>
                           </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="design-execution-detail">
+                      <div class="design-execution-detail-copy">
+                        <div class="design-execution-item-title-tag">连续签到进度可视化</div>
+                        <div class="design-execution-detail-title">将每日打卡转化为可积累的成长记录</div>
+                        <div class="design-execution-detail-desc">通过签到日历和连续进度展示用户的历史记录、当前连续状态及中断情况，让签到不再是一次性操作，而成为可以持续积累的学习成果。</div>
+                      </div>
+                      <div class="design-execution-detail-visual" aria-hidden="true">
+                        <div class="design-execution-progress-composition">
+                          <div class="design-execution-progress-status-list">
+                            <div class="design-execution-progress-status">
+                              <img src="assets/figma-portfolio/jinrikeqian.png" alt="今日可签状态图" />
+                              <div class="design-execution-progress-status-title">今日可签</div>
+                              <div class="design-execution-progress-status-desc">高亮光环引导</div>
+                            </div>
+                            <div class="design-execution-progress-status">
+                              <img src="assets/figma-portfolio/yijingqiandao.png" alt="已签状态图" />
+                              <div class="design-execution-progress-status-title">已签</div>
+                              <div class="design-execution-progress-status-desc">实心填充</div>
+                            </div>
+                            <div class="design-execution-progress-status">
+                              <img src="assets/figma-portfolio/louqian.png" alt="漏签状态图" />
+                              <div class="design-execution-progress-status-title">漏签</div>
+                              <div class="design-execution-progress-status-desc">灰色提示漏签</div>
+                            </div>
+                          </div>
+                          <img class="design-execution-progress-bear" src="assets/figma-portfolio/bear.png" alt="签到进度吉祥物图" />
+                          <img class="design-execution-progress-calendar" src="assets/figma-portfolio/rili.png" alt="签到日历奖励看板图" />
+                          <img class="design-execution-progress-phone" src="assets/figma-portfolio/rili-qan.png" alt="签到日历页面展示图" />
                         </div>
                       </div>
                     </div>
