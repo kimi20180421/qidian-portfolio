@@ -734,6 +734,26 @@
       margin-top: 0;
     }
 
+    .design-execution-showcase-fixed-image {
+      grid-template-columns: 470px minmax(0, 1fr);
+      align-items: start;
+    }
+
+    .design-execution-showcase-fixed-image .design-execution-visual {
+      width: 470px;
+      min-height: 470px;
+      background: transparent;
+      border-radius: 0;
+    }
+
+    .design-execution-showcase-fixed-image .design-execution-visual::after {
+      display: none;
+    }
+
+    .design-execution-showcase-fixed-image .design-execution-scene {
+      padding: 0;
+    }
+
     .design-execution-showcase-reverse > .design-execution-items {
       order: 1;
     }
@@ -904,6 +924,24 @@
       font-weight: 400;
       text-align: center;
       padding: 0 20px;
+    }
+
+    .design-execution-image-frame {
+      width: 470px;
+      height: 470px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .design-execution-image-frame img {
+      width: 470px;
+      height: 470px;
+      display: block;
+      object-fit: contain;
+      user-select: none;
+      -webkit-user-drag: none;
     }
 
     .design-execution-item {
@@ -2474,24 +2512,11 @@
                       <div class="design-execution-index">01</div>
                       <div class="design-execution-strategy-title">强化签到触发与完成反馈，提升签到吸引力</div>
                     </div>
-                    <div class="design-execution-showcase" data-execution-showcase>
+                    <div class="design-execution-showcase design-execution-showcase-fixed-image" data-execution-showcase>
                       <div class="design-execution-visual" aria-hidden="true">
                         <div class="design-execution-scene is-active" data-execution-scene="executionHomeCheckin">
-                          <div class="design-execution-scene-badge">示意图占位</div>
-                          <div class="design-execution-scene-prompt">
-                            <div class="design-execution-scene-title">首页信息框架重构</div>
-                            <div class="design-execution-scene-desc">把签到积分、每日任务和积分权益整合为一条清晰的首页行为路径。</div>
-                          </div>
-                          <div class="design-execution-scene-mock">
-                            <div class="design-execution-scene-mock-title">首页信息框架重构</div>
-                            <div class="design-execution-scene-mock-bar mid"></div>
-                            <div class="design-execution-scene-mock-bar short"></div>
-                            <div class="design-execution-scene-chip-row">
-                              <div class="design-execution-scene-chip">签到积分</div>
-                              <div class="design-execution-scene-chip">每日任务</div>
-                              <div class="design-execution-scene-chip">积分权益</div>
-                            </div>
-                            <div class="design-execution-scene-frame">首页信息框架重构示意图占位</div>
+                          <div class="design-execution-image-frame">
+                            <img src="assets/figma-portfolio/stracture.png" alt="首页信息框架重构图" />
                           </div>
                         </div>
                         <div class="design-execution-scene" data-execution-scene="executionSuccessFeedback">
