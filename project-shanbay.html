@@ -786,7 +786,7 @@
     .design-execution-extension {
       margin-top: 28px;
       display: grid;
-      grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
+      grid-template-columns: minmax(0, 1fr) 500px;
       gap: 32px;
       align-items: center;
     }
@@ -821,7 +821,9 @@
     }
 
     .design-execution-extension .design-execution-visual {
+      width: 500px;
       min-height: 420px;
+      min-height: 560px;
       border-radius: 28px;
       overflow: hidden;
       background:
@@ -838,9 +840,9 @@
     .design-execution-extension-lottery-scene {
       position: relative;
       width: 100%;
-      min-height: 420px;
+      min-height: 560px;
       height: 100%;
-      padding: 22px;
+      padding: 28px;
       box-sizing: border-box;
     }
 
@@ -854,23 +856,23 @@
     }
 
     .design-execution-extension-progress-bear {
-      left: 10px;
-      top: 52px;
-      width: 186px;
+      left: 14px;
+      top: 70px;
+      width: 222px;
       z-index: 2;
     }
 
     .design-execution-extension-progress-phone {
-      right: 4px;
-      top: -2px;
-      width: 248px;
+      right: 2px;
+      top: 0;
+      width: 298px;
       z-index: 3;
     }
 
     .design-execution-extension-progress-card {
-      left: 82px;
-      bottom: 16px;
-      width: 238px;
+      left: 96px;
+      bottom: 20px;
+      width: 286px;
       z-index: 4;
       transform: rotate(-12deg);
       transform-origin: center;
@@ -878,9 +880,9 @@
 
     .design-execution-extension-status-list {
       position: absolute;
-      left: 8px;
-      bottom: 18px;
-      width: 282px;
+      left: 14px;
+      bottom: 22px;
+      width: 338px;
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
@@ -888,7 +890,7 @@
     }
 
     .design-execution-extension-status {
-      width: 82px;
+      width: 98px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -896,7 +898,7 @@
     }
 
     .design-execution-extension-status img {
-      width: 58px;
+      width: 68px;
       height: auto;
       display: block;
       user-select: none;
@@ -930,19 +932,19 @@
     }
 
     .design-execution-lottery-entry {
-      left: 6px;
-      top: 72px;
+      left: 10px;
+      top: 100px;
       width: 100%;
-      max-width: 470px;
+      max-width: 500px;
       z-index: 2;
       transform-origin: 26% 70%;
       opacity: 1;
     }
 
     .design-execution-lottery-hand {
-      left: 132px;
-      top: 168px;
-      width: 166px;
+      left: 154px;
+      top: 216px;
+      width: 198px;
       z-index: 4;
       transform-origin: 84% 84%;
       opacity: 0;
@@ -950,16 +952,16 @@
 
     .design-execution-lottery-atmosphere {
       right: 12px;
-      top: 16px;
-      width: 348px;
+      top: 20px;
+      width: 412px;
       z-index: 1;
       opacity: 0;
     }
 
     .design-execution-lottery-phone {
       right: 34px;
-      top: 24px;
-      width: 214px;
+      top: 34px;
+      width: 254px;
       z-index: 3;
       opacity: 0;
     }
@@ -2589,6 +2591,7 @@
         }
 
         .design-execution-extension .design-execution-visual {
+          width: 100%;
           min-height: 360px;
         }
 
