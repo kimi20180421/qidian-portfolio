@@ -940,6 +940,81 @@
       -webkit-user-drag: none;
     }
 
+    .design-execution-scene-feedback-sequence {
+      padding: 0;
+    }
+
+    .design-execution-feedback-stage {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 22px 18px 22px 18px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .design-execution-feedback-stage::before {
+      content: "";
+      position: absolute;
+      inset: auto auto 78px 36px;
+      width: 260px;
+      height: 180px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0) 72%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .design-execution-feedback-layer {
+      position: absolute;
+      opacity: 0;
+      transform: translateY(18px) scale(0.96);
+      will-change: transform, opacity;
+    }
+
+    .design-execution-feedback-layer img {
+      display: block;
+      width: 100%;
+      height: auto;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .design-execution-feedback-start {
+      top: 16px;
+      right: 0;
+      width: 316px;
+      z-index: 1;
+    }
+
+    .design-execution-feedback-arrow {
+      left: 12px;
+      top: 190px;
+      width: 150px;
+      z-index: 2;
+      transform: translate(18px, -14px) scale(0.92);
+    }
+
+    .design-execution-feedback-done {
+      left: 14px;
+      bottom: 30px;
+      width: 468px;
+      z-index: 3;
+      transform: translateY(26px) scale(0.96);
+    }
+
+    .design-execution-scene.is-active .design-execution-feedback-start {
+      animation: executionFeedbackStartIn 680ms var(--motion-ease) 60ms both;
+    }
+
+    .design-execution-scene.is-active .design-execution-feedback-arrow {
+      animation: executionFeedbackArrowIn 520ms var(--motion-ease) 360ms both;
+    }
+
+    .design-execution-scene.is-active .design-execution-feedback-done {
+      animation: executionFeedbackDoneIn 680ms var(--motion-ease) 640ms both;
+    }
+
     .design-execution-item {
       scroll-margin-top: 92px;
       border-top: 1px solid rgba(5, 91, 79, 0.14);
@@ -1561,6 +1636,42 @@
       }
     }
 
+    @keyframes executionFeedbackStartIn {
+      0% {
+        opacity: 0;
+        transform: translateY(18px) scale(0.96);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes executionFeedbackArrowIn {
+      0% {
+        opacity: 0;
+        transform: translate(18px, -14px) scale(0.92);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+      }
+    }
+
+    @keyframes executionFeedbackDoneIn {
+      0% {
+        opacity: 0;
+        transform: translateY(26px) scale(0.96);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .strategy-image {
         opacity: 1;
@@ -1571,6 +1682,12 @@
 
       #strategySection.is-visible .strategy-image {
         animation: none;
+      }
+
+      .design-execution-feedback-layer {
+        opacity: 1;
+        transform: none;
+        animation: none !important;
       }
     }
 
@@ -2516,21 +2633,16 @@
                           </div>
                         </div>
                         <div class="design-execution-scene" data-execution-scene="executionSuccessFeedback">
-                          <div class="design-execution-scene-badge">示意图占位</div>
-                          <div class="design-execution-scene-prompt">
-                            <div class="design-execution-scene-title">签到成功反馈强化</div>
-                            <div class="design-execution-scene-desc">让积分到账、连续天数和下一阶段奖励在完成瞬间被用户感知到。</div>
-                          </div>
-                          <div class="design-execution-scene-mock">
-                            <div class="design-execution-scene-mock-title">签到成功反馈强化</div>
-                            <div class="design-execution-scene-mock-bar"></div>
-                            <div class="design-execution-scene-mock-bar mid"></div>
-                            <div class="design-execution-scene-chip-row">
-                              <div class="design-execution-scene-chip">积分到账</div>
-                              <div class="design-execution-scene-chip">连续天数</div>
-                              <div class="design-execution-scene-chip">阶段奖励</div>
+                          <div class="design-execution-feedback-stage design-execution-scene-feedback-sequence">
+                            <div class="design-execution-feedback-layer design-execution-feedback-start">
+                              <img src="assets/figma-portfolio/start.png" alt="签到成功反馈起始界面图" />
                             </div>
-                            <div class="design-execution-scene-frame">签到成功反馈示意图占位</div>
+                            <div class="design-execution-feedback-layer design-execution-feedback-arrow">
+                              <img src="assets/figma-portfolio/arrow.png" alt="签到反馈切换箭头图" />
+                            </div>
+                            <div class="design-execution-feedback-layer design-execution-feedback-done">
+                              <img src="assets/figma-portfolio/yiqian.png" alt="签到成功反馈结果图" />
+                            </div>
                           </div>
                         </div>
                         <div class="design-execution-scene" data-execution-scene="executionCheckinProgress">
