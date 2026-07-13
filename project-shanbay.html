@@ -774,7 +774,42 @@
       z-index: 5;
     }
 
-    .design-execution-detail-copy .design-execution-item-title-main {
+    .design-execution-detail-visual {
+      position: relative;
+      width: 100%;
+      min-height: 560px;
+      background: transparent;
+      box-sizing: border-box;
+      padding: 28px;
+    }
+
+    .design-execution-extension {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .design-execution-extension-visual {
+      position: relative;
+      min-height: 420px;
+      border-radius: 28px;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    .design-execution-extension-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      min-width: 0;
+      max-width: 360px;
+    }
+
+    .design-execution-detail-copy .design-execution-item-title-main,
+    .design-execution-extension-copy .design-execution-item-title-main {
       margin-top: 8px;
       font-size: 28px;
       line-height: 40px;
@@ -783,7 +818,8 @@
       letter-spacing: -0.02em;
     }
 
-    .design-execution-detail-copy .design-execution-item-desc {
+    .design-execution-detail-copy .design-execution-item-desc,
+    .design-execution-extension-copy .design-execution-item-desc {
       margin-top: 12px;
       padding: 0;
       opacity: 1;
@@ -796,13 +832,62 @@
       color: rgba(31, 35, 41, 0.74);
     }
 
-    .design-execution-detail-visual {
+    .design-execution-lottery-sequence {
       position: relative;
       width: 100%;
-      min-height: 560px;
-      background: transparent;
-      box-sizing: border-box;
-      padding: 28px;
+      min-height: 420px;
+    }
+
+    .design-execution-lottery-entry,
+    .design-execution-lottery-hand,
+    .design-execution-lottery-phone,
+    .design-execution-lottery-atmosphere {
+      position: absolute;
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .design-execution-lottery-entry {
+      left: 0;
+      top: 72px;
+      width: 100%;
+      max-width: 520px;
+      z-index: 2;
+      transform-origin: 26% 70%;
+      animation: executionLotteryEntryLoop 3200ms var(--motion-ease) infinite;
+    }
+
+    .design-execution-lottery-hand {
+      left: 138px;
+      top: 168px;
+      width: 174px;
+      z-index: 4;
+      transform-origin: 84% 84%;
+      animation: executionLotteryHandLoop 3200ms var(--motion-ease) infinite;
+    }
+
+    .design-execution-lottery-atmosphere {
+      right: 12px;
+      top: 16px;
+      width: 372px;
+      z-index: 1;
+      animation: executionLotteryAtmosphereLoop 3200ms var(--motion-ease) infinite;
+    }
+
+    .design-execution-lottery-phone {
+      right: 68px;
+      top: 20px;
+      width: 228px;
+      z-index: 3;
+      animation: executionLotteryPhoneLoop 3200ms var(--motion-ease) infinite;
+    }
+
+    .design-execution-extension-visual:hover .design-execution-lottery-entry,
+    .design-execution-extension-visual:hover .design-execution-lottery-hand,
+    .design-execution-extension-visual:hover .design-execution-lottery-phone,
+    .design-execution-extension-visual:hover .design-execution-lottery-atmosphere {
+      animation-play-state: paused;
     }
 
     .design-execution-progress-composition {
@@ -1850,6 +1935,92 @@
       }
     }
 
+    @keyframes executionLotteryEntryLoop {
+      0%,
+      32% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      44%,
+      100% {
+        opacity: 0;
+        transform: translateY(-14px) scale(0.97);
+      }
+    }
+
+    @keyframes executionLotteryHandLoop {
+      0%,
+      10% {
+        opacity: 0;
+        transform: translate(108px, 58px) rotate(-8deg) scale(0.94);
+      }
+
+      18% {
+        opacity: 1;
+        transform: translate(108px, 58px) rotate(-8deg) scale(0.94);
+      }
+
+      34% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(-2deg) scale(1);
+      }
+
+      40% {
+        opacity: 1;
+        transform: translate(-6px, 8px) rotate(1deg) scale(0.97);
+      }
+
+      46% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(-2deg) scale(1);
+      }
+
+      56%,
+      100% {
+        opacity: 0;
+        transform: translate(12px, 10px) rotate(-2deg) scale(0.95);
+      }
+    }
+
+    @keyframes executionLotteryPhoneLoop {
+      0%,
+      44% {
+        opacity: 0;
+        transform: translateY(28px) scale(0.92);
+      }
+
+      58%,
+      92% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.98);
+      }
+    }
+
+    @keyframes executionLotteryAtmosphereLoop {
+      0%,
+      46% {
+        opacity: 0;
+        transform: scale(0.9) rotate(-8deg);
+      }
+
+      60%,
+      92% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(0.96) rotate(2deg);
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .strategy-image {
         opacity: 1;
@@ -1863,6 +2034,24 @@
       }
 
       .design-execution-feedback-layer {
+        opacity: 1;
+        transform: none;
+        animation: none !important;
+      }
+
+      .design-execution-lottery-entry {
+        opacity: 0;
+        animation: none !important;
+      }
+
+      .design-execution-lottery-hand {
+        opacity: 0;
+        transform: none;
+        animation: none !important;
+      }
+
+      .design-execution-lottery-phone,
+      .design-execution-lottery-atmosphere {
         opacity: 1;
         transform: none;
         animation: none !important;
@@ -2297,6 +2486,19 @@
           min-height: 520px;
         }
 
+        .design-execution-extension {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        .design-execution-extension-visual {
+          min-height: 360px;
+        }
+
+        .design-execution-extension-copy {
+          max-width: none;
+        }
+
         .design-execution-detail-copy {
           left: 24px;
           top: 24px;
@@ -2353,6 +2555,29 @@
           width: 176px;
           right: 0;
           top: 18px;
+        }
+
+        .design-execution-lottery-entry {
+          top: 72px;
+          max-width: none;
+        }
+
+        .design-execution-lottery-hand {
+          left: 92px;
+          top: 152px;
+          width: 142px;
+        }
+
+        .design-execution-lottery-atmosphere {
+          right: -8px;
+          top: 14px;
+          width: 286px;
+        }
+
+        .design-execution-lottery-phone {
+          right: 28px;
+          top: 30px;
+          width: 184px;
         }
 
       }
@@ -2963,6 +3188,21 @@
                           <img class="design-execution-progress-calendar" src="assets/figma-portfolio/rili.png" alt="签到日历奖励看板图" />
                           <img class="design-execution-progress-phone" src="assets/figma-portfolio/rili-qan.png" alt="签到日历页面展示图" />
                         </div>
+                      </div>
+                    </div>
+                    <div class="design-execution-extension">
+                      <div class="design-execution-extension-visual" aria-hidden="true">
+                        <div class="design-execution-lottery-sequence">
+                          <img class="design-execution-lottery-entry" src="assets/figma-portfolio/jifenchoujiang.png" alt="积分抽奖入口图" />
+                          <img class="design-execution-lottery-hand" src="assets/figma-portfolio/hand.png" alt="点击去抽奖按钮的手势图" />
+                          <img class="design-execution-lottery-atmosphere" src="assets/figma-portfolio/fenwei.png" alt="积分抽奖氛围装饰图" />
+                          <img class="design-execution-lottery-phone" src="assets/figma-portfolio/choujiang_.png" alt="积分扭蛋抽奖页面图" />
+                        </div>
+                      </div>
+                      <div class="design-execution-extension-copy">
+                        <div class="design-execution-item-title-tag">奖励机制延展</div>
+                        <div class="design-execution-item-title-main">在签到完成后，积分抽奖承接积分消耗需求</div>
+                        <div class="design-execution-item-desc">在签到模块和积分任务区域增加抽奖入口，明确参与所需积分及限定奖励，让用户在获得积分后能够自然发现可使用的场景。</div>
                       </div>
                     </div>
                   </div>
