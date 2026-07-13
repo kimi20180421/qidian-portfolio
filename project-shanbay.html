@@ -511,25 +511,38 @@
       pointer-events: none;
     }
 
-    .design-solution-compare-board-label {
-      position: absolute;
-      top: 18px;
+    .design-solution-compare-label-row {
+      position: relative;
       z-index: 3;
-      padding: 4px 10px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .design-solution-compare-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      line-height: 22px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.86);
+    }
+
+    .design-solution-compare-label-icon {
+      width: 18px;
+      height: 18px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
-      font-size: 12px;
-      line-height: 18px;
-      color: rgba(255, 255, 255, 0.72);
-      pointer-events: none;
+      background: rgba(52, 200, 178, 0.18);
+      border: 1px solid rgba(52, 200, 178, 0.42);
+      box-shadow: 0 0 16px rgba(52, 200, 178, 0.18);
     }
 
-    .design-solution-compare-board-label-before {
-      left: 24px;
-    }
-
-    .design-solution-compare-board-label-after {
-      right: 24px;
+    .design-solution-compare-label-divider {
+      width: 1px;
+      height: 18px;
+      background: rgba(255, 255, 255, 0.18);
     }
 
     .design-solution-compare-grid {
@@ -2098,6 +2111,17 @@
               <div class="section-paragraph">接下来，我将围绕这三个策略，分别展开签到入口、签到完成反馈、积分任务与权益兑换等关键页面的设计方案。设计重点不只是让功能“能用”，而是让用户在每一次签到中都能感受到“我完成了学习行为，并获得了可持续积累的回报”。</div>
               <div class="design-solution-overview-title">改版前后示意<span class="design-solution-overview-hint">（向右拖拽，可对比查看调整前后效果）</span></div>
               <div class="design-solution-compare-board" data-compare-board>
+                <div class="design-solution-compare-label-row">
+                  <div class="design-solution-compare-label">
+                    <span class="design-solution-compare-label-icon"></span>
+                    <span>改版后</span>
+                  </div>
+                  <span class="design-solution-compare-label-divider"></span>
+                  <div class="design-solution-compare-label">
+                    <span>改版前</span>
+                    <span class="design-solution-compare-label-icon"></span>
+                  </div>
+                </div>
                 <div class="design-solution-compare-grid">
                   <div class="design-solution-compare-card">
                     <div class="design-solution-compare-name">开始签到</div>
