@@ -332,7 +332,8 @@
       #userAnalysisSection,
       #competitorAnalysisSection,
       #strategySection,
-      #designSolutionSection {
+      #designSolutionSection,
+      #designExecutionSection {
         scroll-margin-top: 92px;
       }
 
@@ -375,6 +376,14 @@
         linear-gradient(180deg, #06100E 0%, #0B201C 42%, #06100E 100%);
       overflow: hidden;
       box-shadow: 0 24px 60px rgba(5, 91, 79, 0.16);
+    }
+
+    #designExecutionSection {
+      margin: 60px auto 0;
+      padding: 28px;
+      border-radius: 28px;
+      background: #FFFFFF;
+      box-shadow: 0 18px 48px rgba(5, 91, 79, 0.08);
     }
 
     #designSolutionSection::before {
@@ -652,11 +661,7 @@
     }
 
     .design-execution {
-      margin-top: 28px;
-      padding: 24px;
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.96);
-      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.16);
+      margin-top: 0;
     }
 
     .design-execution-title {
@@ -1614,20 +1619,16 @@
       transition-delay: .58s;
     }
 
-    #designSolutionSection.is-visible .design-execution-title {
-      transition-delay: .34s;
+    #designExecutionSection.is-visible .design-execution-strategy:nth-child(1) {
+      transition-delay: .24s;
     }
 
-    #designSolutionSection.is-visible .design-execution-strategy:nth-child(1) {
-      transition-delay: .42s;
+    #designExecutionSection.is-visible .design-execution-strategy:nth-child(2) {
+      transition-delay: .32s;
     }
 
-    #designSolutionSection.is-visible .design-execution-strategy:nth-child(2) {
-      transition-delay: .50s;
-    }
-
-    #designSolutionSection.is-visible .design-execution-strategy:nth-child(3) {
-      transition-delay: .58s;
+    #designExecutionSection.is-visible .design-execution-strategy:nth-child(3) {
+      transition-delay: .40s;
     }
 
     #designReviewSection.is-visible .review-tab-shell {
@@ -1751,6 +1752,10 @@
         <div class="section-anchor-item" data-anchor-target="designSolutionSection">
           <span class="section-anchor-dot"></span>
           <span class="section-anchor-text">设计方案</span>
+        </div>
+        <div class="section-anchor-item" data-anchor-target="designExecutionSection">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">执行拆解</span>
         </div>
         <div class="section-anchor-item section-anchor-item-sub section-anchor-item-strategy" data-anchor-target="executionStrategy01">
           <span class="section-anchor-dot"></span>
@@ -2152,8 +2157,12 @@
                 </div>
                 <input class="design-solution-compare-range" type="range" min="0" max="100" value="50" aria-label="拖拽查看设计方案新旧效果" />
               </div>
+            </div>
+          </div>
+          <div class="background-section reveal-section" id="designExecutionSection">
+            <div class="section-title">设计执行拆解</div>
+            <div class="section-body">
               <div class="design-execution">
-                <div class="design-execution-title">设计执行拆解</div>
                 <div class="design-execution-list">
                   <div class="design-execution-strategy" id="executionStrategy01">
                     <div class="design-execution-meta">
