@@ -1018,8 +1018,49 @@
       left: 0;
       bottom: 0;
       width: 388px;
+      padding: 10px;
+      box-sizing: border-box;
+      border-radius: 28px;
+      overflow: hidden;
+      isolation: isolate;
       z-index: 3;
       transform: translateY(26px) scale(0.96);
+    }
+
+    .design-execution-feedback-done::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.14)),
+        rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.42),
+        0 20px 40px rgba(5, 91, 79, 0.12);
+      backdrop-filter: blur(18px) saturate(1.18);
+      -webkit-backdrop-filter: blur(18px) saturate(1.18);
+      z-index: 0;
+    }
+
+    .design-execution-feedback-done::after {
+      content: "";
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      top: 10px;
+      height: 34%;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .design-execution-feedback-done img {
+      position: relative;
+      z-index: 2;
+      filter: saturate(1.04) contrast(1.02);
     }
 
     .design-execution-scene.is-active .design-execution-feedback-start {
