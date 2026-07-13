@@ -376,14 +376,19 @@
         linear-gradient(180deg, #06100E 0%, #0B201C 42%, #06100E 100%);
       overflow: hidden;
       box-shadow: 0 24px 60px rgba(5, 91, 79, 0.16);
+      z-index: 0;
     }
 
     #designExecutionSection {
-      margin: 60px auto 0;
-      padding: 28px;
-      border-radius: 28px;
+      width: 100vw;
+      max-width: none;
+      margin: 0 0 0 calc(50% - 50vw);
+      position: relative;
+      z-index: 1;
+      padding: 60px max(24px, calc((100vw - 800px) / 2));
+      border-radius: 0;
       background: #FFFFFF;
-      box-shadow: 0 18px 48px rgba(5, 91, 79, 0.08);
+      box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.96), 0 18px 48px rgba(5, 91, 79, 0.08);
     }
 
     #designSolutionSection::before {
