@@ -1074,6 +1074,31 @@
       transition: transform var(--motion-tab) var(--motion-ease), color var(--motion-tab) var(--motion-ease);
     }
 
+    .design-execution-item-title-stack {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .design-execution-item-title-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 24px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(186, 238, 234, 0.82);
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 500;
+      color: #055B4F;
+    }
+
+    .design-execution-item-title-main {
+      display: block;
+    }
+
     .design-execution-trigger-mark {
       position: relative;
       width: 24px;
@@ -2706,7 +2731,10 @@
                         </div>
                         <div class="design-execution-item" id="executionSuccessFeedback" data-execution-item="executionSuccessFeedback">
                           <button class="design-execution-trigger" type="button" aria-expanded="false">
-                            <span class="design-execution-item-title">每日签到-集中呈现签到状态与阶段奖励</span>
+                            <span class="design-execution-item-title design-execution-item-title-stack">
+                              <span class="design-execution-item-title-tag">每日签到</span>
+                              <span class="design-execution-item-title-main">集中呈现签到状态与阶段奖励</span>
+                            </span>
                             <span class="design-execution-trigger-mark" aria-hidden="true"></span>
                           </button>
                           <div class="design-execution-panel">
