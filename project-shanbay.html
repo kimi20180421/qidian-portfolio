@@ -963,6 +963,15 @@
       overflow: hidden;
     }
 
+    .design-execution-feedback-composition {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 442px;
+      height: 498px;
+      transform: translate(-50%, -50%);
+    }
+
     .design-execution-feedback-stage::before {
       content: "";
       position: absolute;
@@ -977,8 +986,8 @@
 
     .design-execution-feedback-layer {
       position: absolute;
-      left: 50%;
       opacity: 0;
+      transform: translateY(18px) scale(0.96);
       will-change: transform, opacity;
     }
 
@@ -991,24 +1000,26 @@
     }
 
     .design-execution-feedback-start {
-      top: 4px;
+      top: 0;
+      right: 0;
       width: 286px;
       z-index: 1;
-      transform: translate(-50%, 18px) scale(0.96);
     }
 
     .design-execution-feedback-arrow {
-      top: 176px;
+      left: 22px;
+      top: 172px;
       width: 122px;
       z-index: 2;
-      transform: translate(calc(-50% + 18px), -14px) scale(0.92);
+      transform: translate(18px, -14px) scale(0.92);
     }
 
     .design-execution-feedback-done {
-      bottom: 18px;
+      left: 0;
+      bottom: 0;
       width: 388px;
       z-index: 3;
-      transform: translate(-50%, 26px) scale(0.96);
+      transform: translateY(26px) scale(0.96);
     }
 
     .design-execution-scene.is-active .design-execution-feedback-start {
@@ -1647,36 +1658,36 @@
     @keyframes executionFeedbackStartIn {
       0% {
         opacity: 0;
-        transform: translate(-50%, 18px) scale(0.96);
+        transform: translateY(18px) scale(0.96);
       }
 
       100% {
         opacity: 1;
-        transform: translate(-50%, 0) scale(1);
+        transform: translateY(0) scale(1);
       }
     }
 
     @keyframes executionFeedbackArrowIn {
       0% {
         opacity: 0;
-        transform: translate(calc(-50% + 18px), -14px) scale(0.92);
+        transform: translate(18px, -14px) scale(0.92);
       }
 
       100% {
         opacity: 1;
-        transform: translate(-50%, 0) scale(1);
+        transform: translate(0, 0) scale(1);
       }
     }
 
     @keyframes executionFeedbackDoneIn {
       0% {
         opacity: 0;
-        transform: translate(-50%, 26px) scale(0.96);
+        transform: translateY(26px) scale(0.96);
       }
 
       100% {
         opacity: 1;
-        transform: translate(-50%, 0) scale(1);
+        transform: translateY(0) scale(1);
       }
     }
 
@@ -1694,13 +1705,8 @@
 
       .design-execution-feedback-layer {
         opacity: 1;
+        transform: none;
         animation: none !important;
-      }
-
-      .design-execution-feedback-start,
-      .design-execution-feedback-arrow,
-      .design-execution-feedback-done {
-        transform: translate(-50%, 0);
       }
     }
 
@@ -2648,14 +2654,16 @@
                         <div class="design-execution-scene" data-execution-scene="executionSuccessFeedback">
                           <div class="design-execution-feedback-frame">
                             <div class="design-execution-feedback-stage design-execution-scene-feedback-sequence">
-                              <div class="design-execution-feedback-layer design-execution-feedback-start">
-                                <img src="assets/figma-portfolio/start.png" alt="签到成功反馈起始界面图" />
-                              </div>
-                              <div class="design-execution-feedback-layer design-execution-feedback-arrow">
-                                <img src="assets/figma-portfolio/arrow.png" alt="签到反馈切换箭头图" />
-                              </div>
-                              <div class="design-execution-feedback-layer design-execution-feedback-done">
-                                <img src="assets/figma-portfolio/yiqian.png" alt="签到成功反馈结果图" />
+                              <div class="design-execution-feedback-composition">
+                                <div class="design-execution-feedback-layer design-execution-feedback-start">
+                                  <img src="assets/figma-portfolio/start.png" alt="签到成功反馈起始界面图" />
+                                </div>
+                                <div class="design-execution-feedback-layer design-execution-feedback-arrow">
+                                  <img src="assets/figma-portfolio/arrow.png" alt="签到反馈切换箭头图" />
+                                </div>
+                                <div class="design-execution-feedback-layer design-execution-feedback-done">
+                                  <img src="assets/figma-portfolio/yiqian.png" alt="签到成功反馈结果图" />
+                                </div>
                               </div>
                             </div>
                           </div>
