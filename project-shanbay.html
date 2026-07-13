@@ -796,7 +796,10 @@
       min-height: 420px;
       border-radius: 28px;
       overflow: hidden;
-      background: transparent;
+      background:
+        radial-gradient(circle at 22% 22%, rgba(255, 255, 255, 0.26), transparent 20%),
+        radial-gradient(circle at 82% 14%, rgba(255, 255, 255, 0.22), transparent 16%),
+        linear-gradient(180deg, rgba(134, 217, 208, 0.98) 0%, rgba(151, 226, 218, 0.96) 100%);
     }
 
     .design-execution-extension-copy {
@@ -804,8 +807,21 @@
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
+      gap: 24px;
       min-width: 0;
       max-width: 360px;
+    }
+
+    .design-execution-extension-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 0;
+    }
+
+    .design-execution-extension-block + .design-execution-extension-block {
+      padding-top: 24px;
+      border-top: 1px solid rgba(5, 91, 79, 0.12);
     }
 
     .design-execution-detail-copy .design-execution-item-title-main,
@@ -832,62 +848,85 @@
       color: rgba(31, 35, 41, 0.74);
     }
 
-    .design-execution-lottery-sequence {
+    .design-execution-extension-progress {
       position: relative;
       width: 100%;
-      min-height: 420px;
+      min-height: 460px;
     }
 
-    .design-execution-lottery-entry,
-    .design-execution-lottery-hand,
-    .design-execution-lottery-phone,
-    .design-execution-lottery-atmosphere {
+    .design-execution-extension-progress-bear,
+    .design-execution-extension-progress-phone,
+    .design-execution-extension-progress-card {
       position: absolute;
       display: block;
       user-select: none;
       -webkit-user-drag: none;
     }
 
-    .design-execution-lottery-entry {
+    .design-execution-extension-progress-bear {
       left: 0;
-      top: 72px;
-      width: 100%;
-      max-width: 520px;
+      top: 48px;
+      width: 194px;
       z-index: 2;
-      transform-origin: 26% 70%;
-      animation: executionLotteryEntryLoop 3200ms var(--motion-ease) infinite;
     }
 
-    .design-execution-lottery-hand {
-      left: 138px;
-      top: 168px;
-      width: 174px;
-      z-index: 4;
-      transform-origin: 84% 84%;
-      animation: executionLotteryHandLoop 3200ms var(--motion-ease) infinite;
-    }
-
-    .design-execution-lottery-atmosphere {
-      right: 12px;
-      top: 16px;
-      width: 372px;
-      z-index: 1;
-      animation: executionLotteryAtmosphereLoop 3200ms var(--motion-ease) infinite;
-    }
-
-    .design-execution-lottery-phone {
-      right: 68px;
-      top: 20px;
-      width: 228px;
+    .design-execution-extension-progress-phone {
+      right: -8px;
+      top: 0;
+      width: 254px;
       z-index: 3;
-      animation: executionLotteryPhoneLoop 3200ms var(--motion-ease) infinite;
     }
 
-    .design-execution-extension-visual:hover .design-execution-lottery-entry,
-    .design-execution-extension-visual:hover .design-execution-lottery-hand,
-    .design-execution-extension-visual:hover .design-execution-lottery-phone,
-    .design-execution-extension-visual:hover .design-execution-lottery-atmosphere {
-      animation-play-state: paused;
+    .design-execution-extension-progress-card {
+      left: 92px;
+      bottom: 8px;
+      width: 248px;
+      z-index: 4;
+      transform: rotate(-12deg);
+      transform-origin: center;
+    }
+
+    .design-execution-extension-status-list {
+      position: absolute;
+      left: 0;
+      bottom: 26px;
+      width: 282px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      z-index: 5;
+    }
+
+    .design-execution-extension-status {
+      width: 82px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .design-execution-extension-status img {
+      width: 58px;
+      height: auto;
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .design-execution-extension-status-title {
+      margin-top: 10px;
+      font-size: 15px;
+      line-height: 22px;
+      font-weight: 500;
+      color: #1F2329;
+    }
+
+    .design-execution-extension-status-desc {
+      margin-top: 4px;
+      font-size: 12px;
+      line-height: 18px;
+      font-weight: 400;
+      color: rgba(31, 35, 41, 0.58);
     }
 
     .design-execution-progress-composition {
@@ -1935,92 +1974,6 @@
       }
     }
 
-    @keyframes executionLotteryEntryLoop {
-      0%,
-      32% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      44%,
-      100% {
-        opacity: 0;
-        transform: translateY(-14px) scale(0.97);
-      }
-    }
-
-    @keyframes executionLotteryHandLoop {
-      0%,
-      10% {
-        opacity: 0;
-        transform: translate(108px, 58px) rotate(-8deg) scale(0.94);
-      }
-
-      18% {
-        opacity: 1;
-        transform: translate(108px, 58px) rotate(-8deg) scale(0.94);
-      }
-
-      34% {
-        opacity: 1;
-        transform: translate(0, 0) rotate(-2deg) scale(1);
-      }
-
-      40% {
-        opacity: 1;
-        transform: translate(-6px, 8px) rotate(1deg) scale(0.97);
-      }
-
-      46% {
-        opacity: 1;
-        transform: translate(0, 0) rotate(-2deg) scale(1);
-      }
-
-      56%,
-      100% {
-        opacity: 0;
-        transform: translate(12px, 10px) rotate(-2deg) scale(0.95);
-      }
-    }
-
-    @keyframes executionLotteryPhoneLoop {
-      0%,
-      44% {
-        opacity: 0;
-        transform: translateY(28px) scale(0.92);
-      }
-
-      58%,
-      92% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      100% {
-        opacity: 0;
-        transform: translateY(-10px) scale(0.98);
-      }
-    }
-
-    @keyframes executionLotteryAtmosphereLoop {
-      0%,
-      46% {
-        opacity: 0;
-        transform: scale(0.9) rotate(-8deg);
-      }
-
-      60%,
-      92% {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-      }
-
-      100% {
-        opacity: 0;
-        transform: scale(0.96) rotate(2deg);
-      }
-    }
-
     @media (prefers-reduced-motion: reduce) {
       .strategy-image {
         opacity: 1;
@@ -2034,24 +1987,6 @@
       }
 
       .design-execution-feedback-layer {
-        opacity: 1;
-        transform: none;
-        animation: none !important;
-      }
-
-      .design-execution-lottery-entry {
-        opacity: 0;
-        animation: none !important;
-      }
-
-      .design-execution-lottery-hand {
-        opacity: 0;
-        transform: none;
-        animation: none !important;
-      }
-
-      .design-execution-lottery-phone,
-      .design-execution-lottery-atmosphere {
         opacity: 1;
         transform: none;
         animation: none !important;
@@ -2496,7 +2431,12 @@
         }
 
         .design-execution-extension-copy {
+          gap: 20px;
           max-width: none;
+        }
+
+        .design-execution-extension-block + .design-execution-extension-block {
+          padding-top: 20px;
         }
 
         .design-execution-detail-copy {
@@ -2557,27 +2497,36 @@
           top: 18px;
         }
 
-        .design-execution-lottery-entry {
-          top: 72px;
-          max-width: none;
+        .design-execution-extension-progress {
+          min-height: 360px;
         }
 
-        .design-execution-lottery-hand {
-          left: 92px;
-          top: 152px;
-          width: 142px;
+        .design-execution-extension-progress-bear {
+          top: 52px;
+          width: 148px;
         }
 
-        .design-execution-lottery-atmosphere {
-          right: -8px;
-          top: 14px;
-          width: 286px;
+        .design-execution-extension-progress-phone {
+          right: -10px;
+          width: 196px;
         }
 
-        .design-execution-lottery-phone {
-          right: 28px;
-          top: 30px;
-          width: 184px;
+        .design-execution-extension-progress-card {
+          left: 68px;
+          width: 198px;
+        }
+
+        .design-execution-extension-status-list {
+          width: 248px;
+          bottom: 12px;
+        }
+
+        .design-execution-extension-status {
+          width: 72px;
+        }
+
+        .design-execution-extension-status img {
+          width: 48px;
         }
 
       }
@@ -3159,50 +3108,42 @@
                         </div>
                       </div>
                     </div>
-                    <div class="design-execution-detail">
-                      <div class="design-execution-detail-visual" aria-hidden="true">
-                        <div class="design-execution-detail-copy">
+                    <div class="design-execution-extension">
+                      <div class="design-execution-extension-visual" aria-hidden="true">
+                        <div class="design-execution-extension-progress">
+                          <img class="design-execution-extension-progress-bear" src="assets/figma-portfolio/bear.png" alt="签到进度吉祥物图" />
+                          <img class="design-execution-extension-progress-phone" src="assets/figma-portfolio/rili-qan.png" alt="签到日历页面展示图" />
+                          <img class="design-execution-extension-progress-card" src="assets/figma-portfolio/rili.png" alt="签到日历奖励看板图" />
+                          <div class="design-execution-extension-status-list">
+                            <div class="design-execution-extension-status">
+                              <img src="assets/figma-portfolio/jinrikeqian.png" alt="今日可签状态图" />
+                              <div class="design-execution-extension-status-title">今日可签</div>
+                              <div class="design-execution-extension-status-desc">高亮光环引导</div>
+                            </div>
+                            <div class="design-execution-extension-status">
+                              <img src="assets/figma-portfolio/yijingqiandao.png" alt="已签状态图" />
+                              <div class="design-execution-extension-status-title">已签</div>
+                              <div class="design-execution-extension-status-desc">实心填充</div>
+                            </div>
+                            <div class="design-execution-extension-status">
+                              <img src="assets/figma-portfolio/louqian.png" alt="漏签状态图" />
+                              <div class="design-execution-extension-status-title">漏签</div>
+                              <div class="design-execution-extension-status-desc">灰色提示漏签</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="design-execution-extension-copy">
+                        <div class="design-execution-extension-block">
                           <div class="design-execution-item-title-tag">连续签到进度可视化</div>
                           <div class="design-execution-item-title-main">将每日打卡转化为可积累的成长记录</div>
                           <div class="design-execution-item-desc">通过签到日历和连续进度展示用户的历史记录、当前连续状态及中断情况，让签到不再是一次性操作，而成为可以持续积累的学习成果。</div>
                         </div>
-                        <div class="design-execution-progress-composition">
-                          <div class="design-execution-progress-status-list">
-                            <div class="design-execution-progress-status">
-                              <img src="assets/figma-portfolio/jinrikeqian.png" alt="今日可签状态图" />
-                              <div class="design-execution-progress-status-title">今日可签</div>
-                              <div class="design-execution-progress-status-desc">高亮光环引导</div>
-                            </div>
-                            <div class="design-execution-progress-status">
-                              <img src="assets/figma-portfolio/yijingqiandao.png" alt="已签状态图" />
-                              <div class="design-execution-progress-status-title">已签</div>
-                              <div class="design-execution-progress-status-desc">实心填充</div>
-                            </div>
-                            <div class="design-execution-progress-status">
-                              <img src="assets/figma-portfolio/louqian.png" alt="漏签状态图" />
-                              <div class="design-execution-progress-status-title">漏签</div>
-                              <div class="design-execution-progress-status-desc">灰色提示漏签</div>
-                            </div>
-                          </div>
-                          <img class="design-execution-progress-bear" src="assets/figma-portfolio/bear.png" alt="签到进度吉祥物图" />
-                          <img class="design-execution-progress-calendar" src="assets/figma-portfolio/rili.png" alt="签到日历奖励看板图" />
-                          <img class="design-execution-progress-phone" src="assets/figma-portfolio/rili-qan.png" alt="签到日历页面展示图" />
+                        <div class="design-execution-extension-block">
+                          <div class="design-execution-item-title-tag">奖励机制延展</div>
+                          <div class="design-execution-item-title-main">在签到完成后，积分抽奖承接积分消耗需求</div>
+                          <div class="design-execution-item-desc">在签到模块和积分任务区域增加抽奖入口，明确参与所需积分及限定奖励，让用户在获得积分后能够自然发现可使用的场景。</div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="design-execution-extension">
-                      <div class="design-execution-extension-visual" aria-hidden="true">
-                        <div class="design-execution-lottery-sequence">
-                          <img class="design-execution-lottery-entry" src="assets/figma-portfolio/jifenchoujiang.png" alt="积分抽奖入口图" />
-                          <img class="design-execution-lottery-hand" src="assets/figma-portfolio/hand.png" alt="点击去抽奖按钮的手势图" />
-                          <img class="design-execution-lottery-atmosphere" src="assets/figma-portfolio/fenwei.png" alt="积分抽奖氛围装饰图" />
-                          <img class="design-execution-lottery-phone" src="assets/figma-portfolio/choujiang_.png" alt="积分扭蛋抽奖页面图" />
-                        </div>
-                      </div>
-                      <div class="design-execution-extension-copy">
-                        <div class="design-execution-item-title-tag">奖励机制延展</div>
-                        <div class="design-execution-item-title-main">在签到完成后，积分抽奖承接积分消耗需求</div>
-                        <div class="design-execution-item-desc">在签到模块和积分任务区域增加抽奖入口，明确参与所需积分及限定奖励，让用户在获得积分后能够自然发现可使用的场景。</div>
                       </div>
                     </div>
                   </div>
