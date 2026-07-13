@@ -826,14 +826,15 @@
       min-height: 560px;
       border-radius: 28px;
       overflow: hidden;
-      background:
-        radial-gradient(circle at 22% 22%, rgba(255, 255, 255, 0.26), transparent 20%),
-        radial-gradient(circle at 82% 14%, rgba(255, 255, 255, 0.22), transparent 16%),
-        linear-gradient(180deg, rgba(134, 217, 208, 0.98) 0%, rgba(151, 226, 218, 0.96) 100%);
     }
 
     .design-execution-extension .design-execution-scene {
       padding: 0;
+      z-index: 4;
+    }
+
+    .design-execution-extension .design-execution-scene.is-active {
+      z-index: 5;
     }
 
     .design-execution-extension-progress-scene,
@@ -842,7 +843,7 @@
       width: 100%;
       min-height: 560px;
       height: 100%;
-      padding: 28px;
+      padding: 24px;
       box-sizing: border-box;
     }
 
@@ -856,33 +857,33 @@
     }
 
     .design-execution-extension-progress-bear {
-      left: 14px;
-      top: 70px;
-      width: 222px;
-      z-index: 2;
+      left: 12px;
+      top: 24px;
+      width: 254px;
+      z-index: 3;
     }
 
     .design-execution-extension-progress-phone {
-      right: 2px;
-      top: 0;
-      width: 298px;
-      z-index: 3;
+      right: 8px;
+      top: 20px;
+      width: 286px;
+      z-index: 2;
     }
 
     .design-execution-extension-progress-card {
       left: 96px;
-      bottom: 20px;
-      width: 286px;
+      bottom: 22px;
+      width: 304px;
       z-index: 4;
-      transform: rotate(-12deg);
+      transform: rotate(-10deg);
       transform-origin: center;
     }
 
     .design-execution-extension-status-list {
       position: absolute;
-      left: 14px;
-      bottom: 22px;
-      width: 338px;
+      left: 4px;
+      bottom: 96px;
+      width: 308px;
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
@@ -890,7 +891,7 @@
     }
 
     .design-execution-extension-status {
-      width: 98px;
+      width: 88px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -898,7 +899,7 @@
     }
 
     .design-execution-extension-status img {
-      width: 68px;
+      width: 62px;
       height: auto;
       display: block;
       user-select: none;
@@ -2656,31 +2657,31 @@
         .design-execution-extension-progress-scene,
         .design-execution-extension-lottery-scene {
           min-height: 360px;
-          padding: 20px;
+          padding: 24px;
         }
 
         .design-execution-extension-progress-bear {
           left: 0;
-          top: 54px;
-          width: 148px;
+          top: 26px;
+          width: 166px;
         }
 
         .design-execution-extension-progress-phone {
           right: -6px;
-          top: 10px;
-          width: 196px;
+          top: 20px;
+          width: 198px;
         }
 
         .design-execution-extension-progress-card {
           left: 54px;
-          bottom: 16px;
-          width: 198px;
+          bottom: 14px;
+          width: 206px;
         }
 
         .design-execution-extension-status-list {
           left: 0;
-          width: 236px;
-          bottom: 12px;
+          width: 220px;
+          bottom: 76px;
         }
 
         .design-execution-extension-status {
@@ -2688,7 +2689,7 @@
         }
 
         .design-execution-extension-status img {
-          width: 48px;
+          width: 46px;
         }
 
         .design-execution-lottery-entry {
