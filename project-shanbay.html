@@ -514,6 +514,7 @@
     .design-solution-compare-handle-label {
       display: inline-flex;
       align-items: center;
+      gap: 6px;
       white-space: nowrap;
       font-size: 14px;
       line-height: 22px;
@@ -604,15 +605,15 @@
 
     .design-solution-compare-handle {
       position: absolute;
-      top: 50%;
+      top: 44%;
       left: var(--compare-position);
       width: auto;
-      min-width: 118px;
+      min-width: 144px;
       height: 30px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 24px;
+      justify-content: center;
+      gap: 10px;
       padding: 0 12px;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.12);
@@ -630,27 +631,27 @@
       transform: translate(-50%, -50%) scale(1.04);
     }
 
-    .design-solution-compare-handle::before,
-    .design-solution-compare-handle::after {
-      content: "";
-      position: absolute;
-      top: 50%;
+    .design-solution-compare-handle-arrow {
+      display: inline-block;
       width: 5px;
       height: 5px;
+      flex-shrink: 0;
       border-top: 1.5px solid rgba(255, 255, 255, 0.92);
       border-right: 1.5px solid rgba(255, 255, 255, 0.92);
     }
 
-    .design-solution-compare-handle::before {
-      left: 50%;
-      margin-left: -8px;
-      transform: translateY(-50%) rotate(-135deg);
+    .design-solution-compare-handle-arrow-left {
+      transform: rotate(-135deg);
     }
 
-    .design-solution-compare-handle::after {
-      right: 50%;
-      margin-right: -8px;
-      transform: translateY(-50%) rotate(45deg);
+    .design-solution-compare-handle-arrow-right {
+      transform: rotate(45deg);
+    }
+
+    .design-solution-compare-handle-separator {
+      width: 1px;
+      height: 14px;
+      background: rgba(255, 255, 255, 0.26);
     }
 
     .design-solution-compare-range {
@@ -2156,8 +2157,15 @@
                 <div class="design-solution-compare-guide">
                   <div class="design-solution-compare-divider"></div>
                   <div class="design-solution-compare-handle">
-                    <span class="design-solution-compare-handle-label">改版后</span>
-                    <span class="design-solution-compare-handle-label">改版前</span>
+                    <span class="design-solution-compare-handle-label">
+                      <span class="design-solution-compare-handle-arrow design-solution-compare-handle-arrow-left"></span>
+                      <span>改版后</span>
+                    </span>
+                    <span class="design-solution-compare-handle-separator"></span>
+                    <span class="design-solution-compare-handle-label">
+                      <span>改版前</span>
+                      <span class="design-solution-compare-handle-arrow design-solution-compare-handle-arrow-right"></span>
+                    </span>
                   </div>
                 </div>
                 <input class="design-solution-compare-range" type="range" min="0" max="100" value="50" aria-label="拖拽查看设计方案新旧效果" />
