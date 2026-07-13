@@ -716,48 +716,297 @@
     }
 
     .design-execution-items {
-      margin-top: 14px;
+      margin-top: 18px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 0;
+    }
+
+    .design-execution-showcase {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .design-execution-showcase > .design-execution-items {
+      margin-top: 0;
+    }
+
+    .design-execution-visual {
+      position: relative;
+      min-height: 460px;
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 16% 14%, rgba(255, 255, 255, 0.64), transparent 28%),
+        linear-gradient(140deg, rgba(186, 238, 234, 0.98) 0%, rgba(52, 200, 178, 0.7) 52%, rgba(5, 91, 79, 0.18) 100%);
+      box-shadow: 0 22px 56px rgba(5, 91, 79, 0.14);
+      isolation: isolate;
+    }
+
+    .design-execution-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 38%, rgba(255, 255, 255, 0.72));
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .design-execution-scene {
+      position: absolute;
+      inset: 0;
+      padding: 30px;
+      opacity: 0;
+      transform: translateY(20px) scale(0.985);
+      transition:
+        opacity 520ms var(--motion-ease),
+        transform 620ms var(--motion-ease);
+      z-index: 1;
+    }
+
+    .design-execution-scene.is-active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      z-index: 2;
+    }
+
+    .design-execution-scene-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 92px;
+      height: 28px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.88);
+      color: #055B4F;
+      font-size: 12px;
+      line-height: 18px;
+      font-weight: 500;
+      box-shadow: 0 10px 24px rgba(5, 91, 79, 0.08);
+    }
+
+    .design-execution-scene-prompt {
+      margin-top: 18px;
+      width: min(340px, 88%);
+      padding: 22px 24px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 18px 44px rgba(5, 91, 79, 0.12);
+      position: relative;
+      z-index: 2;
+    }
+
+    .design-execution-scene-title {
+      font-size: 22px;
+      line-height: 32px;
+      font-weight: 500;
+      color: #055B4F;
+      letter-spacing: -0.02em;
+    }
+
+    .design-execution-scene-desc {
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 22px;
+      font-weight: 400;
+      color: rgba(31, 35, 41, 0.7);
+    }
+
+    .design-execution-scene-mock {
+      position: absolute;
+      left: 16%;
+      right: 6%;
+      top: 176px;
+      bottom: 24px;
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.34);
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      backdrop-filter: blur(10px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.36);
+      transform: translateY(16px);
+      transition: transform 620ms var(--motion-ease);
+      z-index: 1;
+    }
+
+    .design-execution-scene.is-active .design-execution-scene-mock {
+      transform: translateY(0);
+    }
+
+    .design-execution-scene-mock-title {
+      font-size: 20px;
+      line-height: 28px;
+      font-weight: 500;
+      color: rgba(5, 91, 79, 0.72);
+    }
+
+    .design-execution-scene-mock-bar {
+      height: 14px;
+      margin-top: 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.48);
+    }
+
+    .design-execution-scene-mock-bar.short {
+      width: 52%;
+    }
+
+    .design-execution-scene-mock-bar.mid {
+      width: 76%;
+    }
+
+    .design-execution-scene-chip-row {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .design-execution-scene-chip {
+      height: 28px;
+      padding: 0 14px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.56);
+      color: rgba(5, 91, 79, 0.7);
+      font-size: 12px;
+      line-height: 18px;
+      font-weight: 500;
+    }
+
+    .design-execution-scene-frame {
+      margin-top: 22px;
+      height: 208px;
+      border-radius: 20px;
+      border: 1px dashed rgba(5, 91, 79, 0.2);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.26)),
+        rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(5, 91, 79, 0.48);
+      font-size: 14px;
+      line-height: 22px;
+      font-weight: 400;
+      text-align: center;
+      padding: 0 20px;
     }
 
     .design-execution-item {
       scroll-margin-top: 92px;
-      padding: 16px;
-      border-radius: 14px;
-      background: #FFFFFF;
-      border: 1px solid rgba(52, 200, 178, 0.12);
+      border-top: 1px solid rgba(5, 91, 79, 0.14);
+    }
+
+    .design-execution-item:last-child {
+      border-bottom: 1px solid rgba(5, 91, 79, 0.14);
+    }
+
+    .design-execution-trigger {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      cursor: pointer;
+      text-align: left;
+      font: inherit;
+      color: inherit;
     }
 
     .design-execution-item-title {
-      font-size: 15px;
-      line-height: 23px;
+      flex: 1;
+      min-width: 0;
+      font-size: 18px;
+      line-height: 28px;
       font-weight: 500;
       color: #055B4F;
+      letter-spacing: -0.01em;
+      transition: transform var(--motion-tab) var(--motion-ease), color var(--motion-tab) var(--motion-ease);
+    }
+
+    .design-execution-trigger-mark {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .design-execution-trigger-mark::before,
+    .design-execution-trigger-mark::after {
+      content: "";
+      position: absolute;
+      left: 4px;
+      right: 4px;
+      top: 11px;
+      height: 1.5px;
+      background: #055B4F;
+      transform-origin: center;
+      transition: transform 420ms var(--motion-ease), background var(--motion-tab) var(--motion-ease);
+    }
+
+    .design-execution-trigger-mark::after {
+      transform: rotate(90deg);
+    }
+
+    .design-execution-panel {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 520ms var(--motion-ease);
+    }
+
+    .design-execution-panel-inner {
+      overflow: hidden;
     }
 
     .design-execution-item-desc {
-      margin-top: 6px;
-      font-size: 14px;
-      line-height: 23px;
+      margin: 0;
+      padding: 0 0 22px;
+      font-size: 15px;
+      line-height: 26px;
       font-weight: 400;
-      color: rgba(31, 35, 41, 0.72);
+      color: rgba(31, 35, 41, 0.74);
+      opacity: 0;
+      transform: translateY(-8px);
+      transition:
+        opacity var(--motion-tab) var(--motion-ease),
+        transform 420ms var(--motion-ease);
     }
 
-    .design-execution-placeholder {
-      margin-top: 14px;
-      min-height: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 12px;
-      border: 1px dashed rgba(52, 200, 178, 0.34);
-      background: rgba(52, 200, 178, 0.045);
-      color: rgba(5, 91, 79, 0.46);
-      font-size: 14px;
-      line-height: 22px;
-      font-weight: 400;
+    .design-execution-item.is-active .design-execution-item-title {
+      transform: translateX(2px);
+    }
+
+    .design-execution-item.is-active .design-execution-trigger-mark::after {
+      transform: rotate(0deg) scaleX(0);
+    }
+
+    .design-execution-item.is-active .design-execution-panel {
+      grid-template-rows: 1fr;
+    }
+
+    .design-execution-item.is-active .design-execution-item-desc {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 120ms;
+    }
+
+    .design-execution-item:hover .design-execution-item-title {
+      color: #0D6B5C;
+    }
+
+    .design-execution-item:hover .design-execution-trigger-mark::before,
+    .design-execution-item:hover .design-execution-trigger-mark::after {
+      background: #34C8B2;
     }
 
     .competitor-label-list {
@@ -1702,6 +1951,31 @@
           grid-template-columns: 1fr;
         }
 
+        .design-execution-showcase {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        .design-execution-visual {
+          min-height: 420px;
+        }
+
+        .design-execution-scene {
+          padding: 24px;
+        }
+
+        .design-execution-scene-prompt {
+          width: min(100%, 320px);
+        }
+
+        .design-execution-scene-mock {
+          left: 10%;
+          right: 5%;
+          top: 172px;
+          bottom: 20px;
+          padding: 20px;
+        }
+
       }
   </style>
 </head>
@@ -1768,7 +2042,7 @@
         </div>
         <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionHomeCheckin">
           <span class="section-anchor-dot"></span>
-          <span class="section-anchor-text">首页签到模块</span>
+          <span class="section-anchor-text">首页信息框架</span>
         </div>
         <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionSuccessFeedback">
           <span class="section-anchor-dot"></span>
@@ -2193,21 +2467,97 @@
                       <div class="design-execution-index">01</div>
                       <div class="design-execution-strategy-title">强化签到触发与完成反馈，提升签到吸引力</div>
                     </div>
-                    <div class="design-execution-items">
-                      <div class="design-execution-item" id="executionHomeCheckin">
-                        <div class="design-execution-item-title">重构首页签到模块</div>
-                        <div class="design-execution-item-desc">提升签到入口的视觉优先级，将连续天数、当日积分和阶段奖励集中展示，降低用户发现与理解成本。</div>
-                        <div class="design-execution-placeholder">具体设计方案占位</div>
+                    <div class="design-execution-showcase" data-execution-showcase>
+                      <div class="design-execution-visual" aria-hidden="true">
+                        <div class="design-execution-scene is-active" data-execution-scene="executionHomeCheckin">
+                          <div class="design-execution-scene-badge">示意图占位</div>
+                          <div class="design-execution-scene-prompt">
+                            <div class="design-execution-scene-title">首页信息框架重构</div>
+                            <div class="design-execution-scene-desc">把签到积分、每日任务和积分权益整合为一条清晰的首页行为路径。</div>
+                          </div>
+                          <div class="design-execution-scene-mock">
+                            <div class="design-execution-scene-mock-title">首页信息框架重构</div>
+                            <div class="design-execution-scene-mock-bar mid"></div>
+                            <div class="design-execution-scene-mock-bar short"></div>
+                            <div class="design-execution-scene-chip-row">
+                              <div class="design-execution-scene-chip">签到积分</div>
+                              <div class="design-execution-scene-chip">每日任务</div>
+                              <div class="design-execution-scene-chip">积分权益</div>
+                            </div>
+                            <div class="design-execution-scene-frame">首页信息框架重构示意图占位</div>
+                          </div>
+                        </div>
+                        <div class="design-execution-scene" data-execution-scene="executionSuccessFeedback">
+                          <div class="design-execution-scene-badge">示意图占位</div>
+                          <div class="design-execution-scene-prompt">
+                            <div class="design-execution-scene-title">签到成功反馈强化</div>
+                            <div class="design-execution-scene-desc">让积分到账、连续天数和下一阶段奖励在完成瞬间被用户感知到。</div>
+                          </div>
+                          <div class="design-execution-scene-mock">
+                            <div class="design-execution-scene-mock-title">签到成功反馈强化</div>
+                            <div class="design-execution-scene-mock-bar"></div>
+                            <div class="design-execution-scene-mock-bar mid"></div>
+                            <div class="design-execution-scene-chip-row">
+                              <div class="design-execution-scene-chip">积分到账</div>
+                              <div class="design-execution-scene-chip">连续天数</div>
+                              <div class="design-execution-scene-chip">阶段奖励</div>
+                            </div>
+                            <div class="design-execution-scene-frame">签到成功反馈示意图占位</div>
+                          </div>
+                        </div>
+                        <div class="design-execution-scene" data-execution-scene="executionCheckinProgress">
+                          <div class="design-execution-scene-badge">示意图占位</div>
+                          <div class="design-execution-scene-prompt">
+                            <div class="design-execution-scene-title">连续签到进度可视化</div>
+                            <div class="design-execution-scene-desc">用签到日历和阶段奖励进度，帮助用户知道现在做到哪里、下一步是什么。</div>
+                          </div>
+                          <div class="design-execution-scene-mock">
+                            <div class="design-execution-scene-mock-title">连续签到进度可视化</div>
+                            <div class="design-execution-scene-mock-bar mid"></div>
+                            <div class="design-execution-scene-mock-bar short"></div>
+                            <div class="design-execution-scene-chip-row">
+                              <div class="design-execution-scene-chip">七日进度</div>
+                              <div class="design-execution-scene-chip">签到日历</div>
+                              <div class="design-execution-scene-chip">后续奖励</div>
+                            </div>
+                            <div class="design-execution-scene-frame">连续签到进度示意图占位</div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="design-execution-item" id="executionSuccessFeedback">
-                        <div class="design-execution-item-title">增加签到成功反馈</div>
-                        <div class="design-execution-item-desc">完成签到后通过弹窗明确反馈积分到账、连续天数变化及下一阶段奖励，强化完成感与仪式感。</div>
-                        <div class="design-execution-placeholder">具体设计方案占位</div>
-                      </div>
-                      <div class="design-execution-item" id="executionCheckinProgress">
-                        <div class="design-execution-item-title">可视化连续签到进度</div>
-                        <div class="design-execution-item-desc">使用七日签到进度和签到日历呈现历史记录，让用户清楚当前进度与后续奖励。</div>
-                        <div class="design-execution-placeholder">具体设计方案占位</div>
+                      <div class="design-execution-items">
+                        <div class="design-execution-item is-active" id="executionHomeCheckin" data-execution-item="executionHomeCheckin">
+                          <button class="design-execution-trigger" type="button" aria-expanded="true">
+                            <span class="design-execution-item-title">首页信息框架重构</span>
+                            <span class="design-execution-trigger-mark" aria-hidden="true"></span>
+                          </button>
+                          <div class="design-execution-panel">
+                            <div class="design-execution-panel-inner">
+                              <div class="design-execution-item-desc">重新梳理首页信息层级，将签到积分、每日任务和积分权益集中在同一条行为路径中。签到模块前置展示，帮助用户进入首页后快速理解“今天要做什么、可以获得什么”。</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="design-execution-item" id="executionSuccessFeedback" data-execution-item="executionSuccessFeedback">
+                          <button class="design-execution-trigger" type="button" aria-expanded="false">
+                            <span class="design-execution-item-title">增加签到成功反馈</span>
+                            <span class="design-execution-trigger-mark" aria-hidden="true"></span>
+                          </button>
+                          <div class="design-execution-panel">
+                            <div class="design-execution-panel-inner">
+                              <div class="design-execution-item-desc">完成签到后通过弹窗明确反馈积分到账、连续天数变化及下一阶段奖励，强化完成感与仪式感。</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="design-execution-item" id="executionCheckinProgress" data-execution-item="executionCheckinProgress">
+                          <button class="design-execution-trigger" type="button" aria-expanded="false">
+                            <span class="design-execution-item-title">可视化连续签到进度</span>
+                            <span class="design-execution-trigger-mark" aria-hidden="true"></span>
+                          </button>
+                          <div class="design-execution-panel">
+                            <div class="design-execution-panel-inner">
+                              <div class="design-execution-item-desc">使用七日签到进度和签到日历呈现历史记录，让用户清楚当前进度与后续奖励。</div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -2216,21 +2566,97 @@
                       <div class="design-execution-index">02</div>
                       <div class="design-execution-strategy-title">梳理任务路径与积分价值</div>
                     </div>
-                    <div class="design-execution-items">
-                      <div class="design-execution-item" id="executionTaskSystem">
-                        <div class="design-execution-item-title">建立分层任务体系</div>
-                        <div class="design-execution-item-desc">将任务划分为基础任务、成长任务和会员专属任务，明确完成条件、积分奖励和任务状态。</div>
-                        <div class="design-execution-placeholder">具体设计方案占位</div>
+                    <div class="design-execution-showcase" data-execution-showcase>
+                      <div class="design-execution-visual" aria-hidden="true">
+                        <div class="design-execution-scene is-active" data-execution-scene="executionTaskSystem">
+                          <div class="design-execution-scene-badge">示意图占位</div>
+                          <div class="design-execution-scene-prompt">
+                            <div class="design-execution-scene-title">分层任务体系</div>
+                            <div class="design-execution-scene-desc">把基础任务、成长任务和会员任务放进清晰的节奏分层，帮助用户理解积分获取方式。</div>
+                          </div>
+                          <div class="design-execution-scene-mock">
+                            <div class="design-execution-scene-mock-title">分层任务体系</div>
+                            <div class="design-execution-scene-mock-bar"></div>
+                            <div class="design-execution-scene-mock-bar short"></div>
+                            <div class="design-execution-scene-chip-row">
+                              <div class="design-execution-scene-chip">基础任务</div>
+                              <div class="design-execution-scene-chip">成长任务</div>
+                              <div class="design-execution-scene-chip">会员任务</div>
+                            </div>
+                            <div class="design-execution-scene-frame">分层任务体系示意图占位</div>
+                          </div>
+                        </div>
+                        <div class="design-execution-scene" data-execution-scene="executionMallStructure">
+                          <div class="design-execution-scene-badge">示意图占位</div>
+                          <div class="design-execution-scene-prompt">
+                            <div class="design-execution-scene-title">积分商城信息架构</div>
+                            <div class="design-execution-scene-desc">重新组织兑换入口与内容分类，让用户更快找到值得兑换的目标。</div>
+                          </div>
+                          <div class="design-execution-scene-mock">
+                            <div class="design-execution-scene-mock-title">积分商城信息架构</div>
+                            <div class="design-execution-scene-mock-bar mid"></div>
+                            <div class="design-execution-scene-mock-bar"></div>
+                            <div class="design-execution-scene-chip-row">
+                              <div class="design-execution-scene-chip">会员福利</div>
+                              <div class="design-execution-scene-chip">限时兑换</div>
+                              <div class="design-execution-scene-chip">积分抽奖</div>
+                            </div>
+                            <div class="design-execution-scene-frame">积分商城信息架构示意图占位</div>
+                          </div>
+                        </div>
+                        <div class="design-execution-scene" data-execution-scene="executionBenefitCard">
+                          <div class="design-execution-scene-badge">示意图占位</div>
+                          <div class="design-execution-scene-prompt">
+                            <div class="design-execution-scene-title">权益卡片表达优化</div>
+                            <div class="design-execution-scene-desc">让所需积分、权益价值和兑换状态在同一张卡片里一眼看清。</div>
+                          </div>
+                          <div class="design-execution-scene-mock">
+                            <div class="design-execution-scene-mock-title">权益卡片表达优化</div>
+                            <div class="design-execution-scene-mock-bar short"></div>
+                            <div class="design-execution-scene-mock-bar mid"></div>
+                            <div class="design-execution-scene-chip-row">
+                              <div class="design-execution-scene-chip">所需积分</div>
+                              <div class="design-execution-scene-chip">权益价值</div>
+                              <div class="design-execution-scene-chip">兑换状态</div>
+                            </div>
+                            <div class="design-execution-scene-frame">权益卡片表达示意图占位</div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="design-execution-item" id="executionMallStructure">
-                        <div class="design-execution-item-title">重构积分商城信息架构</div>
-                        <div class="design-execution-item-desc">按照会员福利、限时兑换、学习权益和积分抽奖分类，帮助用户快速找到可兑换内容。</div>
-                        <div class="design-execution-placeholder">具体设计方案占位</div>
-                      </div>
-                      <div class="design-execution-item" id="executionBenefitCard">
-                        <div class="design-execution-item-title">优化权益卡片表达</div>
-                        <div class="design-execution-item-desc">突出所需积分、权益价值、有效期限和兑换状态，缩短从理解积分到完成兑换的路径。</div>
-                        <div class="design-execution-placeholder">具体设计方案占位</div>
+                      <div class="design-execution-items">
+                        <div class="design-execution-item is-active" id="executionTaskSystem" data-execution-item="executionTaskSystem">
+                          <button class="design-execution-trigger" type="button" aria-expanded="true">
+                            <span class="design-execution-item-title">建立分层任务体系</span>
+                            <span class="design-execution-trigger-mark" aria-hidden="true"></span>
+                          </button>
+                          <div class="design-execution-panel">
+                            <div class="design-execution-panel-inner">
+                              <div class="design-execution-item-desc">将任务划分为基础任务、成长任务和会员专属任务，明确完成条件、积分奖励和任务状态。</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="design-execution-item" id="executionMallStructure" data-execution-item="executionMallStructure">
+                          <button class="design-execution-trigger" type="button" aria-expanded="false">
+                            <span class="design-execution-item-title">重构积分商城信息架构</span>
+                            <span class="design-execution-trigger-mark" aria-hidden="true"></span>
+                          </button>
+                          <div class="design-execution-panel">
+                            <div class="design-execution-panel-inner">
+                              <div class="design-execution-item-desc">按照会员福利、限时兑换、学习权益和积分抽奖分类，帮助用户快速找到可兑换内容。</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="design-execution-item" id="executionBenefitCard" data-execution-item="executionBenefitCard">
+                          <button class="design-execution-trigger" type="button" aria-expanded="false">
+                            <span class="design-execution-item-title">优化权益卡片表达</span>
+                            <span class="design-execution-trigger-mark" aria-hidden="true"></span>
+                          </button>
+                          <div class="design-execution-panel">
+                            <div class="design-execution-panel-inner">
+                              <div class="design-execution-item-desc">突出所需积分、权益价值、有效期限和兑换状态，缩短从理解积分到完成兑换的路径。</div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -2239,21 +2665,97 @@
                       <div class="design-execution-index">03</div>
                       <div class="design-execution-strategy-title">建立签到到权益的激励闭环</div>
                     </div>
-                    <div class="design-execution-items">
-                      <div class="design-execution-item" id="executionStageReward">
-                        <div class="design-execution-item-title">增加连续签到阶段奖励</div>
-                        <div class="design-execution-item-desc">在固定签到之外设置阶段目标和额外奖励，为用户提供持续签到的长期期待。</div>
-                        <div class="design-execution-placeholder">具体设计方案占位</div>
+                    <div class="design-execution-showcase" data-execution-showcase>
+                      <div class="design-execution-visual" aria-hidden="true">
+                        <div class="design-execution-scene is-active" data-execution-scene="executionStageReward">
+                          <div class="design-execution-scene-badge">示意图占位</div>
+                          <div class="design-execution-scene-prompt">
+                            <div class="design-execution-scene-title">阶段奖励设置</div>
+                            <div class="design-execution-scene-desc">在每日签到之外叠加阶段目标，让用户拥有继续完成的长期期待。</div>
+                          </div>
+                          <div class="design-execution-scene-mock">
+                            <div class="design-execution-scene-mock-title">阶段奖励设置</div>
+                            <div class="design-execution-scene-mock-bar"></div>
+                            <div class="design-execution-scene-mock-bar short"></div>
+                            <div class="design-execution-scene-chip-row">
+                              <div class="design-execution-scene-chip">阶段目标</div>
+                              <div class="design-execution-scene-chip">额外奖励</div>
+                              <div class="design-execution-scene-chip">长期期待</div>
+                            </div>
+                            <div class="design-execution-scene-frame">阶段奖励示意图占位</div>
+                          </div>
+                        </div>
+                        <div class="design-execution-scene" data-execution-scene="executionLottery">
+                          <div class="design-execution-scene-badge">示意图占位</div>
+                          <div class="design-execution-scene-prompt">
+                            <div class="design-execution-scene-title">积分抽奖机制</div>
+                            <div class="design-execution-scene-desc">增加积分消耗场景，让日常签到不仅能积累，也能获得适度惊喜反馈。</div>
+                          </div>
+                          <div class="design-execution-scene-mock">
+                            <div class="design-execution-scene-mock-title">积分抽奖机制</div>
+                            <div class="design-execution-scene-mock-bar mid"></div>
+                            <div class="design-execution-scene-mock-bar"></div>
+                            <div class="design-execution-scene-chip-row">
+                              <div class="design-execution-scene-chip">限定徽章</div>
+                              <div class="design-execution-scene-chip">学习道具</div>
+                              <div class="design-execution-scene-chip">积分消耗</div>
+                            </div>
+                            <div class="design-execution-scene-frame">积分抽奖示意图占位</div>
+                          </div>
+                        </div>
+                        <div class="design-execution-scene" data-execution-scene="executionVipTrial">
+                          <div class="design-execution-scene-badge">示意图占位</div>
+                          <div class="design-execution-scene-prompt">
+                            <div class="design-execution-scene-title">限时兑换与会员体验</div>
+                            <div class="design-execution-scene-desc">通过限时优惠和试用权益，帮助用户更自然地理解会员价值。</div>
+                          </div>
+                          <div class="design-execution-scene-mock">
+                            <div class="design-execution-scene-mock-title">限时兑换与会员体验</div>
+                            <div class="design-execution-scene-mock-bar short"></div>
+                            <div class="design-execution-scene-mock-bar mid"></div>
+                            <div class="design-execution-scene-chip-row">
+                              <div class="design-execution-scene-chip">限时兑换</div>
+                              <div class="design-execution-scene-chip">补签卡</div>
+                              <div class="design-execution-scene-chip">VIP 体验</div>
+                            </div>
+                            <div class="design-execution-scene-frame">会员体验示意图占位</div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="design-execution-item" id="executionLottery">
-                        <div class="design-execution-item-title">引入积分抽奖机制</div>
-                        <div class="design-execution-item-desc">通过限定徽章、学习道具等奖励增加积分消耗场景，为日常学习提供适度惊喜。</div>
-                        <div class="design-execution-placeholder">具体设计方案占位</div>
-                      </div>
-                      <div class="design-execution-item" id="executionVipTrial">
-                        <div class="design-execution-item-title">加入限时兑换与会员体验</div>
-                        <div class="design-execution-item-desc">提供限时优惠、补签卡和 VIP 体验权益，引导用户感知付费功能的实际价值。</div>
-                        <div class="design-execution-placeholder">具体设计方案占位</div>
+                      <div class="design-execution-items">
+                        <div class="design-execution-item is-active" id="executionStageReward" data-execution-item="executionStageReward">
+                          <button class="design-execution-trigger" type="button" aria-expanded="true">
+                            <span class="design-execution-item-title">增加连续签到阶段奖励</span>
+                            <span class="design-execution-trigger-mark" aria-hidden="true"></span>
+                          </button>
+                          <div class="design-execution-panel">
+                            <div class="design-execution-panel-inner">
+                              <div class="design-execution-item-desc">在固定签到之外设置阶段目标和额外奖励，为用户提供持续签到的长期期待。</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="design-execution-item" id="executionLottery" data-execution-item="executionLottery">
+                          <button class="design-execution-trigger" type="button" aria-expanded="false">
+                            <span class="design-execution-item-title">引入积分抽奖机制</span>
+                            <span class="design-execution-trigger-mark" aria-hidden="true"></span>
+                          </button>
+                          <div class="design-execution-panel">
+                            <div class="design-execution-panel-inner">
+                              <div class="design-execution-item-desc">通过限定徽章、学习道具等奖励增加积分消耗场景，为日常学习提供适度惊喜。</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="design-execution-item" id="executionVipTrial" data-execution-item="executionVipTrial">
+                          <button class="design-execution-trigger" type="button" aria-expanded="false">
+                            <span class="design-execution-item-title">加入限时兑换与会员体验</span>
+                            <span class="design-execution-trigger-mark" aria-hidden="true"></span>
+                          </button>
+                          <div class="design-execution-panel">
+                            <div class="design-execution-panel-inner">
+                              <div class="design-execution-item-desc">提供限时优惠、补签卡和 VIP 体验权益，引导用户感知付费功能的实际价值。</div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -2474,6 +2976,54 @@
       });
 
       startAutoSwitch();
+    })();
+
+    (function() {
+      var showcases = document.querySelectorAll('[data-execution-showcase]');
+      if (!showcases.length) return;
+
+      showcases.forEach(function(showcase) {
+        var items = Array.prototype.slice.call(showcase.querySelectorAll('[data-execution-item]'));
+        var scenes = Array.prototype.slice.call(showcase.querySelectorAll('[data-execution-scene]'));
+        if (!items.length || !scenes.length) return;
+
+        function activate(itemId, shouldLog) {
+          items.forEach(function(item) {
+            var isActive = item.getAttribute('data-execution-item') === itemId;
+            item.classList.toggle('is-active', isActive);
+            var trigger = item.querySelector('.design-execution-trigger');
+            if (trigger) {
+              trigger.setAttribute('aria-expanded', String(isActive));
+            }
+          });
+
+          scenes.forEach(function(scene) {
+            scene.classList.toggle('is-active', scene.getAttribute('data-execution-scene') === itemId);
+          });
+
+          if (shouldLog) {
+            var strategy = showcase.closest('.design-execution-strategy');
+            logMotionEvent('design execution switch', {
+              strategyId: strategy && strategy.id ? strategy.id : 'unknown',
+              itemId: itemId,
+              expectedPanelTransition: '360ms'
+            });
+          }
+        }
+
+        items.forEach(function(item, index) {
+          var trigger = item.querySelector('.design-execution-trigger');
+          if (!trigger) return;
+
+          trigger.addEventListener('click', function() {
+            activate(item.getAttribute('data-execution-item'), true);
+          });
+
+          if (index === 0) {
+            activate(item.getAttribute('data-execution-item'), false);
+          }
+        });
+      });
     })();
 
     (function() {
