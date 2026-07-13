@@ -605,7 +605,7 @@
 
     .design-solution-compare-handle {
       position: absolute;
-      top: 44%;
+      top: var(--compare-handle-top, 44%);
       left: var(--compare-position);
       width: auto;
       min-width: 144px;
@@ -2156,7 +2156,18 @@
                 </div>
                 <div class="design-solution-compare-guide">
                   <div class="design-solution-compare-divider"></div>
-                  <div class="design-solution-compare-handle">
+                  <div class="design-solution-compare-handle" data-compare-handle-row="0">
+                    <span class="design-solution-compare-handle-label">
+                      <span class="design-solution-compare-handle-arrow design-solution-compare-handle-arrow-left"></span>
+                      <span>改版后</span>
+                    </span>
+                    <span class="design-solution-compare-handle-separator"></span>
+                    <span class="design-solution-compare-handle-label">
+                      <span>改版前</span>
+                      <span class="design-solution-compare-handle-arrow design-solution-compare-handle-arrow-right"></span>
+                    </span>
+                  </div>
+                  <div class="design-solution-compare-handle" data-compare-handle-row="1">
                     <span class="design-solution-compare-handle-label">
                       <span class="design-solution-compare-handle-arrow design-solution-compare-handle-arrow-left"></span>
                       <span>改版后</span>
@@ -2472,11 +2483,46 @@
       boards.forEach(function(board) {
         var range = board.querySelector('.design-solution-compare-range');
         if (!range) return;
+        var guide = board.querySelector('.design-solution-compare-guide');
+        var rowHandles = board.querySelectorAll('[data-compare-handle-row]');
         var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         var autoFrame = null;
         var lastFrameTime = 0;
         var autoSpeed = 3.2;
         var autoPlayStartTime = 0;
+
+        function syncHandleRows() {
+          if (!guide || !rowHandles.length) return;
+
+          var stages = Array.prototype.slice.call(board.querySelectorAll('.design-solution-compare-stage'));
+          if (!stages.length) return;
+
+          var guideRect = guide.getBoundingClientRect();
+          var rowTopMap = [];
+
+          stages.forEach(function(stage) {
+            var stageRect = stage.getBoundingClientRect();
+            var stageTop = Math.round(stageRect.top - guideRect.top);
+            if (rowTopMap.indexOf(stageTop) === -1) {
+              rowTopMap.push(stageTop);
+            }
+          });
+
+          rowTopMap.sort(function(a, b) {
+            return a - b;
+          });
+
+          rowHandles.forEach(function(handle, index) {
+            var rowTop = rowTopMap[index];
+            if (typeof rowTop !== 'number') {
+              handle.style.display = 'none';
+              return;
+            }
+
+            handle.style.display = 'flex';
+            handle.style.setProperty('--compare-handle-top', rowTop + 60 + 'px');
+          });
+        }
 
         function syncPosition(value) {
           var nextValue = Math.max(0, Math.min(100, Number(value)));
@@ -2493,6 +2539,8 @@
             var nextLocalPosition = Math.max(0, Math.min(100, localPosition));
             stage.style.setProperty('--compare-position', nextLocalPosition + '%');
           });
+
+          syncHandleRows();
         }
 
         function clearAutoPlay() {
