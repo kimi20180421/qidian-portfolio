@@ -758,18 +758,20 @@
 
     .design-execution-detail {
       margin-top: 28px;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 500px;
-      gap: 32px;
-      align-items: center;
+      position: relative;
     }
 
     .design-execution-detail-copy {
+      position: absolute;
+      left: 28px;
+      top: 28px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      justify-content: center;
+      justify-content: flex-start;
       min-width: 0;
+      max-width: 328px;
+      z-index: 5;
     }
 
     .design-execution-detail-title {
@@ -792,7 +794,7 @@
 
     .design-execution-detail-visual {
       position: relative;
-      width: 500px;
+      width: 100%;
       min-height: 560px;
       border-radius: 28px;
       overflow: hidden;
@@ -801,7 +803,7 @@
         radial-gradient(circle at 80% 16%, rgba(255, 255, 255, 0.54), transparent 24%),
         linear-gradient(140deg, rgba(245, 249, 248, 0.98) 0%, rgba(233, 246, 243, 0.95) 52%, rgba(224, 243, 239, 0.94) 100%);
       box-sizing: border-box;
-      padding: 24px;
+      padding: 28px;
       isolation: isolate;
     }
 
@@ -820,22 +822,22 @@
       position: relative;
       width: 100%;
       height: 100%;
-      min-height: 512px;
+      min-height: 504px;
       z-index: 1;
     }
 
     .design-execution-progress-status-list {
       position: absolute;
-      left: 0;
-      top: 0;
+      left: 12px;
+      top: 104px;
       display: flex;
       align-items: flex-start;
-      gap: 18px;
+      gap: 34px;
       z-index: 3;
     }
 
     .design-execution-progress-status {
-      width: 92px;
+      width: 104px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -843,7 +845,7 @@
     }
 
     .design-execution-progress-status img {
-      width: 56px;
+      width: 62px;
       height: auto;
       display: block;
       user-select: none;
@@ -851,7 +853,7 @@
     }
 
     .design-execution-progress-status-title {
-      margin-top: 8px;
+      margin-top: 10px;
       font-size: 15px;
       line-height: 22px;
       font-weight: 500;
@@ -859,7 +861,7 @@
     }
 
     .design-execution-progress-status-desc {
-      margin-top: 2px;
+      margin-top: 4px;
       font-size: 12px;
       line-height: 18px;
       font-weight: 400;
@@ -868,9 +870,9 @@
 
     .design-execution-progress-bear {
       position: absolute;
-      left: 2px;
+      left: 16px;
       bottom: 18px;
-      width: 192px;
+      width: 204px;
       z-index: 2;
       user-select: none;
       -webkit-user-drag: none;
@@ -878,9 +880,9 @@
 
     .design-execution-progress-calendar {
       position: absolute;
-      left: 138px;
-      bottom: 26px;
-      width: 274px;
+      left: 212px;
+      bottom: 16px;
+      width: 286px;
       z-index: 4;
       user-select: none;
       -webkit-user-drag: none;
@@ -888,9 +890,9 @@
 
     .design-execution-progress-phone {
       position: absolute;
-      right: 4px;
-      top: 6px;
-      width: 214px;
+      right: 10px;
+      top: 8px;
+      width: 238px;
       z-index: 1;
       user-select: none;
       -webkit-user-drag: none;
@@ -2303,14 +2305,15 @@
           gap: 24px;
         }
 
-        .design-execution-detail {
-          grid-template-columns: 1fr;
-          gap: 24px;
-        }
-
         .design-execution-detail-visual {
           width: 100%;
           min-height: 520px;
+        }
+
+        .design-execution-detail-copy {
+          left: 24px;
+          top: 24px;
+          max-width: 280px;
         }
 
         .design-execution-visual {
@@ -2334,14 +2337,13 @@
         }
 
         .design-execution-progress-status-list {
-          position: relative;
-          left: auto;
-          top: auto;
-          gap: 12px;
+          left: 0;
+          top: 114px;
+          gap: 18px;
         }
 
         .design-execution-progress-status {
-          width: 84px;
+          width: 88px;
         }
 
         .design-execution-progress-status img {
@@ -2349,19 +2351,21 @@
         }
 
         .design-execution-progress-bear {
-          width: 170px;
-          left: 4px;
+          width: 158px;
+          left: 6px;
           bottom: 18px;
         }
 
         .design-execution-progress-calendar {
-          left: 110px;
-          bottom: 28px;
-          width: 248px;
+          left: 116px;
+          bottom: 18px;
+          width: 228px;
         }
 
         .design-execution-progress-phone {
-          width: 198px;
+          width: 176px;
+          right: 0;
+          top: 18px;
         }
 
       }
@@ -2944,12 +2948,12 @@
                       </div>
                     </div>
                     <div class="design-execution-detail">
-                      <div class="design-execution-detail-copy">
-                        <div class="design-execution-item-title-tag">连续签到进度可视化</div>
-                        <div class="design-execution-detail-title">将每日打卡转化为可积累的成长记录</div>
-                        <div class="design-execution-detail-desc">通过签到日历和连续进度展示用户的历史记录、当前连续状态及中断情况，让签到不再是一次性操作，而成为可以持续积累的学习成果。</div>
-                      </div>
                       <div class="design-execution-detail-visual" aria-hidden="true">
+                        <div class="design-execution-detail-copy">
+                          <div class="design-execution-item-title-tag">连续签到进度可视化</div>
+                          <div class="design-execution-detail-title">将每日打卡转化为可积累的成长记录</div>
+                          <div class="design-execution-detail-desc">通过签到日历和连续进度展示用户的历史记录、当前连续状态及中断情况，让签到不再是一次性操作，而成为可以持续积累的学习成果。</div>
+                        </div>
                         <div class="design-execution-progress-composition">
                           <div class="design-execution-progress-status-list">
                             <div class="design-execution-progress-status">
