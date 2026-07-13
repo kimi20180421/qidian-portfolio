@@ -774,7 +774,7 @@
       z-index: 5;
     }
 
-    .design-execution-detail-title {
+    .design-execution-detail-copy .design-execution-item-title-main {
       margin-top: 8px;
       font-size: 28px;
       line-height: 40px;
@@ -783,39 +783,26 @@
       letter-spacing: -0.02em;
     }
 
-    .design-execution-detail-desc {
+    .design-execution-detail-copy .design-execution-item-desc {
       margin-top: 12px;
+      padding: 0;
+      opacity: 1;
+      transform: none;
+      transition: none;
       max-width: 420px;
       font-size: 15px;
       line-height: 26px;
       font-weight: 400;
-      color: rgba(31, 35, 41, 0.72);
+      color: rgba(31, 35, 41, 0.74);
     }
 
     .design-execution-detail-visual {
       position: relative;
       width: 100%;
       min-height: 560px;
-      border-radius: 28px;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.82), transparent 32%),
-        radial-gradient(circle at 80% 16%, rgba(255, 255, 255, 0.54), transparent 24%),
-        linear-gradient(140deg, rgba(245, 249, 248, 0.98) 0%, rgba(233, 246, 243, 0.95) 52%, rgba(224, 243, 239, 0.94) 100%);
+      background: transparent;
       box-sizing: border-box;
       padding: 28px;
-      isolation: isolate;
-    }
-
-    .design-execution-detail-visual::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 16% 72%, rgba(62, 198, 181, 0.12), transparent 28%),
-        radial-gradient(circle at 88% 26%, rgba(255, 204, 79, 0.12), transparent 22%);
-      pointer-events: none;
-      z-index: 0;
     }
 
     .design-execution-progress-composition {
@@ -2951,8 +2938,8 @@
                       <div class="design-execution-detail-visual" aria-hidden="true">
                         <div class="design-execution-detail-copy">
                           <div class="design-execution-item-title-tag">连续签到进度可视化</div>
-                          <div class="design-execution-detail-title">将每日打卡转化为可积累的成长记录</div>
-                          <div class="design-execution-detail-desc">通过签到日历和连续进度展示用户的历史记录、当前连续状态及中断情况，让签到不再是一次性操作，而成为可以持续积累的学习成果。</div>
+                          <div class="design-execution-item-title-main">将每日打卡转化为可积累的成长记录</div>
+                          <div class="design-execution-item-desc">通过签到日历和连续进度展示用户的历史记录、当前连续状态及中断情况，让签到不再是一次性操作，而成为可以持续积累的学习成果。</div>
                         </div>
                         <div class="design-execution-progress-composition">
                           <div class="design-execution-progress-status-list">
