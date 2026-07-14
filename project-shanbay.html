@@ -1337,6 +1337,57 @@
       animation: executionFeedbackDoneIn 680ms var(--motion-ease) 640ms both;
     }
 
+    .design-execution-success-combo-scene {
+      position: relative;
+      width: 500px;
+      height: 560px;
+      overflow: hidden;
+    }
+
+    .design-execution-success-phone,
+    .design-execution-success-atmosphere,
+    .design-execution-success-card {
+      position: absolute;
+      display: block;
+      height: auto;
+      user-select: none;
+      -webkit-user-drag: none;
+      opacity: 0;
+    }
+
+    .design-execution-success-phone {
+      left: -88px;
+      top: 18px;
+      width: 386px;
+      z-index: 1;
+    }
+
+    .design-execution-success-atmosphere {
+      left: 10px;
+      top: 202px;
+      width: 92px;
+      z-index: 3;
+    }
+
+    .design-execution-success-card {
+      left: 150px;
+      top: 42px;
+      width: 336px;
+      z-index: 4;
+    }
+
+    .design-execution-scene.is-active .design-execution-success-phone {
+      animation: executionSuccessPhoneIn 680ms var(--motion-ease) 80ms both;
+    }
+
+    .design-execution-scene.is-active .design-execution-success-atmosphere {
+      animation: executionSuccessAtmosphereIn 680ms var(--motion-ease) 300ms both;
+    }
+
+    .design-execution-scene.is-active .design-execution-success-card {
+      animation: executionSuccessCardIn 760ms cubic-bezier(0.34, 1.56, 0.64, 1) 420ms both;
+    }
+
     .design-execution-item {
       scroll-margin-top: 92px;
       border-top: 1px solid rgba(5, 91, 79, 0.14);
@@ -2019,6 +2070,47 @@
       }
     }
 
+    @keyframes executionSuccessPhoneIn {
+      0% {
+        opacity: 0;
+        transform: translateX(-24px) scale(0.96);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+
+    @keyframes executionSuccessAtmosphereIn {
+      0% {
+        opacity: 0;
+        transform: translateY(14px) scale(0.9);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes executionSuccessCardIn {
+      0% {
+        opacity: 0;
+        transform: translate(18px, 22px) scale(0.9);
+      }
+
+      64% {
+        opacity: 1;
+        transform: translate(0, -6px) scale(1.03);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+      }
+    }
+
     @keyframes executionProgressBearPop {
       0% {
         opacity: 0;
@@ -2171,6 +2263,14 @@
       }
 
       .design-execution-feedback-layer {
+        opacity: 1;
+        transform: none;
+        animation: none !important;
+      }
+
+      .design-execution-success-phone,
+      .design-execution-success-atmosphere,
+      .design-execution-success-card {
         opacity: 1;
         transform: none;
         animation: none !important;
@@ -2703,6 +2803,29 @@
           width: 176px;
           right: 0;
           top: 18px;
+        }
+
+        .design-execution-success-combo-scene {
+          width: 100%;
+          height: 420px;
+        }
+
+        .design-execution-success-phone {
+          left: -56px;
+          top: 44px;
+          width: 278px;
+        }
+
+        .design-execution-success-atmosphere {
+          left: 4px;
+          top: 158px;
+          width: 68px;
+        }
+
+        .design-execution-success-card {
+          left: 116px;
+          top: 52px;
+          width: 246px;
         }
 
         .design-execution-extension-progress-scene,
@@ -3279,21 +3402,10 @@
                           </div>
                         </div>
                         <div class="design-execution-scene" data-execution-scene="executionCheckinProgress">
-                          <div class="design-execution-scene-badge">示意图占位</div>
-                          <div class="design-execution-scene-prompt">
-                            <div class="design-execution-scene-title">连续签到进度可视化</div>
-                            <div class="design-execution-scene-desc">用签到日历和阶段奖励进度，帮助用户知道现在做到哪里、下一步是什么。</div>
-                          </div>
-                          <div class="design-execution-scene-mock">
-                            <div class="design-execution-scene-mock-title">连续签到进度可视化</div>
-                            <div class="design-execution-scene-mock-bar mid"></div>
-                            <div class="design-execution-scene-mock-bar short"></div>
-                            <div class="design-execution-scene-chip-row">
-                              <div class="design-execution-scene-chip">七日进度</div>
-                              <div class="design-execution-scene-chip">签到日历</div>
-                              <div class="design-execution-scene-chip">后续奖励</div>
-                            </div>
-                            <div class="design-execution-scene-frame">连续签到进度示意图占位</div>
+                          <div class="design-execution-success-combo-scene">
+                            <img class="design-execution-success-phone" src="assets/figma-portfolio/phone.png" alt="签到成功背景手机图" />
+                            <img class="design-execution-success-atmosphere" src="assets/figma-portfolio/fenwei1.png" alt="签到成功氛围星星图" />
+                            <img class="design-execution-success-card" src="assets/figma-portfolio/success.png" alt="签到成功弹窗图" />
                           </div>
                         </div>
                       </div>
