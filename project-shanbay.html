@@ -756,6 +756,99 @@
       order: 2;
     }
 
+    .design-execution-showcase-stack {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .design-execution-showcase-stack > .design-execution-visual {
+      order: 1;
+      min-height: 360px;
+    }
+
+    .design-execution-showcase-stack > .design-execution-items {
+      order: 2;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 0;
+    }
+
+    .design-execution-showcase-stack .design-execution-item {
+      display: contents;
+      border: 0;
+    }
+
+    .design-execution-showcase-stack .design-execution-item:last-child {
+      border-bottom: 0;
+    }
+
+    .design-execution-showcase-stack .design-execution-item.is-active {
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .design-execution-showcase-stack .design-execution-trigger {
+      order: 1;
+      min-height: 72px;
+      padding: 16px;
+      align-items: flex-start;
+      border: 1px solid rgba(5, 91, 79, 0.12);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.68);
+      transition: border-color var(--motion-tab) var(--motion-ease), background var(--motion-tab) var(--motion-ease), box-shadow var(--motion-tab) var(--motion-ease);
+    }
+
+    .design-execution-showcase-stack .design-execution-item.is-active .design-execution-trigger {
+      border-color: rgba(52, 200, 178, 0.42);
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 16px 34px rgba(5, 91, 79, 0.08);
+    }
+
+    .design-execution-showcase-stack .design-execution-item-title {
+      font-size: 15px;
+      line-height: 22px;
+    }
+
+    .design-execution-showcase-stack .design-execution-trigger-mark {
+      display: none;
+    }
+
+    .design-execution-showcase-stack .design-execution-panel-inner {
+      padding: 20px 22px;
+    }
+
+    .design-execution-showcase-stack .design-execution-panel {
+      order: 2;
+      grid-column: 1 / -1;
+      overflow: hidden;
+      border: 0;
+      border-radius: 20px;
+      background: transparent;
+    }
+
+    .design-execution-showcase-stack .design-execution-item.is-active .design-execution-panel {
+      border: 1px solid rgba(52, 200, 178, 0.24);
+      background: rgba(255, 255, 255, 0.86);
+    }
+
+    .design-execution-showcase-stack .design-execution-item-desc {
+      padding: 0;
+      font-size: 15px;
+      line-height: 26px;
+    }
+
+    .design-execution-showcase-stack .design-execution-item-desc-title {
+      margin-bottom: 8px;
+      display: block;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 500;
+      color: #055B4F;
+    }
+
     .design-execution-detail {
       margin-top: 28px;
       position: relative;
@@ -2762,6 +2855,14 @@
           min-height: 420px;
         }
 
+        .design-execution-showcase-stack > .design-execution-visual {
+          min-height: 320px;
+        }
+
+        .design-execution-showcase-stack > .design-execution-items {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
         .design-execution-scene {
           padding: 24px;
         }
@@ -2891,6 +2992,16 @@
           transform: translateX(-50%);
         }
 
+      }
+
+      @media (max-width: 560px) {
+        .design-execution-showcase-stack > .design-execution-items {
+          grid-template-columns: 1fr;
+        }
+
+        .design-execution-showcase-stack > .design-execution-visual {
+          min-height: 300px;
+        }
       }
   </style>
 </head>
@@ -3515,16 +3626,16 @@
                       <div class="design-execution-index">02</div>
                       <div class="design-execution-strategy-title">梳理任务路径与积分价值</div>
                     </div>
-                    <div class="design-execution-showcase design-execution-showcase-reverse" data-execution-showcase>
+                    <div class="design-execution-showcase design-execution-showcase-stack" data-execution-showcase>
                       <div class="design-execution-visual" aria-hidden="true">
                         <div class="design-execution-scene is-active" data-execution-scene="executionTaskSystem">
                           <div class="design-execution-scene-badge">示意图占位</div>
                           <div class="design-execution-scene-prompt">
-                            <div class="design-execution-scene-title">分层任务体系</div>
-                            <div class="design-execution-scene-desc">把基础任务、成长任务和会员任务放进清晰的节奏分层，帮助用户理解积分获取方式。</div>
+                            <div class="design-execution-scene-title">任务体系分层</div>
+                            <div class="design-execution-scene-desc">图片占位符，后续替换为基础任务、成长任务与会员任务的分层设计图。</div>
                           </div>
                           <div class="design-execution-scene-mock">
-                            <div class="design-execution-scene-mock-title">分层任务体系</div>
+                            <div class="design-execution-scene-mock-title">任务体系分层</div>
                             <div class="design-execution-scene-mock-bar"></div>
                             <div class="design-execution-scene-mock-bar short"></div>
                             <div class="design-execution-scene-chip-row">
@@ -3538,16 +3649,16 @@
                         <div class="design-execution-scene" data-execution-scene="executionMallStructure">
                           <div class="design-execution-scene-badge">示意图占位</div>
                           <div class="design-execution-scene-prompt">
-                            <div class="design-execution-scene-title">积分商城信息架构</div>
-                            <div class="design-execution-scene-desc">重新组织兑换入口与内容分类，让用户更快找到值得兑换的目标。</div>
+                            <div class="design-execution-scene-title">积分商城信息架构重构</div>
+                            <div class="design-execution-scene-desc">图片占位符，后续替换为积分商城分类浏览结构图。</div>
                           </div>
                           <div class="design-execution-scene-mock">
-                            <div class="design-execution-scene-mock-title">积分商城信息架构</div>
+                            <div class="design-execution-scene-mock-title">积分商城信息架构重构</div>
                             <div class="design-execution-scene-mock-bar mid"></div>
                             <div class="design-execution-scene-mock-bar"></div>
                             <div class="design-execution-scene-chip-row">
+                              <div class="design-execution-scene-chip">热门推荐</div>
                               <div class="design-execution-scene-chip">会员福利</div>
-                              <div class="design-execution-scene-chip">限时兑换</div>
                               <div class="design-execution-scene-chip">积分抽奖</div>
                             </div>
                             <div class="design-execution-scene-frame">积分商城信息架构示意图占位</div>
@@ -3556,11 +3667,11 @@
                         <div class="design-execution-scene" data-execution-scene="executionBenefitCard">
                           <div class="design-execution-scene-badge">示意图占位</div>
                           <div class="design-execution-scene-prompt">
-                            <div class="design-execution-scene-title">权益卡片表达优化</div>
-                            <div class="design-execution-scene-desc">让所需积分、权益价值和兑换状态在同一张卡片里一眼看清。</div>
+                            <div class="design-execution-scene-title">权益兑换卡片标准化</div>
+                            <div class="design-execution-scene-desc">图片占位符，后续替换为权益卡片信息层级示意图。</div>
                           </div>
                           <div class="design-execution-scene-mock">
-                            <div class="design-execution-scene-mock-title">权益卡片表达优化</div>
+                            <div class="design-execution-scene-mock-title">权益兑换卡片标准化</div>
                             <div class="design-execution-scene-mock-bar short"></div>
                             <div class="design-execution-scene-mock-bar mid"></div>
                             <div class="design-execution-scene-chip-row">
@@ -3571,38 +3682,67 @@
                             <div class="design-execution-scene-frame">权益卡片表达示意图占位</div>
                           </div>
                         </div>
+                        <div class="design-execution-scene" data-execution-scene="executionLimitedExchange">
+                          <div class="design-execution-scene-badge">示意图占位</div>
+                          <div class="design-execution-scene-prompt">
+                            <div class="design-execution-scene-title">限时兑换机制设计</div>
+                            <div class="design-execution-scene-desc">图片占位符，后续替换为限时兑换专区和倒计时机制示意图。</div>
+                          </div>
+                          <div class="design-execution-scene-mock">
+                            <div class="design-execution-scene-mock-title">限时兑换机制设计</div>
+                            <div class="design-execution-scene-mock-bar mid"></div>
+                            <div class="design-execution-scene-mock-bar short"></div>
+                            <div class="design-execution-scene-chip-row">
+                              <div class="design-execution-scene-chip">活动倒计时</div>
+                              <div class="design-execution-scene-chip">限定标签</div>
+                              <div class="design-execution-scene-chip">限量权益</div>
+                            </div>
+                            <div class="design-execution-scene-frame">限时兑换机制示意图占位</div>
+                          </div>
+                        </div>
                       </div>
                       <div class="design-execution-items">
                         <div class="design-execution-item is-active" id="executionTaskSystem" data-execution-item="executionTaskSystem">
                           <button class="design-execution-trigger" type="button" aria-expanded="true">
-                            <span class="design-execution-item-title">建立分层任务体系</span>
+                            <span class="design-execution-item-title">任务体系分层</span>
                             <span class="design-execution-trigger-mark" aria-hidden="true"></span>
                           </button>
                           <div class="design-execution-panel">
                             <div class="design-execution-panel-inner">
-                              <div class="design-execution-item-desc">将任务划分为基础任务、成长任务和会员专属任务，明确完成条件、积分奖励和任务状态。</div>
+                              <div class="design-execution-item-desc"><span class="design-execution-item-desc-title">让不同阶段的用户快速找到适合自己的任务</span>将原本混合展示的任务按照参与门槛和用户阶段，划分为基础任务、成长任务和会员专属任务，并统一展示任务条件、完成进度、积分奖励和当前状态。</div>
                             </div>
                           </div>
                         </div>
                         <div class="design-execution-item" id="executionMallStructure" data-execution-item="executionMallStructure">
                           <button class="design-execution-trigger" type="button" aria-expanded="false">
-                            <span class="design-execution-item-title">重构积分商城信息架构</span>
+                            <span class="design-execution-item-title">积分商城信息架构重构</span>
                             <span class="design-execution-trigger-mark" aria-hidden="true"></span>
                           </button>
                           <div class="design-execution-panel">
                             <div class="design-execution-panel-inner">
-                              <div class="design-execution-item-desc">按照会员福利、限时兑换、学习权益和积分抽奖分类，帮助用户快速找到可兑换内容。</div>
+                              <div class="design-execution-item-desc"><span class="design-execution-item-desc-title">按照用户需求组织权益，降低查找成本</span>将积分商城从平铺式商品展示调整为分类浏览结构，按照热门推荐、会员福利、限时兑换、学习权益和积分抽奖进行组织，帮助用户快速找到感兴趣的兑换内容。</div>
                             </div>
                           </div>
                         </div>
                         <div class="design-execution-item" id="executionBenefitCard" data-execution-item="executionBenefitCard">
                           <button class="design-execution-trigger" type="button" aria-expanded="false">
-                            <span class="design-execution-item-title">优化权益卡片表达</span>
+                            <span class="design-execution-item-title">权益兑换卡片标准化</span>
                             <span class="design-execution-trigger-mark" aria-hidden="true"></span>
                           </button>
                           <div class="design-execution-panel">
                             <div class="design-execution-panel-inner">
-                              <div class="design-execution-item-desc">突出所需积分、权益价值、有效期限和兑换状态，缩短从理解积分到完成兑换的路径。</div>
+                              <div class="design-execution-item-desc"><span class="design-execution-item-desc-title">让用户快速判断“是什么、值不值、能不能换”</span>重新梳理权益卡片的信息层级，在有限空间内突出权益内容、使用价值、所需积分和兑换条件，并通过标签帮助用户识别权益类型和推荐理由。</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="design-execution-item" id="executionLimitedExchange" data-execution-item="executionLimitedExchange">
+                          <button class="design-execution-trigger" type="button" aria-expanded="false">
+                            <span class="design-execution-item-title">限时兑换机制设计</span>
+                            <span class="design-execution-trigger-mark" aria-hidden="true"></span>
+                          </button>
+                          <div class="design-execution-panel">
+                            <div class="design-execution-panel-inner">
+                              <div class="design-execution-item-desc"><span class="design-execution-item-desc-title">通过稀缺性提升积分使用意愿</span>针对用户长期积累积分但缺少使用动力的问题，增加限时兑换专区，通过活动倒计时、限定标签、折扣前后积分对比和限量权益，形成更明确的兑换理由。</div>
                             </div>
                           </div>
                         </div>
