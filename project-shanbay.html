@@ -891,19 +891,19 @@
       -webkit-user-drag: none;
     }
 
-    .design-execution-scene.is-active .design-execution-extension-progress-phone {
+    .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-extension-progress-phone {
       animation: executionProgressPhoneIn 680ms var(--motion-ease) 60ms both;
     }
 
-    .design-execution-scene.is-active .design-execution-extension-progress-card {
+    .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-extension-progress-card {
       animation: executionProgressCardIn 680ms var(--motion-ease) 240ms both;
     }
 
-    .design-execution-scene.is-active .design-execution-extension-status-image {
+    .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-extension-status-image {
       animation: executionProgressStatusIn 680ms var(--motion-ease) 420ms both;
     }
 
-    .design-execution-scene.is-active .design-execution-extension-progress-bear {
+    .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-extension-progress-bear {
       animation: executionProgressBearPop 760ms cubic-bezier(0.34, 1.56, 0.64, 1) 660ms both;
     }
 
@@ -951,19 +951,19 @@
       opacity: 0;
     }
 
-    .design-execution-scene.is-active .design-execution-lottery-entry {
+    .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-lottery-entry {
       animation: executionLotteryEntryLoop 3200ms var(--motion-ease) infinite;
     }
 
-    .design-execution-scene.is-active .design-execution-lottery-hand {
+    .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-lottery-hand {
       animation: executionLotteryHandLoop 3200ms var(--motion-ease) infinite;
     }
 
-    .design-execution-scene.is-active .design-execution-lottery-phone {
+    .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-lottery-phone {
       animation: executionLotteryPhoneLoop 3200ms var(--motion-ease) infinite;
     }
 
-    .design-execution-scene.is-active .design-execution-lottery-atmosphere {
+    .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-lottery-atmosphere {
       animation: executionLotteryAtmosphereLoop 3200ms var(--motion-ease) infinite;
     }
 
@@ -1325,15 +1325,15 @@
       transform: none;
     }
 
-    .design-execution-scene.is-active .design-execution-feedback-start {
+    .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-feedback-start {
       animation: executionFeedbackStartIn 680ms var(--motion-ease) 60ms both;
     }
 
-    .design-execution-scene.is-active .design-execution-feedback-arrow {
+    .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-feedback-arrow {
       animation: executionFeedbackArrowIn 520ms var(--motion-ease) 360ms both;
     }
 
-    .design-execution-scene.is-active .design-execution-feedback-done {
+    .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-feedback-done {
       animation: executionFeedbackDoneIn 680ms var(--motion-ease) 640ms both;
     }
 
@@ -1380,15 +1380,15 @@
       z-index: 6;
     }
 
-    .design-execution-scene.is-active .design-execution-success-phone {
+    .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-success-phone {
       animation: executionSuccessPhoneIn 680ms var(--motion-ease) 80ms both;
     }
 
-    .design-execution-scene.is-active .design-execution-success-atmosphere {
+    .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-success-atmosphere {
       animation: executionSuccessAtmosphereIn 680ms var(--motion-ease) 300ms both;
     }
 
-    .design-execution-scene.is-active .design-execution-success-card {
+    .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-success-card {
       animation: executionSuccessCardIn 760ms cubic-bezier(0.34, 1.56, 0.64, 1) 420ms both;
     }
 
@@ -3930,10 +3930,17 @@
       var showcases = document.querySelectorAll('[data-execution-showcase]');
       if (!showcases.length) return;
 
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var autoSwitchDelay = 5000;
+
       showcases.forEach(function(showcase) {
         var items = Array.prototype.slice.call(showcase.querySelectorAll('[data-execution-item]'));
         var scenes = Array.prototype.slice.call(showcase.querySelectorAll('[data-execution-scene]'));
         if (!items.length || !scenes.length) return;
+
+        var activeIndex = 0;
+        var autoSwitchTimer = null;
+        var isInView = false;
 
         function activate(itemId, shouldLog) {
           items.forEach(function(item) {
@@ -3942,6 +3949,10 @@
             var trigger = item.querySelector('.design-execution-trigger');
             if (trigger) {
               trigger.setAttribute('aria-expanded', String(isActive));
+            }
+
+            if (isActive) {
+              activeIndex = items.indexOf(item);
             }
           });
 
@@ -3959,18 +3970,84 @@
           }
         }
 
+        function clearAutoSwitch() {
+          if (autoSwitchTimer) {
+            window.clearInterval(autoSwitchTimer);
+            autoSwitchTimer = null;
+          }
+        }
+
+        function isShowcaseInViewport() {
+          var rect = showcase.getBoundingClientRect();
+          var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+          return rect.top < viewportHeight * 0.78 && rect.bottom > viewportHeight * 0.22;
+        }
+
+        function startAutoSwitch() {
+          if (reduceMotion || items.length < 2 || !isInView) return;
+          clearAutoSwitch();
+          logMotionEvent('design execution auto start', {
+            interval: autoSwitchDelay + 'ms'
+          });
+          autoSwitchTimer = window.setInterval(function() {
+            if (!isInView || !isShowcaseInViewport()) {
+              leaveView();
+              return;
+            }
+            var nextIndex = (activeIndex + 1) % items.length;
+            activate(items[nextIndex].getAttribute('data-execution-item'), true);
+          }, autoSwitchDelay);
+        }
+
+        function enterView() {
+          isInView = true;
+          if (!showcase.classList.contains('is-motion-ready')) {
+            showcase.classList.add('is-motion-ready');
+            logMotionEvent('design execution motion ready', {
+              interval: autoSwitchDelay + 'ms'
+            });
+          }
+          startAutoSwitch();
+        }
+
+        function leaveView() {
+          isInView = false;
+          clearAutoSwitch();
+        }
+
         items.forEach(function(item, index) {
           var trigger = item.querySelector('.design-execution-trigger');
           if (!trigger) return;
 
           trigger.addEventListener('click', function() {
             activate(item.getAttribute('data-execution-item'), true);
+            startAutoSwitch();
           });
 
           if (index === 0) {
             activate(item.getAttribute('data-execution-item'), false);
           }
         });
+
+        if (reduceMotion || !('IntersectionObserver' in window)) {
+          enterView();
+          return;
+        }
+
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.22) {
+              enterView();
+            } else {
+              leaveView();
+            }
+          });
+        }, {
+          threshold: [0, 0.22, 0.42],
+          rootMargin: '0px 0px -10% 0px'
+        });
+
+        observer.observe(showcase);
       });
     })();
 
