@@ -763,20 +763,27 @@
     }
 
     .design-execution-showcase-stack > .design-execution-visual {
-      order: 2;
+      order: 3;
       min-height: 360px;
     }
 
     .design-execution-showcase-stack > .design-execution-items {
       order: 1;
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      display: inline-flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
       gap: 6px;
       margin-top: 0;
+      padding: 6px;
+      align-self: center;
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04);
     }
 
     .design-execution-showcase-stack .design-execution-item {
-      display: contents;
+      display: block;
       border: 0;
     }
 
@@ -791,21 +798,19 @@
     }
 
     .design-execution-showcase-stack .design-execution-trigger {
-      order: 1;
       min-height: 46px;
       padding: 0 16px;
       align-items: center;
       justify-content: center;
-      border: 1px solid rgba(17, 24, 39, 0.12);
+      border: 0;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.96);
-      box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04);
-      transition: background var(--motion-tab) var(--motion-ease), color var(--motion-tab) var(--motion-ease), border-color var(--motion-tab) var(--motion-ease);
+      background: transparent;
+      box-shadow: none;
+      transition: background var(--motion-tab) var(--motion-ease), color var(--motion-tab) var(--motion-ease);
     }
 
     .design-execution-showcase-stack .design-execution-item.is-active .design-execution-trigger {
       background: rgba(186, 238, 234, 0.88);
-      border-color: rgba(186, 238, 234, 0.88);
       box-shadow: none;
     }
 
@@ -826,28 +831,33 @@
       display: none;
     }
 
-    .design-execution-showcase-stack .design-execution-panel-inner {
-      padding: 14px 0 2px;
-    }
-
     .design-execution-showcase-stack .design-execution-panel {
-      order: 2;
-      grid-column: 1 / -1;
-      overflow: hidden;
-      border: 0;
-      border-radius: 20px;
-      background: transparent;
+      display: none;
     }
 
-    .design-execution-showcase-stack .design-execution-item.is-active .design-execution-panel {
-      border: 0;
-      background: transparent;
+    .design-execution-stack-copy-list {
+      order: 2;
+      min-height: 88px;
+    }
+
+    .design-execution-stack-copy {
+      display: none;
+    }
+
+    .design-execution-stack-copy.is-active {
+      display: block;
     }
 
     .design-execution-showcase-stack .design-execution-item-desc {
       padding: 0;
       font-size: 15px;
       line-height: 26px;
+    }
+
+    .design-execution-stack-copy .design-execution-item-desc {
+      opacity: 1;
+      transform: none;
+      transition: none;
     }
 
     .design-execution-showcase-stack .design-execution-item-desc-title {
@@ -3722,44 +3732,38 @@
                             <span class="design-execution-item-title">任务体系分层</span>
                             <span class="design-execution-trigger-mark" aria-hidden="true"></span>
                           </button>
-                          <div class="design-execution-panel">
-                            <div class="design-execution-panel-inner">
-                              <div class="design-execution-item-desc"><span class="design-execution-item-desc-title">让不同阶段的用户快速找到适合自己的任务</span>将原本混合展示的任务按照参与门槛和用户阶段，划分为基础任务、成长任务和会员专属任务，并统一展示任务条件、完成进度、积分奖励和当前状态。</div>
-                            </div>
-                          </div>
                         </div>
                         <div class="design-execution-item" id="executionMallStructure" data-execution-item="executionMallStructure">
                           <button class="design-execution-trigger" type="button" aria-expanded="false">
                             <span class="design-execution-item-title">积分商城信息架构重构</span>
                             <span class="design-execution-trigger-mark" aria-hidden="true"></span>
                           </button>
-                          <div class="design-execution-panel">
-                            <div class="design-execution-panel-inner">
-                              <div class="design-execution-item-desc"><span class="design-execution-item-desc-title">按照用户需求组织权益，降低查找成本</span>将积分商城从平铺式商品展示调整为分类浏览结构，按照热门推荐、会员福利、限时兑换、学习权益和积分抽奖进行组织，帮助用户快速找到感兴趣的兑换内容。</div>
-                            </div>
-                          </div>
                         </div>
                         <div class="design-execution-item" id="executionBenefitCard" data-execution-item="executionBenefitCard">
                           <button class="design-execution-trigger" type="button" aria-expanded="false">
                             <span class="design-execution-item-title">权益兑换卡片标准化</span>
                             <span class="design-execution-trigger-mark" aria-hidden="true"></span>
                           </button>
-                          <div class="design-execution-panel">
-                            <div class="design-execution-panel-inner">
-                              <div class="design-execution-item-desc"><span class="design-execution-item-desc-title">让用户快速判断“是什么、值不值、能不能换”</span>重新梳理权益卡片的信息层级，在有限空间内突出权益内容、使用价值、所需积分和兑换条件，并通过标签帮助用户识别权益类型和推荐理由。</div>
-                            </div>
-                          </div>
                         </div>
                         <div class="design-execution-item" id="executionLimitedExchange" data-execution-item="executionLimitedExchange">
                           <button class="design-execution-trigger" type="button" aria-expanded="false">
                             <span class="design-execution-item-title">限时兑换机制设计</span>
                             <span class="design-execution-trigger-mark" aria-hidden="true"></span>
                           </button>
-                          <div class="design-execution-panel">
-                            <div class="design-execution-panel-inner">
-                              <div class="design-execution-item-desc"><span class="design-execution-item-desc-title">通过稀缺性提升积分使用意愿</span>针对用户长期积累积分但缺少使用动力的问题，增加限时兑换专区，通过活动倒计时、限定标签、折扣前后积分对比和限量权益，形成更明确的兑换理由。</div>
-                            </div>
-                          </div>
+                        </div>
+                      </div>
+                      <div class="design-execution-stack-copy-list">
+                        <div class="design-execution-stack-copy is-active" data-execution-copy="executionTaskSystem">
+                          <div class="design-execution-item-desc"><span class="design-execution-item-desc-title">让不同阶段的用户快速找到适合自己的任务</span>将原本混合展示的任务按照参与门槛和用户阶段，划分为基础任务、成长任务和会员专属任务，并统一展示任务条件、完成进度、积分奖励和当前状态。</div>
+                        </div>
+                        <div class="design-execution-stack-copy" data-execution-copy="executionMallStructure">
+                          <div class="design-execution-item-desc"><span class="design-execution-item-desc-title">按照用户需求组织权益，降低查找成本</span>将积分商城从平铺式商品展示调整为分类浏览结构，按照热门推荐、会员福利、限时兑换、学习权益和积分抽奖进行组织，帮助用户快速找到感兴趣的兑换内容。</div>
+                        </div>
+                        <div class="design-execution-stack-copy" data-execution-copy="executionBenefitCard">
+                          <div class="design-execution-item-desc"><span class="design-execution-item-desc-title">让用户快速判断“是什么、值不值、能不能换”</span>重新梳理权益卡片的信息层级，在有限空间内突出权益内容、使用价值、所需积分和兑换条件，并通过标签帮助用户识别权益类型和推荐理由。</div>
+                        </div>
+                        <div class="design-execution-stack-copy" data-execution-copy="executionLimitedExchange">
+                          <div class="design-execution-item-desc"><span class="design-execution-item-desc-title">通过稀缺性提升积分使用意愿</span>针对用户长期积累积分但缺少使用动力的问题，增加限时兑换专区，通过活动倒计时、限定标签、折扣前后积分对比和限量权益，形成更明确的兑换理由。</div>
                         </div>
                       </div>
                     </div>
@@ -4114,6 +4118,10 @@
 
           scenes.forEach(function(scene) {
             scene.classList.toggle('is-active', scene.getAttribute('data-execution-scene') === itemId);
+          });
+
+          Array.prototype.slice.call(showcase.querySelectorAll('[data-execution-copy]')).forEach(function(copy) {
+            copy.classList.toggle('is-active', copy.getAttribute('data-execution-copy') === itemId);
           });
 
           if (shouldLog) {
