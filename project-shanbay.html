@@ -889,6 +889,20 @@
       display: none;
     }
 
+    .design-execution-stack-image {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      max-width: calc(100% - 40px);
+      max-height: calc(100% - 40px);
+      width: auto;
+      height: auto;
+      display: block;
+      transform: translate(-50%, -50%);
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
     .design-execution-detail {
       margin-top: 28px;
       position: relative;
@@ -3669,22 +3683,7 @@
                     <div class="design-execution-showcase design-execution-showcase-stack" data-execution-showcase>
                       <div class="design-execution-visual" aria-hidden="true">
                         <div class="design-execution-scene is-active" data-execution-scene="executionTaskSystem">
-                          <div class="design-execution-scene-badge">示意图占位</div>
-                          <div class="design-execution-scene-prompt">
-                            <div class="design-execution-scene-title">任务体系分层</div>
-                            <div class="design-execution-scene-desc">图片占位符，后续替换为基础任务、成长任务与会员任务的分层设计图。</div>
-                          </div>
-                          <div class="design-execution-scene-mock">
-                            <div class="design-execution-scene-mock-title">任务体系分层</div>
-                            <div class="design-execution-scene-mock-bar"></div>
-                            <div class="design-execution-scene-mock-bar short"></div>
-                            <div class="design-execution-scene-chip-row">
-                              <div class="design-execution-scene-chip">基础任务</div>
-                              <div class="design-execution-scene-chip">成长任务</div>
-                              <div class="design-execution-scene-chip">会员任务</div>
-                            </div>
-                            <div class="design-execution-scene-frame">分层任务体系示意图占位</div>
-                          </div>
+                          <img class="design-execution-stack-image" src="assets/figma-portfolio/renwu.png" alt="任务体系分层设计图" loading="lazy">
                         </div>
                         <div class="design-execution-scene" data-execution-scene="executionMallStructure">
                           <div class="design-execution-scene-badge">示意图占位</div>
