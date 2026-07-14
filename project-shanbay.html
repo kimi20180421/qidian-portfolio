@@ -882,13 +882,29 @@
     .design-execution-extension-status-image {
       position: absolute;
       left: 40px;
-      top: 212px;
+      top: 202px;
       width: 190px;
       height: auto;
       z-index: 5;
       display: block;
       user-select: none;
       -webkit-user-drag: none;
+    }
+
+    .design-execution-scene.is-active .design-execution-extension-progress-bear {
+      animation: executionProgressBearIn 680ms var(--motion-ease) 60ms both;
+    }
+
+    .design-execution-scene.is-active .design-execution-extension-progress-phone {
+      animation: executionProgressPhoneIn 680ms var(--motion-ease) 220ms both;
+    }
+
+    .design-execution-scene.is-active .design-execution-extension-progress-card {
+      animation: executionProgressCardIn 680ms var(--motion-ease) 400ms both;
+    }
+
+    .design-execution-scene.is-active .design-execution-extension-status-image {
+      animation: executionProgressStatusIn 680ms var(--motion-ease) 620ms both;
     }
 
     .design-execution-lottery-entry,
@@ -2004,6 +2020,54 @@
       }
     }
 
+    @keyframes executionProgressBearIn {
+      0% {
+        opacity: 0;
+        transform: translateY(22px) scale(0.94);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes executionProgressPhoneIn {
+      0% {
+        opacity: 0;
+        transform: translate(28px, 18px) scale(0.95);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+      }
+    }
+
+    @keyframes executionProgressCardIn {
+      0% {
+        opacity: 0;
+        transform: translateY(26px) rotate(-10deg) scale(0.94);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) rotate(-10deg) scale(1);
+      }
+    }
+
+    @keyframes executionProgressStatusIn {
+      0% {
+        opacity: 0;
+        transform: translateY(16px) scale(0.96);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
     @keyframes executionLotteryEntryLoop {
       0%,
       32% {
@@ -2123,6 +2187,20 @@
       .design-execution-lottery-atmosphere {
         opacity: 1;
         transform: none;
+        animation: none !important;
+      }
+
+      .design-execution-extension-progress-bear,
+      .design-execution-extension-progress-phone,
+      .design-execution-extension-status-image {
+        opacity: 1;
+        transform: none;
+        animation: none !important;
+      }
+
+      .design-execution-extension-progress-card {
+        opacity: 1;
+        transform: rotate(-10deg);
         animation: none !important;
       }
     }
