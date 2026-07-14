@@ -784,6 +784,7 @@
 
     .design-execution-showcase-stack .design-execution-item {
       display: block;
+      flex: 0 0 auto;
       border: 0;
     }
 
@@ -798,7 +799,8 @@
     }
 
     .design-execution-showcase-stack .design-execution-trigger {
-      min-height: 46px;
+      min-width: 112px;
+      min-height: 40px;
       padding: 0 16px;
       align-items: center;
       justify-content: center;
@@ -806,24 +808,30 @@
       border-radius: 999px;
       background: transparent;
       box-shadow: none;
-      transition: background var(--motion-tab) var(--motion-ease), color var(--motion-tab) var(--motion-ease);
+      color: rgba(5, 91, 79, 0.82);
+      line-height: 24px;
+      transition:
+        color var(--motion-fast) var(--motion-ease),
+        background-color var(--motion-fast) var(--motion-ease);
     }
 
     .design-execution-showcase-stack .design-execution-item.is-active .design-execution-trigger {
-      background: rgba(186, 238, 234, 0.88);
+      color: var(--nav-active-fg);
+      font-weight: 500;
+      background: rgba(5, 91, 79, 0.08);
       box-shadow: none;
     }
 
     .design-execution-showcase-stack .design-execution-item-title {
-      font-size: 14px;
-      line-height: 20px;
+      font-size: 16px;
+      line-height: 24px;
       text-align: center;
-      color: rgba(31, 35, 41, 0.68);
+      color: inherit;
       transform: none;
     }
 
     .design-execution-showcase-stack .design-execution-item.is-active .design-execution-item-title {
-      color: #055B4F;
+      color: inherit;
       transform: none;
     }
 
