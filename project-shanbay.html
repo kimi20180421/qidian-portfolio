@@ -773,11 +773,6 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 6px;
       margin-top: 0;
-      padding: 6px;
-      border: 1px solid rgba(17, 24, 39, 0.12);
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.96);
-      box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04);
     }
 
     .design-execution-showcase-stack .design-execution-item {
@@ -801,14 +796,16 @@
       padding: 0 16px;
       align-items: center;
       justify-content: center;
-      border: 0;
+      border: 1px solid rgba(17, 24, 39, 0.12);
       border-radius: 999px;
-      background: transparent;
-      transition: background var(--motion-tab) var(--motion-ease), color var(--motion-tab) var(--motion-ease);
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04);
+      transition: background var(--motion-tab) var(--motion-ease), color var(--motion-tab) var(--motion-ease), border-color var(--motion-tab) var(--motion-ease);
     }
 
     .design-execution-showcase-stack .design-execution-item.is-active .design-execution-trigger {
       background: rgba(186, 238, 234, 0.88);
+      border-color: rgba(186, 238, 234, 0.88);
       box-shadow: none;
     }
 
@@ -830,7 +827,7 @@
     }
 
     .design-execution-showcase-stack .design-execution-panel-inner {
-      padding: 18px 20px 4px;
+      padding: 14px 0 2px;
     }
 
     .design-execution-showcase-stack .design-execution-panel {
