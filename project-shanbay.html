@@ -918,38 +918,38 @@
     }
 
     .design-execution-lottery-entry {
-      left: 10px;
-      top: 100px;
-      width: 100%;
-      max-width: 500px;
+      left: 65px;
+      top: 82px;
+      width: 370px;
       z-index: 2;
-      transform-origin: 26% 70%;
+      transform-origin: 50% 50%;
       opacity: 1;
     }
 
     .design-execution-lottery-hand {
-      left: 154px;
-      top: 216px;
-      width: 198px;
-      z-index: 4;
-      transform-origin: 84% 84%;
+      left: 178px;
+      top: 282px;
+      width: 150px;
+      z-index: 5;
+      transform-origin: 13% 11%;
       opacity: 0;
     }
 
     .design-execution-lottery-atmosphere {
-      right: 12px;
-      top: 20px;
-      width: 412px;
-      z-index: 1;
+      left: 18px;
+      top: 8px;
+      width: 470px;
+      z-index: 3;
       opacity: 0;
     }
 
     .design-execution-lottery-phone {
-      right: 34px;
-      top: 34px;
-      width: 254px;
-      z-index: 3;
+      left: 60px;
+      top: -18px;
+      width: 380px;
+      z-index: 4;
       opacity: 0;
+      clip-path: inset(8% 9% 6% 9%);
     }
 
     .design-execution-scene.is-active .design-execution-lottery-entry {
@@ -2075,60 +2075,60 @@
 
     @keyframes executionLotteryEntryLoop {
       0%,
-      32% {
+      42% {
         opacity: 1;
         transform: translateY(0) scale(1);
       }
 
-      44%,
+      50%,
       100% {
         opacity: 0;
-        transform: translateY(-14px) scale(0.97);
+        transform: translateY(-12px) scale(0.97);
       }
     }
 
     @keyframes executionLotteryHandLoop {
       0%,
-      10% {
+      8% {
         opacity: 0;
-        transform: translate(108px, 58px) rotate(-8deg) scale(0.94);
+        transform: translate(96px, 70px) rotate(-6deg) scale(0.94);
       }
 
-      18% {
+      16% {
         opacity: 1;
-        transform: translate(108px, 58px) rotate(-8deg) scale(0.94);
+        transform: translate(96px, 70px) rotate(-6deg) scale(0.94);
       }
 
-      34% {
-        opacity: 1;
-        transform: translate(0, 0) rotate(-2deg) scale(1);
-      }
-
-      40% {
-        opacity: 1;
-        transform: translate(-6px, 8px) rotate(1deg) scale(0.97);
-      }
-
-      46% {
+      30% {
         opacity: 1;
         transform: translate(0, 0) rotate(-2deg) scale(1);
       }
 
-      56%,
+      36% {
+        opacity: 1;
+        transform: translate(-4px, 8px) rotate(0deg) scale(0.96);
+      }
+
+      42% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(-2deg) scale(1);
+      }
+
+      50%,
       100% {
         opacity: 0;
-        transform: translate(12px, 10px) rotate(-2deg) scale(0.95);
+        transform: translate(10px, 12px) rotate(-2deg) scale(0.95);
       }
     }
 
     @keyframes executionLotteryPhoneLoop {
       0%,
-      44% {
+      50% {
         opacity: 0;
-        transform: translateY(28px) scale(0.92);
+        transform: translateY(26px) scale(0.94);
       }
 
-      58%,
+      62%,
       92% {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -2142,12 +2142,12 @@
 
     @keyframes executionLotteryAtmosphereLoop {
       0%,
-      46% {
+      52% {
         opacity: 0;
         transform: scale(0.9) rotate(-8deg);
       }
 
-      60%,
+      64%,
       92% {
         opacity: 1;
         transform: scale(1) rotate(0deg);
@@ -2737,27 +2737,31 @@
         }
 
         .design-execution-lottery-entry {
-          left: 0;
-          top: 76px;
+          left: 50%;
+          top: 60px;
+          width: 270px;
           max-width: none;
+          transform: translateX(-50%);
         }
 
         .design-execution-lottery-hand {
-          left: 88px;
-          top: 150px;
-          width: 138px;
+          left: 138px;
+          top: 190px;
+          width: 108px;
         }
 
         .design-execution-lottery-atmosphere {
-          right: -8px;
-          top: 14px;
-          width: 278px;
+          left: 50%;
+          top: 12px;
+          width: 330px;
+          transform: translateX(-50%);
         }
 
         .design-execution-lottery-phone {
-          right: 18px;
-          top: 30px;
-          width: 176px;
+          left: 50%;
+          top: -10px;
+          width: 272px;
+          transform: translateX(-50%);
         }
 
       }
