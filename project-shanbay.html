@@ -981,6 +981,7 @@
       display: block;
       width: auto;
       height: auto;
+      opacity: 0;
       user-select: none;
       -webkit-user-drag: none;
     }
@@ -995,10 +996,18 @@
 
     .design-execution-benefit-combo-card {
       left: 18px;
-      bottom: 20px;
+      bottom: 100px;
       width: 330px;
       max-width: 88%;
       z-index: 1;
+    }
+
+    #executionStrategy03 [data-execution-scene="executionStageReward"].is-active .design-execution-benefit-combo-bg {
+      animation: executionBenefitBgIn 520ms var(--motion-ease) 80ms both;
+    }
+
+    #executionStrategy03 [data-execution-scene="executionStageReward"].is-active .design-execution-benefit-combo-card {
+      animation: executionBenefitCardIn 520ms var(--motion-ease) 260ms both;
     }
 
     .design-execution-member-combo {
@@ -2422,6 +2431,30 @@
       }
     }
 
+    @keyframes executionBenefitBgIn {
+      0% {
+        opacity: 0;
+        transform: translate(14px, -12px) scale(0.97);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+      }
+    }
+
+    @keyframes executionBenefitCardIn {
+      0% {
+        opacity: 0;
+        transform: translate(-14px, 18px) scale(0.96);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+      }
+    }
+
     @keyframes executionVipTaskCardIn {
       0% {
         opacity: 0;
@@ -2673,6 +2706,12 @@
       .design-execution-extension-progress-bear,
       .design-execution-extension-progress-phone,
       .design-execution-extension-status-image {
+        opacity: 1;
+        transform: none;
+        animation: none !important;
+      }
+
+      .design-execution-benefit-combo-image {
         opacity: 1;
         transform: none;
         animation: none !important;
