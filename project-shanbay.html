@@ -926,6 +926,45 @@
       -webkit-user-drag: none;
     }
 
+    .design-execution-benefit-combo {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    #executionStrategy03 .design-execution-visual::after {
+      display: none;
+    }
+
+    #executionStrategy03 [data-execution-scene="executionStageReward"] {
+      padding: 0;
+    }
+
+    .design-execution-benefit-combo-image {
+      position: absolute;
+      display: block;
+      width: auto;
+      height: auto;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .design-execution-benefit-combo-bg {
+      right: 8px;
+      top: 20px;
+      width: 300px;
+      max-width: 82%;
+      z-index: 1;
+    }
+
+    .design-execution-benefit-combo-card {
+      left: 18px;
+      bottom: 0;
+      width: 330px;
+      max-width: 88%;
+      z-index: 2;
+    }
+
     .design-execution-detail {
       margin-top: 28px;
       position: relative;
@@ -3784,21 +3823,9 @@
                     <div class="design-execution-showcase design-execution-showcase-reverse" data-execution-showcase>
                       <div class="design-execution-visual" aria-hidden="true">
                         <div class="design-execution-scene is-active" data-execution-scene="executionStageReward">
-                          <div class="design-execution-scene-badge">示意图占位</div>
-                          <div class="design-execution-scene-prompt">
-                            <div class="design-execution-scene-title">成长任务引导</div>
-                            <div class="design-execution-scene-desc">将会员功能包装为低门槛学习任务，让用户在完成任务时自然接触会员能力。</div>
-                          </div>
-                          <div class="design-execution-scene-mock">
-                            <div class="design-execution-scene-mock-title">成长任务引导</div>
-                            <div class="design-execution-scene-mock-bar"></div>
-                            <div class="design-execution-scene-mock-bar short"></div>
-                            <div class="design-execution-scene-chip-row">
-                              <div class="design-execution-scene-chip">考试规划</div>
-                              <div class="design-execution-scene-chip">口语对话</div>
-                              <div class="design-execution-scene-chip">积分奖励</div>
-                            </div>
-                            <div class="design-execution-scene-frame">成长任务引导示意图占位</div>
+                          <div class="design-execution-benefit-combo">
+                            <img class="design-execution-benefit-combo-image design-execution-benefit-combo-bg" src="assets/figma-portfolio/g2.png" alt="成长任务引导背景图" loading="lazy" />
+                            <img class="design-execution-benefit-combo-image design-execution-benefit-combo-card" src="assets/figma-portfolio/group.png" alt="成长任务引导任务卡片图" loading="lazy" />
                           </div>
                         </div>
                         <div class="design-execution-scene" data-execution-scene="executionLottery">
