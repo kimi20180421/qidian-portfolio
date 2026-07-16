@@ -949,6 +949,10 @@
       padding: 0;
     }
 
+    #executionStrategy03 [data-execution-scene="executionLottery"] {
+      padding: 0;
+    }
+
     #executionStrategy03 .design-execution-scene,
     #executionStrategy03 .design-execution-scene.is-active {
       transform: none;
@@ -977,6 +981,45 @@
       width: 330px;
       max-width: 88%;
       z-index: 1;
+    }
+
+    .design-execution-member-combo {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .design-execution-member-combo-image {
+      position: absolute;
+      display: block;
+      width: auto;
+      height: auto;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .design-execution-member-phone {
+      left: 8px;
+      bottom: 0;
+      height: 430px;
+      max-height: 96%;
+      z-index: 1;
+    }
+
+    .design-execution-member-arrow {
+      right: 58px;
+      top: 164px;
+      width: 166px;
+      max-width: 46%;
+      z-index: 2;
+    }
+
+    .design-execution-member-card {
+      right: 0;
+      top: 86px;
+      width: 306px;
+      max-width: 86%;
+      z-index: 3;
     }
 
     .design-execution-detail {
@@ -3828,21 +3871,10 @@
                           </div>
                         </div>
                         <div class="design-execution-scene" data-execution-scene="executionLottery">
-                          <div class="design-execution-scene-badge">示意图占位</div>
-                          <div class="design-execution-scene-prompt">
-                            <div class="design-execution-scene-title">会员专属任务设计</div>
-                            <div class="design-execution-scene-desc">为会员用户配置差异化任务，让会员身份价值持续体现在学习过程里。</div>
-                          </div>
-                          <div class="design-execution-scene-mock">
-                            <div class="design-execution-scene-mock-title">会员专属任务设计</div>
-                            <div class="design-execution-scene-mock-bar mid"></div>
-                            <div class="design-execution-scene-mock-bar"></div>
-                            <div class="design-execution-scene-chip-row">
-                              <div class="design-execution-scene-chip">额外积分</div>
-                              <div class="design-execution-scene-chip">补签机会</div>
-                              <div class="design-execution-scene-chip">考试训练营</div>
-                            </div>
-                            <div class="design-execution-scene-frame">会员专属任务示意图占位</div>
+                          <div class="design-execution-member-combo">
+                            <img class="design-execution-member-combo-image design-execution-member-phone" src="assets/figma-portfolio/ph.png" alt="会员专属任务手机图" loading="lazy" />
+                            <img class="design-execution-member-combo-image design-execution-member-arrow" src="assets/figma-portfolio/arr.png" alt="会员专属任务引导箭头图" loading="lazy" />
+                            <img class="design-execution-member-combo-image design-execution-member-card" src="assets/figma-portfolio/bea.png" alt="会员专属任务完成弹窗图" loading="lazy" />
                           </div>
                         </div>
                         <div class="design-execution-scene" data-execution-scene="executionVipTrial">
