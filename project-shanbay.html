@@ -1064,6 +1064,7 @@
       display: block;
       width: auto;
       height: auto;
+      opacity: 0;
       user-select: none;
       -webkit-user-drag: none;
     }
@@ -1082,6 +1083,14 @@
       width: 304px;
       max-width: 84%;
       z-index: 2;
+    }
+
+    #executionStrategy03 [data-execution-scene="executionLottery"].is-active .design-execution-vip-task-card {
+      animation: executionVipTaskCardIn 520ms var(--motion-ease) 80ms both;
+    }
+
+    #executionStrategy03 [data-execution-scene="executionLottery"].is-active .design-execution-vip-task-bear {
+      animation: executionVipTaskBearIn 520ms var(--motion-ease) 280ms both;
     }
 
     .design-execution-detail {
@@ -2413,6 +2422,30 @@
       }
     }
 
+    @keyframes executionVipTaskCardIn {
+      0% {
+        opacity: 0;
+        transform: translate(-18px, 12px) scale(0.96);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+      }
+    }
+
+    @keyframes executionVipTaskBearIn {
+      0% {
+        opacity: 0;
+        transform: translate(18px, 18px) scale(0.94);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+      }
+    }
+
     @keyframes executionSuccessPhoneIn {
       0% {
         opacity: 0;
@@ -2640,6 +2673,12 @@
       .design-execution-extension-progress-bear,
       .design-execution-extension-progress-phone,
       .design-execution-extension-status-image {
+        opacity: 1;
+        transform: none;
+        animation: none !important;
+      }
+
+      .design-execution-vip-task-image {
         opacity: 1;
         transform: none;
         animation: none !important;
