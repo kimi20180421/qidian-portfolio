@@ -1012,21 +1012,22 @@
       display: block;
       width: auto;
       height: auto;
+      opacity: 0;
       user-select: none;
       -webkit-user-drag: none;
     }
 
     .design-execution-member-phone {
-      left: 16px;
-      bottom: 36px;
+      left: 46px;
+      bottom: 86px;
       height: 387px;
       max-height: 96%;
       z-index: 1;
     }
 
     .design-execution-member-arrow {
-      right: 72px;
-      top: 142px;
+      right: 92px;
+      top: 212px;
       width: 149px;
       max-width: 46%;
       z-index: 2;
@@ -1038,6 +1039,18 @@
       width: 275px;
       max-width: 86%;
       z-index: 3;
+    }
+
+    #executionStrategy03 [data-execution-scene="executionVipTrial"].is-active .design-execution-member-phone {
+      animation: executionMemberComboFadeIn 360ms var(--motion-ease) 80ms both;
+    }
+
+    #executionStrategy03 [data-execution-scene="executionVipTrial"].is-active .design-execution-member-arrow {
+      animation: executionMemberComboFadeIn 360ms var(--motion-ease) 260ms both;
+    }
+
+    #executionStrategy03 [data-execution-scene="executionVipTrial"].is-active .design-execution-member-card {
+      animation: executionMemberComboFadeIn 360ms var(--motion-ease) 440ms both;
     }
 
     .design-execution-vip-task-combo {
@@ -2387,6 +2400,16 @@
       100% {
         opacity: 1;
         transform: none;
+      }
+    }
+
+    @keyframes executionMemberComboFadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
       }
     }
 
