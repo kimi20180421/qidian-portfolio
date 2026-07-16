@@ -3450,53 +3450,13 @@
           <span class="section-anchor-dot"></span>
           <span class="section-anchor-text">01 签到反馈</span>
         </div>
-        <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionHomeCheckin">
-          <span class="section-anchor-dot"></span>
-          <span class="section-anchor-text">首页信息框架</span>
-        </div>
-        <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionSuccessFeedback">
-          <span class="section-anchor-dot"></span>
-          <span class="section-anchor-text">签到成功反馈</span>
-        </div>
-        <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionCheckinProgress">
-          <span class="section-anchor-dot"></span>
-          <span class="section-anchor-text">连续签到进度</span>
-        </div>
         <div class="section-anchor-item section-anchor-item-sub section-anchor-item-strategy" data-anchor-target="executionStrategy02">
           <span class="section-anchor-dot"></span>
           <span class="section-anchor-text">02 积分价值</span>
         </div>
-        <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionTaskSystem">
-          <span class="section-anchor-dot"></span>
-          <span class="section-anchor-text">分层任务体系</span>
-        </div>
-        <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionMallStructure">
-          <span class="section-anchor-dot"></span>
-          <span class="section-anchor-text">积分商城架构</span>
-        </div>
-        <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionBenefitCard">
-          <span class="section-anchor-dot"></span>
-          <span class="section-anchor-text">权益卡片表达</span>
-        </div>
         <div class="section-anchor-item section-anchor-item-sub section-anchor-item-strategy" data-anchor-target="executionStrategy03">
           <span class="section-anchor-dot"></span>
           <span class="section-anchor-text">03 权益闭环</span>
-        </div>
-        <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionStageReward">
-          <span class="section-anchor-dot"></span>
-          <span class="section-anchor-text">阶段奖励</span>
-        </div>
-        <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionLottery">
-          <span class="section-anchor-dot"></span>
-          <span class="section-anchor-text">积分抽奖</span>
-        </div>
-        <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionVipTrial">
-          <span class="section-anchor-dot"></span>
-          <span class="section-anchor-text">会员体验</span>
-        </div>
-        <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionDataBenefit">
-          <span class="section-anchor-dot"></span>
-          <span class="section-anchor-text">数据承接</span>
         </div>
         <div class="section-anchor-item" data-anchor-target="visualAssetSection">
           <span class="section-anchor-dot"></span>
@@ -4260,15 +4220,25 @@
           });
         }
 
+        function getPageTop(section) {
+          return section.getBoundingClientRect().top + window.scrollY;
+        }
+
         function updateAnchorState() {
           var probeY = window.scrollY + 136;
+          var viewportBottom = window.scrollY + window.innerHeight;
+          var documentHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
           var currentId = targets[0].section.id;
 
           targets.forEach(function(entry) {
-            if (entry.section.offsetTop <= probeY) {
+            if (getPageTop(entry.section) <= probeY) {
               currentId = entry.section.id;
             }
           });
+
+          if (viewportBottom >= documentHeight - 2) {
+            currentId = targets[targets.length - 1].section.id;
+          }
 
           setActive(currentId);
 
@@ -4281,7 +4251,7 @@
 
         targets.forEach(function(entry) {
           entry.item.addEventListener('click', function() {
-            var top = entry.section.offsetTop - 84;
+            var top = getPageTop(entry.section) - 84;
             window.scrollTo({
               top: top < 0 ? 0 : top,
               behavior: 'smooth'
