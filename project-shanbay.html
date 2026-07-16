@@ -767,6 +767,10 @@
       min-height: 460px;
     }
 
+    .design-execution-showcase-stack > .design-execution-visual::after {
+      display: none;
+    }
+
     .design-execution-showcase-stack > .design-execution-items {
       order: 1;
       display: inline-flex;
@@ -897,16 +901,20 @@
       display: none;
     }
 
+    .design-execution-showcase-stack [data-execution-scene="executionTaskSystem"] {
+      padding: 0;
+    }
+
     .design-execution-stack-image {
       position: absolute;
       left: 50%;
-      top: 50%;
-      max-width: calc(100% - 40px);
-      max-height: calc(100% - 40px);
+      bottom: 0;
+      max-width: 100%;
+      max-height: 100%;
       width: auto;
       height: auto;
       display: block;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       user-select: none;
       -webkit-user-drag: none;
     }
