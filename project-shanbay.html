@@ -958,6 +958,10 @@
       padding: 0;
     }
 
+    #executionStrategy03 [data-execution-scene="executionLottery"] {
+      padding: 0;
+    }
+
     #executionStrategy03 [data-execution-scene="executionVipTrial"] {
       padding: 0;
     }
@@ -1034,6 +1038,37 @@
       width: 275px;
       max-width: 86%;
       z-index: 3;
+    }
+
+    .design-execution-vip-task-combo {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .design-execution-vip-task-image {
+      position: absolute;
+      display: block;
+      width: auto;
+      height: auto;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .design-execution-vip-task-card {
+      left: 22px;
+      top: 34px;
+      width: 356px;
+      max-width: 90%;
+      z-index: 1;
+    }
+
+    .design-execution-vip-task-bear {
+      right: 18px;
+      bottom: 18px;
+      width: 304px;
+      max-width: 84%;
+      z-index: 2;
     }
 
     .design-execution-detail {
@@ -3898,21 +3933,9 @@
                           </div>
                         </div>
                         <div class="design-execution-scene" data-execution-scene="executionLottery">
-                          <div class="design-execution-scene-badge">示意图占位</div>
-                          <div class="design-execution-scene-prompt">
-                            <div class="design-execution-scene-title">会员专属任务设计</div>
-                            <div class="design-execution-scene-desc">为会员用户配置差异化任务，让会员身份价值持续体现在学习过程里。</div>
-                          </div>
-                          <div class="design-execution-scene-mock">
-                            <div class="design-execution-scene-mock-title">会员专属任务设计</div>
-                            <div class="design-execution-scene-mock-bar mid"></div>
-                            <div class="design-execution-scene-mock-bar"></div>
-                            <div class="design-execution-scene-chip-row">
-                              <div class="design-execution-scene-chip">额外积分</div>
-                              <div class="design-execution-scene-chip">补签机会</div>
-                              <div class="design-execution-scene-chip">考试训练营</div>
-                            </div>
-                            <div class="design-execution-scene-frame">会员专属任务示意图占位</div>
+                          <div class="design-execution-vip-task-combo">
+                            <img class="design-execution-vip-task-image design-execution-vip-task-card" src="assets/figma-portfolio/vip task.png" alt="会员专属任务卡片图" loading="lazy" />
+                            <img class="design-execution-vip-task-image design-execution-vip-task-bear" src="assets/figma-portfolio/vip.png" alt="会员专属任务 VIP 吉祥物图" loading="lazy" />
                           </div>
                         </div>
                         <div class="design-execution-scene" data-execution-scene="executionVipTrial">
