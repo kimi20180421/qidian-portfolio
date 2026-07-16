@@ -333,7 +333,8 @@
       #competitorAnalysisSection,
       #strategySection,
       #designSolutionSection,
-      #designExecutionSection {
+      #designExecutionSection,
+      #visualAssetSection {
         scroll-margin-top: 92px;
       }
 
@@ -389,6 +390,82 @@
       border-radius: 0;
       background: #FFFFFF;
       box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.96), 0 18px 48px rgba(5, 91, 79, 0.08);
+    }
+
+    #visualAssetSection {
+      width: 100vw;
+      max-width: none;
+      margin: 0 0 0 calc(50% - 50vw);
+      position: relative;
+      padding: 64px max(24px, calc((100vw - 800px) / 2)) 72px;
+      border-radius: 0;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(186, 238, 234, 0.78), transparent 34%),
+        radial-gradient(circle at 88% 18%, rgba(217, 248, 226, 0.82), transparent 30%),
+        linear-gradient(180deg, #F0FBF4 0%, #E7F8EE 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92);
+    }
+
+    .visual-asset-shell {
+      width: 800px;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 32px;
+      border: 1px solid rgba(5, 91, 79, 0.1);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 20px 48px rgba(5, 91, 79, 0.09);
+    }
+
+    .visual-asset-desc {
+      margin-top: 16px;
+      max-width: 720px;
+      font-size: 16px;
+      line-height: 28px;
+      font-weight: 400;
+      color: rgba(31, 35, 41, 0.76);
+    }
+
+    .visual-asset-list {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .visual-asset-item {
+      min-height: 128px;
+      padding: 20px;
+      border: 1px solid rgba(5, 91, 79, 0.1);
+      border-radius: 20px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.68)),
+        radial-gradient(circle at 100% 0%, rgba(186, 238, 234, 0.5), transparent 48%);
+      box-shadow: 0 12px 28px rgba(5, 91, 79, 0.07);
+    }
+
+    .visual-asset-index {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 24px;
+      min-width: 34px;
+      padding: 0 8px;
+      border-radius: 999px;
+      background: rgba(186, 238, 234, 0.78);
+      color: #055B4F;
+      font-size: 13px;
+      line-height: 20px;
+      font-weight: 500;
+    }
+
+    .visual-asset-name {
+      display: block;
+      margin-top: 16px;
+      font-size: 18px;
+      line-height: 28px;
+      font-weight: 500;
+      color: #1F2329;
     }
 
     #designSolutionSection::before {
@@ -2959,6 +3036,8 @@
     .background-section .design-solution-compare-card,
     .background-section .design-execution-title,
     .background-section .design-execution-strategy,
+    .background-section .visual-asset-shell,
+    .background-section .visual-asset-item,
       .background-section .user-analysis-label-item,
       .background-section .competitor-label-item,
     .background-section .role-focus-title,
@@ -2985,6 +3064,8 @@
     .background-section.is-visible .design-solution-compare-card,
     .background-section.is-visible .design-execution-title,
     .background-section.is-visible .design-execution-strategy,
+    .background-section.is-visible .visual-asset-shell,
+    .background-section.is-visible .visual-asset-item,
       .background-section.is-visible .user-analysis-label-item,
       .background-section.is-visible .competitor-label-item,
     .background-section.is-visible .role-focus-title,
@@ -3128,6 +3209,22 @@
       transition-delay: .42s;
     }
 
+    #visualAssetSection.is-visible .visual-asset-shell {
+      transition-delay: .08s;
+    }
+
+    #visualAssetSection.is-visible .visual-asset-item:nth-child(1) {
+      transition-delay: .18s;
+    }
+
+    #visualAssetSection.is-visible .visual-asset-item:nth-child(2) {
+      transition-delay: .28s;
+    }
+
+    #visualAssetSection.is-visible .visual-asset-item:nth-child(3) {
+      transition-delay: .38s;
+    }
+
       @media (max-width: 1320px) {
         .section-anchor-nav {
           display: none;
@@ -3152,6 +3249,14 @@
         .design-execution-showcase {
           grid-template-columns: 1fr;
           gap: 24px;
+        }
+
+        .visual-asset-shell {
+          padding: 24px;
+        }
+
+        .visual-asset-list {
+          grid-template-columns: 1fr;
         }
 
         .design-execution-detail-visual {
@@ -3446,6 +3551,10 @@
         <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="executionDataBenefit">
           <span class="section-anchor-dot"></span>
           <span class="section-anchor-text">数据承接</span>
+        </div>
+        <div class="section-anchor-item" data-anchor-target="visualAssetSection">
+          <span class="section-anchor-dot"></span>
+          <span class="section-anchor-text">视觉资产</span>
         </div>
       </div>
     <header class="nav">
@@ -4125,6 +4234,26 @@
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="background-section reveal-section" id="visualAssetSection">
+            <div class="visual-asset-shell">
+              <div class="section-title">视觉语言与激励资产沉淀</div>
+              <div class="visual-asset-desc">在完成签到、积分和权益路径的体验设计后，我进一步统一了方案中的图标、IP角色与徽章资产。它们不仅承担视觉装饰作用，也分别服务于信息识别、情绪反馈和长期成长激励，使整个积分体系形成一致且可持续扩展的体验语言。</div>
+              <div class="visual-asset-list">
+                <div class="visual-asset-item">
+                  <span class="visual-asset-index">01</span>
+                  <span class="visual-asset-name">功能图标系统</span>
+                </div>
+                <div class="visual-asset-item">
+                  <span class="visual-asset-index">02</span>
+                  <span class="visual-asset-name">IP角色场景化应用</span>
+                </div>
+                <div class="visual-asset-item">
+                  <span class="visual-asset-index">03</span>
+                  <span class="visual-asset-name">成长徽章体系</span>
                 </div>
               </div>
             </div>
