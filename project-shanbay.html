@@ -406,66 +406,22 @@
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92);
     }
 
-    .visual-asset-shell {
-      width: 800px;
-      max-width: 100%;
-      margin: 0 auto;
-      padding: 32px;
-      border: 1px solid rgba(5, 91, 79, 0.1);
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.72);
-      box-shadow: 0 20px 48px rgba(5, 91, 79, 0.09);
-    }
-
-    .visual-asset-desc {
-      margin-top: 16px;
-      max-width: 720px;
-      font-size: 16px;
-      line-height: 28px;
-      font-weight: 400;
-      color: rgba(31, 35, 41, 0.76);
-    }
-
     .visual-asset-list {
-      margin-top: 28px;
+      margin-top: 32px;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 24px;
     }
 
     .visual-asset-item {
-      min-height: 128px;
-      padding: 20px;
-      border: 1px solid rgba(5, 91, 79, 0.1);
-      border-radius: 20px;
+      min-height: 112px;
+      padding: 24px;
+      border: 1px solid rgba(5, 91, 79, 0.08);
+      border-radius: 24px;
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.68)),
-        radial-gradient(circle at 100% 0%, rgba(186, 238, 234, 0.5), transparent 48%);
-      box-shadow: 0 12px 28px rgba(5, 91, 79, 0.07);
-    }
-
-    .visual-asset-index {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      height: 24px;
-      min-width: 34px;
-      padding: 0 8px;
-      border-radius: 999px;
-      background: rgba(186, 238, 234, 0.78);
-      color: #055B4F;
-      font-size: 13px;
-      line-height: 20px;
-      font-weight: 500;
-    }
-
-    .visual-asset-name {
-      display: block;
-      margin-top: 16px;
-      font-size: 18px;
-      line-height: 28px;
-      font-weight: 500;
-      color: #1F2329;
+        linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.52)),
+        radial-gradient(circle at 100% 0%, rgba(186, 238, 234, 0.44), transparent 48%);
+      box-shadow: 0 12px 30px rgba(5, 91, 79, 0.06);
     }
 
     #designSolutionSection::before {
@@ -3036,7 +2992,6 @@
     .background-section .design-solution-compare-card,
     .background-section .design-execution-title,
     .background-section .design-execution-strategy,
-    .background-section .visual-asset-shell,
     .background-section .visual-asset-item,
       .background-section .user-analysis-label-item,
       .background-section .competitor-label-item,
@@ -3064,7 +3019,6 @@
     .background-section.is-visible .design-solution-compare-card,
     .background-section.is-visible .design-execution-title,
     .background-section.is-visible .design-execution-strategy,
-    .background-section.is-visible .visual-asset-shell,
     .background-section.is-visible .visual-asset-item,
       .background-section.is-visible .user-analysis-label-item,
       .background-section.is-visible .competitor-label-item,
@@ -3209,20 +3163,16 @@
       transition-delay: .42s;
     }
 
-    #visualAssetSection.is-visible .visual-asset-shell {
-      transition-delay: .08s;
-    }
-
     #visualAssetSection.is-visible .visual-asset-item:nth-child(1) {
-      transition-delay: .18s;
+      transition-delay: .24s;
     }
 
     #visualAssetSection.is-visible .visual-asset-item:nth-child(2) {
-      transition-delay: .28s;
+      transition-delay: .32s;
     }
 
     #visualAssetSection.is-visible .visual-asset-item:nth-child(3) {
-      transition-delay: .38s;
+      transition-delay: .40s;
     }
 
       @media (max-width: 1320px) {
@@ -3249,10 +3199,6 @@
         .design-execution-showcase {
           grid-template-columns: 1fr;
           gap: 24px;
-        }
-
-        .visual-asset-shell {
-          padding: 24px;
         }
 
         .visual-asset-list {
@@ -4239,21 +4185,27 @@
             </div>
           </div>
           <div class="background-section reveal-section" id="visualAssetSection">
-            <div class="visual-asset-shell">
-              <div class="section-title">视觉语言与激励资产沉淀</div>
-              <div class="visual-asset-desc">在完成签到、积分和权益路径的体验设计后，我进一步统一了方案中的图标、IP角色与徽章资产。它们不仅承担视觉装饰作用，也分别服务于信息识别、情绪反馈和长期成长激励，使整个积分体系形成一致且可持续扩展的体验语言。</div>
-              <div class="visual-asset-list">
-                <div class="visual-asset-item">
-                  <span class="visual-asset-index">01</span>
-                  <span class="visual-asset-name">功能图标系统</span>
+            <div class="section-title">视觉语言与激励资产沉淀</div>
+            <div class="section-body">
+              <div class="section-paragraph">在完成签到、积分和权益路径的体验设计后，我进一步统一了方案中的图标、IP角色与徽章资产。它们不仅承担视觉装饰作用，也分别服务于信息识别、情绪反馈和长期成长激励，使整个积分体系形成一致且可持续扩展的体验语言。</div>
+            </div>
+            <div class="visual-asset-list">
+              <div class="visual-asset-item">
+                <div class="design-execution-meta">
+                  <div class="design-execution-index">01</div>
+                  <div class="design-execution-strategy-title">功能图标系统</div>
                 </div>
-                <div class="visual-asset-item">
-                  <span class="visual-asset-index">02</span>
-                  <span class="visual-asset-name">IP角色场景化应用</span>
+              </div>
+              <div class="visual-asset-item">
+                <div class="design-execution-meta">
+                  <div class="design-execution-index">02</div>
+                  <div class="design-execution-strategy-title">IP角色场景化应用</div>
                 </div>
-                <div class="visual-asset-item">
-                  <span class="visual-asset-index">03</span>
-                  <span class="visual-asset-name">成长徽章体系</span>
+              </div>
+              <div class="visual-asset-item">
+                <div class="design-execution-meta">
+                  <div class="design-execution-index">03</div>
+                  <div class="design-execution-strategy-title">成长徽章体系</div>
                 </div>
               </div>
             </div>
