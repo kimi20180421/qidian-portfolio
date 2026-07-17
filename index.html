@@ -677,31 +677,31 @@
       padding: 10px 10px 18px;
       color: #fff;
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 400;
       line-height: 1.2;
       border-radius: 999px;
-      background: linear-gradient(180deg, #886fff, #6e8cff);
-      box-shadow: 0 18px 32px rgba(84, 83, 220, .28);
+      background: linear-gradient(180deg, #F0EBFF 0%, #B39DFF 52%, #7A4DFF 100%);
+      box-shadow: 0 18px 32px rgba(122, 77, 255, .18);
       transition:
         transform .24s cubic-bezier(0.22, 1, 0.36, 1),
         box-shadow .24s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .contact-fab:hover .contact-tab,
-    .contact-fab:focus-within .contact-tab {
+    .contact-fab.is-open .contact-tab {
       transform: translateY(-4px);
-      box-shadow: 0 24px 38px rgba(84, 83, 220, .32);
+      box-shadow: 0 24px 38px rgba(122, 77, 255, .24);
     }
 
-    .avatar {
+    .contact-avatar {
+      display: block;
       width: 40px;
       height: 40px;
       border: 3px solid rgba(255,255,255,.75);
       border-radius: 50%;
-      background:
-        radial-gradient(circle at 50% 35%, #ffd9c7 0 28%, transparent 29%),
-        radial-gradient(circle at 50% 62%, #32253e 0 44%, transparent 45%),
-        #f1e9ff;
+      background: #F0EBFF;
+      user-select: none;
+      -webkit-user-drag: none;
     }
 
     .contact-popover {
@@ -715,7 +715,7 @@
       background: rgba(255, 255, 255, .5);
       border: 1px solid rgba(255, 255, 255, .68);
       box-shadow:
-        0 22px 54px rgba(116, 88, 204, .12),
+        0 22px 54px rgba(122, 77, 255, .12),
         inset 0 1px 0 rgba(255, 255, 255, .74);
       backdrop-filter: blur(18px) saturate(1.16);
       -webkit-backdrop-filter: blur(18px) saturate(1.16);
@@ -730,24 +730,8 @@
         visibility .24s linear;
     }
 
-    .contact-popover::after {
-      content: "";
-      position: absolute;
-      right: -8px;
-      top: 50%;
-      width: 16px;
-      height: 16px;
-      background: rgba(255, 255, 255, .5);
-      border-top: 1px solid rgba(255, 255, 255, .68);
-      border-right: 1px solid rgba(255, 255, 255, .68);
-      border-radius: 3px;
-      transform: translateY(-50%) rotate(45deg);
-      backdrop-filter: blur(18px) saturate(1.16);
-      -webkit-backdrop-filter: blur(18px) saturate(1.16);
-    }
-
     .contact-fab:hover .contact-popover,
-    .contact-fab:focus-within .contact-popover {
+    .contact-fab.is-open .contact-popover {
       opacity: 1;
       visibility: visible;
       transform: translate3d(0, 0, 0) scale(1);
@@ -766,7 +750,7 @@
       display: inline-block;
       margin-top: 4px;
       color: var(--purple);
-      font-weight: 600;
+      font-weight: 500;
       letter-spacing: .02em;
     }
 
@@ -1050,7 +1034,7 @@
     </main>
 
       <div class="contact-fab">
-        <div class="contact-popover">
+        <div class="contact-popover" id="contactPopover">
           <div class="contact-popover-copy">
             扫描下方二维码，加我微信，或者拨打电话
             <span class="contact-phone">188 1099 2961</span>
@@ -1059,8 +1043,8 @@
               <img src="assets/figma-portfolio/contact-qr.svg" alt="联系二维码" />
           </div>
         </div>
-        <a class="contact-tab" href="#contact" aria-label="联系我">
-          <span class="avatar" aria-hidden="true"></span>
+        <a class="contact-tab" href="#contact" aria-label="联系我" aria-controls="contactPopover" aria-expanded="false">
+          <img class="contact-avatar" src="assets/figma-portfolio/ava.png" alt="" aria-hidden="true" decoding="async" />
           <span>联<br>系<br>我</span>
         </a>
       </div>
@@ -1079,6 +1063,35 @@
       }
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
+    })();
+
+    (function() {
+      var contactFab = document.querySelector('.contact-fab');
+      if (!contactFab) return;
+      var contactTrigger = contactFab.querySelector('.contact-tab');
+      if (!contactTrigger) return;
+
+      function setContactOpen(isOpen) {
+        contactFab.classList.toggle('is-open', isOpen);
+        contactTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+
+      contactTrigger.addEventListener('click', function(event) {
+        event.preventDefault();
+        setContactOpen(!contactFab.classList.contains('is-open'));
+      });
+
+      document.addEventListener('click', function(event) {
+        if (!contactFab.contains(event.target)) {
+          setContactOpen(false);
+        }
+      });
+
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          setContactOpen(false);
+        }
+      });
     })();
 
     (function() {
