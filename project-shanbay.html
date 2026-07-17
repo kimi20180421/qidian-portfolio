@@ -2784,7 +2784,7 @@
     }
 
     .contact-fab:hover .contact-tab,
-    .contact-fab:focus-within .contact-tab {
+    .contact-fab.is-open .contact-tab {
       transform: translateY(-4px);
       box-shadow: 0 24px 38px rgba(5, 91, 79, 0.28);
     }
@@ -2843,7 +2843,7 @@
     }
 
     .contact-fab:hover .contact-popover,
-    .contact-fab:focus-within .contact-popover {
+    .contact-fab.is-open .contact-popover {
       opacity: 1;
       visibility: visible;
       transform: translate3d(0, 0, 0) scale(1);
@@ -4430,7 +4430,7 @@
           </div>
     </main>
       <div class="contact-fab">
-        <div class="contact-popover">
+        <div class="contact-popover" id="contactPopover">
           <div class="contact-popover-copy">
             扫描下方二维码，加我微信，或者拨打电话
             <span class="contact-phone">188 1099 2961</span>
@@ -4439,7 +4439,7 @@
             <img src="assets/figma-portfolio/contact-qr.svg" alt="联系二维码" />
           </div>
         </div>
-        <a class="contact-tab" href="index.html#contact" aria-label="联系我">
+        <a class="contact-tab" href="index.html#contact" aria-label="联系我" aria-controls="contactPopover" aria-expanded="false">
           <img class="contact-avatar" src="assets/figma-portfolio/ava.png" alt="" aria-hidden="true" decoding="async" />
           <span>联<br>系<br>我</span>
         </a>
@@ -4466,6 +4466,35 @@
       }
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
+    })();
+
+    (function() {
+      var contactFab = document.querySelector('.contact-fab');
+      if (!contactFab) return;
+      var contactTrigger = contactFab.querySelector('.contact-tab');
+      if (!contactTrigger) return;
+
+      function setContactOpen(isOpen) {
+        contactFab.classList.toggle('is-open', isOpen);
+        contactTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+
+      contactTrigger.addEventListener('click', function(event) {
+        event.preventDefault();
+        setContactOpen(!contactFab.classList.contains('is-open'));
+      });
+
+      document.addEventListener('click', function(event) {
+        if (!contactFab.contains(event.target)) {
+          setContactOpen(false);
+        }
+      });
+
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          setContactOpen(false);
+        }
+      });
     })();
 
       (function() {
