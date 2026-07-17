@@ -2776,8 +2776,8 @@
       font-weight: 400;
       line-height: 1.2;
       border-radius: 999px;
-      background: linear-gradient(180deg, #886FFF, #6E8CFF);
-      box-shadow: 0 18px 32px rgba(84, 83, 220, 0.28);
+      background: linear-gradient(180deg, var(--nav-active-bg), var(--nav-active-fg));
+      box-shadow: 0 18px 32px rgba(5, 91, 79, 0.22);
       transition:
         transform 240ms var(--motion-ease),
         box-shadow 240ms var(--motion-ease);
@@ -2786,7 +2786,7 @@
     .contact-fab:hover .contact-tab,
     .contact-fab:focus-within .contact-tab {
       transform: translateY(-4px);
-      box-shadow: 0 24px 38px rgba(84, 83, 220, 0.32);
+      box-shadow: 0 24px 38px rgba(5, 91, 79, 0.28);
     }
 
     .contact-avatar {
@@ -2794,8 +2794,8 @@
       width: 40px;
       height: 40px;
       border: 3px solid rgba(255, 255, 255, 0.75);
-      border-radius: 12px;
-      background: #F1E9FF;
+      border-radius: 50%;
+      background: var(--nav-active-bg);
       user-select: none;
       -webkit-user-drag: none;
     }
@@ -2811,7 +2811,7 @@
       background: rgba(255, 255, 255, 0.5);
       border: 1px solid rgba(255, 255, 255, 0.68);
       box-shadow:
-        0 22px 54px rgba(116, 88, 204, 0.12),
+        0 22px 54px rgba(5, 91, 79, 0.12),
         inset 0 1px 0 rgba(255, 255, 255, 0.74);
       backdrop-filter: blur(18px) saturate(1.16);
       -webkit-backdrop-filter: blur(18px) saturate(1.16);
@@ -2861,7 +2861,7 @@
     .contact-phone {
       display: inline-block;
       margin-top: 4px;
-      color: #7A4DFF;
+      color: var(--nav-active-fg);
       font-weight: 500;
       letter-spacing: 0.02em;
     }
@@ -4429,6 +4429,21 @@
             </div>
           </div>
     </main>
+      <div class="contact-fab">
+        <div class="contact-popover">
+          <div class="contact-popover-copy">
+            扫描下方二维码，加我微信，或者拨打电话
+            <span class="contact-phone">188 1099 2961</span>
+          </div>
+          <div class="contact-qr">
+            <img src="assets/figma-portfolio/contact-qr.svg" alt="联系二维码" />
+          </div>
+        </div>
+        <a class="contact-tab" href="index.html#contact" aria-label="联系我">
+          <img class="contact-avatar" src="assets/figma-portfolio/ava.png" alt="" aria-hidden="true" decoding="async" />
+          <span>联<br>系<br>我</span>
+        </a>
+      </div>
   </div>
   <script>
     var motionLogStart = window.performance && window.performance.now ? window.performance.now() : Date.now();
