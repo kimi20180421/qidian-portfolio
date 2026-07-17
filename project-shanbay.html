@@ -268,6 +268,27 @@
         margin-top: 2px;
       }
 
+      .section-anchor-nav.is-on-dark .section-anchor-item {
+        color: rgba(255, 255, 255, 0.68);
+      }
+
+      .section-anchor-nav.is-on-dark .section-anchor-item:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.92);
+      }
+
+      .section-anchor-nav.is-on-dark .section-anchor-item.is-active {
+        color: #BAEEEA;
+      }
+
+      .section-anchor-nav.is-on-dark .section-anchor-dot {
+        background: rgba(255, 255, 255, 0.28);
+      }
+
+      .section-anchor-nav.is-on-dark .section-anchor-item.is-active .section-anchor-dot {
+        background: #BAEEEA;
+      }
+
     .hero-block {
       width: 800px;
       max-width: 100%;
@@ -4265,6 +4286,7 @@
           }
 
           setActive(currentId);
+          anchorNav.classList.toggle('is-on-dark', currentId === 'designSolutionSection');
 
           if (window.scrollY > 120) {
             anchorNav.classList.add('is-visible');
