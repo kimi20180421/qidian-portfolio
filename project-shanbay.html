@@ -268,24 +268,24 @@
         margin-top: 2px;
       }
 
-      .section-anchor-nav.is-on-dark .section-anchor-item {
+      .section-anchor-item.is-on-dark {
         color: rgba(255, 255, 255, 0.68);
       }
 
-      .section-anchor-nav.is-on-dark .section-anchor-item:hover {
+      .section-anchor-item.is-on-dark:hover {
         background: rgba(255, 255, 255, 0.08);
         color: rgba(255, 255, 255, 0.92);
       }
 
-      .section-anchor-nav.is-on-dark .section-anchor-item.is-active {
+      .section-anchor-item.is-on-dark.is-active {
         color: #BAEEEA;
       }
 
-      .section-anchor-nav.is-on-dark .section-anchor-dot {
+      .section-anchor-item.is-on-dark .section-anchor-dot {
         background: rgba(255, 255, 255, 0.28);
       }
 
-      .section-anchor-nav.is-on-dark .section-anchor-item.is-active .section-anchor-dot {
+      .section-anchor-item.is-on-dark.is-active .section-anchor-dot {
         background: #BAEEEA;
       }
 
@@ -441,14 +441,34 @@
       margin-top: 32px;
     }
 
-    .visual-asset-showcase .design-execution-stack-copy-list {
-      width: 683px;
-      min-height: 118px;
-      border-radius: 20px;
+    .visual-asset-showcase > .design-execution-visual {
+      order: 2;
+      margin-top: 20px;
+      min-height: 460px;
     }
 
-    .visual-asset-showcase .design-execution-meta {
+    .visual-asset-showcase .design-execution-visual::after {
+      display: none;
+    }
+
+    .visual-asset-showcase .design-execution-scene,
+    .visual-asset-showcase .design-execution-scene.is-active {
+      display: flex;
+      align-items: center;
       justify-content: center;
+      padding: 32px;
+      transform: none;
+    }
+
+    .visual-asset-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      user-select: none;
+      -webkit-user-drag: none;
     }
 
     #designSolutionSection::before {
@@ -4171,7 +4191,7 @@
               <div class="section-paragraph">在完成签到、积分和权益路径的体验设计后，我进一步统一了方案中的图标、IP角色与徽章资产。它们不仅承担视觉装饰作用，也分别服务于信息识别、情绪反馈和长期成长激励，使整个积分体系形成一致且可持续扩展的体验语言。</div>
             </div>
             <div class="visual-asset-list">
-              <div class="design-execution-showcase design-execution-showcase-stack visual-asset-showcase" data-execution-showcase>
+              <div class="design-execution-showcase design-execution-showcase-stack visual-asset-showcase" data-execution-showcase data-execution-static="true">
                 <div class="design-execution-items">
                   <div class="design-execution-item is-active" id="visualAssetIconSystem" data-execution-item="visualAssetIconSystem">
                     <button class="design-execution-trigger" type="button" aria-expanded="true">
@@ -4192,25 +4212,12 @@
                     </button>
                   </div>
                 </div>
-                <div class="design-execution-stack-copy-list">
-                  <div class="design-execution-stack-copy is-active" data-execution-copy="visualAssetIconSystem">
-                    <div class="design-execution-meta">
-                      <div class="design-execution-index">01</div>
-                      <div class="design-execution-strategy-title">功能图标系统</div>
-                    </div>
+                <div class="design-execution-visual" aria-hidden="true">
+                  <div class="design-execution-scene is-active" data-execution-scene="visualAssetIconSystem">
+                    <img class="visual-asset-image" src="assets/figma-portfolio/ICON.png" alt="功能图标系统展示图" loading="lazy">
                   </div>
-                  <div class="design-execution-stack-copy" data-execution-copy="visualAssetRoleScene">
-                    <div class="design-execution-meta">
-                      <div class="design-execution-index">02</div>
-                      <div class="design-execution-strategy-title">IP角色场景化应用</div>
-                    </div>
-                  </div>
-                  <div class="design-execution-stack-copy" data-execution-copy="visualAssetBadgeSystem">
-                    <div class="design-execution-meta">
-                      <div class="design-execution-index">03</div>
-                      <div class="design-execution-strategy-title">成长徽章体系</div>
-                    </div>
-                  </div>
+                  <div class="design-execution-scene" data-execution-scene="visualAssetRoleScene"></div>
+                  <div class="design-execution-scene" data-execution-scene="visualAssetBadgeSystem"></div>
                 </div>
               </div>
             </div>
@@ -4258,10 +4265,24 @@
         });
 
         if (!targets.length) return;
+        var darkSections = Array.prototype.slice.call(document.querySelectorAll('#designSolutionSection'));
 
         function setActive(targetId) {
           targets.forEach(function(entry) {
             entry.item.classList.toggle('is-active', entry.section.id === targetId);
+          });
+        }
+
+        function syncAnchorColorMode() {
+          targets.forEach(function(entry) {
+            var itemRect = entry.item.getBoundingClientRect();
+            var itemCenterY = itemRect.top + itemRect.height / 2;
+            var isOnDark = darkSections.some(function(section) {
+              var sectionRect = section.getBoundingClientRect();
+              return itemCenterY >= sectionRect.top && itemCenterY <= sectionRect.bottom;
+            });
+
+            entry.item.classList.toggle('is-on-dark', isOnDark);
           });
         }
 
@@ -4286,7 +4307,7 @@
           }
 
           setActive(currentId);
-          anchorNav.classList.toggle('is-on-dark', currentId === 'designSolutionSection');
+          syncAnchorColorMode();
 
           if (window.scrollY > 120) {
             anchorNav.classList.add('is-visible');
@@ -4453,6 +4474,7 @@
         var scenes = Array.prototype.slice.call(showcase.querySelectorAll('[data-execution-scene]'));
         if (!items.length) return;
 
+        var isStaticShowcase = showcase.getAttribute('data-execution-static') === 'true';
         var activeIndex = 0;
         var autoSwitchTimer = null;
         var isInView = false;
@@ -4503,7 +4525,7 @@
         }
 
         function startAutoSwitch() {
-          if (reduceMotion || items.length < 2 || !isInView) return;
+          if (isStaticShowcase || reduceMotion || items.length < 2 || !isInView) return;
           clearAutoSwitch();
           logMotionEvent('design execution auto start', {
             interval: autoSwitchDelay + 'ms'
