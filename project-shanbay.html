@@ -410,9 +410,7 @@
 
     .visual-asset-list {
       margin-top: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
+      display: block;
     }
 
     .visual-asset-item {
@@ -422,6 +420,20 @@
       border-radius: 0;
       background: transparent;
       box-shadow: none;
+    }
+
+    .visual-asset-showcase {
+      margin-top: 32px;
+    }
+
+    .visual-asset-showcase .design-execution-stack-copy-list {
+      width: 683px;
+      min-height: 118px;
+      border-radius: 20px;
+    }
+
+    .visual-asset-showcase .design-execution-meta {
+      justify-content: center;
     }
 
     #designSolutionSection::before {
@@ -3000,6 +3012,7 @@
     .background-section .design-solution-compare-card,
     .background-section .design-execution-title,
     .background-section .design-execution-strategy,
+    .background-section .visual-asset-showcase,
     .background-section .visual-asset-item,
       .background-section .user-analysis-label-item,
       .background-section .competitor-label-item,
@@ -3027,6 +3040,7 @@
     .background-section.is-visible .design-solution-compare-card,
     .background-section.is-visible .design-execution-title,
     .background-section.is-visible .design-execution-strategy,
+    .background-section.is-visible .visual-asset-showcase,
     .background-section.is-visible .visual-asset-item,
       .background-section.is-visible .user-analysis-label-item,
       .background-section.is-visible .competitor-label-item,
@@ -3171,16 +3185,8 @@
       transition-delay: .42s;
     }
 
-    #visualAssetSection.is-visible .visual-asset-item:nth-child(1) {
+    #visualAssetSection.is-visible .visual-asset-showcase {
       transition-delay: .24s;
-    }
-
-    #visualAssetSection.is-visible .visual-asset-item:nth-child(2) {
-      transition-delay: .32s;
-    }
-
-    #visualAssetSection.is-visible .visual-asset-item:nth-child(3) {
-      transition-delay: .40s;
     }
 
       @media (max-width: 1320px) {
@@ -4154,22 +4160,46 @@
               <div class="section-paragraph">在完成签到、积分和权益路径的体验设计后，我进一步统一了方案中的图标、IP角色与徽章资产。它们不仅承担视觉装饰作用，也分别服务于信息识别、情绪反馈和长期成长激励，使整个积分体系形成一致且可持续扩展的体验语言。</div>
             </div>
             <div class="visual-asset-list">
-              <div class="visual-asset-item">
-                <div class="design-execution-meta">
-                  <div class="design-execution-index">01</div>
-                  <div class="design-execution-strategy-title">功能图标系统</div>
+              <div class="design-execution-showcase design-execution-showcase-stack visual-asset-showcase" data-execution-showcase>
+                <div class="design-execution-items">
+                  <div class="design-execution-item is-active" id="visualAssetIconSystem" data-execution-item="visualAssetIconSystem">
+                    <button class="design-execution-trigger" type="button" aria-expanded="true">
+                      <span class="design-execution-item-title">功能图标系统</span>
+                      <span class="design-execution-trigger-mark" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                  <div class="design-execution-item" id="visualAssetRoleScene" data-execution-item="visualAssetRoleScene">
+                    <button class="design-execution-trigger" type="button" aria-expanded="false">
+                      <span class="design-execution-item-title">IP角色场景化应用</span>
+                      <span class="design-execution-trigger-mark" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                  <div class="design-execution-item" id="visualAssetBadgeSystem" data-execution-item="visualAssetBadgeSystem">
+                    <button class="design-execution-trigger" type="button" aria-expanded="false">
+                      <span class="design-execution-item-title">成长徽章体系</span>
+                      <span class="design-execution-trigger-mark" aria-hidden="true"></span>
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <div class="visual-asset-item">
-                <div class="design-execution-meta">
-                  <div class="design-execution-index">02</div>
-                  <div class="design-execution-strategy-title">IP角色场景化应用</div>
-                </div>
-              </div>
-              <div class="visual-asset-item">
-                <div class="design-execution-meta">
-                  <div class="design-execution-index">03</div>
-                  <div class="design-execution-strategy-title">成长徽章体系</div>
+                <div class="design-execution-stack-copy-list">
+                  <div class="design-execution-stack-copy is-active" data-execution-copy="visualAssetIconSystem">
+                    <div class="design-execution-meta">
+                      <div class="design-execution-index">01</div>
+                      <div class="design-execution-strategy-title">功能图标系统</div>
+                    </div>
+                  </div>
+                  <div class="design-execution-stack-copy" data-execution-copy="visualAssetRoleScene">
+                    <div class="design-execution-meta">
+                      <div class="design-execution-index">02</div>
+                      <div class="design-execution-strategy-title">IP角色场景化应用</div>
+                    </div>
+                  </div>
+                  <div class="design-execution-stack-copy" data-execution-copy="visualAssetBadgeSystem">
+                    <div class="design-execution-meta">
+                      <div class="design-execution-index">03</div>
+                      <div class="design-execution-strategy-title">成长徽章体系</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -4409,7 +4439,7 @@
       showcases.forEach(function(showcase) {
         var items = Array.prototype.slice.call(showcase.querySelectorAll('[data-execution-item]'));
         var scenes = Array.prototype.slice.call(showcase.querySelectorAll('[data-execution-scene]'));
-        if (!items.length || !scenes.length) return;
+        if (!items.length) return;
 
         var activeIndex = 0;
         var autoSwitchTimer = null;
