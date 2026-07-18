@@ -1134,7 +1134,7 @@
       top: 342px;
       width: 112px;
       max-width: 46%;
-      z-index: 4;
+      z-index: 7;
     }
 
     .design-execution-member-card {
@@ -1154,7 +1154,7 @@
     }
 
     #executionStrategy03 [data-execution-scene="executionVipTrial"].is-active .design-execution-member-arrow {
-      animation: executionMemberComboFadeIn 360ms var(--motion-ease) 980ms both;
+      animation: executionMemberArrowPop 520ms cubic-bezier(0.16, 1, 0.3, 1) 980ms both;
     }
 
     #executionStrategy03 [data-execution-scene="executionVipTrial"].is-active .design-execution-member-card {
@@ -2553,6 +2553,23 @@
 
       100% {
         opacity: 0.8;
+      }
+    }
+
+    @keyframes executionMemberArrowPop {
+      0% {
+        opacity: 0;
+        transform: translate(-10px, 8px) scale(0.92);
+      }
+
+      68% {
+        opacity: 1;
+        transform: translate(1px, -1px) scale(1.02);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
       }
     }
 
