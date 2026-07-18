@@ -1219,7 +1219,7 @@
     .design-execution-extension {
       margin-top: 28px;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 500px;
+      grid-template-columns: minmax(0, 1fr) 620px;
       gap: 32px;
       align-items: center;
     }
@@ -1254,9 +1254,9 @@
     }
 
     .design-execution-extension .design-execution-visual {
-      width: 500px;
+      width: 620px;
       min-height: 420px;
-      min-height: 560px;
+      min-height: 1108px;
       border-radius: 28px;
       overflow: hidden;
     }
@@ -1280,64 +1280,59 @@
       box-sizing: border-box;
     }
 
-    .design-execution-extension-progress-bear,
-    .design-execution-extension-progress-phone,
-    .design-execution-extension-progress-card {
+    .design-execution-extension-progress-ri,
+    .design-execution-extension-progress-day,
+    .design-execution-extension-progress-card,
+    .design-execution-extension-progress-bear {
       position: absolute;
       display: block;
       user-select: none;
       -webkit-user-drag: none;
     }
 
-    .design-execution-extension-progress-bear {
-      left: 4px;
-      top: -4px;
-      width: 321px;
-      z-index: 1;
-    }
-
-    .design-execution-extension-progress-phone {
-      right: 16px;
-      top: 96px;
-      width: 240px;
+    .design-execution-extension-progress-ri {
+      right: 50px;
+      top: 0;
+      width: 570px;
       z-index: 2;
     }
 
-    .design-execution-extension-progress-card {
-      left: 84px;
-      bottom: 16px;
-      width: 284px;
-      z-index: 4;
-      transform: rotate(-10deg);
+    .design-execution-extension-progress-day {
+      left: 258px;
+      top: 425px;
+      width: 33px;
+      z-index: 6;
       transform-origin: center;
     }
 
-    .design-execution-extension-status-image {
-      position: absolute;
-      left: 40px;
-      top: 202px;
-      width: 190px;
-      height: auto;
+    .design-execution-extension-progress-card {
+      left: 22px;
+      top: 558px;
+      width: 560px;
       z-index: 5;
-      display: block;
-      user-select: none;
-      -webkit-user-drag: none;
     }
 
-    .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-extension-progress-phone {
-      animation: executionProgressPhoneIn 680ms var(--motion-ease) 60ms both;
+    .design-execution-extension-progress-bear {
+      right: 0;
+      top: 120px;
+      width: 230px;
+      z-index: 7;
+    }
+
+    .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-extension-progress-ri {
+      animation: executionProgressRiIn 680ms cubic-bezier(0.16, 1, 0.3, 1) 60ms both;
+    }
+
+    .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-extension-progress-day {
+      animation: executionProgressDayShrink 980ms cubic-bezier(0.16, 1, 0.3, 1) 560ms both;
     }
 
     .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-extension-progress-card {
-      animation: executionProgressCardIn 680ms var(--motion-ease) 240ms both;
-    }
-
-    .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-extension-status-image {
-      animation: executionProgressStatusIn 680ms var(--motion-ease) 420ms both;
+      animation: executionProgressCardIn 620ms cubic-bezier(0.16, 1, 0.3, 1) 1280ms both;
     }
 
     .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-extension-progress-bear {
-      animation: executionProgressBearPop 760ms cubic-bezier(0.34, 1.56, 0.64, 1) 660ms both;
+      animation: executionProgressBearPop 760ms cubic-bezier(0.34, 1.56, 0.64, 1) 1360ms both;
     }
 
     .design-execution-lottery-entry,
@@ -2681,27 +2676,10 @@
       }
     }
 
-    @keyframes executionProgressBearPop {
+    @keyframes executionProgressRiIn {
       0% {
         opacity: 0;
-        transform: translateY(48px) scale(0.72);
-      }
-
-      60% {
-        opacity: 1;
-        transform: translateY(-10px) scale(1.04);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    @keyframes executionProgressPhoneIn {
-      0% {
-        opacity: 0;
-        transform: translate(28px, 18px) scale(0.95);
+        transform: translate(28px, 18px) scale(0.97);
       }
 
       100% {
@@ -2710,27 +2688,59 @@
       }
     }
 
-    @keyframes executionProgressCardIn {
+    @keyframes executionProgressDayShrink {
       0% {
         opacity: 0;
-        transform: translateY(26px) rotate(-10deg) scale(0.94);
+        transform: scale(9.09);
+      }
+
+      18% {
+        opacity: 1;
+        transform: scale(9.09);
+      }
+
+      78% {
+        opacity: 1;
+        transform: scale(0.94);
       }
 
       100% {
         opacity: 1;
-        transform: translateY(0) rotate(-10deg) scale(1);
+        transform: scale(1);
       }
     }
 
-    @keyframes executionProgressStatusIn {
+    @keyframes executionProgressCardIn {
       0% {
         opacity: 0;
-        transform: translateY(16px) scale(0.96);
+        transform: translateY(26px) scale(0.96);
+      }
+
+      68% {
+        opacity: 1;
+        transform: translateY(-3px) scale(1.012);
       }
 
       100% {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translate(0, 0) scale(1);
+      }
+    }
+
+    @keyframes executionProgressBearPop {
+      0% {
+        opacity: 0;
+        transform: translate(22px, 34px) scale(0.78);
+      }
+
+      62% {
+        opacity: 1;
+        transform: translate(-4px, -8px) scale(1.04);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
       }
     }
 
@@ -3009,8 +3019,9 @@
       }
 
       .design-execution-extension-progress-bear,
-      .design-execution-extension-progress-phone,
-      .design-execution-extension-status-image {
+      .design-execution-extension-progress-ri,
+      .design-execution-extension-progress-day,
+      .design-execution-extension-progress-card {
         opacity: 1;
         transform: none;
         animation: none !important;
@@ -3030,7 +3041,7 @@
 
       .design-execution-extension-progress-card {
         opacity: 1;
-        transform: rotate(-10deg);
+        transform: none;
         animation: none !important;
       }
     }
@@ -3622,28 +3633,28 @@
           padding: 24px;
         }
 
-        .design-execution-extension-progress-bear {
-          left: 0;
-          top: 26px;
-          width: 182px;
+        .design-execution-extension-progress-ri {
+          right: 24px;
+          top: 0;
+          width: 320px;
         }
 
-        .design-execution-extension-progress-phone {
-          right: -6px;
-          top: 76px;
-          width: 198px;
+        .design-execution-extension-progress-day {
+          left: 145px;
+          top: 238px;
+          width: 22px;
         }
 
         .design-execution-extension-progress-card {
-          left: 24px;
-          bottom: 14px;
-          width: 206px;
+          left: 18px;
+          top: 268px;
+          width: 316px;
         }
 
-        .design-execution-extension-status-image {
-          left: 0;
-          top: 150px;
-          width: 200px;
+        .design-execution-extension-progress-bear {
+          right: 18px;
+          top: 78px;
+          width: 132px;
         }
 
         .design-execution-lottery-entry {
@@ -4220,10 +4231,10 @@
                       <div class="design-execution-visual" aria-hidden="true">
                         <div class="design-execution-scene is-active" data-execution-scene="executionProgressCalendar">
                           <div class="design-execution-extension-progress-scene">
+                            <img class="design-execution-extension-progress-ri" src="assets/figma-portfolio/ri.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/ri.png'" alt="签到日历页面展示图" decoding="async" loading="lazy" />
+                            <img class="design-execution-extension-progress-day" src="assets/figma-portfolio/16.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/16.png'" alt="连续签到第 16 天奖励图" decoding="async" loading="lazy" />
+                            <img class="design-execution-extension-progress-card" src="assets/figma-portfolio/rili-n.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/rili-n.png'" alt="连续签到状态说明图" decoding="async" loading="lazy" />
                             <img class="design-execution-extension-progress-bear" src="assets/figma-portfolio/bear.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/bear.png'" alt="签到进度吉祥物图" decoding="async" loading="lazy" />
-                            <img class="design-execution-extension-progress-phone" src="assets/figma-portfolio/rili-qan.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/rili-qan.png'" alt="签到日历页面展示图" decoding="async" loading="lazy" />
-                            <img class="design-execution-extension-progress-card" src="assets/figma-portfolio/rili.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/rili.png'" alt="签到日历奖励看板图" decoding="async" loading="lazy" />
-                            <img class="design-execution-extension-status-image" src="assets/figma-portfolio/qian.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/qian.png'" alt="签到状态说明图" decoding="async" loading="lazy" />
                           </div>
                         </div>
                         <div class="design-execution-scene" data-execution-scene="executionRewardExtension">
