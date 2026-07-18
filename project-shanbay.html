@@ -1146,7 +1146,7 @@
     }
 
     #executionStrategy03 [data-execution-scene="executionVipTrial"].is-active .design-execution-member-phone {
-      animation: executionMemberComboFadeIn 360ms var(--motion-ease) 80ms both;
+      animation: executionMemberPhoneDim 1480ms var(--motion-ease) 80ms both;
     }
 
     #executionStrategy03 [data-execution-scene="executionVipTrial"].is-active .design-execution-member-hand {
@@ -2535,6 +2535,24 @@
 
       100% {
         opacity: 1;
+      }
+    }
+
+    @keyframes executionMemberPhoneDim {
+      0% {
+        opacity: 0;
+      }
+
+      24% {
+        opacity: 1;
+      }
+
+      76% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0.8;
       }
     }
 
