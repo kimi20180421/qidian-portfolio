@@ -1138,15 +1138,15 @@
     }
 
     #executionStrategy03 [data-execution-scene="executionVipTrial"].is-active .design-execution-member-phone {
-      animation: executionMemberPhoneDim 1480ms var(--motion-ease) 80ms both;
+      animation: executionMemberPhoneDim 1560ms cubic-bezier(0.16, 1, 0.3, 1) 80ms both;
     }
 
     #executionStrategy03 [data-execution-scene="executionVipTrial"].is-active .design-execution-member-hand {
-      animation: executionMemberHandTap 720ms var(--motion-ease) 420ms both;
+      animation: executionMemberHandTap 860ms cubic-bezier(0.16, 1, 0.3, 1) 420ms both;
     }
 
     #executionStrategy03 [data-execution-scene="executionVipTrial"].is-active .design-execution-member-card {
-      animation: executionMemberComboFadeIn 420ms var(--motion-ease) 1120ms both;
+      animation: executionMemberCardPop 620ms cubic-bezier(0.16, 1, 0.3, 1) 1080ms both;
     }
 
     .design-execution-vip-task-combo {
@@ -2529,40 +2529,61 @@
     @keyframes executionMemberPhoneDim {
       0% {
         opacity: 0;
+        transform: translateY(10px) scale(0.985);
       }
 
       24% {
         opacity: 1;
+        transform: translateY(0) scale(1);
       }
 
-      76% {
+      72% {
         opacity: 1;
+        transform: translateY(0) scale(1);
       }
 
       100% {
         opacity: 0.8;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes executionMemberCardPop {
+      0% {
+        opacity: 0;
+        transform: translate(18px, 18px) scale(0.94);
+      }
+
+      62% {
+        opacity: 1;
+        transform: translate(-2px, -2px) scale(1.018);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
       }
     }
 
     @keyframes executionMemberHandTap {
       0% {
         opacity: 0;
-        transform: translate(18px, 18px) scale(0.96);
+        transform: translate(18px, 18px) scale(0.94);
       }
 
-      42% {
+      36% {
         opacity: 1;
-        transform: translate(0, 0) scale(1);
+        transform: translate(1px, 1px) scale(1.02);
       }
 
-      64% {
+      58% {
         opacity: 1;
-        transform: translate(-8px, -8px) scale(0.94);
+        transform: translate(-8px, -8px) scale(0.92);
       }
 
-      76% {
+      78% {
         opacity: 1;
-        transform: translate(-8px, -8px) scale(0.94);
+        transform: translate(-7px, -7px) scale(0.965);
       }
 
       100% {
@@ -4784,14 +4805,16 @@
           var events = [
             { offset: 0, name: 'vip trial scene active', target: 'scene', opacitySelector: '.design-execution-member-phone' },
             { offset: 80, name: 'vip trial y fade start', target: 'y', opacitySelector: '.design-execution-member-phone' },
-            { offset: 435, name: 'vip trial y opacity 100', target: 'y', opacitySelector: '.design-execution-member-phone' },
+            { offset: 454, name: 'vip trial y opacity 100', target: 'y', opacitySelector: '.design-execution-member-phone' },
             { offset: 420, name: 'vip trial hand tap start', target: 'hand', opacitySelector: '.design-execution-member-hand' },
-            { offset: 880, name: 'vip trial hand tap contact', target: 'hand', opacitySelector: '.design-execution-member-hand' },
-            { offset: 967, name: 'vip trial hand hold', target: 'hand', opacitySelector: '.design-execution-member-hand' },
-            { offset: 1120, name: 'vip trial n fade start', target: 'n', opacitySelector: '.design-execution-member-card' },
-            { offset: 1140, name: 'vip trial hand visible', target: 'hand', opacitySelector: '.design-execution-member-hand' },
-            { offset: 1540, name: 'vip trial n opacity 100', target: 'n', opacitySelector: '.design-execution-member-card' },
-            { offset: 1560, name: 'vip trial y opacity 80', target: 'y', opacitySelector: '.design-execution-member-phone' }
+            { offset: 730, name: 'vip trial hand approach', target: 'hand', opacitySelector: '.design-execution-member-hand' },
+            { offset: 919, name: 'vip trial hand press', target: 'hand', opacitySelector: '.design-execution-member-hand' },
+            { offset: 1080, name: 'vip trial n pop start', target: 'n', opacitySelector: '.design-execution-member-card' },
+            { offset: 1091, name: 'vip trial hand rebound', target: 'hand', opacitySelector: '.design-execution-member-hand' },
+            { offset: 1280, name: 'vip trial hand hold', target: 'hand', opacitySelector: '.design-execution-member-hand' },
+            { offset: 1464, name: 'vip trial n overshoot', target: 'n', opacitySelector: '.design-execution-member-card' },
+            { offset: 1640, name: 'vip trial y opacity 80', target: 'y', opacitySelector: '.design-execution-member-phone' },
+            { offset: 1700, name: 'vip trial n settled', target: 'n', opacitySelector: '.design-execution-member-card' }
           ];
 
           events.forEach(function(event) {
