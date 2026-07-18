@@ -1129,14 +1129,6 @@
       transform-origin: 28% 20%;
     }
 
-    .design-execution-member-arrow {
-      left: 120px;
-      top: 342px;
-      width: 112px;
-      max-width: 46%;
-      z-index: 7;
-    }
-
     .design-execution-member-card {
       right: 8px;
       top: 66px;
@@ -1151,10 +1143,6 @@
 
     #executionStrategy03 [data-execution-scene="executionVipTrial"].is-active .design-execution-member-hand {
       animation: executionMemberHandTap 720ms var(--motion-ease) 420ms both;
-    }
-
-    #executionStrategy03 [data-execution-scene="executionVipTrial"].is-active .design-execution-member-arrow {
-      animation: executionMemberArrowPop 520ms cubic-bezier(0.16, 1, 0.3, 1) 980ms both;
     }
 
     #executionStrategy03 [data-execution-scene="executionVipTrial"].is-active .design-execution-member-card {
@@ -2553,23 +2541,6 @@
 
       100% {
         opacity: 0.8;
-      }
-    }
-
-    @keyframes executionMemberArrowPop {
-      0% {
-        opacity: 0;
-        transform: translate(-10px, 8px) scale(0.92);
-      }
-
-      68% {
-        opacity: 1;
-        transform: translate(1px, -1px) scale(1.02);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translate(0, 0) scale(1);
       }
     }
 
@@ -4360,7 +4331,6 @@
                           <div class="design-execution-member-combo">
                             <img class="design-execution-member-combo-image design-execution-member-phone" src="assets/figma-portfolio/y.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/y.png'" alt="学习完成后的单词小结页面图" loading="lazy" decoding="async" />
                             <img class="design-execution-member-combo-image design-execution-member-hand" src="assets/figma-portfolio/hand.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/hand.png'" alt="点击完成按钮的手势图" loading="lazy" decoding="async" />
-                            <img class="design-execution-member-combo-image design-execution-member-arrow" src="assets/figma-portfolio/ar3.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/ar3.png'" alt="权益推荐引导箭头图" loading="lazy" decoding="async" />
                             <img class="design-execution-member-combo-image design-execution-member-card" src="assets/figma-portfolio/n.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/n.png'" alt="学习完成后的权益推荐弹窗图" loading="lazy" decoding="async" />
                           </div>
                         </div>
@@ -4818,7 +4788,6 @@
             { offset: 420, name: 'vip trial hand tap start', target: 'hand', opacitySelector: '.design-execution-member-hand' },
             { offset: 880, name: 'vip trial hand tap contact', target: 'hand', opacitySelector: '.design-execution-member-hand' },
             { offset: 967, name: 'vip trial hand hold', target: 'hand', opacitySelector: '.design-execution-member-hand' },
-            { offset: 980, name: 'vip trial ar3 fade start', target: 'ar3', opacitySelector: '.design-execution-member-arrow' },
             { offset: 1120, name: 'vip trial n fade start', target: 'n', opacitySelector: '.design-execution-member-card' },
             { offset: 1140, name: 'vip trial hand visible', target: 'hand', opacitySelector: '.design-execution-member-hand' },
             { offset: 1540, name: 'vip trial n opacity 100', target: 'n', opacitySelector: '.design-execution-member-card' },
