@@ -4770,7 +4770,58 @@
         var isStaticShowcase = showcase.getAttribute('data-execution-static') === 'true';
         var activeIndex = 0;
         var autoSwitchTimer = null;
+        var vipTrialLogTimers = [];
         var isInView = false;
+
+        function clearVipTrialLogTimers() {
+          vipTrialLogTimers.forEach(function(timer) {
+            window.clearTimeout(timer);
+          });
+          vipTrialLogTimers = [];
+        }
+
+        function getSceneImageOpacity(scene, selector) {
+          var image = scene.querySelector(selector);
+          if (!image) return 'missing';
+          return window.getComputedStyle(image).opacity;
+        }
+
+        function queueVipTrialMotionLogs(itemId) {
+          clearVipTrialLogTimers();
+          if (itemId !== 'executionVipTrial') return;
+
+          var scene = showcase.querySelector('[data-execution-scene="executionVipTrial"]');
+          if (!scene) return;
+
+          var startTime = window.performance && window.performance.now ? window.performance.now() : Date.now();
+          var events = [
+            { offset: 0, name: 'vip trial scene active', target: 'scene', opacitySelector: '.design-execution-member-phone' },
+            { offset: 80, name: 'vip trial y fade start', target: 'y', opacitySelector: '.design-execution-member-phone' },
+            { offset: 435, name: 'vip trial y opacity 100', target: 'y', opacitySelector: '.design-execution-member-phone' },
+            { offset: 420, name: 'vip trial hand tap start', target: 'hand', opacitySelector: '.design-execution-member-hand' },
+            { offset: 880, name: 'vip trial hand tap contact', target: 'hand', opacitySelector: '.design-execution-member-hand' },
+            { offset: 967, name: 'vip trial hand fade start', target: 'hand', opacitySelector: '.design-execution-member-hand' },
+            { offset: 980, name: 'vip trial ar3 fade start', target: 'ar3', opacitySelector: '.design-execution-member-arrow' },
+            { offset: 1120, name: 'vip trial n fade start', target: 'n', opacitySelector: '.design-execution-member-card' },
+            { offset: 1140, name: 'vip trial hand hidden', target: 'hand', opacitySelector: '.design-execution-member-hand' },
+            { offset: 1540, name: 'vip trial n opacity 100', target: 'n', opacitySelector: '.design-execution-member-card' },
+            { offset: 1560, name: 'vip trial y opacity 80', target: 'y', opacitySelector: '.design-execution-member-phone' }
+          ];
+
+          events.forEach(function(event) {
+            var timer = window.setTimeout(function() {
+              var now = window.performance && window.performance.now ? window.performance.now() : Date.now();
+              logMotionEvent(event.name, {
+                itemId: itemId,
+                target: event.target,
+                expectedOffset: event.offset + 'ms',
+                actualOffset: Math.round(now - startTime) + 'ms',
+                opacity: getSceneImageOpacity(scene, event.opacitySelector)
+              });
+            }, event.offset);
+            vipTrialLogTimers.push(timer);
+          });
+        }
 
         function activate(itemId, shouldLog) {
           items.forEach(function(item) {
@@ -4793,6 +4844,8 @@
           Array.prototype.slice.call(showcase.querySelectorAll('[data-execution-copy]')).forEach(function(copy) {
             copy.classList.toggle('is-active', copy.getAttribute('data-execution-copy') === itemId);
           });
+
+          queueVipTrialMotionLogs(itemId);
 
           if (shouldLog) {
             var strategy = showcase.closest('.design-execution-strategy');
