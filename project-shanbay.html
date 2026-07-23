@@ -2148,9 +2148,9 @@
       position: sticky;
       left: 0;
       z-index: 2;
-      border-right: 1px solid rgba(190, 218, 213, 0.9);
       background: #FDFFFE;
-      box-shadow: 10px 0 18px rgba(5, 91, 79, 0.08);
+      box-shadow: none;
+      transition: box-shadow var(--motion-fast) var(--motion-ease);
     }
 
     .competitor-analysis-head-cell:first-child {
@@ -2159,8 +2159,14 @@
       z-index: 3;
       padding-left: 20px;
       padding-right: 20px;
-      border-right: 1px solid rgba(190, 218, 213, 0.9);
       background: #FDFFFE;
+      box-shadow: none;
+      transition: box-shadow var(--motion-fast) var(--motion-ease);
+    }
+
+    .competitor-analysis-scroll.is-scrolled .competitor-analysis-name-cell,
+    .competitor-analysis-scroll.is-scrolled .competitor-analysis-head-cell:first-child {
+      border-right: 1px solid rgba(190, 218, 213, 0.9);
       box-shadow: 10px 0 18px rgba(5, 91, 79, 0.08);
     }
 
@@ -5168,6 +5174,15 @@
       var tabs = shell.querySelectorAll('[data-competitor-tab]');
       var panels = shell.querySelectorAll('[data-competitor-panel]');
       var copy = shell.querySelector('[data-competitor-tab-copy]');
+      var scrollAreas = shell.querySelectorAll('.competitor-analysis-scroll');
+
+      function updateScrollState(area) {
+        area.classList.toggle('is-scrolled', area.scrollLeft > 0);
+      }
+
+      function syncScrollStates() {
+        scrollAreas.forEach(updateScrollState);
+      }
 
       function setActiveCompetitorTab(name, text) {
         tabs.forEach(function(tab) {
@@ -5182,12 +5197,21 @@
           copy.textContent = text || '';
           copy.classList.toggle('is-empty', !text);
         }
+
+        window.requestAnimationFrame(syncScrollStates);
       }
 
       tabs.forEach(function(tab) {
         tab.addEventListener('click', function() {
           setActiveCompetitorTab(tab.getAttribute('data-competitor-tab'), tab.getAttribute('data-competitor-copy'));
         });
+      });
+
+      scrollAreas.forEach(function(area) {
+        updateScrollState(area);
+        area.addEventListener('scroll', function() {
+          updateScrollState(area);
+        }, { passive: true });
       });
     })();
 
