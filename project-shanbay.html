@@ -2016,10 +2016,37 @@
       margin-top: 32px;
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 16px;
+    }
+
+    .review-tab-shell.competitor-tab-shell {
+      margin-top: 0;
+    }
+
+    .competitor-tab-copy {
+      min-height: 44px;
+      margin: 16px auto 14px;
+      color: rgba(31, 35, 41, 0.72);
+      font-size: 15px;
+      line-height: 22px;
+      font-weight: 400;
+      text-align: center;
+      max-width: 880px;
+    }
+
+    .competitor-tab-copy.is-empty {
+      min-height: 0;
+      margin-top: 0;
+      margin-bottom: 14px;
+    }
+
+    .review-tab-panels.competitor-tab-panels {
+      padding: 0;
+      background: transparent;
     }
 
     .competitor-analysis-board {
+      width: 100%;
       overflow: visible;
     }
 
@@ -4272,12 +4299,15 @@
                     <div class="competitor-label-text"><span class="competitor-label-title">留存机制：</span>是否能把签到和学习、成长、社区或权益绑定起来？</div>
                   </div>
                 </div>
-                <div class="competitor-comparison-samples">
-                  <div class="competitor-analysis-board">
-                    <div class="competitor-analysis-title">
-                      竞品分析——签到入口与积分获取
-                      <div class="competitor-analysis-note">聚焦签到入口是否可见、任务如何承接、积分获得是否清晰，以及完成后是否能形成即时反馈。</div>
-                    </div>
+                <div class="competitor-comparison-samples review-tab-shell competitor-tab-shell" id="competitorTabShell">
+                  <div class="review-tab-bar">
+                    <div class="review-tab is-active" data-competitor-tab="checkinPoints" data-competitor-copy="高曝光签到入口 + 轻量化弹窗反馈 + 游戏化学习任务 + 月度打卡留存；搭建「积分获取 — 积分消耗」完整闭环，激励围绕学习行为设计"><span class="review-tab-label">签到入口与积分获取</span></div>
+                    <div class="review-tab" data-competitor-tab="pointsMarket" data-competitor-copy=""><span class="review-tab-label">积分商城兑换</span></div>
+                  </div>
+                  <div class="competitor-tab-copy" data-competitor-tab-copy>高曝光签到入口 + 轻量化弹窗反馈 + 游戏化学习任务 + 月度打卡留存；搭建「积分获取 — 积分消耗」完整闭环，激励围绕学习行为设计</div>
+                  <div class="review-tab-panels competitor-tab-panels">
+                    <div class="review-tab-panel competitor-tab-panel is-active" data-competitor-panel="checkinPoints">
+                      <div class="competitor-analysis-board">
                     <div class="competitor-analysis-scroll">
                       <div class="competitor-analysis-table">
                         <div class="competitor-analysis-head">
@@ -4323,11 +4353,9 @@
                       </div>
                     </div>
                   </div>
-                  <div class="competitor-analysis-board competitor-analysis-board-market">
-                    <div class="competitor-analysis-title">
-                      竞品分析——积分商城兑换
-                      <div class="competitor-analysis-note">聚焦积分是否能被理解、权益是否有吸引力、兑换路径是否短，以及商城是否能反向驱动持续签到。</div>
                     </div>
+                    <div class="review-tab-panel competitor-tab-panel" data-competitor-panel="pointsMarket">
+                      <div class="competitor-analysis-board competitor-analysis-board-market">
                     <div class="competitor-analysis-scroll">
                       <div class="competitor-analysis-table">
                         <div class="competitor-analysis-head">
@@ -4366,6 +4394,8 @@
                           <div class="competitor-analysis-module-cell"><img class="competitor-analysis-shot" src="assets/figma-portfolio/mobei/Group%202147239785.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/mobei/Group%202147239785.png'" alt="墨墨背单词持续激励截图" loading="lazy"><div class="competitor-analysis-copy"><strong>长期价值来自学习成果。</strong>可借鉴其稳定、低干扰的目标表达方式。</div></div>
                         </div>
                       </div>
+                    </div>
+                  </div>
                     </div>
                   </div>
                 </div>
@@ -5106,6 +5136,36 @@
       });
 
       startAutoSwitch();
+    })();
+
+    (function() {
+      var shell = document.getElementById('competitorTabShell');
+      if (!shell) return;
+
+      var tabs = shell.querySelectorAll('[data-competitor-tab]');
+      var panels = shell.querySelectorAll('[data-competitor-panel]');
+      var copy = shell.querySelector('[data-competitor-tab-copy]');
+
+      function setActiveCompetitorTab(name, text) {
+        tabs.forEach(function(tab) {
+          tab.classList.toggle('is-active', tab.getAttribute('data-competitor-tab') === name);
+        });
+
+        panels.forEach(function(panel) {
+          panel.classList.toggle('is-active', panel.getAttribute('data-competitor-panel') === name);
+        });
+
+        if (copy) {
+          copy.textContent = text || '';
+          copy.classList.toggle('is-empty', !text);
+        }
+      }
+
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          setActiveCompetitorTab(tab.getAttribute('data-competitor-tab'), tab.getAttribute('data-competitor-copy'));
+        });
+      });
     })();
 
     (function() {
