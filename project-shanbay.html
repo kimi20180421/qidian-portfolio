@@ -2016,227 +2016,208 @@
       margin-top: 32px;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 28px;
     }
 
-    .competitor-sample-card {
-      padding: 24px;
+    .competitor-analysis-board {
       border-radius: 24px;
       background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(244, 255, 253, 0.84) 100%);
-      border: 1px solid rgba(203, 237, 232, 0.82);
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(244, 255, 253, 0.86) 100%);
+      border: 1px solid rgba(203, 237, 232, 0.86);
       box-shadow:
         0 18px 44px rgba(6, 71, 62, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.76);
       overflow: hidden;
     }
 
-    .competitor-sample-heading {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 18px;
-    }
-
-    .competitor-sample-title {
-      font-size: 18px;
-      line-height: 28px;
-      font-weight: 500;
+    .competitor-analysis-title {
+      padding: 20px 24px 18px;
       color: var(--ink);
+      font-size: 20px;
+      line-height: 30px;
+      font-weight: 500;
+      background:
+        radial-gradient(circle at 12% 20%, rgba(52, 200, 178, 0.16), transparent 30%),
+        rgba(255, 255, 255, 0.72);
+      border-bottom: 1px solid rgba(214, 234, 230, 0.86);
     }
 
-    .competitor-sample-desc {
+    .competitor-analysis-note {
       margin-top: 4px;
+      color: rgba(31, 35, 41, 0.64);
       font-size: 14px;
       line-height: 22px;
-      color: rgba(31, 35, 41, 0.68);
+      font-weight: 400;
     }
 
-    .competitor-sample-tag {
-      flex-shrink: 0;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(52, 200, 178, 0.12);
-      color: #055B4F;
-      font-size: 13px;
-      line-height: 20px;
-      font-weight: 500;
-    }
-
-    .competitor-table-scroll {
+    .competitor-analysis-scroll {
       overflow-x: auto;
-      padding-bottom: 2px;
+      padding: 18px;
     }
 
-    .competitor-grid-table {
-      min-width: 920px;
-      border-radius: 18px;
-      border: 1px solid rgba(213, 229, 226, 0.88);
-      overflow: hidden;
-      background: rgba(255, 255, 255, 0.72);
-    }
-
-    .competitor-grid-row {
-      display: grid;
-      border-top: 1px solid rgba(216, 232, 229, 0.82);
-    }
-
-    .competitor-grid-row:first-child {
-      border-top: 0;
-    }
-
-    .competitor-core-table .competitor-grid-row {
-      grid-template-columns: 150px 128px 128px 128px 128px minmax(210px, 1fr);
-    }
-
-    .competitor-score-table .competitor-grid-row {
-      grid-template-columns: 150px 132px 132px 132px 132px minmax(190px, 1fr);
-    }
-
-    .competitor-grid-cell {
-      min-height: 72px;
-      padding: 16px 14px;
-      border-left: 1px solid rgba(216, 232, 229, 0.82);
+    .competitor-analysis-table {
+      min-width: 980px;
       display: flex;
-      align-items: center;
-      font-size: 14px;
-      line-height: 22px;
-      color: rgba(31, 35, 41, 0.78);
-    }
-
-    .competitor-grid-cell:first-child {
-      border-left: 0;
-    }
-
-    .competitor-grid-head .competitor-grid-cell {
-      min-height: 48px;
-      background: rgba(231, 250, 247, 0.88);
-      color: #055B4F;
-      font-size: 13px;
-      line-height: 20px;
-      font-weight: 500;
-    }
-
-    .competitor-product {
-      display: flex;
-      align-items: center;
+      flex-direction: column;
       gap: 10px;
-      color: var(--ink);
-      font-weight: 500;
     }
 
-    .competitor-thumb {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
+    .competitor-analysis-head,
+    .competitor-analysis-row {
+      display: grid;
+      grid-template-columns: 150px repeat(4, minmax(170px, 1fr));
+      gap: 10px;
+    }
+
+    .competitor-analysis-board-market .competitor-analysis-head,
+    .competitor-analysis-board-market .competitor-analysis-row {
+      grid-template-columns: 150px repeat(3, minmax(190px, 1fr));
+    }
+
+    .competitor-analysis-head-cell {
+      min-height: 46px;
+      padding: 12px 14px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
+      color: #F5FFFD;
+      background: linear-gradient(135deg, #063D43 0%, #072D35 100%);
+      box-shadow: inset 0 0 0 1px rgba(52, 200, 178, 0.24);
+      font-size: 15px;
+      line-height: 22px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .competitor-analysis-name-cell,
+    .competitor-analysis-module-cell {
+      min-height: 220px;
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(213, 229, 226, 0.86);
+      box-sizing: border-box;
+    }
+
+    .competitor-analysis-name-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 22px;
+      font-weight: 500;
+      text-align: center;
+      background:
+        linear-gradient(180deg, rgba(232, 251, 248, 0.94), rgba(255, 255, 255, 0.82));
+    }
+
+    .competitor-analysis-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: #055B4F;
       font-size: 14px;
       line-height: 1;
       font-weight: 500;
       background: linear-gradient(145deg, #E6FCF8 0%, #BCEEE7 100%);
-      border: 1px solid rgba(255, 255, 255, 0.82);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.86);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
     }
 
-    .competitor-thumb-purple {
-      color: #5B3EC8;
-      background: linear-gradient(145deg, #F1EDFF 0%, #D7CCFF 100%);
+    .competitor-analysis-icon-blue {
+      color: #1F56C7;
+      background: linear-gradient(145deg, #EEF4FF 0%, #C7D9FF 100%);
     }
 
-    .competitor-thumb-orange {
+    .competitor-analysis-icon-orange {
       color: #A15B00;
       background: linear-gradient(145deg, #FFF5D9 0%, #FFE0A3 100%);
     }
 
-    .competitor-thumb-red {
+    .competitor-analysis-icon-red {
       color: #B1342D;
       background: linear-gradient(145deg, #FFF0EE 0%, #FFC9C3 100%);
     }
 
-    .competitor-point-strong {
-      color: #055B4F;
-      font-weight: 500;
-    }
-
-    .competitor-score {
+    .competitor-analysis-module-cell {
       display: flex;
-      align-items: center;
-      gap: 4px;
+      flex-direction: column;
+      gap: 12px;
     }
 
-    .competitor-score-dot {
-      width: 8px;
-      height: 8px;
+    .competitor-analysis-shot {
+      height: 132px;
+      border-radius: 14px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(238, 252, 250, 0.78)),
+        linear-gradient(135deg, rgba(52, 200, 178, 0.20), rgba(255, 255, 255, 0.24));
+      border: 1px solid rgba(208, 230, 226, 0.9);
+    }
+
+    .competitor-analysis-shot::before {
+      content: "";
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      top: 14px;
+      height: 14px;
       border-radius: 999px;
-      background: #34C8B2;
+      background: rgba(5, 91, 79, 0.12);
+      box-shadow:
+        0 28px 0 rgba(52, 200, 178, 0.14),
+        0 56px 0 rgba(5, 91, 79, 0.08);
     }
 
-    .competitor-score-dot-empty {
-      background: rgba(52, 200, 178, 0.18);
-    }
-
-    .competitor-summary-pill {
-      display: inline-flex;
-      align-items: center;
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: rgba(255, 246, 220, 0.86);
-      color: #8A5B00;
+    .competitor-analysis-shot::after {
+      content: "截图占位";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: rgba(5, 91, 79, 0.48);
       font-size: 13px;
       line-height: 20px;
       font-weight: 500;
+      white-space: nowrap;
     }
 
-    .competitor-tag-matrix {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
+    .competitor-analysis-shot-blue {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(239, 245, 255, 0.82)),
+        linear-gradient(135deg, rgba(71, 128, 255, 0.18), rgba(255, 255, 255, 0.28));
     }
 
-    .competitor-tag-card {
-      min-height: 190px;
-      padding: 18px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid rgba(213, 229, 226, 0.82);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.76);
+    .competitor-analysis-shot-orange {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 247, 226, 0.84)),
+        linear-gradient(135deg, rgba(255, 181, 71, 0.20), rgba(255, 255, 255, 0.24));
     }
 
-    .competitor-tag-card-head {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-      color: var(--ink);
-      font-size: 15px;
-      line-height: 22px;
-      font-weight: 500;
+    .competitor-analysis-shot-red {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 239, 237, 0.84)),
+        linear-gradient(135deg, rgba(255, 103, 94, 0.18), rgba(255, 255, 255, 0.24));
     }
 
-    .competitor-tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    .competitor-analysis-copy {
+      color: rgba(31, 35, 41, 0.72);
+      font-size: 13px;
+      line-height: 20px;
+      font-weight: 400;
     }
 
-    .competitor-feature-tag {
-      padding: 5px 9px;
-      border-radius: 999px;
-      background: rgba(52, 200, 178, 0.11);
+    .competitor-analysis-copy strong {
       color: #055B4F;
-      font-size: 12px;
-      line-height: 18px;
       font-weight: 500;
-    }
-
-    .competitor-feature-tag-muted {
-      background: rgba(31, 35, 41, 0.06);
-      color: rgba(31, 35, 41, 0.64);
     }
 
     .user-analysis-label-list {
@@ -3542,7 +3523,7 @@
     .background-section .visual-asset-item,
       .background-section .user-analysis-label-item,
       .background-section .competitor-label-item,
-      .background-section .competitor-sample-card,
+      .background-section .competitor-analysis-board,
     .background-section .role-focus-title,
     .background-section .role-focus-item,
       .background-section .user-analysis-main,
@@ -3571,7 +3552,7 @@
     .background-section.is-visible .visual-asset-item,
       .background-section.is-visible .user-analysis-label-item,
       .background-section.is-visible .competitor-label-item,
-      .background-section.is-visible .competitor-sample-card,
+      .background-section.is-visible .competitor-analysis-board,
     .background-section.is-visible .role-focus-title,
     .background-section.is-visible .role-focus-item,
       .background-section.is-visible .user-analysis-main,
@@ -3733,16 +3714,12 @@
       transition-delay: .78s;
     }
 
-    #competitorAnalysisSection.is-visible .competitor-sample-card:nth-child(1) {
+    #competitorAnalysisSection.is-visible .competitor-analysis-board:nth-child(1) {
       transition-delay: .86s;
     }
 
-    #competitorAnalysisSection.is-visible .competitor-sample-card:nth-child(2) {
+    #competitorAnalysisSection.is-visible .competitor-analysis-board:nth-child(2) {
       transition-delay: .94s;
-    }
-
-    #competitorAnalysisSection.is-visible .competitor-sample-card:nth-child(3) {
-      transition-delay: 1.02s;
     }
 
     .goal-module.is-visible .goal-intro {
@@ -3776,8 +3753,8 @@
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
-        .competitor-tag-matrix {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+        .competitor-analysis-table {
+          min-width: 860px;
         }
       }
 
@@ -3790,13 +3767,16 @@
           grid-template-columns: 1fr;
         }
 
-        .competitor-sample-heading {
-          flex-direction: column;
-          gap: 10px;
+        .competitor-analysis-scroll {
+          padding: 14px;
         }
 
-        .competitor-tag-matrix {
-          grid-template-columns: 1fr;
+        .competitor-analysis-title {
+          padding: 18px;
+        }
+
+        .competitor-analysis-table {
+          min-width: 780px;
         }
 
         .design-execution-showcase {
@@ -4326,163 +4306,87 @@
                   </div>
                 </div>
                 <div class="competitor-comparison-samples">
-                  <div class="competitor-sample-card">
-                    <div class="competitor-sample-heading">
-                      <div>
-                        <div class="competitor-sample-title">方案一：核心指标对比表</div>
-                        <div class="competitor-sample-desc">适合展示完整分析路径，把竞品能力、问题机会和设计启发放在同一张表里。</div>
-                      </div>
-                      <span class="competitor-sample-tag">信息最完整</span>
+                  <div class="competitor-analysis-board">
+                    <div class="competitor-analysis-title">
+                      竞品分析——签到入口与积分获取
+                      <div class="competitor-analysis-note">聚焦签到入口是否可见、任务如何承接、积分获得是否清晰，以及完成后是否能形成即时反馈。</div>
                     </div>
-                    <div class="competitor-table-scroll">
-                      <div class="competitor-grid-table competitor-core-table">
-                        <div class="competitor-grid-row competitor-grid-head">
-                          <div class="competitor-grid-cell">竞品</div>
-                          <div class="competitor-grid-cell">签到入口</div>
-                          <div class="competitor-grid-cell">完成反馈</div>
-                          <div class="competitor-grid-cell">连续激励</div>
-                          <div class="competitor-grid-cell">积分权益</div>
-                          <div class="competitor-grid-cell">设计启发</div>
+                    <div class="competitor-analysis-scroll">
+                      <div class="competitor-analysis-table">
+                        <div class="competitor-analysis-head">
+                          <div class="competitor-analysis-head-cell">竞品</div>
+                          <div class="competitor-analysis-head-cell">签到入口</div>
+                          <div class="competitor-analysis-head-cell">任务承接</div>
+                          <div class="competitor-analysis-head-cell">积分获取</div>
+                          <div class="competitor-analysis-head-cell">完成反馈</div>
                         </div>
-                        <div class="competitor-grid-row">
-                          <div class="competitor-grid-cell">
-                            <div class="competitor-product"><span class="competitor-thumb">扇</span><span>扇贝单词</span></div>
-                          </div>
-                          <div class="competitor-grid-cell">入口弱，依赖用户主动发现</div>
-                          <div class="competitor-grid-cell">反馈偏轻，奖励获得感不足</div>
-                          <div class="competitor-grid-cell">连续天数可见，但阶段目标弱</div>
-                          <div class="competitor-grid-cell">积分价值需要进一步解释</div>
-                          <div class="competitor-grid-cell"><span class="competitor-point-strong">强化“完成后获得什么”</span>，让签到和权益形成闭环。</div>
+                        <div class="competitor-analysis-row">
+                          <div class="competitor-analysis-name-cell"><span class="competitor-analysis-icon">扇</span><span>扇贝单词</span></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot"></div><div class="competitor-analysis-copy"><strong>入口偏隐性。</strong>签到与学习主路径关联不够强，用户需要主动发现入口。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot"></div><div class="competitor-analysis-copy"><strong>任务承接较弱。</strong>签到后缺少下一步任务指引，难以自然延伸到学习行为。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot"></div><div class="competitor-analysis-copy"><strong>积分价值解释不足。</strong>获得积分后缺少可兑换、可累计的明确提示。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot"></div><div class="competitor-analysis-copy"><strong>反馈偏轻。</strong>完成瞬间的奖励感和连续签到成就感需要增强。</div></div>
                         </div>
-                        <div class="competitor-grid-row">
-                          <div class="competitor-grid-cell">
-                            <div class="competitor-product"><span class="competitor-thumb competitor-thumb-purple">百</span><span>百词斩</span></div>
-                          </div>
-                          <div class="competitor-grid-cell">入口融入学习路径</div>
-                          <div class="competitor-grid-cell">完成反馈清晰，有即时奖励</div>
-                          <div class="competitor-grid-cell">任务连续性较强</div>
-                          <div class="competitor-grid-cell">权益感知中等</div>
-                          <div class="competitor-grid-cell">签到不应孤立出现，应和每日学习任务共用一条路径。</div>
+                        <div class="competitor-analysis-row">
+                          <div class="competitor-analysis-name-cell"><span class="competitor-analysis-icon competitor-analysis-icon-blue">百</span><span>百词斩</span></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-blue"></div><div class="competitor-analysis-copy"><strong>入口更靠近学习路径。</strong>用户完成学习动作时更容易触发签到和任务提醒。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-blue"></div><div class="competitor-analysis-copy"><strong>任务模块清晰。</strong>将每日任务、学习进度和奖励放在同一条路径中。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-blue"></div><div class="competitor-analysis-copy"><strong>奖励结果明确。</strong>获得内容和任务收益会在完成后立即展示。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-blue"></div><div class="competitor-analysis-copy"><strong>即时反馈较强。</strong>通过弹窗、按钮状态和奖励文案强化完成感。</div></div>
                         </div>
-                        <div class="competitor-grid-row">
-                          <div class="competitor-grid-cell">
-                            <div class="competitor-product"><span class="competitor-thumb competitor-thumb-orange">不</span><span>不背单词</span></div>
-                          </div>
-                          <div class="competitor-grid-cell">入口克制，依赖学习氛围</div>
-                          <div class="competitor-grid-cell">反馈轻量，情绪表达强</div>
-                          <div class="competitor-grid-cell">更强调学习坚持感</div>
-                          <div class="competitor-grid-cell">权益转化弱</div>
-                          <div class="competitor-grid-cell">可以保留克制表达，但关键奖励节点需要更明确。</div>
+                        <div class="competitor-analysis-row">
+                          <div class="competitor-analysis-name-cell"><span class="competitor-analysis-icon competitor-analysis-icon-orange">番</span><span>番茄小说</span></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-orange"></div><div class="competitor-analysis-copy"><strong>入口利益点前置。</strong>用现金、金币、福利等强刺激吸引用户进入签到。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-orange"></div><div class="competitor-analysis-copy"><strong>任务链路完整。</strong>签到、阅读、抽奖等任务以列表形式连续展开。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-orange"></div><div class="competitor-analysis-copy"><strong>积分获取高频。</strong>每个行为都对应清晰奖励，强化“做了就有收益”。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-orange"></div><div class="competitor-analysis-copy"><strong>奖励反馈强。</strong>弹窗、动效和金额数字共同放大获得感。</div></div>
                         </div>
-                        <div class="competitor-grid-row">
-                          <div class="competitor-grid-cell">
-                            <div class="competitor-product"><span class="competitor-thumb competitor-thumb-red">淘</span><span>淘宝签到</span></div>
-                          </div>
-                          <div class="competitor-grid-cell">入口强，利益点前置</div>
-                          <div class="competitor-grid-cell">奖励反馈直接</div>
-                          <div class="competitor-grid-cell">连续奖励和补签强</div>
-                          <div class="competitor-grid-cell">兑换路径清晰</div>
-                          <div class="competitor-grid-cell">强签到产品更擅长把“连续行为”包装成可期待的奖励。</div>
+                        <div class="competitor-analysis-row">
+                          <div class="competitor-analysis-name-cell"><span class="competitor-analysis-icon competitor-analysis-icon-red">墨</span><span>墨墨背单词</span></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-red"></div><div class="competitor-analysis-copy"><strong>入口较克制。</strong>更强调学习计划和复习节奏，签到存在感相对弱。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-red"></div><div class="competitor-analysis-copy"><strong>学习目标明确。</strong>任务以记忆曲线和复习进度为核心，商业激励较少。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-red"></div><div class="competitor-analysis-copy"><strong>奖励偏工具属性。</strong>更多服务于学习效率，积分型收益感不强。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-red"></div><div class="competitor-analysis-copy"><strong>完成反馈温和。</strong>坚持感存在，但权益回报表达较弱。</div></div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="competitor-sample-card">
-                    <div class="competitor-sample-heading">
-                      <div>
-                        <div class="competitor-sample-title">方案二：评分型对比表</div>
-                        <div class="competitor-sample-desc">适合快速扫读，能直观看出扇贝当前短板集中在奖励反馈、权益解释和长期留存。</div>
-                      </div>
-                      <span class="competitor-sample-tag">扫读最快</span>
+                  <div class="competitor-analysis-board competitor-analysis-board-market">
+                    <div class="competitor-analysis-title">
+                      竞品分析——积分商城兑换
+                      <div class="competitor-analysis-note">聚焦积分是否能被理解、权益是否有吸引力、兑换路径是否短，以及商城是否能反向驱动持续签到。</div>
                     </div>
-                    <div class="competitor-table-scroll">
-                      <div class="competitor-grid-table competitor-score-table">
-                        <div class="competitor-grid-row competitor-grid-head">
-                          <div class="competitor-grid-cell">竞品</div>
-                          <div class="competitor-grid-cell">入口显性</div>
-                          <div class="competitor-grid-cell">反馈强度</div>
-                          <div class="competitor-grid-cell">激励连续性</div>
-                          <div class="competitor-grid-cell">权益吸引力</div>
-                          <div class="competitor-grid-cell">综合判断</div>
+                    <div class="competitor-analysis-scroll">
+                      <div class="competitor-analysis-table">
+                        <div class="competitor-analysis-head">
+                          <div class="competitor-analysis-head-cell">竞品</div>
+                          <div class="competitor-analysis-head-cell">权益展示</div>
+                          <div class="competitor-analysis-head-cell">兑换路径</div>
+                          <div class="competitor-analysis-head-cell">持续激励</div>
                         </div>
-                        <div class="competitor-grid-row">
-                          <div class="competitor-grid-cell"><div class="competitor-product"><span class="competitor-thumb">扇</span><span>扇贝单词</span></div></div>
-                          <div class="competitor-grid-cell"><div class="competitor-score"><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span></div></div>
-                          <div class="competitor-grid-cell"><div class="competitor-score"><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span></div></div>
-                          <div class="competitor-grid-cell"><div class="competitor-score"><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span></div></div>
-                          <div class="competitor-grid-cell"><div class="competitor-score"><span class="competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span></div></div>
-                          <div class="competitor-grid-cell"><span class="competitor-summary-pill">有机制，弱感知</span></div>
+                        <div class="competitor-analysis-row">
+                          <div class="competitor-analysis-name-cell"><span class="competitor-analysis-icon">扇</span><span>扇贝单词</span></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot"></div><div class="competitor-analysis-copy"><strong>权益吸引力不够集中。</strong>积分能换什么需要更早被用户看见。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot"></div><div class="competitor-analysis-copy"><strong>路径认知成本偏高。</strong>从签到到商城的关联需要更明确的跳转和解释。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot"></div><div class="competitor-analysis-copy"><strong>持续动机不足。</strong>缺少阶段目标和连续奖励对下一次签到的牵引。</div></div>
                         </div>
-                        <div class="competitor-grid-row">
-                          <div class="competitor-grid-cell"><div class="competitor-product"><span class="competitor-thumb competitor-thumb-purple">百</span><span>百词斩</span></div></div>
-                          <div class="competitor-grid-cell"><div class="competitor-score"><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span></div></div>
-                          <div class="competitor-grid-cell"><div class="competitor-score"><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span></div></div>
-                          <div class="competitor-grid-cell"><div class="competitor-score"><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span></div></div>
-                          <div class="competitor-grid-cell"><div class="competitor-score"><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span></div></div>
-                          <div class="competitor-grid-cell"><span class="competitor-summary-pill">路径清晰</span></div>
+                        <div class="competitor-analysis-row">
+                          <div class="competitor-analysis-name-cell"><span class="competitor-analysis-icon competitor-analysis-icon-blue">百</span><span>百词斩</span></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-blue"></div><div class="competitor-analysis-copy"><strong>权益卡片更清楚。</strong>商品名称、消耗积分和领取状态更容易扫读。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-blue"></div><div class="competitor-analysis-copy"><strong>兑换路径较短。</strong>任务完成后可直接承接到权益或奖励页面。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-blue"></div><div class="competitor-analysis-copy"><strong>阶段目标可借鉴。</strong>用连续任务和可见奖励维持用户回访。</div></div>
                         </div>
-                        <div class="competitor-grid-row">
-                          <div class="competitor-grid-cell"><div class="competitor-product"><span class="competitor-thumb competitor-thumb-orange">不</span><span>不背单词</span></div></div>
-                          <div class="competitor-grid-cell"><div class="competitor-score"><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span></div></div>
-                          <div class="competitor-grid-cell"><div class="competitor-score"><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span></div></div>
-                          <div class="competitor-grid-cell"><div class="competitor-score"><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span></div></div>
-                          <div class="competitor-grid-cell"><div class="competitor-score"><span class="competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span><span class="competitor-score-dot-empty competitor-score-dot"></span></div></div>
-                          <div class="competitor-grid-cell"><span class="competitor-summary-pill">氛围强，权益弱</span></div>
+                        <div class="competitor-analysis-row">
+                          <div class="competitor-analysis-name-cell"><span class="competitor-analysis-icon competitor-analysis-icon-orange">番</span><span>番茄小说</span></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-orange"></div><div class="competitor-analysis-copy"><strong>权益刺激强。</strong>现金红包、金币和抽奖入口让奖励价值被直接感知。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-orange"></div><div class="competitor-analysis-copy"><strong>兑换入口前置。</strong>商城和任务区强绑定，用户不需要理解复杂规则。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-orange"></div><div class="competitor-analysis-copy"><strong>循环激励强。</strong>每日任务、阶段奖励和抽奖共同驱动持续回访。</div></div>
                         </div>
-                        <div class="competitor-grid-row">
-                          <div class="competitor-grid-cell"><div class="competitor-product"><span class="competitor-thumb competitor-thumb-red">淘</span><span>淘宝签到</span></div></div>
-                          <div class="competitor-grid-cell"><div class="competitor-score"><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span></div></div>
-                          <div class="competitor-grid-cell"><div class="competitor-score"><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span></div></div>
-                          <div class="competitor-grid-cell"><div class="competitor-score"><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span></div></div>
-                          <div class="competitor-grid-cell"><div class="competitor-score"><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span><span class="competitor-score-dot"></span></div></div>
-                          <div class="competitor-grid-cell"><span class="competitor-summary-pill">强利益驱动</span></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="competitor-sample-card">
-                    <div class="competitor-sample-heading">
-                      <div>
-                        <div class="competitor-sample-title">方案三：标签矩阵</div>
-                        <div class="competitor-sample-desc">适合更偏设计感的展示，把每个竞品的机制特征压缩成标签，阅读压力最低。</div>
-                      </div>
-                      <span class="competitor-sample-tag">视觉更轻</span>
-                    </div>
-                    <div class="competitor-tag-matrix">
-                      <div class="competitor-tag-card">
-                        <div class="competitor-tag-card-head"><span class="competitor-thumb">扇</span><span>扇贝单词</span></div>
-                        <div class="competitor-tag-list">
-                          <span class="competitor-feature-tag">学习路径强</span>
-                          <span class="competitor-feature-tag">连续天数可见</span>
-                          <span class="competitor-feature-tag-muted">入口偏弱</span>
-                          <span class="competitor-feature-tag-muted">权益解释不足</span>
-                        </div>
-                      </div>
-                      <div class="competitor-tag-card">
-                        <div class="competitor-tag-card-head"><span class="competitor-thumb competitor-thumb-purple">百</span><span>百词斩</span></div>
-                        <div class="competitor-tag-list">
-                          <span class="competitor-feature-tag">任务路径清晰</span>
-                          <span class="competitor-feature-tag">即时反馈明确</span>
-                          <span class="competitor-feature-tag">学习目标联动</span>
-                          <span class="competitor-feature-tag-muted">权益转化中等</span>
-                        </div>
-                      </div>
-                      <div class="competitor-tag-card">
-                        <div class="competitor-tag-card-head"><span class="competitor-thumb competitor-thumb-orange">不</span><span>不背单词</span></div>
-                        <div class="competitor-tag-list">
-                          <span class="competitor-feature-tag">情绪氛围好</span>
-                          <span class="competitor-feature-tag">坚持感强</span>
-                          <span class="competitor-feature-tag-muted">商业权益弱</span>
-                          <span class="competitor-feature-tag-muted">奖励表达轻</span>
-                        </div>
-                      </div>
-                      <div class="competitor-tag-card">
-                        <div class="competitor-tag-card-head"><span class="competitor-thumb competitor-thumb-red">淘</span><span>淘宝签到</span></div>
-                        <div class="competitor-tag-list">
-                          <span class="competitor-feature-tag">利益点前置</span>
-                          <span class="competitor-feature-tag">奖励池明确</span>
-                          <span class="competitor-feature-tag">连续奖励强</span>
-                          <span class="competitor-feature-tag">兑换路径短</span>
+                        <div class="competitor-analysis-row">
+                          <div class="competitor-analysis-name-cell"><span class="competitor-analysis-icon competitor-analysis-icon-red">墨</span><span>墨墨背单词</span></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-red"></div><div class="competitor-analysis-copy"><strong>权益偏学习工具。</strong>商业权益弱，但与学习效率的关联更自然。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-red"></div><div class="competitor-analysis-copy"><strong>兑换动作克制。</strong>不依赖强运营刺激，路径更服务学习规划。</div></div>
+                          <div class="competitor-analysis-module-cell"><div class="competitor-analysis-shot competitor-analysis-shot-red"></div><div class="competitor-analysis-copy"><strong>长期价值来自学习成果。</strong>可借鉴其稳定、低干扰的目标表达方式。</div></div>
                         </div>
                       </div>
                     </div>
