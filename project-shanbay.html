@@ -1655,6 +1655,8 @@
       padding: 24px;
       box-sizing: border-box;
       overflow: hidden;
+      transition: transform var(--motion-panel) var(--motion-ease);
+      will-change: transform;
     }
 
     .design-execution-image-frame img {
@@ -1664,6 +1666,16 @@
       object-fit: contain;
       user-select: none;
       -webkit-user-drag: none;
+      transition: transform var(--motion-panel) var(--motion-ease), filter var(--motion-panel) var(--motion-ease);
+    }
+
+    .design-execution-scene.is-active .design-execution-image-frame:hover {
+      transform: translateY(-4px) scale(1.006);
+    }
+
+    .design-execution-scene.is-active .design-execution-image-frame:hover img {
+      transform: scale(1.015);
+      filter: drop-shadow(0 18px 34px rgba(5, 91, 79, 0.14));
     }
 
     .design-execution-scene-feedback-sequence {
@@ -3265,6 +3277,15 @@
         animation: none !important;
       }
 
+      .design-step-image,
+      .design-step-image img,
+      .design-execution-image-frame,
+      .design-execution-image-frame img {
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+      }
+
       .design-execution-vip-task-image {
         opacity: 1;
         transform: none;
@@ -3288,6 +3309,16 @@
       display: block;
       width: 100%;
       height: auto;
+      transition: transform var(--motion-panel) var(--motion-ease), filter var(--motion-panel) var(--motion-ease);
+    }
+
+    .background-section.is-visible .design-step-image:hover {
+      transform: translateY(-4px) scale(1.006);
+    }
+
+    .background-section.is-visible .design-step-image:hover img {
+      transform: scale(1.015);
+      filter: drop-shadow(0 18px 34px rgba(5, 91, 79, 0.14));
     }
 
     .review-tab-shell {
