@@ -2123,7 +2123,6 @@
 
     .competitor-analysis-market-pros-cell,
     .competitor-analysis-market-shot-cell {
-      min-height: 220px;
       padding: 16px;
       background: rgba(253, 255, 254, 0.58);
       box-sizing: border-box;
@@ -2137,7 +2136,16 @@
       font-weight: 400;
     }
 
+    .competitor-analysis-market-pros-cell > span {
+      display: block;
+    }
+
+    .competitor-analysis-market-pros-cell > span + span {
+      margin-top: 8px;
+    }
+
     .competitor-analysis-market-shot-cell {
+      min-height: 220px;
       display: flex;
       align-items: flex-start;
       justify-content: center;
@@ -4450,10 +4458,10 @@
                           <div class="competitor-analysis-head-cell">闲鱼</div>
                         </div>
                         <div class="competitor-analysis-row">
-                          <div class="competitor-analysis-market-pros-cell">配备清晰商品分类目录，同时覆盖学习实物与虚拟学习权益，商品精准匹配学生群体；但高低积分兑换梯度不够丰富；缺少积分任务快捷入口，难以引导用户持续获取积分</div>
-                          <div class="competitor-analysis-market-pros-cell">虚实商品搭配，出行优惠券与户外装备形成积分梯度，兼顾大众小额兑换与高价值兑换；适配出行用户多元需求。但缺少目录导航，缺少库存、热度标签，无法营造稀缺兑换氛围</div>
-                          <div class="competitor-analysis-market-pros-cell">区分虚拟道具、实物周边 Tab，标注积分对应现金价值，帮助用户快速衡量积分价值。但实物周边兑换积分门槛过高，普通用户难以达成；卡片设计偏朴素，缺少限时运营标签，吸引力较弱</div>
-                          <div class="competitor-analysis-market-pros-cell">低积分档位商品充足，兑换门槛友好；标注商品预估价值强化获得感，悬浮任务弹窗引导用户持续获取积分。但商品图版式不统一，视觉规整度差，缺少分类导航，定向查找效率低</div>
+                          <div class="competitor-analysis-market-pros-cell"><span><span class="competitor-analysis-pros-label">优点：</span>配备清晰商品分类目录，同时覆盖学习实物与虚拟学习权益，商品精准匹配学生群体。</span><span><span class="competitor-analysis-pros-label">缺点：</span>高低积分兑换梯度不够丰富；缺少积分任务快捷入口，难以引导用户持续获取积分。</span></div>
+                          <div class="competitor-analysis-market-pros-cell"><span><span class="competitor-analysis-pros-label">优点：</span>虚实商品搭配，出行优惠券与户外装备形成积分梯度，兼顾大众小额兑换与高价值兑换；适配出行用户多元需求。</span><span><span class="competitor-analysis-pros-label">缺点：</span>缺少目录导航，缺少库存、热度标签，无法营造稀缺兑换氛围。</span></div>
+                          <div class="competitor-analysis-market-pros-cell"><span><span class="competitor-analysis-pros-label">优点：</span>区分虚拟道具、实物周边 Tab，标注积分对应现金价值，帮助用户快速衡量积分价值。</span><span><span class="competitor-analysis-pros-label">缺点：</span>实物周边兑换积分门槛过高，普通用户难以达成；卡片设计偏朴素，缺少限时运营标签，吸引力较弱。</span></div>
+                          <div class="competitor-analysis-market-pros-cell"><span><span class="competitor-analysis-pros-label">优点：</span>低积分档位商品充足，兑换门槛友好；标注商品预估价值强化获得感，悬浮任务弹窗引导用户持续获取积分。</span><span><span class="competitor-analysis-pros-label">缺点：</span>商品图版式不统一，视觉规整度差，缺少分类导航，定向查找效率低。</span></div>
                         </div>
                         <div class="competitor-analysis-row">
                           <div class="competitor-analysis-market-shot-cell"><img class="competitor-analysis-market-shot" src="assets/figma-portfolio/bcz.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/bcz.png'" alt="百词斩积分商城兑换截图" loading="lazy"></div>
