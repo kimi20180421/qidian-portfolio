@@ -490,15 +490,11 @@
 
     .timeline-wrap {
       position: relative;
-      display: grid;
-      width: 100%;
-      max-width: 100%;
-      grid-template-columns: 345px 269px 264px minmax(0, 1fr);
-      grid-template-rows: auto 96px auto;
-      column-gap: 0;
-      row-gap: 0;
-      align-items: start;
-      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      width: min(820px, 100%);
+      margin: 34px auto 0;
     }
 
     .experience .section-title,
@@ -559,59 +555,50 @@
     }
 
     .timeline-line {
-      grid-column: 1 / -1;
-      grid-row: 2;
-      align-self: center;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(68,8,166,0), rgba(68,8,166,.55) 12%, rgba(68,8,166,.55) 88%, rgba(68,8,166,0));
+      position: absolute;
+      top: 16px;
+      bottom: 16px;
+      left: 196px;
+      width: 1px;
+      background: linear-gradient(180deg, rgba(68,8,166,0), rgba(68,8,166,.55) 10%, rgba(68,8,166,.55) 90%, rgba(68,8,166,0));
     }
 
     .timeline-item {
       position: relative;
+      display: grid;
+      grid-template-columns: 156px 40px minmax(0, 560px);
+      column-gap: 20px;
+      align-items: flex-start;
       min-width: 0;
     }
 
     .timeline-item--compact {
-      width: 345px;
-    }
-
-    .item-3 .timeline-card {
-      width: 416px;
-    }
-
-    .item-4 .timeline-card {
-      width: 567px;
+      width: auto;
     }
 
     .item-1 {
-      grid-column: 1;
-      grid-row: 1;
-      align-self: end;
+      align-self: auto;
     }
 
     .item-2 {
-      grid-column: 2;
-      grid-row: 3;
-      align-self: start;
-      margin-left: -76px;
+      align-self: auto;
+      margin-left: 0;
     }
 
     .item-3 {
-      grid-column: 3;
-      grid-row: 1;
-      align-self: end;
-      margin-left: -152px;
+      align-self: auto;
+      margin-left: 0;
     }
 
     .item-4 {
-      grid-column: 4;
-      grid-row: 3;
-      align-self: start;
-      margin-left: -228px;
+      align-self: auto;
+      margin-left: 0;
     }
 
     .timeline-card {
       position: relative;
+      grid-column: 3;
+      width: 100%;
       height: 100%;
       padding: 22px 24px;
       border-radius: 16px;
@@ -632,7 +619,8 @@
     .timeline-card::after {
       content: "";
       position: absolute;
-      left: 50%;
+      top: 28px;
+      left: -8px;
       width: 16px;
       height: 16px;
       background: rgba(255, 255, 255, .48);
@@ -643,30 +631,33 @@
         inset 0 1px 0 rgba(255, 255, 255, .72);
       backdrop-filter: blur(18px) saturate(1.18);
       -webkit-backdrop-filter: blur(18px) saturate(1.18);
-      transform: translateX(-50%) rotate(45deg);
+      transform: rotate(45deg);
       box-sizing: border-box;
     }
 
     .item-1 .timeline-card::after,
     .item-3 .timeline-card::after {
-      bottom: -7px;
+      bottom: auto;
     }
 
     .item-2 .timeline-card::after,
     .item-4 .timeline-card::after {
-      top: -7px;
+      top: 28px;
     }
 
     .timeline-card.wide {
-      width: auto;
+      width: 100%;
     }
 
-    .timeline-card time {
+    .timeline-item time {
       display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
+      grid-column: 1;
+      padding-top: 22px;
       color: #2b2254;
-      font-size: 12px;
+      font-size: 13px;
+      line-height: 20px;
+      font-weight: 500;
+      text-align: right;
     }
 
     .timeline-title {
@@ -695,9 +686,10 @@
     }
 
     .dot {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
+      position: relative;
+      grid-column: 2;
+      justify-self: center;
+      margin-top: 22px;
       width: 20px;
       height: 20px;
       box-sizing: border-box;
@@ -709,12 +701,12 @@
 
     .item-1 .dot,
     .item-3 .dot {
-      bottom: -58px;
+      bottom: auto;
     }
 
     .item-2 .dot,
     .item-4 .dot {
-      top: -58px;
+      top: auto;
     }
 
     .contact-fab {
@@ -864,33 +856,22 @@
       }
 
       .timeline-wrap {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-rows: auto auto;
-        gap: 24px 20px;
+        width: min(760px, 100%);
+        gap: 20px;
       }
 
-      .timeline-line,
-      .dot {
-        display: none;
+      .timeline-line {
+        left: 164px;
       }
 
       .timeline-item {
-        grid-column: auto;
-        grid-row: auto;
+        grid-template-columns: 132px 32px minmax(0, 1fr);
+        column-gap: 16px;
         margin-left: 0;
       }
 
       .timeline-item--compact {
         width: auto;
-      }
-
-      .item-3 .timeline-card,
-      .item-4 .timeline-card {
-        width: auto;
-      }
-
-      .timeline-card::after {
-        display: none;
       }
 
       .contact-fab {
@@ -919,8 +900,17 @@
       }
 
       .timeline-wrap {
-        grid-template-columns: 1fr;
+        width: 100%;
         gap: 20px;
+      }
+
+      .timeline-line {
+        left: 138px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 112px 28px minmax(0, 1fr);
+        column-gap: 12px;
       }
 
       .contact-fab {
@@ -1071,38 +1061,39 @@
           <div class="timeline-line" aria-hidden="true"></div>
 
           <div class="timeline-item timeline-item--compact item-1">
+            <time>2019.12 - 2021.09</time>
+            <span class="dot" aria-hidden="true"></span>
             <div class="timeline-card">
-              <time>2019.12 - 2021.09</time>
               <div class="timeline-title">腾讯互娱高校联盟-布谷鸟内容创作</div>
               <div class="timeline-desc">获得 2 次甘肃区优秀画手。按照任务需求，多次为 MOBA 手游、网游以及格斗类手游绘制宣传同人画。</div>
             </div>
-            <span class="dot" aria-hidden="true"></span>
           </div>
 
           <div class="timeline-item timeline-item--compact item-2">
+            <time>2021.09 - 2022.06</time>
+            <span class="dot" aria-hidden="true"></span>
             <div class="timeline-card">
-              <time>2021.09 - 2022.06</time>
               <div class="timeline-title">大学生心理健康-国家级项目负责人</div>
               <div class="timeline-desc">用 AE / Pr 等软件完成 23 个轻动态漫画视频制作，并发布在兰大官网及在线学习平台，作为新生学习课程。</div>
             </div>
-            <span class="dot" aria-hidden="true"></span>
           </div>
 
           <div class="timeline-item item-3">
+            <time>2020.09 - 2021.09</time>
+            <span class="dot" aria-hidden="true"></span>
             <div class="timeline-card">
-              <time>2020.09 - 2021.09</time>
               <div class="timeline-title">兰州大学-党委宣传工作室-部长</div>
               <ol>
                 <li>运营兰大抖音号，组织大型拍摄活动 <strong>4 场</strong>，点击量 3000 万，转载破 500 万。</li>
                 <li>任期内使兰大抖音号<strong>涨粉 16 万</strong>，成为官方抖音一年内涨粉最快的周期。</li>
               </ol>
             </div>
-            <span class="dot" aria-hidden="true"></span>
           </div>
 
           <div class="timeline-item item-4">
-            <div class="timeline-card wide">
-              <time>2022.05 - 2024.03</time>
+            <time>2022.05 - 2024.03</time>
+            <span class="dot" aria-hidden="true"></span>
+            <div class="timeline-card">
               <div class="timeline-title">中国农科院农业信息研究所</div>
               <ol>
                 <li>负责公众号、头条等官方账号运营，累计输出<strong>设计稿 80+ 份</strong>。</li>
@@ -1110,7 +1101,6 @@
                 <li>参与 <strong>5 个科研数据可视化项目</strong>，制作 20+ 张图表、15 张活动海报及 30 余幅插画与宣传图形。</li>
               </ol>
             </div>
-            <span class="dot" aria-hidden="true"></span>
           </div>
         </div>
       </section>
