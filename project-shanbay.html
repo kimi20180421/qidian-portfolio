@@ -2099,7 +2099,56 @@
     }
 
     .competitor-analysis-board-market .competitor-analysis-table {
-      grid-template-columns: max-content repeat(4, 207px);
+      grid-template-columns: repeat(4, 260px);
+    }
+
+    .competitor-analysis-board-market .competitor-analysis-head-cell {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .competitor-analysis-board-market .competitor-analysis-head-cell:first-child {
+      left: auto;
+      z-index: 3;
+      padding-left: 16px;
+      padding-right: 16px;
+      border-right: 0;
+      box-shadow: none;
+    }
+
+    .competitor-analysis-board-market .competitor-analysis-scroll.is-scrolled .competitor-analysis-head-cell:first-child {
+      border-right: 0;
+      box-shadow: none;
+    }
+
+    .competitor-analysis-market-pros-cell,
+    .competitor-analysis-market-shot-cell {
+      min-height: 220px;
+      padding: 16px;
+      background: rgba(253, 255, 254, 0.58);
+      box-sizing: border-box;
+      border-top: 1px solid rgba(215, 231, 228, 0.9);
+    }
+
+    .competitor-analysis-market-pros-cell {
+      color: rgba(31, 35, 41, 0.74);
+      font-size: 13px;
+      line-height: 21px;
+      font-weight: 400;
+    }
+
+    .competitor-analysis-market-shot-cell {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .competitor-analysis-market-shot {
+      width: 220px;
+      height: auto;
+      max-width: 100%;
+      border-radius: 12px;
+      display: block;
     }
 
     .competitor-analysis-head-cell {
@@ -4395,39 +4444,22 @@
                     <div class="competitor-analysis-scroll">
                       <div class="competitor-analysis-table">
                         <div class="competitor-analysis-head">
-                          <div class="competitor-analysis-head-cell">竞品</div>
-                          <div class="competitor-analysis-head-cell">优缺点</div>
-                          <div class="competitor-analysis-head-cell">权益展示</div>
-                          <div class="competitor-analysis-head-cell">兑换路径</div>
-                          <div class="competitor-analysis-head-cell">持续激励</div>
+                          <div class="competitor-analysis-head-cell">百词斩</div>
+                          <div class="competitor-analysis-head-cell">同程旅行</div>
+                          <div class="competitor-analysis-head-cell">虎牙直播</div>
+                          <div class="competitor-analysis-head-cell">闲鱼</div>
                         </div>
                         <div class="competitor-analysis-row">
-                          <div class="competitor-analysis-name-cell"><img class="competitor-analysis-logo" src="assets/figma-portfolio/bubei.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/bubei.png'" alt="不背单词 logo" loading="lazy"><span>不背单词</span></div>
-                          <div class="competitor-analysis-pros-cell"><span><span class="competitor-analysis-pros-label">优点：</span>打卡可视化，月度日历直观展示连续学习记录；激励与学习行为绑定，无广告干扰，贴合学习场景。</span><span><span class="competitor-analysis-pros-label">缺点：</span>签到入口偏隐性，任务承接和积分价值解释不足。</span></div>
-                          <div class="competitor-analysis-module-cell"><img class="competitor-analysis-shot" src="assets/figma-portfolio/bubei/Group%202147239768.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/bubei/Group%202147239768.png'" alt="不背单词权益展示截图" loading="lazy"><div class="competitor-analysis-copy"><strong>权益吸引力不够集中。</strong>积分能换什么需要更早被用户看见。</div></div>
-                          <div class="competitor-analysis-module-cell"><img class="competitor-analysis-shot" src="assets/figma-portfolio/bubei/Group%202147239769.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/bubei/Group%202147239769.png'" alt="不背单词兑换路径截图" loading="lazy"><div class="competitor-analysis-copy"><strong>路径认知成本偏高。</strong>从签到到商城的关联需要更明确的跳转和解释。</div></div>
-                          <div class="competitor-analysis-module-cell"><img class="competitor-analysis-shot" src="assets/figma-portfolio/bubei/Group%202147239770.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/bubei/Group%202147239770.png'" alt="不背单词持续激励截图" loading="lazy"><div class="competitor-analysis-copy"><strong>持续动机不足。</strong>缺少阶段目标和连续奖励对下一次签到的牵引。</div></div>
+                          <div class="competitor-analysis-market-pros-cell">配备清晰商品分类目录，同时覆盖学习实物与虚拟学习权益，商品精准匹配学生群体；但高低积分兑换梯度不够丰富；缺少积分任务快捷入口，难以引导用户持续获取积分</div>
+                          <div class="competitor-analysis-market-pros-cell">虚实商品搭配，出行优惠券与户外装备形成积分梯度，兼顾大众小额兑换与高价值兑换；适配出行用户多元需求。但缺少目录导航，缺少库存、热度标签，无法营造稀缺兑换氛围</div>
+                          <div class="competitor-analysis-market-pros-cell">区分虚拟道具、实物周边 Tab，标注积分对应现金价值，帮助用户快速衡量积分价值。但实物周边兑换积分门槛过高，普通用户难以达成；卡片设计偏朴素，缺少限时运营标签，吸引力较弱</div>
+                          <div class="competitor-analysis-market-pros-cell">低积分档位商品充足，兑换门槛友好；标注商品预估价值强化获得感，悬浮任务弹窗引导用户持续获取积分。但商品图版式不统一，视觉规整度差，缺少分类导航，定向查找效率低</div>
                         </div>
                         <div class="competitor-analysis-row">
-                          <div class="competitor-analysis-name-cell"><img class="competitor-analysis-logo" src="assets/figma-portfolio/baicizhan.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/baicizhan.png'" alt="百词斩 logo" loading="lazy"><span>百词斩</span></div>
-                          <div class="competitor-analysis-pros-cell"><span><span class="competitor-analysis-pros-label">优点：</span>入口靠近学习路径，任务模块清晰；奖励结果明确，即时反馈较强。</span><span><span class="competitor-analysis-pros-label">缺点：</span>权益吸引力和阶段目标表达仍可加强。</span></div>
-                          <div class="competitor-analysis-module-cell"><img class="competitor-analysis-shot" src="assets/figma-portfolio/baiciz/Group%202147239773.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/baiciz/Group%202147239773.png'" alt="百词斩权益展示截图" loading="lazy"><div class="competitor-analysis-copy"><strong>权益卡片更清楚。</strong>商品名称、消耗积分和领取状态更容易扫读。</div></div>
-                          <div class="competitor-analysis-module-cell"><img class="competitor-analysis-shot" src="assets/figma-portfolio/baiciz/Group%202147239774.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/baiciz/Group%202147239774.png'" alt="百词斩兑换路径截图" loading="lazy"><div class="competitor-analysis-copy"><strong>兑换路径较短。</strong>任务完成后可直接承接到权益或奖励页面。</div></div>
-                          <div class="competitor-analysis-module-cell"><img class="competitor-analysis-shot" src="assets/figma-portfolio/baiciz/Group%202147239775.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/baiciz/Group%202147239775.png'" alt="百词斩持续激励截图" loading="lazy"><div class="competitor-analysis-copy"><strong>阶段目标可借鉴。</strong>用连续任务和可见奖励维持用户回访。</div></div>
-                        </div>
-                        <div class="competitor-analysis-row">
-                          <div class="competitor-analysis-name-cell"><img class="competitor-analysis-logo" src="assets/figma-portfolio/fanqie.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/fanqie.png'" alt="番茄小说 logo" loading="lazy"><span>番茄小说</span></div>
-                          <div class="competitor-analysis-pros-cell"><span><span class="competitor-analysis-pros-label">优点：</span>入口利益点前置，任务链路完整；金币、红包、抽奖等激励高频露出。</span><span><span class="competitor-analysis-pros-label">缺点：</span>大量广告任务，商业化过重，不适配学习类产品。</span></div>
-                          <div class="competitor-analysis-module-cell"><img class="competitor-analysis-shot" src="assets/figma-portfolio/fanqie/Group%202147239778.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/fanqie/Group%202147239778.png'" alt="番茄小说权益展示截图" loading="lazy"><div class="competitor-analysis-copy"><strong>权益刺激强。</strong>现金红包、金币和抽奖入口让奖励价值被直接感知。</div></div>
-                          <div class="competitor-analysis-module-cell"><img class="competitor-analysis-shot" src="assets/figma-portfolio/fanqie/Group%202147239779.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/fanqie/Group%202147239779.png'" alt="番茄小说兑换路径截图" loading="lazy"><div class="competitor-analysis-copy"><strong>兑换入口前置。</strong>商城和任务区强绑定，用户不需要理解复杂规则。</div></div>
-                          <div class="competitor-analysis-module-cell"><img class="competitor-analysis-shot" src="assets/figma-portfolio/fanqie/Group%202147239780.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/fanqie/Group%202147239780.png'" alt="番茄小说持续激励截图" loading="lazy"><div class="competitor-analysis-copy"><strong>循环激励强。</strong>每日任务、阶段奖励和抽奖共同驱动持续回访。</div></div>
-                        </div>
-                        <div class="competitor-analysis-row">
-                          <div class="competitor-analysis-name-cell"><img class="competitor-analysis-logo" src="assets/figma-portfolio/momobei.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/momobei.png'" alt="墨墨背单词 logo" loading="lazy"><span>墨墨背单词</span></div>
-                          <div class="competitor-analysis-pros-cell"><span><span class="competitor-analysis-pros-label">优点：</span>学习计划明确，复习节奏稳定；目标表达克制、干扰少。</span><span><span class="competitor-analysis-pros-label">缺点：</span>签到存在感弱，积分型收益和权益回报表达不足。</span></div>
-                          <div class="competitor-analysis-module-cell"><img class="competitor-analysis-shot" src="assets/figma-portfolio/mobei/Group%202147239783.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/mobei/Group%202147239783.png'" alt="墨墨背单词权益展示截图" loading="lazy"><div class="competitor-analysis-copy"><strong>权益偏学习工具。</strong>商业权益弱，但与学习效率的关联更自然。</div></div>
-                          <div class="competitor-analysis-module-cell"><img class="competitor-analysis-shot" src="assets/figma-portfolio/mobei/Group%202147239784.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/mobei/Group%202147239784.png'" alt="墨墨背单词兑换路径截图" loading="lazy"><div class="competitor-analysis-copy"><strong>兑换动作克制。</strong>不依赖强运营刺激，路径更服务学习规划。</div></div>
-                          <div class="competitor-analysis-module-cell"><img class="competitor-analysis-shot" src="assets/figma-portfolio/mobei/Group%202147239785.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/mobei/Group%202147239785.png'" alt="墨墨背单词持续激励截图" loading="lazy"><div class="competitor-analysis-copy"><strong>长期价值来自学习成果。</strong>可借鉴其稳定、低干扰的目标表达方式。</div></div>
+                          <div class="competitor-analysis-market-shot-cell"><img class="competitor-analysis-market-shot" src="assets/figma-portfolio/bcz.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/bcz.png'" alt="百词斩积分商城兑换截图" loading="lazy"></div>
+                          <div class="competitor-analysis-market-shot-cell"><img class="competitor-analysis-market-shot" src="assets/figma-portfolio/tc.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/tc.png'" alt="同程旅行积分商城兑换截图" loading="lazy"></div>
+                          <div class="competitor-analysis-market-shot-cell"><img class="competitor-analysis-market-shot" src="assets/figma-portfolio/hy.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/hy.png'" alt="虎牙直播积分商城兑换截图" loading="lazy"></div>
+                          <div class="competitor-analysis-market-shot-cell"><img class="competitor-analysis-market-shot" src="assets/figma-portfolio/xy.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/xy.png'" alt="闲鱼积分商城兑换截图" loading="lazy"></div>
                         </div>
                       </div>
                     </div>
