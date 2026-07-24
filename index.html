@@ -359,6 +359,11 @@
       flex-shrink: 0;
     }
 
+    .project-card img.project-image-contain {
+      object-fit: contain;
+      background: #EAF6FF;
+    }
+
     .project-body {
       display: flex;
       flex: 1;
@@ -952,15 +957,14 @@
             </div>
 
             <div class="project-card">
-              <img src="assets/figma-portfolio/baidu.png" alt="百度网盘项目封面" />
+              <img class="project-image-contain" src="assets/figma-portfolio/gaode.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/gaode.png'" alt="高德地图跳一跳趣探索项目封面" />
               <div class="project-body">
                 <div class="tags">
-                  <span class="tag">UX 项目</span>
+                  <span class="tag">视觉项目</span>
                   <span class="tag">手机端</span>
-                  <span class="tag">全流程方案设计</span>
                 </div>
-                <div class="project-title">百度网盘-体验设计升级</div>
-                <div class="project-desc">网盘内容管理复杂，用户难以快速找到所需资源。本项目通过优化信息架构与操作流程，让文件管理更高效，让内容回忆更美好。</div>
+                <div class="project-title">高德地图 - 跳一跳·趣探索</div>
+                <div class="project-desc">以大众熟知的「跳一跳」经典极简玩法为核心，结合高德地图出行+本地生活核心业务场景，打造低门槛、高适配、强场景绑定的APP内轻互动活动。</div>
                 <a class="btn" href="#">查看项目 →</a>
               </div>
             </div>
