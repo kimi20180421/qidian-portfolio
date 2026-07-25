@@ -1,0 +1,12 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="6" y="6" width="84" height="84" rx="22" fill="#F7FBFF"/>
+  <circle cx="48" cy="48" r="30" fill="url(#ksGradient)"/>
+  <path d="M32 66V30H42V45L56 30H69L52 47L70 66H56L42 50V66H32Z" fill="white"/>
+  <defs>
+    <linearGradient id="ksGradient" x1="24" y1="24" x2="74" y2="74" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#34C6FF"/>
+      <stop offset=".48" stop-color="#1967D2"/>
+      <stop offset="1" stop-color="#6E40FF"/>
+    </linearGradient>
+  </defs>
+</svg>
