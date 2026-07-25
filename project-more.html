@@ -213,6 +213,19 @@
       font-weight: 400;
     }
 
+    .section-anchor-title,
+    .section-anchor-desc {
+      display: block;
+    }
+
+    .section-anchor-title {
+      font-weight: 500;
+    }
+
+    .section-anchor-desc {
+      font-weight: 400;
+    }
+
     .more-stack {
       width: 100%;
       padding: 0 0 72px;
@@ -337,9 +350,11 @@
         top: 50%;
         left: 74px;
         z-index: 22;
-        display: block;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
         min-width: 168px;
-        max-width: 260px;
+        max-width: 280px;
         padding: 12px 14px;
         border: 1px solid rgba(31, 35, 41, .12);
         border-radius: 16px;
@@ -347,7 +362,7 @@
         font-size: 14px;
         line-height: 20px;
         font-weight: 500;
-        white-space: nowrap;
+        white-space: normal;
         background: rgba(255, 255, 255, .96);
         box-shadow: 0 18px 42px rgba(31, 35, 41, .12);
         opacity: 0;
@@ -395,19 +410,31 @@
     <div class="section-anchor-nav is-visible" id="sectionAnchorNav">
       <div class="section-anchor-item is-active" data-anchor-target="moreRelicAnchor">
         <span class="section-anchor-dot"></span>
-        <span class="section-anchor-text">文物也能当主播 · 服务设计</span>
+        <span class="section-anchor-text">
+          <span class="section-anchor-title">文物也能当主播</span>
+          <span class="section-anchor-desc">服务设计</span>
+        </span>
       </div>
       <div class="section-anchor-item" data-anchor-target="tiangongAnchor">
         <span class="section-anchor-dot"></span>
-        <span class="section-anchor-text">天工开物 · 信息可视化设计</span>
+        <span class="section-anchor-text">
+          <span class="section-anchor-title">天工开物</span>
+          <span class="section-anchor-desc">信息可视化设计</span>
+        </span>
       </div>
       <div class="section-anchor-item" data-anchor-target="cityWalkAnchor">
         <span class="section-anchor-dot"></span>
-        <span class="section-anchor-text">穿粤1990S · City walk服务设计</span>
+        <span class="section-anchor-text">
+          <span class="section-anchor-title">穿粤1990S</span>
+          <span class="section-anchor-desc">City walk服务设计</span>
+        </span>
       </div>
       <div class="section-anchor-item" data-anchor-target="sanshengAnchor">
         <span class="section-anchor-dot"></span>
-        <span class="section-anchor-text">三生屿 · 服务设计</span>
+        <span class="section-anchor-text">
+          <span class="section-anchor-title">三生屿</span>
+          <span class="section-anchor-desc">服务设计</span>
+        </span>
       </div>
     </div>
 
