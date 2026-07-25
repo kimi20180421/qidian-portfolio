@@ -1381,19 +1381,19 @@
     }
 
     .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-lottery-entry {
-      animation: executionLotteryEntryLoop 3200ms var(--motion-ease) infinite;
+      animation: executionLotteryEntryLoop 3200ms var(--motion-ease) both;
     }
 
     .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-lottery-hand {
-      animation: executionLotteryHandLoop 3200ms var(--motion-ease) infinite;
+      animation: executionLotteryHandLoop 3200ms var(--motion-ease) both;
     }
 
     .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-lottery-phone {
-      animation: executionLotteryPhoneLoop 3200ms var(--motion-ease) infinite;
+      animation: executionLotteryPhoneLoop 3200ms var(--motion-ease) both;
     }
 
     .design-execution-showcase.is-motion-ready .design-execution-scene.is-active .design-execution-lottery-atmosphere {
-      animation: executionLotteryAtmosphereLoop 3200ms var(--motion-ease) infinite;
+      animation: executionLotteryAtmosphereLoop 3200ms var(--motion-ease) both;
     }
 
     .design-execution-extension .design-execution-visual:hover .design-execution-lottery-entry,
@@ -3140,14 +3140,9 @@
       }
 
       62%,
-      92% {
+      100% {
         opacity: 1;
         transform: translateY(0) scale(1);
-      }
-
-      100% {
-        opacity: 0;
-        transform: translateY(-10px) scale(0.98);
       }
     }
 
@@ -3159,14 +3154,9 @@
       }
 
       64%,
-      92% {
+      100% {
         opacity: 1;
         transform: scale(1) rotate(0deg);
-      }
-
-      100% {
-        opacity: 0;
-        transform: scale(0.96) rotate(2deg);
       }
     }
 
@@ -4683,7 +4673,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="design-execution-showcase design-execution-showcase-reverse design-execution-extension" data-execution-showcase>
+                    <div class="design-execution-showcase design-execution-showcase-reverse design-execution-extension" data-execution-showcase data-execution-static="true">
                       <div class="design-execution-visual" aria-hidden="true">
                         <div class="design-execution-scene is-active" data-execution-scene="executionProgressCalendar">
                           <div class="design-execution-extension-progress-scene">
