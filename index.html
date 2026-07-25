@@ -408,7 +408,7 @@
       width: calc(100% - 40px);
       aspect-ratio: 523 / 292;
       height: auto;
-      margin: 0 20px 20px;
+      margin: 0 20px;
       border-radius: 12px;
       object-fit: cover;
       flex-shrink: 0;
@@ -456,22 +456,39 @@
     .project-desc {
       flex: 1;
       width: 100%;
-      margin: 0 0 24px;
+      margin: 0;
       color: #4a4a55;
       font-size: 14px;
       line-height: 1.75;
     }
 
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: calc(100% - 40px);
+      margin: 12px 20px 20px;
+    }
+
+    .project-type {
+      color: rgba(31, 31, 43, .58);
+      font-size: 13px;
+      line-height: 20px;
+      font-weight: 400;
+    }
+
     .btn {
-      margin-top: auto;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
-      height: 48px;
-      padding: 0 26px;
+      height: 36px;
+      padding: 0 16px;
       color: #fff;
-      font-weight: 600;
+      font-size: 13px;
+      line-height: 20px;
+      font-weight: 500;
       border-radius: 999px;
       background: linear-gradient(180deg, #886fff, #6e8cff);
       box-shadow: none;
@@ -1046,9 +1063,12 @@
                   <span class="tag">全流程方案设计</span>
                 </div>
                 <div class="project-desc">围绕扇贝单词的签到与激励机制，梳理用户打卡动机与流失节点，通过积分、奖励与反馈体验的优化设计，让每日学习更有动力、更有成就感。</div>
-                <a class="btn" href="project-shanbay.html">查看项目 →</a>
               </div>
               <img decoding="async" loading="lazy" src="assets/figma-portfolio/cover.png" alt="扇贝单词项目封面" />
+              <div class="project-footer">
+                <span class="project-type">UX 项目</span>
+                <a class="btn" href="project-shanbay.html">查看项目 →</a>
+              </div>
             </div>
 
             <div class="project-card">
@@ -1059,9 +1079,12 @@
                   <span class="tag">手机端</span>
                 </div>
                 <div class="project-desc">以大众熟知的「跳一跳」经典极简玩法为核心，结合高德地图出行+本地生活核心业务场景，打造低门槛、高适配、强场景绑定的APP内轻互动活动。</div>
-                <a class="btn" href="#">查看项目 →</a>
               </div>
               <img decoding="async" loading="lazy" class="project-image-contain" src="assets/figma-portfolio/gaode.webp" onerror="this.onerror=null;this.src='assets/figma-portfolio/gaode.png'" alt="高德地图跳一跳趣探索项目封面" />
+              <div class="project-footer">
+                <span class="project-type">视觉项目</span>
+                <a class="btn" href="#">查看项目 →</a>
+              </div>
             </div>
 
             <div class="project-card">
@@ -1073,9 +1096,12 @@
                   <span class="tag">信息/产品设计</span>
                 </div>
                 <div class="project-desc">围绕服务体验、文化传播、信息设计与实体产品，探索设计在不同媒介和场景中的应用。</div>
-                <a class="btn" href="#">查看项目 →</a>
               </div>
               <img decoding="async" loading="lazy" class="project-image-contain" src="assets/figma-portfolio/more.png" width="435" height="245" alt="更多设计实践项目封面" />
+              <div class="project-footer">
+                <span class="project-type">服务类等</span>
+                <a class="btn" href="#">查看项目 →</a>
+              </div>
             </div>
           </div>
         </section>
