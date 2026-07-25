@@ -472,10 +472,10 @@
     }
 
     .project-type {
-      color: rgba(31, 31, 43, .58);
+      color: var(--purple);
       font-size: 13px;
       line-height: 20px;
-      font-weight: 400;
+      font-weight: 500;
     }
 
     .btn {
@@ -485,18 +485,24 @@
       gap: 6px;
       height: 36px;
       padding: 0 16px;
-      color: #fff;
+      color: var(--purple);
       font-size: 13px;
       line-height: 20px;
       font-weight: 500;
       border-radius: 999px;
-      background: linear-gradient(180deg, #886fff, #6e8cff);
+      background: rgba(247, 244, 255, .72);
       box-shadow: none;
-      transition: transform .2s ease, box-shadow .2s ease;
+      transition:
+        color .24s cubic-bezier(0.22, 1, 0.36, 1),
+        background .24s cubic-bezier(0.22, 1, 0.36, 1),
+        transform .24s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow .24s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .project-card:hover .btn,
     .btn:hover {
+      color: #fff;
+      background: linear-gradient(180deg, #886fff, #6e8cff);
       transform: translateY(-2px);
       box-shadow: 0 14px 28px rgba(84, 83, 220, .24);
     }
