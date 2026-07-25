@@ -129,7 +129,7 @@
       flex-wrap: nowrap;
       align-items: center;
       justify-content: center;
-      gap: 18px;
+      gap: 8px;
       font-size: 18px;
       min-width: 0;
       width: max-content;
@@ -140,17 +140,29 @@
     .nav-links a {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       flex-shrink: 0;
+      width: 92px;
       height: 38px;
-      padding: 0 14px;
+      padding: 0;
       border-radius: 999px;
       white-space: nowrap;
       color: var(--ink);
+      transition:
+        color .18s ease,
+        background-color .18s ease;
+    }
+
+    .nav-links span:hover,
+    .nav-links a:hover {
+      color: #4d32ce;
+      background: rgba(238, 233, 255, .64);
     }
 
     .nav-links span.active {
       color: #4d32ce;
       background: #eee9ff;
+      font-weight: 500;
     }
 
     .download {
@@ -836,8 +848,9 @@
         gap: 12px;
       }
 
-      .nav-links span {
-        padding: 0 12px;
+      .nav-links span,
+      .nav-links a {
+        width: 84px;
       }
 
       .project-grid {
