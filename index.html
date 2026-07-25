@@ -470,11 +470,17 @@
 
     .timeline-wrap {
       position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-      width: min(820px, 100%);
+      display: grid;
+      grid-template-columns: repeat(6, 260px);
+      gap: 28px;
+      width: 100%;
+      min-height: 430px;
       margin: 34px auto 0;
+      padding: 0 6px 18px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(122, 77, 255, .36) rgba(122, 77, 255, .08);
     }
 
     .experience .section-title,
@@ -503,27 +509,27 @@
     }
 
     .experience .item-1 {
-      transform: translate3d(-36px, -18px, 0);
+      transform: translate3d(0, 26px, 0);
     }
 
     .experience .item-2 {
-      transform: translate3d(-28px, 22px, 0);
+      transform: translate3d(0, -26px, 0);
     }
 
     .experience .item-3 {
-      transform: translate3d(-20px, -18px, 0);
+      transform: translate3d(0, 26px, 0);
     }
 
     .experience .item-4 {
-      transform: translate3d(-12px, 22px, 0);
+      transform: translate3d(0, -26px, 0);
     }
 
     .experience .item-5 {
-      transform: translate3d(-20px, -18px, 0);
+      transform: translate3d(0, 26px, 0);
     }
 
     .experience .item-6 {
-      transform: translate3d(-12px, 22px, 0);
+      transform: translate3d(0, -26px, 0);
     }
 
     .experience.is-visible .item-1 {
@@ -552,57 +558,65 @@
 
     .timeline-line {
       position: absolute;
-      top: 16px;
-      bottom: 16px;
-      left: 196px;
-      width: 1px;
-      background: linear-gradient(180deg, rgba(68,8,166,0), rgba(68,8,166,.55) 10%, rgba(68,8,166,.55) 90%, rgba(68,8,166,0));
+      top: 188px;
+      left: 136px;
+      width: 1440px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(68,8,166,0), rgba(68,8,166,.58) 8%, rgba(68,8,166,.58) 92%, rgba(68,8,166,0));
+    }
+
+    .timeline-line::after {
+      content: "";
+      position: absolute;
+      top: -4px;
+      right: 0;
+      width: 10px;
+      height: 10px;
+      border-top: 2px solid rgba(68,8,166,.58);
+      border-right: 2px solid rgba(68,8,166,.58);
+      transform: rotate(45deg);
     }
 
     .timeline-item {
       position: relative;
-      display: grid;
-      grid-template-columns: 156px 40px minmax(0, 560px);
-      column-gap: 20px;
-      align-items: flex-start;
-      min-width: 0;
+      width: 260px;
+      min-width: 260px;
+      height: 400px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      width: 1px;
+      background: rgba(68,8,166,.28);
+      transform: translateX(-50%);
+    }
+
+    .item-1::before,
+    .item-3::before,
+    .item-5::before {
+      top: 142px;
+      height: 46px;
+    }
+
+    .item-2::before,
+    .item-4::before,
+    .item-6::before {
+      top: 190px;
+      height: 42px;
     }
 
     .timeline-item--compact {
-      width: auto;
-    }
-
-    .item-1 {
-      align-self: auto;
-    }
-
-    .item-2 {
-      align-self: auto;
-      margin-left: 0;
-    }
-
-    .item-3 {
-      align-self: auto;
-      margin-left: 0;
-    }
-
-    .item-4 {
-      align-self: auto;
-      margin-left: 0;
-    }
-
-    .item-5,
-    .item-6 {
-      align-self: auto;
-      margin-left: 0;
+      width: 260px;
     }
 
     .timeline-card {
-      position: relative;
-      grid-column: 3;
+      position: absolute;
+      left: 0;
       width: 100%;
-      height: 100%;
-      padding: 22px 24px;
+      min-height: 126px;
+      padding: 18px 18px;
       border-radius: 16px;
       background: rgba(255, 255, 255, .48);
       border: 1px solid rgba(255, 255, 255, .64);
@@ -622,21 +636,47 @@
       width: 100%;
     }
 
+    .item-1 .timeline-card,
+    .item-3 .timeline-card,
+    .item-5 .timeline-card {
+      top: 0;
+    }
+
+    .item-2 .timeline-card,
+    .item-4 .timeline-card,
+    .item-6 .timeline-card {
+      top: 232px;
+    }
+
     .timeline-item time {
       display: block;
-      grid-column: 1;
-      padding-top: 22px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      padding: 0;
       color: #2b2254;
       font-size: 13px;
       line-height: 20px;
       font-weight: 500;
-      text-align: right;
+      text-align: center;
+    }
+
+    .item-1 time,
+    .item-3 time,
+    .item-5 time {
+      top: 214px;
+    }
+
+    .item-2 time,
+    .item-4 time,
+    .item-6 time {
+      top: 150px;
     }
 
     .timeline-title {
       margin: 0 0 10px;
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 17px;
+      font-weight: 500;
       color: #1f1f2b;
       line-height: 1.35;
     }
@@ -656,14 +696,15 @@
 
     .timeline-card strong {
       color: var(--purple);
-      font-weight: 600;
+      font-weight: 500;
     }
 
     .dot {
-      position: relative;
-      grid-column: 2;
-      justify-self: center;
-      margin-top: 22px;
+      position: absolute;
+      z-index: 2;
+      top: 178px;
+      left: 50%;
+      margin: 0;
       width: 20px;
       height: 20px;
       box-sizing: border-box;
@@ -671,17 +712,7 @@
       border-radius: 50%;
       background: #E8E4FA;
       box-shadow: 0 0 0 6px rgba(122, 77, 255, .08);
-    }
-
-    .item-1 .dot,
-    .item-3 .dot {
-      bottom: auto;
-    }
-
-    .item-2 .dot,
-    .item-4 .dot,
-    .item-6 .dot {
-      top: auto;
+      transform: translateX(-50%);
     }
 
     .contact-fab {
@@ -831,22 +862,19 @@
       }
 
       .timeline-wrap {
-        width: min(760px, 100%);
-        gap: 20px;
+        grid-template-columns: repeat(6, 240px);
+        gap: 22px;
       }
 
       .timeline-line {
-        left: 164px;
+        left: 126px;
+        width: 1310px;
       }
 
-      .timeline-item {
-        grid-template-columns: 132px 32px minmax(0, 1fr);
-        column-gap: 16px;
-        margin-left: 0;
-      }
-
+      .timeline-item,
       .timeline-item--compact {
-        width: auto;
+        width: 240px;
+        min-width: 240px;
       }
 
       .contact-fab {
@@ -875,17 +903,19 @@
       }
 
       .timeline-wrap {
-        width: 100%;
-        gap: 20px;
+        grid-template-columns: repeat(6, 228px);
+        gap: 18px;
       }
 
       .timeline-line {
-        left: 138px;
+        left: 120px;
+        width: 1230px;
       }
 
-      .timeline-item {
-        grid-template-columns: 112px 28px minmax(0, 1fr);
-        column-gap: 12px;
+      .timeline-item,
+      .timeline-item--compact {
+        width: 228px;
+        min-width: 228px;
       }
 
       .contact-fab {
