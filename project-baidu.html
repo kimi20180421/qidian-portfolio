@@ -69,23 +69,10 @@
     }
 
     .brand-mark {
-      position: relative;
+      display: block;
       width: 28px;
       height: 28px;
-      border-radius: 8px;
-      background: linear-gradient(136deg, #9363f4 10%, #e885d8 105%);
-      box-shadow: 2px 4px 10px rgba(212, 99, 243, .27);
-    }
-
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      top: 2px;
-      right: 3px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #88dcff;
+      flex-shrink: 0;
     }
 
     .nav-links {
@@ -163,7 +150,7 @@
   <div class="page">
     <header class="nav">
       <a class="brand" href="index.html">
-        <span class="brand-mark"></span>
+        <img class="brand-mark" src="assets/figma-portfolio/logo.png" width="28" height="28" alt="" aria-hidden="true" decoding="async" />
         <span>UX 屈畅 · 个人作品集</span>
       </a>
       <span class="nav-links">
