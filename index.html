@@ -496,9 +496,6 @@
 
     .timeline-wrap {
       position: relative;
-      display: grid;
-      grid-template-columns: repeat(6, 220px);
-      gap: 0;
       width: 100%;
       min-height: 390px;
       margin: 34px auto 0;
@@ -586,7 +583,7 @@
       position: absolute;
       top: 188px;
       left: 10px;
-      width: 1220px;
+      width: calc(100% - 10px);
       height: 2px;
       background: linear-gradient(90deg, rgba(68,8,166,0), rgba(68,8,166,.58) 8%, rgba(68,8,166,.58) 92%, rgba(68,8,166,0));
     }
@@ -604,10 +601,35 @@
     }
 
     .timeline-item {
-      position: relative;
-      width: 220px;
-      min-width: 220px;
+      position: absolute;
+      top: 0;
+      width: 260px;
+      min-width: 260px;
       height: 360px;
+    }
+
+    .item-1 {
+      left: 0;
+    }
+
+    .item-2 {
+      left: calc((100% - 260px) / 5);
+    }
+
+    .item-3 {
+      left: calc((100% - 260px) / 5 * 2);
+    }
+
+    .item-4 {
+      left: calc((100% - 260px) / 5 * 3);
+    }
+
+    .item-5 {
+      left: calc((100% - 260px) / 5 * 4);
+    }
+
+    .item-6 {
+      right: 0;
     }
 
     .timeline-item::before {
@@ -633,7 +655,7 @@
     }
 
     .timeline-item--compact {
-      width: 220px;
+      width: 260px;
     }
 
     .timeline-card {
@@ -865,19 +887,18 @@
       }
 
       .timeline-wrap {
-        grid-template-columns: repeat(6, 200px);
-        gap: 0;
+        min-width: 1000px;
       }
 
       .timeline-line {
         left: 10px;
-        width: 1120px;
+        width: calc(100% - 10px);
       }
 
       .timeline-item,
       .timeline-item--compact {
-        width: 200px;
-        min-width: 200px;
+        width: 260px;
+        min-width: 260px;
       }
 
       .contact-fab {
@@ -906,19 +927,18 @@
       }
 
       .timeline-wrap {
-        grid-template-columns: repeat(6, 184px);
-        gap: 0;
+        min-width: 960px;
       }
 
       .timeline-line {
         left: 10px;
-        width: 1024px;
+        width: calc(100% - 10px);
       }
 
       .timeline-item,
       .timeline-item--compact {
-        width: 184px;
-        min-width: 184px;
+        width: 260px;
+        min-width: 260px;
       }
 
       .contact-fab {
