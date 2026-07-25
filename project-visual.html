@@ -152,6 +152,93 @@
       margin: 0;
     }
 
+    .section-anchor-nav {
+      position: fixed;
+      top: 132px;
+      left: 20px;
+      z-index: 18;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 300px;
+      max-height: calc(100vh - 160px);
+      padding: 10px 8px;
+      border: 0;
+      border-radius: 20px;
+      background: transparent;
+      box-shadow: none;
+      opacity: 0;
+      transform: translateX(-12px);
+      overflow-y: auto;
+      pointer-events: none;
+      transition:
+        opacity .24s cubic-bezier(0.22, 1, 0.36, 1),
+        transform .24s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .section-anchor-nav.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+
+    .section-anchor-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 0 10px;
+      border-radius: 12px;
+      color: rgba(255, 255, 255, .68);
+      cursor: pointer;
+      transition:
+        background-color .24s cubic-bezier(0.22, 1, 0.36, 1),
+        color .24s cubic-bezier(0.22, 1, 0.36, 1);
+      user-select: none;
+    }
+
+    .section-anchor-item:hover {
+      background: rgba(74, 169, 255, .16);
+      color: rgba(255, 255, 255, .92);
+    }
+
+    .section-anchor-item.is-active {
+      color: #88DCFF;
+    }
+
+    .section-anchor-item.is-active .section-anchor-text {
+      font-weight: 500;
+    }
+
+    .section-anchor-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .28);
+      flex-shrink: 0;
+      transition:
+        background-color .24s cubic-bezier(0.22, 1, 0.36, 1),
+        transform .24s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .section-anchor-item.is-active .section-anchor-dot {
+      background: #88DCFF;
+      transform: scale(1.16);
+    }
+
+    .section-anchor-text {
+      min-width: 0;
+      font-size: 14px;
+      line-height: 22px;
+      color: inherit;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .section-anchor-item-sub {
+      padding-left: 20px;
+    }
+
     .slice-block {
       position: relative;
       display: flex;
@@ -341,6 +428,10 @@
     }
 
     @media (max-width: 960px) {
+      .section-anchor-nav {
+        display: none;
+      }
+
       .nav {
         grid-template-columns: 1fr;
         row-gap: 12px;
@@ -385,6 +476,52 @@
 </head>
 <body>
   <div class="page">
+    <div class="section-anchor-nav" id="sectionAnchorNav">
+      <div class="section-anchor-item is-active" data-anchor-target="visualIntroSection">
+        <span class="section-anchor-dot"></span>
+        <span class="section-anchor-text">活动前言</span>
+      </div>
+      <div class="section-anchor-item" data-anchor-target="visualProcessSection">
+        <span class="section-anchor-dot"></span>
+        <span class="section-anchor-text">设计流程</span>
+      </div>
+      <div class="section-anchor-item" data-anchor-target="visualDefinitionSection">
+        <span class="section-anchor-dot"></span>
+        <span class="section-anchor-text">视觉定义</span>
+      </div>
+      <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="visualShapeSection">
+        <span class="section-anchor-dot"></span>
+        <span class="section-anchor-text">形</span>
+      </div>
+      <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="visualColorSection">
+        <span class="section-anchor-dot"></span>
+        <span class="section-anchor-text">色</span>
+      </div>
+      <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="visualTextureSection">
+        <span class="section-anchor-dot"></span>
+        <span class="section-anchor-text">质</span>
+      </div>
+      <div class="section-anchor-item" data-anchor-target="visualFullLinkSection">
+        <span class="section-anchor-dot"></span>
+        <span class="section-anchor-text">全链路解析</span>
+      </div>
+      <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="visualReachSection">
+        <span class="section-anchor-dot"></span>
+        <span class="section-anchor-text">触达</span>
+      </div>
+      <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="visualPerceptionSection">
+        <span class="section-anchor-dot"></span>
+        <span class="section-anchor-text">感知</span>
+      </div>
+      <div class="section-anchor-item section-anchor-item-sub" data-anchor-target="visualRetentionSection">
+        <span class="section-anchor-dot"></span>
+        <span class="section-anchor-text">留存</span>
+      </div>
+      <div class="section-anchor-item" data-anchor-target="visualSummarySection">
+        <span class="section-anchor-dot"></span>
+        <span class="section-anchor-text">总结</span>
+      </div>
+    </div>
     <div class="nav">
       <a class="brand" href="index.html">
         <span class="brand-mark"></span>
@@ -401,29 +538,29 @@
     </div>
 
     <div class="visual-stack">
-      <div class="slice-block bg-1"><img class="slice-img" src="assets/figma-portfolio/shijue/1.png" width="1119" height="630" alt="视觉项目切图 1" loading="lazy" decoding="async"></div>
+      <div class="slice-block bg-1" id="visualIntroSection"><img class="slice-img" src="assets/figma-portfolio/shijue/1.png" width="1119" height="630" alt="视觉项目切图 1" loading="lazy" decoding="async"></div>
       <div class="slice-block bg-2"><img class="slice-img" src="assets/figma-portfolio/shijue/2.png" width="1119" height="948" alt="视觉项目切图 2" loading="lazy" decoding="async"></div>
       <div class="slice-block bg-3"><img class="slice-img" src="assets/figma-portfolio/shijue/3.png" width="1119" height="630" alt="视觉项目切图 3" loading="lazy" decoding="async"></div>
-      <div class="slice-block bg-4"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 1.png" width="1118" height="1012" alt="视觉项目切图 4" loading="lazy" decoding="async"></div>
+      <div class="slice-block bg-4" id="visualProcessSection"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 1.png" width="1118" height="1012" alt="视觉项目切图 4" loading="lazy" decoding="async"></div>
       <div class="slice-block bg-5"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 2.png" width="1118" height="640" alt="视觉项目切图 5" loading="lazy" decoding="async"></div>
-      <div class="slice-block bg-6"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 3.png" width="1118" height="1044" alt="视觉项目切图 6" loading="lazy" decoding="async"></div>
-      <div class="slice-block bg-7"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 4.png" width="1118" height="1007" alt="视觉项目切图 7" loading="lazy" decoding="async"></div>
-      <div class="slice-block bg-8"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 4-1.png" width="1120" height="820" alt="视觉项目切图 8" loading="lazy" decoding="async"></div>
-      <div class="slice-block bg-9"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 5.png" width="1120" height="362" alt="视觉项目切图 9" loading="lazy" decoding="async"></div>
-      <div class="slice-block bg-10"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 5-1.png" width="1120" height="1074" alt="视觉项目切图 10" loading="lazy" decoding="async"></div>
+      <div class="slice-block bg-6" id="visualDefinitionSection"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 3.png" width="1118" height="1044" alt="视觉项目切图 6" loading="lazy" decoding="async"></div>
+      <div class="slice-block bg-7" id="visualShapeSection"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 4.png" width="1118" height="1007" alt="视觉项目切图 7" loading="lazy" decoding="async"></div>
+      <div class="slice-block bg-8" id="visualColorSection"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 4-1.png" width="1120" height="820" alt="视觉项目切图 8" loading="lazy" decoding="async"></div>
+      <div class="slice-block bg-9" id="visualTextureSection"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 5.png" width="1120" height="362" alt="视觉项目切图 9" loading="lazy" decoding="async"></div>
+      <div class="slice-block bg-10" id="visualFullLinkSection"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 5-1.png" width="1120" height="1074" alt="视觉项目切图 10" loading="lazy" decoding="async"></div>
       <div class="slice-block bg-11"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 5-2.png" width="1118" height="650" alt="视觉项目切图 11" loading="lazy" decoding="async"></div>
       <div class="slice-block bg-12"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 5-3.png" width="1120" height="1111" alt="视觉项目切图 12" loading="lazy" decoding="async"></div>
-      <div class="slice-block bg-13"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 5-4.png" width="1120" height="1954" alt="视觉项目切图 13" loading="lazy" decoding="async"></div>
+      <div class="slice-block bg-13" id="visualReachSection"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 5-4.png" width="1120" height="1954" alt="视觉项目切图 13" loading="lazy" decoding="async"></div>
       <div class="slice-block bg-14"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 5-5.png" width="1120" height="640" alt="视觉项目切图 14" loading="lazy" decoding="async"></div>
-      <div class="slice-block bg-15"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 6.png" width="1120" height="1007" alt="视觉项目切图 15" loading="lazy" decoding="async"></div>
+      <div class="slice-block bg-15" id="visualPerceptionSection"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 6.png" width="1120" height="1007" alt="视觉项目切图 15" loading="lazy" decoding="async"></div>
       <div class="slice-block bg-16"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 6-1.png" width="1120" height="723" alt="视觉项目切图 16" loading="lazy" decoding="async"></div>
-      <div class="slice-block bg-17"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 7.png" width="1120" height="1293" alt="视觉项目切图 17" loading="lazy" decoding="async"></div>
+      <div class="slice-block bg-17" id="visualRetentionSection"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 7.png" width="1120" height="1293" alt="视觉项目切图 17" loading="lazy" decoding="async"></div>
       <div class="slice-block bg-18"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 8.png" width="1120" height="1497" alt="视觉项目切图 18" loading="lazy" decoding="async"></div>
       <div class="slice-block bg-19"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 9.png" width="1120" height="1038" alt="视觉项目切图 19" loading="lazy" decoding="async"></div>
       <div class="slice-block bg-20"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 10.png" width="1120" height="415" alt="视觉项目切图 20" loading="lazy" decoding="async"></div>
       <div class="slice-block bg-21"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 10-1.png" width="1120" height="763" alt="视觉项目切图 21" loading="lazy" decoding="async"></div>
       <div class="slice-block bg-22"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 11.png" width="1120" height="716" alt="视觉项目切图 22" loading="lazy" decoding="async"></div>
-      <div class="slice-block bg-23"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 12.png" width="1120" height="808" alt="视觉项目切图 23" loading="lazy" decoding="async"></div>
+      <div class="slice-block bg-23" id="visualSummarySection"><img class="slice-img" src="assets/figma-portfolio/shijue/Slice 12.png" width="1120" height="808" alt="视觉项目切图 23" loading="lazy" decoding="async"></div>
     </div>
 
     <div class="contact-fab">
@@ -480,6 +617,75 @@
           setContactOpen(false);
         }
       });
+    })();
+
+    (function() {
+      var anchorNav = document.getElementById('sectionAnchorNav');
+      if (!anchorNav) return;
+
+      var items = Array.prototype.slice.call(anchorNav.querySelectorAll('[data-anchor-target]'));
+      if (!items.length) return;
+
+      var targets = items.map(function(item) {
+        var section = document.getElementById(item.getAttribute('data-anchor-target'));
+        return {
+          item: item,
+          section: section
+        };
+      }).filter(function(entry) {
+        return !!entry.section;
+      });
+
+      if (!targets.length) return;
+
+      function getPageTop(section) {
+        return section.getBoundingClientRect().top + window.scrollY;
+      }
+
+      function setActive(targetId) {
+        targets.forEach(function(entry) {
+          entry.item.classList.toggle('is-active', entry.section.id === targetId);
+        });
+      }
+
+      function updateAnchorState() {
+        var probeY = window.scrollY + 136;
+        var viewportBottom = window.scrollY + window.innerHeight;
+        var documentHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+        var currentId = targets[0].section.id;
+
+        targets.forEach(function(entry) {
+          if (getPageTop(entry.section) <= probeY) {
+            currentId = entry.section.id;
+          }
+        });
+
+        if (viewportBottom >= documentHeight - 2) {
+          currentId = targets[targets.length - 1].section.id;
+        }
+
+        setActive(currentId);
+
+        if (window.scrollY > 120) {
+          anchorNav.classList.add('is-visible');
+        } else {
+          anchorNav.classList.remove('is-visible');
+        }
+      }
+
+      targets.forEach(function(entry) {
+        entry.item.addEventListener('click', function() {
+          var top = getPageTop(entry.section) - 84;
+          window.scrollTo({
+            top: top < 0 ? 0 : top,
+            behavior: 'smooth'
+          });
+        });
+      });
+
+      window.addEventListener('scroll', updateAnchorState, { passive: true });
+      window.addEventListener('resize', updateAnchorState);
+      updateAnchorState();
     })();
 
     (function() {
