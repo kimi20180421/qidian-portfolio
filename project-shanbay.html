@@ -3849,7 +3849,107 @@
 
       @media (max-width: 1320px) {
         .section-anchor-nav {
-          display: none;
+          top: 96px;
+          left: 22px;
+          gap: 8px;
+          width: 64px;
+          max-height: calc(100vh - 120px);
+          padding: 0;
+          border-radius: 0;
+          overflow: visible;
+        }
+
+        .section-anchor-item,
+        .section-anchor-item-sub,
+        .section-anchor-item-strategy {
+          position: relative;
+          justify-content: flex-start;
+          width: 64px;
+          min-height: 12px;
+          margin-top: 0;
+          padding: 0;
+          border-radius: 0;
+          background: transparent;
+        }
+
+        .section-anchor-item:hover,
+        .section-anchor-item.is-on-dark:hover {
+          background: transparent;
+        }
+
+        .section-anchor-dot,
+        .section-anchor-item-sub .section-anchor-dot,
+        .section-anchor-item.is-on-dark .section-anchor-dot {
+          width: 10px;
+          height: 3px;
+          border-radius: 999px;
+          background: rgba(5, 91, 79, 0.22);
+          transform-origin: left center;
+          transition: width var(--motion-fast) var(--motion-ease), background-color var(--motion-fast) var(--motion-ease);
+        }
+
+        .section-anchor-item:hover .section-anchor-dot {
+          width: 30px;
+          background: #34C8B2;
+        }
+
+        .section-anchor-item.is-on-dark:hover .section-anchor-dot {
+          background: #BAEEEA;
+        }
+
+        .section-anchor-item.is-active .section-anchor-dot {
+          width: 52px;
+          background: #34C8B2;
+          transform: none;
+        }
+
+        .section-anchor-item.is-on-dark.is-active .section-anchor-dot {
+          background: #BAEEEA;
+        }
+
+        .section-anchor-item.is-near-1 .section-anchor-dot {
+          width: 40px;
+        }
+
+        .section-anchor-item.is-near-2 .section-anchor-dot {
+          width: 28px;
+        }
+
+        .section-anchor-item.is-near-3 .section-anchor-dot {
+          width: 16px;
+        }
+
+        .section-anchor-item:not(.is-active):hover .section-anchor-dot {
+          width: 30px;
+        }
+
+        .section-anchor-text {
+          position: absolute;
+          top: 50%;
+          left: 74px;
+          z-index: 22;
+          display: block;
+          min-width: 128px;
+          max-width: 280px;
+          padding: 12px 14px;
+          border: 1px solid rgba(31, 35, 41, 0.12);
+          border-radius: 16px;
+          color: #1f2329;
+          font-size: 14px;
+          line-height: 20px;
+          font-weight: 500;
+          white-space: normal;
+          background: rgba(255, 255, 255, 0.96);
+          box-shadow: 0 18px 42px rgba(31, 35, 41, 0.12);
+          opacity: 0;
+          transform: translate(-8px, -50%);
+          pointer-events: none;
+          transition: opacity var(--motion-fast) var(--motion-ease), transform var(--motion-fast) var(--motion-ease);
+        }
+
+        .section-anchor-item:hover .section-anchor-text {
+          opacity: 1;
+          transform: translate(0, -50%);
         }
       }
 
@@ -5004,8 +5104,19 @@
         var darkSections = Array.prototype.slice.call(document.querySelectorAll('#designSolutionSection'));
 
         function setActive(targetId) {
-          targets.forEach(function(entry) {
-            entry.item.classList.toggle('is-active', entry.section.id === targetId);
+          var activeIndex = 0;
+
+          targets.forEach(function(entry, index) {
+            var isActive = entry.section.id === targetId;
+            entry.item.classList.toggle('is-active', isActive);
+            if (isActive) activeIndex = index;
+          });
+
+          targets.forEach(function(entry, index) {
+            var distance = Math.abs(index - activeIndex);
+            entry.item.classList.toggle('is-near-1', distance === 1);
+            entry.item.classList.toggle('is-near-2', distance === 2);
+            entry.item.classList.toggle('is-near-3', distance === 3);
           });
         }
 

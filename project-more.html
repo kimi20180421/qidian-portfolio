@@ -268,7 +268,97 @@
 
     @media (max-width: 1120px) {
       .section-anchor-nav {
-        display: none;
+        top: 96px;
+        left: 22px;
+        gap: 8px;
+        width: 64px;
+        max-height: calc(100vh - 120px);
+        padding: 0;
+        border-radius: 0;
+        overflow: visible;
+      }
+
+      .section-anchor-item {
+        position: relative;
+        justify-content: flex-start;
+        width: 64px;
+        min-height: 12px;
+        padding: 0;
+        border-radius: 0;
+        background: transparent;
+      }
+
+      .section-anchor-item:hover {
+        background: transparent;
+      }
+
+      .section-anchor-dot {
+        width: 10px;
+        height: 3px;
+        border-radius: 999px;
+        background: rgba(31, 35, 41, .22);
+        transform-origin: left center;
+        transition:
+          width .24s cubic-bezier(0.22, 1, 0.36, 1),
+          background-color .24s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .section-anchor-item:hover .section-anchor-dot {
+        width: 30px;
+        background: #4408A6;
+      }
+
+      .section-anchor-item.is-active .section-anchor-dot {
+        width: 52px;
+        background: #4408A6;
+        transform: none;
+      }
+
+      .section-anchor-item.is-near-1 .section-anchor-dot {
+        width: 40px;
+      }
+
+      .section-anchor-item.is-near-2 .section-anchor-dot {
+        width: 28px;
+      }
+
+      .section-anchor-item.is-near-3 .section-anchor-dot {
+        width: 16px;
+      }
+
+      .section-anchor-item:not(.is-active):hover .section-anchor-dot {
+        width: 30px;
+      }
+
+      .section-anchor-text {
+        position: absolute;
+        top: 50%;
+        left: 74px;
+        z-index: 22;
+        display: block;
+        min-width: 168px;
+        max-width: 260px;
+        padding: 12px 14px;
+        border: 1px solid rgba(31, 35, 41, .12);
+        border-radius: 16px;
+        color: #1f2329;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 500;
+        white-space: nowrap;
+        background: rgba(255, 255, 255, .96);
+        box-shadow: 0 18px 42px rgba(31, 35, 41, .12);
+        opacity: 0;
+        transform: translate(-8px, -50%);
+        pointer-events: none;
+        transition:
+          opacity .24s cubic-bezier(0.22, 1, 0.36, 1),
+          transform .24s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .section-anchor-item:hover .section-anchor-text {
+        opacity: 1;
+        transform: translate(0, -50%);
       }
 
       .nav {
@@ -352,8 +442,19 @@
       }
 
       function setActive(targetId) {
-        targets.forEach(function(entry) {
-          entry.item.classList.toggle('is-active', entry.section.id === targetId);
+        var activeIndex = 0;
+
+        targets.forEach(function(entry, index) {
+          var isActive = entry.section.id === targetId;
+          entry.item.classList.toggle('is-active', isActive);
+          if (isActive) activeIndex = index;
+        });
+
+        targets.forEach(function(entry, index) {
+          var distance = Math.abs(index - activeIndex);
+          entry.item.classList.toggle('is-near-1', distance === 1);
+          entry.item.classList.toggle('is-near-2', distance === 2);
+          entry.item.classList.toggle('is-near-3', distance === 3);
         });
       }
 
