@@ -409,7 +409,7 @@
 </head>
 <body>
   <div class="page">
-    <div class="section-anchor-nav is-visible" id="sectionAnchorNav">
+    <div class="section-anchor-nav" id="sectionAnchorNav">
       <div class="section-anchor-item is-active" data-anchor-target="moreRelicAnchor">
         <span class="section-anchor-dot"></span>
         <span class="section-anchor-text">
@@ -530,6 +530,8 @@
 
       function updateAnchorState() {
         var probeY = window.scrollY + 136;
+        var viewportBottom = window.scrollY + window.innerHeight;
+        var documentHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
         var currentId = targets[0].section.id;
 
         targets.forEach(function(entry) {
@@ -538,7 +540,17 @@
           }
         });
 
+        if (viewportBottom >= documentHeight - 2) {
+          currentId = targets[targets.length - 1].section.id;
+        }
+
         setActive(currentId);
+
+        if (window.scrollY > 120) {
+          anchorNav.classList.add('is-visible');
+        } else {
+          anchorNav.classList.remove('is-visible');
+        }
       }
 
       targets.forEach(function(entry) {
