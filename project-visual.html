@@ -254,7 +254,7 @@
         box-shadow .24s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .contact-fab:hover .contact-tab,
+    .contact-fab.is-hovering-tab .contact-tab,
     .contact-fab.is-open .contact-tab {
       transform: translateY(-4px);
       box-shadow: 0 24px 38px rgba(122, 77, 255, .24);
@@ -297,7 +297,7 @@
         visibility .24s linear;
     }
 
-    .contact-fab:hover .contact-popover,
+    .contact-fab.is-hovering-tab .contact-popover,
     .contact-fab.is-open .contact-popover {
       opacity: 1;
       visibility: visible;
@@ -457,6 +457,16 @@
       contactTrigger.addEventListener('click', function(event) {
         event.preventDefault();
         setContactOpen(!contactFab.classList.contains('is-open'));
+      });
+
+      contactTrigger.addEventListener('mouseenter', function() {
+        if (!contactFab.classList.contains('is-open')) {
+          contactFab.classList.add('is-hovering-tab');
+        }
+      });
+
+      contactTrigger.addEventListener('mouseleave', function() {
+        contactFab.classList.remove('is-hovering-tab');
       });
 
       document.addEventListener('click', function(event) {
