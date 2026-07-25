@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>视觉项目 | UX 屈畅 · 个人作品集</title>
   <style>
+    :root {
+      --nav-active-fg: #1f2329;
+      --nav-active-bg: rgba(31, 35, 41, .10);
+      --nav-hover-bg: rgba(31, 35, 41, .08);
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -111,13 +117,13 @@
 
     .nav-links span:hover,
     .nav-links a:hover {
-      color: #4d32ce;
-      background: rgba(238, 233, 255, .64);
+      color: var(--nav-active-fg);
+      background: var(--nav-hover-bg);
     }
 
     .nav-links .active {
-      color: #4d32ce;
-      background: #eee9ff;
+      color: var(--nav-active-fg);
+      background: var(--nav-active-bg);
       font-weight: 500;
     }
 

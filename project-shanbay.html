@@ -11,6 +11,7 @@
       /* 当前页主题色（绿色系），选中态跟随此变量变化 */
       --nav-active-bg: #BAEEEA;
       --nav-active-fg: #055B4F;
+      --nav-hover-bg: rgba(186, 238, 234, .62);
       --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
       --motion-fast: 240ms;
       --motion-panel: 360ms;
@@ -154,7 +155,7 @@
     .nav-links span:hover,
     .nav-links a:hover {
       color: var(--nav-active-fg);
-      background: rgba(238, 233, 255, .64);
+      background: var(--nav-hover-bg);
     }
 
     .nav-links span.active {

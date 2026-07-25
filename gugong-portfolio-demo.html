@@ -13,6 +13,9 @@
       --line: rgba(68, 8, 166, .35);
       --glass: rgba(255, 255, 255, .62);
       --card: rgba(255, 255, 255, .78);
+      --nav-active-fg: #4d32ce;
+      --nav-active-bg: #eee9ff;
+      --nav-hover-bg: rgba(238, 233, 255, .64);
       --page-max: 1440px;
       --page-gutter: clamp(20px, 4vw, 48px);
     }
@@ -155,13 +158,13 @@
 
     .nav-links span:hover,
     .nav-links a:hover {
-      color: #4d32ce;
-      background: rgba(238, 233, 255, .64);
+      color: var(--nav-active-fg);
+      background: var(--nav-hover-bg);
     }
 
     .nav-links span.active {
-      color: #4d32ce;
-      background: #eee9ff;
+      color: var(--nav-active-fg);
+      background: var(--nav-active-bg);
       font-weight: 500;
     }
 
