@@ -774,21 +774,30 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      min-height: 42px;
-      padding: 10px 16px;
-      border: 1px solid rgba(68, 8, 166, .14);
-      border-radius: 999px;
-      color: rgba(31, 35, 41, .82);
+      min-height: 48px;
+      padding: 12px 18px;
+      border: 1px solid rgba(255, 255, 255, .55);
+      border-radius: 14px;
+      color: #4a4a55;
       font-size: 14px;
       line-height: 20px;
       font-weight: 400;
-      background: rgba(255, 255, 255, .72);
-      box-shadow: 0 12px 28px rgba(68, 8, 166, .08);
+      background: rgba(255, 255, 255, .58);
+      box-shadow:
+        0 18px 42px rgba(127, 102, 214, .10),
+        inset 0 1px 0 rgba(255, 255, 255, .72);
+      backdrop-filter: blur(16px) saturate(1.15);
+      -webkit-backdrop-filter: blur(16px) saturate(1.15);
     }
 
     .contact-section-label {
       color: var(--purple);
       font-weight: 500;
+    }
+
+    .contact-section-value {
+      color: #4a4a55;
+      font-weight: 400;
     }
 
     .dot {
@@ -1249,9 +1258,9 @@
         <div class="contact-section-title">正在寻找 UI/UX 产品体验设计机会</div>
         <div class="contact-section-desc">如果我与您的团队需求契合，欢迎通过以下方式与我联系</div>
         <div class="contact-section-list">
-          <div class="contact-section-item"><span class="contact-section-label">手机：</span><span>187 4253 8661</span></div>
-          <div class="contact-section-item"><span class="contact-section-label">邮箱：</span><span>1323151165@qq.com</span></div>
-          <div class="contact-section-item"><span class="contact-section-label">微信：</span><span>187 4253 8661</span></div>
+          <div class="contact-section-item"><span class="contact-section-label">手机：</span><span class="contact-section-value">187 4253 8661</span></div>
+          <div class="contact-section-item"><span class="contact-section-label">邮箱：</span><span class="contact-section-value">1323151165@qq.com</span></div>
+          <div class="contact-section-item"><span class="contact-section-label">微信：</span><span class="contact-section-value">187 4253 8661</span></div>
         </div>
       </div>
     </main>
