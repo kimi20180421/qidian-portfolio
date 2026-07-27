@@ -225,6 +225,7 @@
 
     .hero-title {
       max-width: 750px;
+      min-height: 1.25em;
       margin: 20px 0 24px;
       color: var(--purple);
       font-size: 50px;
@@ -232,6 +233,23 @@
       line-height: 1.25;
       letter-spacing: 0.5px;
       white-space: nowrap;
+    }
+
+    .hero-title.is-typing::after {
+      content: "";
+      display: inline-block;
+      width: 2px;
+      height: .92em;
+      margin-left: 4px;
+      vertical-align: -0.08em;
+      background: var(--purple);
+      animation: type-caret .9s steps(1, end) infinite;
+    }
+
+    @keyframes type-caret {
+      50% {
+        opacity: 0;
+      }
     }
 
     .hero-descs {
@@ -1056,8 +1074,10 @@
       }
 
       .contact-tab,
-      .contact-popover {
+      .contact-popover,
+      .hero-title.is-typing::after {
         transition: none;
+        animation: none;
       }
     }
   </style>
@@ -1282,6 +1302,39 @@
       </div>
   </div>
   <script>
+    (function() {
+      var title = document.querySelector('.hero-title');
+      if (!title) return;
+
+      var fullText = title.textContent.trim();
+      if (!fullText) return;
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        title.textContent = fullText;
+        return;
+      }
+
+      var index = 0;
+      title.textContent = '';
+      title.classList.add('is-typing');
+
+      function typeNext() {
+        index += 1;
+        title.textContent = fullText.slice(0, index);
+
+        if (index >= fullText.length) {
+          title.classList.remove('is-typing');
+          return;
+        }
+
+        var currentChar = fullText.charAt(index - 1);
+        var delay = currentChar === '，' ? 180 : 58;
+        window.setTimeout(typeNext, delay);
+      }
+
+      window.setTimeout(typeNext, 260);
+    })();
+
     (function() {
       var navFixed = document.getElementById('navFixed');
       if (!navFixed) return;
