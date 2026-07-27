@@ -513,7 +513,11 @@
     }
 
     .experience {
-      padding: 10px 0 90px;
+      padding: 10px 0 48px;
+    }
+
+    .experience .section-title::after {
+      width: 82px;
     }
 
     .timeline-wrap {
@@ -737,7 +741,7 @@
     .contact-section {
       max-width: 1120px;
       margin: 0 auto 28px;
-      padding: 34px 24px 0;
+      padding: 0 24px;
       text-align: center;
     }
 
@@ -771,11 +775,15 @@
       align-items: center;
       gap: 8px;
       min-height: 42px;
-      padding: 0 6px;
+      padding: 10px 16px;
+      border: 1px solid rgba(68, 8, 166, .14);
+      border-radius: 999px;
       color: rgba(31, 35, 41, .82);
       font-size: 14px;
       line-height: 20px;
       font-weight: 400;
+      background: rgba(255, 255, 255, .72);
+      box-shadow: 0 12px 28px rgba(68, 8, 166, .08);
     }
 
     .contact-section-label {
