@@ -1390,6 +1390,7 @@
       }
 
       var index = 0;
+      var caretHoldDelay = 2200;
       title.textContent = '';
       title.classList.add('is-typing');
 
@@ -1398,7 +1399,9 @@
         title.textContent = fullText.slice(0, index);
 
         if (index >= fullText.length) {
-          title.classList.remove('is-typing');
+          window.setTimeout(function() {
+            title.classList.remove('is-typing');
+          }, caretHoldDelay);
           return;
         }
 
