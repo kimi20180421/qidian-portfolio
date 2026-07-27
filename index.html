@@ -238,17 +238,18 @@
     .hero-title.is-typing::after {
       content: "";
       display: inline-block;
-      width: 2px;
-      height: .92em;
-      margin-left: 4px;
-      vertical-align: -0.08em;
+      width: 18px;
+      height: 4px;
+      margin-left: 6px;
+      border-radius: 999px;
+      vertical-align: .16em;
       background: var(--purple);
-      animation: type-caret .9s steps(1, end) infinite;
+      animation: type-caret 1s cubic-bezier(0.22, 1, 0.36, 1) infinite;
     }
 
     @keyframes type-caret {
       50% {
-        opacity: 0;
+        opacity: .34;
       }
     }
 
@@ -1328,11 +1329,11 @@
         }
 
         var currentChar = fullText.charAt(index - 1);
-        var delay = currentChar === '，' ? 180 : 58;
+        var delay = currentChar === '，' ? 320 : 120;
         window.setTimeout(typeNext, delay);
       }
 
-      window.setTimeout(typeNext, 260);
+      window.setTimeout(typeNext, 420);
     })();
 
     (function() {
