@@ -123,20 +123,41 @@
     .download {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
+      height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
       font-size: 14px;
       font-weight: 400;
-      color: var(--ink);
+      color: #1f2329;
       justify-self: end;
       white-space: nowrap;
+      transition:
+        color .18s ease,
+        background-color .18s ease;
+    }
+
+    .download:hover {
+      color: #4408A6;
+      background: rgba(122, 77, 255, .08);
     }
 
     .download::before {
       content: "";
-      width: 12px;
-      height: 12px;
-      border-radius: 2px;
-      background: #d9d9d9;
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      background: url("assets/figma-portfolio/download.svg") center / 14px 14px no-repeat;
+    }
+
+    @media (max-width: 1120px) {
+      .download {
+        width: 38px;
+        padding: 0;
+        gap: 0;
+        font-size: 0;
+      }
     }
 
     .detail-main {
