@@ -306,6 +306,11 @@
       opacity: 0;
     }
 
+    .slice-block.is-load-failed::after {
+      opacity: .36;
+      animation: none;
+    }
+
     @keyframes loading-138 {
       to {
         transform: rotate(0.5turn);
@@ -327,6 +332,10 @@
     }
 
     .slice-block.is-loaded .slice-img {
+      opacity: 1;
+    }
+
+    .slice-block.is-load-failed .slice-img {
       opacity: 1;
     }
 
@@ -857,19 +866,90 @@
 
     (function() {
       var sliceImages = document.querySelectorAll('.slice-img');
+      var loadTimeout = 9000;
+      var maxRetryCount = 1;
+
       sliceImages.forEach(function(image) {
         var block = image.closest('.slice-block');
         if (!block) return;
 
+        var originalSrc = image.currentSrc || image.getAttribute('src');
+        var retryCount = 0;
+        var timer = null;
+        var started = false;
+
         function setLoaded() {
+          window.clearTimeout(timer);
           block.classList.add('is-loaded');
+          block.classList.remove('is-load-failed');
+        }
+
+        function setFailed() {
+          window.clearTimeout(timer);
+          block.classList.add('is-load-failed');
+        }
+
+        function getRetrySrc() {
+          var separator = originalSrc.indexOf('?') === -1 ? '?' : '&';
+          return originalSrc + separator + 'retry=' + Date.now();
+        }
+
+        function retryLoad() {
+          if (image.complete && image.naturalWidth > 0) {
+            setLoaded();
+            return;
+          }
+
+          if (retryCount >= maxRetryCount) {
+            setFailed();
+            return;
+          }
+
+          retryCount += 1;
+          image.loading = 'eager';
+          image.src = getRetrySrc();
+          watchTimeout();
+        }
+
+        function watchTimeout() {
+          window.clearTimeout(timer);
+          timer = window.setTimeout(retryLoad, loadTimeout);
+        }
+
+        function startLoad() {
+          if (started) return;
+          started = true;
+
+          if (image.complete && image.naturalWidth > 0) {
+            setLoaded();
+            return;
+          }
+
+          image.loading = 'eager';
+          watchTimeout();
         }
 
         if (image.complete && image.naturalWidth > 0) {
           setLoaded();
         } else {
-          image.addEventListener('load', setLoaded, { once: true });
-          image.addEventListener('error', setLoaded, { once: true });
+          image.addEventListener('load', setLoaded);
+          image.addEventListener('error', retryLoad);
+        }
+
+        if ('IntersectionObserver' in window) {
+          var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                startLoad();
+                observer.unobserve(image);
+              }
+            });
+          }, {
+            rootMargin: '640px 0px'
+          });
+          observer.observe(image);
+        } else {
+          startLoad();
         }
       });
     })();
