@@ -286,6 +286,122 @@
       }
     }
 
+    .contact-fab {
+      position: fixed;
+      z-index: 30;
+      right: clamp(12px, 2vw, 30px);
+      top: 58%;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .contact-tab {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: 58px;
+      padding: 10px 10px 18px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.2;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #F0EBFF 0%, #B39DFF 52%, #7A4DFF 100%);
+      box-shadow: 0 18px 32px rgba(122, 77, 255, .18);
+      transition:
+        transform .24s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow .24s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .contact-fab.is-hovering-tab .contact-tab,
+    .contact-fab.is-open .contact-tab {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 38px rgba(122, 77, 255, .24);
+    }
+
+    .contact-avatar {
+      display: block;
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(255,255,255,.75);
+      border-radius: 50%;
+      background: #F0EBFF;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .contact-popover {
+      position: relative;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      width: fit-content;
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, .5);
+      border: 1px solid rgba(255, 255, 255, .68);
+      box-shadow:
+        0 22px 54px rgba(122, 77, 255, .12),
+        inset 0 1px 0 rgba(255, 255, 255, .74);
+      backdrop-filter: blur(18px) saturate(1.16);
+      -webkit-backdrop-filter: blur(18px) saturate(1.16);
+      opacity: 0;
+      visibility: hidden;
+      transform: translate3d(16px, 0, 0) scale(.97);
+      transform-origin: right center;
+      pointer-events: none;
+      transition:
+        opacity .24s cubic-bezier(0.22, 1, 0.36, 1),
+        transform .24s cubic-bezier(0.22, 1, 0.36, 1),
+        visibility .24s linear;
+    }
+
+    .contact-fab.is-hovering-tab .contact-popover,
+    .contact-fab.is-open .contact-popover {
+      opacity: 1;
+      visibility: visible;
+      transform: translate3d(0, 0, 0) scale(1);
+      pointer-events: auto;
+    }
+
+    .contact-popover-copy {
+      width: 155px;
+      color: #000;
+      font-size: 14px;
+      line-height: 1.7;
+      text-align: left;
+    }
+
+    .contact-phone {
+      display: inline-block;
+      margin-top: 2px;
+      color: #000;
+      font-weight: 500;
+      letter-spacing: .02em;
+    }
+
+    .contact-qr {
+      margin-top: 8px;
+      width: 155px;
+      padding: 0;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .56);
+      border: 1px solid rgba(255, 255, 255, .7);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .76);
+      overflow: hidden;
+    }
+
+    .contact-qr img {
+      display: block;
+      width: 155px;
+      height: auto;
+      border-radius: 12px;
+      background: #fff;
+    }
+
     @media (max-width: 1280px) {
       .nav-links {
         gap: 10px;
@@ -398,6 +514,22 @@
         opacity: 1;
         transform: translate(0, -50%);
       }
+
+      .contact-fab {
+        top: auto;
+        bottom: 20px;
+        gap: 14px;
+      }
+
+      .contact-tab {
+        width: 54px;
+        padding: 8px 8px 14px;
+        font-size: 16px;
+      }
+
+      .contact-popover {
+        padding: 20px;
+      }
     }
 
     @media (max-width: 1120px) {
@@ -505,8 +637,58 @@
         <img class="more-img" src="assets/figma-portfolio/more/s7.jpg" width="1920" height="1080" alt="三生屿 · 服务设计" loading="lazy" decoding="async">
       </div>
     </div>
+
+    <div class="contact-fab">
+      <div class="contact-popover" id="contactPopover">
+        <div class="contact-popover-copy">
+          扫描下方二维码，加我微信，或者拨打电话
+          <span class="contact-phone">187 4253 8661</span>
+        </div>
+        <div class="contact-qr">
+          <img decoding="async" loading="lazy" src="assets/figma-portfolio/chang.png" alt="联系二维码" />
+        </div>
+      </div>
+      <a class="contact-tab" href="index.html#contact" aria-label="联系我" aria-controls="contactPopover" aria-expanded="false">
+        <img loading="lazy" class="contact-avatar" src="assets/figma-portfolio/ava.png" alt="" aria-hidden="true" decoding="async" />
+        <span>联<br>系<br>我</span>
+      </a>
+    </div>
   </div>
   <script>
+    (function() {
+      var contactFab = document.querySelector('.contact-fab');
+      if (!contactFab) return;
+      var contactTrigger = contactFab.querySelector('.contact-tab');
+      if (!contactTrigger) return;
+
+      function setContactOpen(isOpen) {
+        contactFab.classList.toggle('is-open', isOpen);
+        contactTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+
+      contactTrigger.addEventListener('click', function(event) {
+        event.preventDefault();
+        setContactOpen(!contactFab.classList.contains('is-open'));
+      });
+
+      contactTrigger.addEventListener('mouseenter', function() {
+        if (!contactFab.classList.contains('is-open')) {
+          contactFab.classList.add('is-hovering-tab');
+        }
+      });
+
+      contactTrigger.addEventListener('mouseleave', function() {
+        contactFab.classList.remove('is-hovering-tab');
+      });
+
+      document.addEventListener('click', function(event) {
+        if (!contactFab.contains(event.target)) {
+          setContactOpen(false);
+          contactFab.classList.remove('is-hovering-tab');
+        }
+      });
+    })();
+
     (function() {
       var anchorNav = document.getElementById('sectionAnchorNav');
       if (!anchorNav) return;
