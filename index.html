@@ -193,6 +193,10 @@
       mask: url("assets/figma-portfolio/download.svg") center / 14px 14px no-repeat;
     }
 
+    .mobile-menu-toggle {
+      display: none;
+    }
+
     .hero {
       position: relative;
       overflow: hidden;
@@ -1155,6 +1159,438 @@
       }
     }
 
+    @media (max-width: 760px) {
+      body {
+        background-attachment: scroll;
+      }
+
+      main {
+        padding-bottom: 32px;
+      }
+
+      .nav,
+      .nav-fixed {
+        grid-template-columns: minmax(0, 1fr) 44px 44px;
+        column-gap: 8px;
+        height: 60px;
+        padding: 0 18px;
+      }
+
+      .brand {
+        min-width: 0;
+        gap: 10px;
+        font-size: 15px;
+      }
+
+      .brand span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .download {
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        gap: 0;
+        font-size: 0;
+      }
+
+      .download::before {
+        width: 16px;
+        height: 16px;
+        -webkit-mask-size: 16px 16px;
+        mask-size: 16px 16px;
+      }
+
+      .mobile-menu-toggle {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        color: #1f2329;
+        background: rgba(255, 255, 255, .48);
+        border: 1px solid rgba(255, 255, 255, .58);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, .72);
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .mobile-menu-toggle::before,
+      .mobile-menu-toggle::after {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 2px;
+        border-radius: 999px;
+        background: currentColor;
+        transition:
+          transform .24s cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow .24s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .mobile-menu-toggle::before {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 0 currentColor;
+      }
+
+      .mobile-menu-toggle::after {
+        transform: translateY(5px);
+      }
+
+      .nav.is-menu-open .mobile-menu-toggle::before,
+      .nav-fixed.is-menu-open .mobile-menu-toggle::before {
+        transform: rotate(45deg);
+        box-shadow: 0 0 0 currentColor;
+      }
+
+      .nav.is-menu-open .mobile-menu-toggle::after,
+      .nav-fixed.is-menu-open .mobile-menu-toggle::after {
+        transform: rotate(-45deg);
+      }
+
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 18px;
+        right: 18px;
+        z-index: 25;
+        display: grid;
+        grid-template-columns: 1fr;
+        width: auto;
+        gap: 8px;
+        padding: 12px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, .78);
+        border: 1px solid rgba(255, 255, 255, .68);
+        box-shadow:
+          0 20px 48px rgba(88, 67, 170, .16),
+          inset 0 1px 0 rgba(255, 255, 255, .82);
+        backdrop-filter: blur(18px) saturate(1.16);
+        -webkit-backdrop-filter: blur(18px) saturate(1.16);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        pointer-events: none;
+        transition:
+          opacity .24s cubic-bezier(0.22, 1, 0.36, 1),
+          transform .24s cubic-bezier(0.22, 1, 0.36, 1),
+          visibility .24s linear;
+      }
+
+      .nav.is-menu-open .nav-links,
+      .nav-fixed.is-menu-open .nav-links {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .nav-links span,
+      .nav-links a,
+      .nav-links .nav-wide {
+        justify-content: flex-start;
+        width: 100%;
+        height: 44px;
+        padding: 0 16px;
+        font-size: 15px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-bottom: 42px;
+      }
+
+      .hero-image {
+        left: 50%;
+        width: 980px;
+        height: 500px;
+        opacity: .78;
+        transform: translateX(-45%);
+      }
+
+      .hero-image img {
+        width: 980px;
+        height: 124px;
+      }
+
+      .hero-copy {
+        margin: 42px 22px 0;
+        max-width: none;
+      }
+
+      .eyebrow {
+        padding: 7px 14px;
+        font-size: 14px;
+      }
+
+      .hero-title {
+        max-width: 100%;
+        min-height: 2.42em;
+        margin: 18px 0 18px;
+        font-size: 34px;
+        line-height: 1.2;
+        letter-spacing: 0;
+        white-space: normal;
+      }
+
+      .hero-desc {
+        max-width: 100%;
+        font-size: 16px;
+        line-height: 1.78;
+      }
+
+      .hero-capability {
+        margin-top: 16px;
+      }
+
+      .hero-capability-text {
+        font-size: 15px;
+        line-height: 1.72;
+      }
+
+      .hero-tools {
+        width: 100%;
+        margin-top: 18px;
+      }
+
+      .hero-tools-icons {
+        gap: 14px;
+      }
+
+      .hero-tools-group {
+        gap: 5px;
+      }
+
+      .hero-tool-icon {
+        width: 34px;
+        height: 34px;
+      }
+
+      .section {
+        margin-right: 20px;
+        margin-left: 20px;
+      }
+
+      .projects {
+        margin-top: 42px;
+      }
+
+      .section-title {
+        margin-bottom: 26px;
+        font-size: 28px;
+      }
+
+      .project-grid {
+        flex-direction: column;
+        gap: 18px;
+        padding-bottom: 34px;
+      }
+
+      .project-card {
+        width: 100%;
+        border-radius: 18px;
+      }
+
+      .project-card:hover,
+      .projects.is-visible .project-card:hover,
+      .projects.is-visible .project-card:focus-within {
+        transform: none;
+      }
+
+      .project-body {
+        padding: 22px 18px 16px;
+      }
+
+      .project-title {
+        font-size: 19px;
+      }
+
+      .project-card img {
+        width: calc(100% - 32px);
+        margin: 0 16px;
+      }
+
+      .project-footer {
+        width: calc(100% - 36px);
+        margin: 12px 18px 18px;
+      }
+
+      .btn {
+        min-width: 104px;
+        height: 40px;
+      }
+
+      .experience {
+        padding: 4px 0 34px;
+      }
+
+      .timeline-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        min-width: 0;
+        min-height: 0;
+        margin-top: 30px;
+        padding: 0 0 0 18px;
+        overflow: visible;
+      }
+
+      .timeline-line {
+        top: 6px;
+        left: 4px;
+        width: 2px;
+        height: calc(100% - 12px);
+        background: linear-gradient(180deg, rgba(68,8,166,0), rgba(68,8,166,.45) 8%, rgba(68,8,166,.45) 92%, rgba(68,8,166,0));
+      }
+
+      .timeline-item,
+      .timeline-item--compact {
+        position: relative;
+        left: auto;
+        right: auto;
+        top: auto;
+        width: 100%;
+        min-width: 0;
+        height: auto;
+        padding-left: 18px;
+      }
+
+      .timeline-item::before {
+        display: none;
+      }
+
+      .dot {
+        top: 4px;
+        left: -23px;
+        width: 14px;
+        height: 14px;
+        border-width: 3px;
+        box-shadow: 0 0 0 5px rgba(122, 77, 255, .08);
+      }
+
+      .timeline-card,
+      .item-1 .timeline-card,
+      .item-2 .timeline-card,
+      .item-3 .timeline-card,
+      .item-4 .timeline-card,
+      .item-5 .timeline-card,
+      .item-6 .timeline-card {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        min-height: 0;
+      }
+
+      .timeline-item time {
+        margin-bottom: 6px;
+        font-size: 12px;
+      }
+
+      .timeline-title {
+        margin-bottom: 7px;
+        font-size: 16px;
+      }
+
+      .timeline-desc {
+        font-size: 13px;
+      }
+
+      .contact-section {
+        margin: 0 20px 24px;
+        padding: 0;
+      }
+
+      .contact-section-title {
+        font-size: 28px;
+      }
+
+      .contact-section-list {
+        gap: 10px;
+        margin-top: 22px;
+      }
+
+      .contact-section-item {
+        justify-content: center;
+        width: 100%;
+        min-height: 46px;
+        padding: 11px 16px;
+      }
+
+      .contact-fab {
+        right: 16px;
+        bottom: 16px;
+        top: auto;
+        gap: 12px;
+      }
+
+      .contact-tab {
+        width: 48px;
+        padding: 7px 7px 12px;
+        font-size: 14px;
+      }
+
+      .contact-avatar {
+        width: 34px;
+        height: 34px;
+      }
+
+      .contact-popover {
+        max-width: calc(100vw - 88px);
+        padding: 16px;
+        border-radius: 20px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .nav,
+      .nav-fixed {
+        padding: 0 14px;
+      }
+
+      .brand {
+        font-size: 0;
+      }
+
+      .brand-mark {
+        width: 30px;
+        height: 30px;
+      }
+
+      .hero-copy {
+        margin-right: 18px;
+        margin-left: 18px;
+      }
+
+      .hero-title {
+        font-size: 31px;
+      }
+
+      .section,
+      .contact-section {
+        margin-right: 16px;
+        margin-left: 16px;
+      }
+
+      .hero-tool-icon {
+        width: 32px;
+        height: 32px;
+      }
+
+      .project-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .projects,
       .experience,
@@ -1195,6 +1631,7 @@
       <a href="index.html#experience">关于我</a>
     </span>
     <a class="download" href="assets/figma-portfolio/屈畅-UX设计师-广美-作品集.pdf" download="屈畅-UX设计师-广美-作品集.pdf">下载作品集</a>
+    <span class="mobile-menu-toggle" role="button" tabindex="0" aria-label="展开导航" aria-expanded="false"></span>
   </header>
   <div class="page">
     <main>
@@ -1212,6 +1649,7 @@
             <a href="index.html#experience">关于我</a>
           </span>
           <a class="download" href="assets/figma-portfolio/屈畅-UX设计师-广美-作品集.pdf" download="屈畅-UX设计师-广美-作品集.pdf">下载作品集</a>
+          <span class="mobile-menu-toggle" role="button" tabindex="0" aria-label="展开导航" aria-expanded="false"></span>
         </header>
         <div class="hero-image" aria-hidden="true">
           <img src="assets/figma-portfolio/bg/slice-13.png" width="1940" height="245" alt="" fetchpriority="high" decoding="async">
@@ -1459,6 +1897,69 @@
       }
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
+    })();
+
+    (function() {
+      var navs = document.querySelectorAll('.nav, .nav-fixed');
+      if (!navs.length) return;
+
+      function closeAllMenus() {
+        navs.forEach(function(nav) {
+          nav.classList.remove('is-menu-open');
+          var trigger = nav.querySelector('.mobile-menu-toggle');
+          if (trigger) {
+            trigger.setAttribute('aria-expanded', 'false');
+            trigger.setAttribute('aria-label', '展开导航');
+          }
+        });
+      }
+
+      navs.forEach(function(nav) {
+        var trigger = nav.querySelector('.mobile-menu-toggle');
+        if (!trigger) return;
+
+        function toggleMenu(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          var isOpen = nav.classList.contains('is-menu-open');
+          closeAllMenus();
+          if (!isOpen) {
+            nav.classList.add('is-menu-open');
+            trigger.setAttribute('aria-expanded', 'true');
+            trigger.setAttribute('aria-label', '收起导航');
+          }
+        }
+
+        trigger.addEventListener('click', toggleMenu);
+        trigger.addEventListener('keydown', function(event) {
+          if (event.key === 'Enter' || event.key === ' ') {
+            toggleMenu(event);
+          }
+        });
+
+        nav.querySelectorAll('.nav-links a, .nav-links span').forEach(function(item) {
+          item.addEventListener('click', closeAllMenus);
+        });
+      });
+
+      document.addEventListener('click', function(event) {
+        var target = event.target;
+        var isInsideNav = false;
+        navs.forEach(function(nav) {
+          if (nav.contains(target)) {
+            isInsideNav = true;
+          }
+        });
+        if (!isInsideNav) {
+          closeAllMenus();
+        }
+      });
+
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          closeAllMenus();
+        }
+      });
     })();
 
     (function() {
